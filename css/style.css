@@ -101,10 +101,6 @@ ul, li{
     cursor: pointer;
 }
 
-.backdown-menu li:hover {
-    cursor: pointer;
-}
-
 /* Ambos serao utilizados para sumir os itens do menu via JS */
 .backdown-show {
     visibility: visible;

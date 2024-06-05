@@ -6,7 +6,6 @@ section {
 #conteudo {
     display: flex;
     justify-content: space-between;
-    align-items:flex-start;
 }
 
 h1 {
@@ -16,22 +15,23 @@ h1 {
 }
 
 .botaoTodosFiltros{
+    font-size: 0.9em;
     display: block;
     margin: auto;
+    margin-right: 0.3em;
+    margin-bottom: 0.9em;
     color: white;
     background-color: rgba(240, 248, 255, 0);
     border: none;
-    margin-right: 0.3em;
-    margin-bottom: 0.9em;
     width: fit-content;
-    padding: 0.25em 0.4em;
-    border-radius: 8px;
+    padding: 0.25em 0.6em;
+    border-radius: 10px;
 }
 
 .botaoTodosFiltros:hover{
-    /* colocar animacao */
     color: black;
     background-color: #e6c222;
+    animation: fadeIn 0.3s;
 }
 
 #botaoEsconder{
@@ -168,7 +168,6 @@ input::placeholder{
 /*configuracao da imagem que aparece antes da pesquisa*/
 #antesPesquisa{
     width: 57vw;
-    margin-left: 5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -177,6 +176,7 @@ input::placeholder{
 
 #imagem{
     width: 10vw;
+    margin-left: 15px;
 }
 
 #antesPesquisa p{
@@ -184,6 +184,7 @@ input::placeholder{
     margin-top: 5px;
     color: #e6c222;
     width: 179px;
+    text-align: center;
 }
 
 /* configuracao dos dados dos filmes */
