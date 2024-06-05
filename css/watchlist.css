@@ -1,0 +1,40 @@
+section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2em 11em;
+    
+}
+section h1{
+    margin-bottom: 1em;
+}
+section img{
+    max-width: 25vh;
+}
+
+#dadosFilme{
+    display: flex;
+    border: 1px solid white;
+    padding: 1.4em;
+    margin-bottom: 1em;
+    border-radius: 8px;
+}
+
+#dadosFilme #texto h2{
+    font-size: 1.4em;
+}
+
+#dadosFilme #texto p{
+    font-size: 0.9em;
+}
+
+#container-geral{
+    border: 1px solid white;
+    padding: 2em;
+    border-radius: 8px;
+}
+
+#texto{
+    margin: 0.6em;
+}

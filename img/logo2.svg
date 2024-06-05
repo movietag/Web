@@ -1,0 +1,11 @@
+<svg width="24" height="27" viewBox="0 0 24 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M7 11C7.16667 10.1667 10 9.1 20 11.5L7 11Z" fill="#D7D7D7" stroke="#D7D7D7" stroke-width="0.3" stroke-linecap="round"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M1.41633 0L23.3763 5.3345L22 11L0.0400696 5.6655L1.41633 0ZM5.00001 3.5C5.00001 4.32843 4.32844 5 3.50001 5C2.67158 5 2.00001 4.32843 2.00001 3.5C2.00001 2.67157 2.67158 2 3.50001 2C4.32844 2 5.00001 2.67157 5.00001 3.5ZM12.5 7.5C13.3284 7.5 14 6.82843 14 6C14 5.17157 13.3284 4.5 12.5 4.5C11.6716 4.5 11 5.17157 11 6C11 6.82843 11.6716 7.5 12.5 7.5Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M22 11H0V27H22V11ZM21 12H1V15H21V12Z" fill="white"/>
+<line x1="8.01041" y1="11.3536" x2="2.35356" y2="17.0104" stroke="white"/>
+<line x1="8.01041" y1="11.3536" x2="2.35356" y2="17.0104" stroke="white"/>
+<line x1="13.6673" y1="11.3536" x2="8.01042" y2="17.0104" stroke="white"/>
+<line x1="13.6673" y1="11.3536" x2="8.01042" y2="17.0104" stroke="white"/>
+<line x1="19.3241" y1="11.3536" x2="13.6673" y2="17.0104" stroke="white"/>
+<line x1="19.3241" y1="11.3536" x2="13.6673" y2="17.0104" stroke="white"/>
+</svg>

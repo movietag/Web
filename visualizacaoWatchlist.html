@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/watchlist.css">
+    <link rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
+    <script src="js/script.js" defer></script>
+    <title>Minha Lista</title>
+</head>
+<body>
+    <!-- Menu -->
+    <header>
+        <nav>
+            <a href="index.html"><img src="img/Group 3.svg" alt="logo-MT"></a>
+            <ul class="menu">
+                <!-- Itens do Menu  -->
+                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+            
+                <li class="lista-nav" id="popup">
+                    <a href="">Watchlist</a>
+                    <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
+                </li>
+                <li class="lista-nav" id="btnConta">
+                    <a href="">Conta</a>
+                    <ul class="backdown-menu">
+                        <li ><a href="login.html">Entrar</a></li>
+                        <li><a href="cadastro.html">Registrar</a></li>
+                        <li><a href="editarPerfil.html">Perfil</a></li>
+                        <li><a href=""></a>Sair</li>
+                    </ul>
+
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <section>
+        <h1>
+            Watchlist
+        </h1>
+        <div id="container-geral">
+            <!-- Item -->
+            <div id="dadosFilme" class="filme">
+                <img src="img/posteres/Poster-TBH.jpg" alt="Poster do Filme" id="poster">
+                <!-- texto -->
+                <div id="texto">
+                    <h2 id="titulo">O Livro de Henry (2017)</h2>
+                    <p id="sinopse">Henry e Peter são dois irmãos criados pela sua mãe solteira, Susan. 
+                        Henry, apaixonado pela sua vizinha Christina, escreve um livro de resgate para tirá-la dos maus tratos do pai policial. 
+                        Quando sua mãe descobre sobre o seu plano, ela decide que eles irão colocar a ideia em prática.</p>    
+                </div>
+            </div>
+            <div id="dadosFilme" class="filme">
+                <img src="img/posteres/Poster-MCPSN.jpg" alt="Poster do Filme" id="poster">
+                <!-- texto -->
+                <div id="texto">
+                    <h2 id="titulo">Me Chame Pelo Seu Nome(2017)</h2>
+                    <p id="sinopse">
+                        De férias no interior da Itália, o jovem Elio conhece Oliver, 
+                        o carismático assistente de pesquisa do pai, e a ligação entre os dois muda suas vidas.
+                    </p>    
+                </div>
+            </div>
+            <div id="dadosFilme" class="filme">
+                <img src="img/posteres/Poster-Duna-1.jpg" alt="Poster do Filme" id="poster">
+                <!-- texto -->
+                <div id="texto">
+                    <h2 id="titulo">Duna (2020)</h2>
+                    <p id="sinopse">
+                        Paul Atreides é um jovem brilhante, dono de um destino além de sua compreensão. 
+                        Ele deve viajar para o planeta mais perigoso do universo para garantir o futuro de seu povo.
+                    </p>    
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

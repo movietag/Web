@@ -1,0 +1,52 @@
+section {
+    color: white;
+    margin: 2vh 10vw;
+}
+
+h1, h2, p:hover {
+    cursor:default;
+}
+
+h1 {
+    background-color: #e6c222;
+    width: fit-content;
+    border-radius: 30px;
+    padding: 0.2em 0.4em;
+    color: black;
+}
+
+#poster {
+    max-width: 10em;
+    height: fit-content;
+    border-radius: 10px;
+}
+
+.tags{
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}
+
+.tags li {
+    background-color: #e6c222;
+    color: black;
+    margin-right: 0.4em;
+    padding: 0.2em 0.4em;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.dados {
+    margin-left: 1em;
+    text-align: justify;
+}
+
+.filme {
+    display: flex;
+    margin-top: 2.5em;
+    background-color: #454567;
+    padding: 2em;
+    border-radius: 10px;
+    margin-bottom: 2em;
+    min-width: fit-content;
+}

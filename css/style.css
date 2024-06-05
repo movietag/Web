@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    font-family: 'Roboto';
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, p, span{
+    color: white;
+}
+
+body{
+    background-color: rgb(44, 44, 44);
+    margin: 0;
+    height: 100vh;
+}
+
+/* Configuração da nav/header */
+nav{
+    background-color: rgba(36, 36, 36, 0.671);
+    width: 100vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+ /* Footer */
+ footer{
+    max-width: 100%;
+    width: 100vw;
+    background-color:  rgba(36, 36, 36, 0.671);
+    padding: 1em;
+    color: white;
+    text-align: center;
+  }
+
+
+/* Configurando lista de elementos da navbar */
+ul, li{
+    list-style: none;
+    font-size: 1.2rem;
+}
+
+.menu{
+    display: flex;
+    align-items: center;
+}
+
+.menu li{
+    margin-left: 20px;
+    margin: 10px;
+    color: white;
+    
+}
+
+.menu li a{
+    padding: 5px;
+    text-decoration: none;
+    color: white;
+    
+}
+
+.menu li a:hover{
+    color: #c0be2c;
+}
+
+.menu li:hover{
+
+    color: #c0be2c;
+    cursor: pointer;
+}
+
+/* Configurando menu backdown */
+
+#btnConta {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.backdown-menu{
+    margin-top: 1.8em;
+    visibility: hidden;
+    position: absolute;
+    border-radius: 3px;
+    background-color: #555; 
+    width: fit-content;
+}
+
+
+.backdown-menu a,li{
+    text-decoration: none;
+    color: white;
+    padding:0;
+}
+
+.backdown-menu li:hover{
+    cursor: pointer;
+}
+
+.backdown-menu li:hover {
+    cursor: pointer;
+}
+
+/* Ambos serao utilizados para sumir os itens do menu via JS */
+.backdown-show {
+    visibility: visible;
+    animation: fadeIn 0.5s;
+}
+
+.item-show {
+    display: none;
+}
+
+/* Configurando imagem de logo da navbar */
+header img{
+    width: 7em;
+    margin-right: 5em;
+}
+
+header img:hover{
+    transform:scale(1.05);
+    transition: transform 450ms;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+.lista{
+    margin-top: 2vh;
+    width: auto;
+}
+
+/* Configuração das Listas de Itens */
+
+/* Lista de Filmes  */
+.itens{
+    display: flex;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    height: fit-content;
+    padding: 1vh;
+    scrollbar-color: #e6c222 rgba(0, 0, 0, 0);
+}
+
+.itens::webkit-scrollbar-button { 
+    height: 0;
+    width: 0;
+}
+
+/* Cada Filme */
+.item {
+    display: flex;
+    text-align: center;
+    padding-right: 2em;
+    max-width: 12em;
+    height: fit-content;
+    flex-shrink: 0;
+    margin-bottom: 1em;
+    transition: transform 450ms;
+}
+
+.item:hover{
+    cursor: pointer;
+}
+
+.lista h1,h2{
+    margin-bottom: 0.5em;
+    color: white;
+}
+
+.item a {
+    color: white;
+    text-decoration: none;
+}
+
+.item img{
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Aumento da escala ao passar o o mouse  */
+.item:hover {
+    transform:scale(1.05);
+    transition: transform 450ms;
+}
+
+#popup {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+  }
+  
+  /* Popup */
+  #popup .popuptext {
+    visibility: hidden;
+    width: max-content;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 0.3em;
+    position: absolute;
+    top: 1.5em;
+  }
+  
+  /* Setinha do Popup */
+  #popup .popuptext::after {
+    content:"";
+    rotate:180deg;
+    position: absolute;
+    top: -25%;
+    left: 50%;
+    margin-left: -0.2em;
+    border-width: 0.3em;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  /* Aparece e desaparece o popup*/
+  #popup .show {
+    visibility: visible;
+    animation: fadeIn 0.5s;
+  }
+  
+ 
+  /* Animacao Fade in de Popup*/
+  @-webkit-keyframes fadeIn {
+    from {opacity: 0;} 
+    to {opacity: 1;}
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
+

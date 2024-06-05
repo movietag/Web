@@ -1,0 +1,32 @@
+.container {
+    display: flex;
+    color: white;
+    margin: 5em 10%;
+}
+
+.container img {
+    max-height: 35vh;
+    border-radius: 8px;
+    margin-right: 2em;
+}
+
+.container p {
+    text-align: justify;
+
+}
+
+.container h1{
+    font-size: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.lista h2 {
+    margin-bottom: 0.4em;
+}
+
+.itens{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+}
+

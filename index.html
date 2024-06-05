@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieTag</title>
+    <link rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <script defer src="js/inicio.js"></script>
+    <script defer src="js/script.js"></script>
+</head>
+<body>
+
+    <!-- Menu -->
+    <header>
+        <nav>
+            <a href="index.html"><img src="img/Group 3.svg" alt="logo-MT"></a>
+            <ul class="menu">
+                <!-- Itens do Menu  -->
+                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+            
+                <li class="lista-nav" id="popup">
+                    <a href="">Watchlist</a>
+                    <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
+                </li>
+                <li class="lista-nav" id="btnConta">
+                    <a href="">Conta</a>
+                    <ul class="backdown-menu">
+                        <li ><a href="login.html">Entrar</a></li>
+                        <li><a href="cadastro.html">Registrar</a></li>
+                        <li><a href="editarPerfil.html">Perfil</a></li>
+                        <li><a href=""></a>Sair</li>
+                    </ul>
+
+                </li>
+            </ul>
+
+
+        </nav>
+
+        <!-- Pesquisa -->
+        <form id="fPesquisa" action="">
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome da produção, tag, diretor...">
+            <button id="pesq1" type="button">Pesquisar</button>
+        </form>
+    </header>
+
+    <section>
+
+
+        
+        <div class="area">
+            <!-- Listas de Filmes -->
+            <div class="lista">
+
+                <!-- Titulo da Lista -->
+                <h1> Minhas Recomendações </h1>
+
+                <!-- Filmes -->
+                <div class="itens">
+
+                    <!-- Item -->
+                    <div class="item">
+                        <a href=visualizacaoProducao.html> 
+                            <img src="img/posteres/Poster-Duna.jpg" alt="Poster-Filme">
+                            <span>Duna: Parte Dois (2024)</span>
+                        </a>
+                    </div>
+        
+                    <div class="item">
+                        <a href=""> 
+                            <img src="img/posteres/venom.jpg" alt="Poster-Filme">
+                            <span>Venom (2018)</span>
+                        </a>
+                    </div>
+
+                    <div class="item">
+                        <a href=""> 
+                            <img src="img/posteres/Poster-TBH.jpg" alt="Poster-Filme">
+                            <span>O Livro de Henry (2017)</span>
+                        </a>
+                    </div>
+
+                    
+                    <div class="item">
+                        <a href=""> 
+                            <img src="img/posteres/Poster-MCPSN.jpg" alt="Poster-Filme">
+                            <span>Me Chame Pelo Seu Nome (2017)</span>
+                        </a>
+                    </div> 
+                </div>
+            </div>
+    
+        </div>
+
+        <div class="area" id="s02">
+            <!-- Pesquisa -->
+    
+            <div class="lista">
+                <h1>Resultados</h1>
+                <div class="itens">
+                    <div class="item">
+                        <a href="visualizacaoProducao.html"> 
+                            <img src="img/posteres/Poster-Duna.jpg" alt="Poster-Filme">
+                            <span>Duna 2</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+
+    </section>
+    
+
+    <footer>
+        <p>Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>

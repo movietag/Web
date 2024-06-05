@@ -1,0 +1,84 @@
+/* Configurando Section */
+
+.secao-caixa{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100vw;
+}
+
+.secao-caixa h1{
+    color: rgb(255, 255, 255);
+    font-size: 2.5em;
+    margin: 1.2em;
+}
+
+.secao-caixa input{
+    width: 20vw;
+    color: rgb(230, 218, 211);
+    background-color: #515160;
+    border: none;
+    border-radius: 9px;
+    font-size: 1rem;
+    padding: 0.5em;
+    outline: none;
+    margin: 1vh 0;
+}
+
+/* olhinho do password */
+::-ms-reveal{
+    filter: invert(100%);
+}
+
+.secao-caixa p{
+    color: #bfbfbf;
+    text-align: center;
+    margin-top: 0.4em;
+
+}
+
+a{
+    color: #bfbfbf;
+}
+.secao-caixa a:hover{
+    color: rgb(177, 159, 199);
+    text-decoration: underline;
+}
+
+.secao-caixa .butao{
+    width: 100%;
+    padding: 0.5em;
+    background-color: #e6c222;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: rgb(0, 0, 0);
+    margin-top: 2em;
+}
+
+.secao-caixa .butao:hover{
+    background-color: #c4a82c;
+    transform: translateY(0.5px);
+}
+
+.conteudo{
+    display: flex;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 5vh;
+    min-width: fit-content;
+}
+
+form label{
+    color: aliceblue;
+}
+
+.icone{
+    color: aliceblue;
+    font-size: 15vh;
+}
+
+.conteudo label, input{
+    display: block;
+}
