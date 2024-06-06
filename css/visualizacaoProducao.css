@@ -1,33 +1,50 @@
 .banner{
     background-size: cover;
     background-position: center center;
-    color: white;
     object-fit: contain;
     height: fit-content;
     background-image: url("../img/posteres/banner.jpg");
-    background-color: #000;
+}
+
+.backdrop{
+    background-color: rgba(49, 49, 60, 0.500);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
 }
 
 .main-banner{
     border-radius: 10px;
-    margin: 5px;
     width: 15em;
     min-width: 12em;
-    margin: 70px;
+    margin: 3em;
 }
 
 .main-banner_banner_contents{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(49, 49, 60, 0.500);
+    padding: 3em;
+    width: fit-content;
 }
 
 .banner_contents{
     margin-left: 2em;
+    height: fit-content;
+}
+
+#lista-tag.lista{
+    height: fit-content;
+}
+
+.dados_gerais{
+    display: flex;
+    align-items: center;
 }
 
 .ano{
+    display: flex;
     color: #c9c9c9de;
     font-size: 2em;
 }
@@ -82,6 +99,10 @@
     color: #000;
     background-color: #e6e6e6;
     transition: all 0.2s;
+}
+
+.banner_buttons{
+    color: #fff;;
 }
 
 .row_poster{
