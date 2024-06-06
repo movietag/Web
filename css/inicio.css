@@ -3,11 +3,11 @@
     padding: 0;
 }
 
-body{
+/* body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-}
+} */
 
 #s02 {
     display: none;
