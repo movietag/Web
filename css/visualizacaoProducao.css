@@ -55,6 +55,15 @@ body{
     padding-bottom: 0.3rem;
 }
 
+.classificacao_idade{
+    color: #c9c9c9de;;
+    border: solid 0.1em;
+    border-radius: 0.2em;
+    border-color: #c9c9c9de;;
+    
+    padding: 0.2em;
+
+}
 .banner_description{
     width: 45rem;
     line-height: 1.3;
