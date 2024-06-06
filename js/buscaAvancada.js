@@ -1,59 +1,68 @@
-//mostrar e ocultar os inputs dos filtros
-const filtros = document.querySelectorAll(".divInput");
-const setas = document.querySelectorAll(".rotulo");
+//Obtendo os objetos da DOM
 
-//repeticao pegando todas as setas e adicionando o evento de click para cada rotulo
-for (i = 0; i<setas.length; i++){
-    setas[i].addEventListener("click", function(){mostraFiltro(setas[i], filtros[i])});
+const filtros = document.querySelectorAll(".divInput"); // Pega todos os filtros da página
+const divs = document.querySelectorAll(".rotulo"); // Pega todas as divs
+
+const botao = document.querySelector("#botaoPesquisar"); // Botão de pesquisar
+const resultados = document.getElementById("resultados"); // Div de resultados
+const antes = document.getElementById("antesPesquisa"); // Div que aparece antes da pesquisa
+
+const mostrar = document.querySelector("#botaoMostrar"); //Botão que mostra os filtros
+const esconder = document.querySelector("#botaoEsconder"); // Botão que esconde os filtros
+
+
+// Adicionando Eventos aos Objetos
+
+botao.addEventListener("click", function(){ // Evento de aparecer o resultado da pesquisa
+    antes.style.display = "none";
+    resultados.style.display = "block";
+}); 
+
+
+for (i = 0; i<divs.length; i++){ //repeticao pegando todas as setas e adicionando o evento de click para cada rotulo
+    let div = divs[i];
+    let elem = filtros[i];
+    divs[i].addEventListener("click", function() {mostraFiltro(div, elem)});
 }
 
-for (i = 0; i < filtros.length; i++){
-    filtros[i].classList.toggle("filtro-show");
+mostrar.addEventListener("click", function(){mostrarTodos(mostrar, esconder)}); // Evento para mostrar os filtros
+esconder.addEventListener("click", function(){esconderTodos(mostrar, esconder, filtros, divs)}); // Evento para ocultar todos os filtros
+
+// Oculta os filtros
+inicioFiltros();
+
+
+// Funções do Código
+
+function inicioFiltros(){ // Oculta os filtros quando a página é iniciada
+    for (i = 0; i < filtros.length; i++){
+        filtros[i].classList.toggle("filtro-show");
+    }
 }
 
-function mostraFiltro(div, elem){
+
+function mostraFiltro(div, elem){ // Torna visível o filtro
     elem.classList.toggle("filtro-show");
     trocaSeta(div);
 }
 
-//gira as setas de acordo com se o input está mostrando ou nao
-function trocaSeta(div){
+
+function trocaSeta(div){ //gira as setas de acordo com se o input está mostrando ou nao
     div.lastChild.classList.toggle("cima");
 }
 
-//mostrar resultados da pesquisa
-const botao = document.querySelector("#botaoPesquisar");
-const resultados = document.getElementById("resultados");
-const antes = document.getElementById("antesPesquisa");
-
-botao.addEventListener("click", function(){
-    antes.style.display = "none";
-    resultados.style.display = "block";
-});
-
-//mostrando todos os filtros
-const mostrar = document.querySelector("#botaoMostrar");
-mostrar.addEventListener("click", function(){mostrarTodos(mostrar, esconder, filtros, setas)});
-function mostrarTodos(mos, esc, filt, set){
-    for (i = 0; i < filt.length; i++){
-        filt[i].style.display = "block";
+function mostrarTodos(mos, esc){
+    for (i = 0; i < filtros.length; i++){
+        mostraFiltro(divs[i], filtros[i]);
     }
-    for (i = 0; i < set.length; i++){
-        set[i].lastChild.classList.add("cima")
-    }
+
     mos.style.display = "none";
     esc.style.display = "block";
 }
 
-//ocultando todos os filtros
-const esconder = document.querySelector("#botaoEsconder");
-esconder.addEventListener("click", function(){esconderTodos(mostrar, esconder, filtros, setas)});
-function esconderTodos(mos, esc, filt, set){
-    for (i = 0; i < filt.length; i++){
-        filt[i].style.display = "none";
-    }
-    for (i = 0; i < set.length; i++){
-        set[i].lastChild.classList.remove("cima");
+function esconderTodos(mos, esc){
+    for (i = 0; i < filtros.length; i++){
+        mostraFiltro(divs[i], filtros[i]);
     }
     mos.style.display = "block";
     esc.style.display = "none";
