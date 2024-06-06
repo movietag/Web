@@ -1,19 +1,17 @@
 const butao = document.querySelector("button");
 butao.addEventListener("click", function(){salvarDados()}) 
 
-console.log("oiiii")
 function salvarDados(){
-    console.log("entramo")
     uNome = document.querySelector("#uNome").value;
     uEmail = document.querySelector("#uEmail").value;
     uSenha = document.querySelector("#uSenha").value;
     uConfSenha = document.querySelector("#uConfSenha").value;
-    console.log(uNome)
 
     if (uSenha != uConfSenha){
         alert("senhas não coincidem")
     }
 
+    
     const dadosArmazenados = localStorage.getItem('usuarioDados');
     if (dadosArmazenados) {
         const usuarios = JSON.parse(dadosArmazenados);
