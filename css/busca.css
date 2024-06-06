@@ -47,8 +47,8 @@ h1 {
 }
 
 .bxs-filter-alt {
-    margin-right: 7px;
-    font-size: 33px;
+    margin-right: 0.2em;
+    font-size: 1.1em;
 }
 
 .bx-chevron-down, .bx-chevron-up {
@@ -189,6 +189,7 @@ input::placeholder{
 
 /* configuracao dos dados dos filmes */
 #resultados {
+    margin-top: 4vh;
     margin-left: 5vw;
     width: 57vw;
     display: none;

@@ -11,29 +11,37 @@ function salvarDados(){
         alert("senhas não coincidem")
     }
 
-    
-    const dadosArmazenados = localStorage.getItem('usuarioDados');
-    if (dadosArmazenados) {
-        const usuarios = JSON.parse(dadosArmazenados);
-        if (usuarios.nome === uNome) {
-            alert("Nome de usuário já em uso.");
-            return;
-        }
-        if (usuarios.email === uEmail) {
-            alert("Endereço de e-mail já em uso.");
-            return;
-        }
-    }
-
     const dados = {
         nome: uNome, 
         email: uEmail, 
-        senha: uSenha, 
-        confsenha: uConfSenha
+        senha: uSenha
     };
+    
+    let dadosString = "";
+    const dadosArmazenados = localStorage.getItem('usuarioDados');
+    if (dadosArmazenados == null){
+        dadosGerais = [];
+        dadosGerais.push(dados);
+        dadosString = JSON.stringify(dadosGerais);
+    }
+    else{
+        if (dadosArmazenados) {
+            const usuarios = JSON.parse(dadosArmazenados);
+            if (usuarios.nome === uNome) {
+                alert("Nome de usuário já em uso.");
+                return;
+            }
+            if (usuarios.email === uEmail) {
+                alert("Endereço de e-mail já em uso.");
+                return;
+            }
+        }
         
-    const dadosString = JSON.stringify(dados);
+        const dadosAnteriores = JSON.parse(dadosArmazenados);
+        dadosAnteriores.push(dados);
+        dadosString = JSON.stringify(dadosAnteriores);
+    }
+    
     localStorage.setItem('usuarioDados', dadosString);
-
 };
 
