@@ -38,7 +38,18 @@ body{
     margin-left: 2em;
 }
 
-.banner_title{
+.ano{
+    color: #c9c9c9de;
+    font-size: 2em;
+}
+
+.banner_titulo_ano{
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.titulo{
     font-size: 3rem;
     font-weight: 600;
     padding-bottom: 0.3rem;
