@@ -22,7 +22,7 @@ body{
 /* Configuração da nav/header */
 nav{
     background-color: rgba(36, 36, 36, 0.671);
-    width: 100vw;
+    width: 100%;
     position: relative;
     display: flex;
     justify-content: center;
