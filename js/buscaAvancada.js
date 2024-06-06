@@ -2,11 +2,9 @@
 
 const filtros = document.querySelectorAll(".divInput"); // Pega todos os filtros da página
 const divs = document.querySelectorAll(".rotulo"); // Pega todas as divs
-
 const botao = document.querySelector("#botaoPesquisar"); // Botão de pesquisar
 const resultados = document.getElementById("resultados"); // Div de resultados
 const antes = document.getElementById("antesPesquisa"); // Div que aparece antes da pesquisa
-
 const mostrar = document.querySelector("#botaoMostrar"); //Botão que mostra os filtros
 const esconder = document.querySelector("#botaoEsconder"); // Botão que esconde os filtros
 
@@ -18,17 +16,18 @@ botao.addEventListener("click", function(){ // Evento de aparecer o resultado da
     resultados.style.display = "block";
 }); 
 
-
 for (i = 0; i<divs.length; i++){ //repeticao pegando todas as setas e adicionando o evento de click para cada rotulo
     let div = divs[i];
     let elem = filtros[i];
-    divs[i].addEventListener("click", function() {mostraFiltro(div, elem)});
+    div.addEventListener("click", function() {mostraFiltro(div, elem)});
 }
 
 mostrar.addEventListener("click", function(){mostrarTodos(mostrar, esconder)}); // Evento para mostrar os filtros
 esconder.addEventListener("click", function(){esconderTodos(mostrar, esconder, filtros, divs)}); // Evento para ocultar todos os filtros
 
+
 // Oculta os filtros
+
 inicioFiltros();
 
 
@@ -40,12 +39,10 @@ function inicioFiltros(){ // Oculta os filtros quando a página é iniciada
     }
 }
 
-
 function mostraFiltro(div, elem){ // Torna visível o filtro
     elem.classList.toggle("filtro-show");
     trocaSeta(div);
 }
-
 
 function trocaSeta(div){ //gira as setas de acordo com se o input está mostrando ou nao
     div.lastChild.classList.toggle("cima");
@@ -55,7 +52,6 @@ function mostrarTodos(mos, esc){
     for (i = 0; i < filtros.length; i++){
         mostraFiltro(divs[i], filtros[i]);
     }
-
     mos.style.display = "none";
     esc.style.display = "block";
 }
