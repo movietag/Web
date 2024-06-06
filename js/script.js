@@ -47,8 +47,7 @@ function verificaLogado(){
 verificaLogado();
 
 // Aparecer o Menu
-function showMenu(ev){
-    // ev.preventDefault();
+function showMenu(){
     backdownMenu.classList.toggle("backdown-show");
 
     // Se o popup de Watchlist estiver aparecendo
