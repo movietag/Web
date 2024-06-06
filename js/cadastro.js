@@ -2,6 +2,7 @@ const butao = document.querySelector("button");
 butao.addEventListener("click", function(){salvarDados()}) 
 
 function salvarDados(){
+    window.location.href = "../index.html";
     uNome = document.querySelector("#uNome").value;
     uEmail = document.querySelector("#uEmail").value;
     uSenha = document.querySelector("#uSenha").value;
@@ -41,7 +42,6 @@ function salvarDados(){
         dadosAnteriores.push(dados);
         dadosString = JSON.stringify(dadosAnteriores);
     }
-    
     localStorage.setItem('usuarioDados', dadosString);
 };
 
