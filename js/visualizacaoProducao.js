@@ -1,6 +1,6 @@
 
 // Evento de click dos icones
-const icon = document.querySelector('i');
+const icon = document.querySelector("#mark");
 
 icon.addEventListener("click", (ev) => {
     const classes = ["bx-bookmark", "bxs-bookmark"];

@@ -48,6 +48,21 @@
     align-items: center;
 }
 
+.score{
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+
+.bxs-film{
+    font-size: 2rem;
+}
+
+#mark{
+    font-size: 1.5rem;
+}
+
+
 .ano{
     color: #c9c9c9de;
     font-size: 2em;
@@ -111,7 +126,9 @@
 }
 
 .banner_buttons{
-    color: #fff;;
+    color: #fff;
+    display: flex;
+    align-items: center;
 }
 
 .row_poster{

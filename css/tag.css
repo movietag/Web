@@ -41,12 +41,17 @@ h1 {
     text-align: justify;
 }
 
+/* #titulo {
+    font-weight: bold;
+    margin-top: 5px;
+} */
+
 .filme {
     display: flex;
     margin-top: 2.5em;
+    margin-bottom: 2em;
     background-color: #454567;
     padding: 2em;
     border-radius: 10px;
-    margin-bottom: 2em;
     min-width: fit-content;
 }
