@@ -22,7 +22,7 @@
     font-size: 1rem;
     padding: 0.5em;
     outline: none;
-    margin: 1vh 0;
+    margin-top: 0.5rem;
 }
 
 /* olhinho do password */
@@ -46,8 +46,8 @@
 }
 
 .alertas{
+    display: inline-block;
     color: #d16161;
-    margin-bottom: 1vh;
 }
 
 .secao-caixa .butao{
@@ -88,4 +88,7 @@ form label{
     display: block;
 }
 
+.info-caixas{
+    margin-bottom: 0.3rem;
+}
 
