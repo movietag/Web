@@ -15,7 +15,7 @@ h1 {
     color: black;
 }
 
-#poster {
+.poster {
     max-width: 10em;
     height: fit-content;
     border-radius: 10px;
@@ -30,10 +30,20 @@ h1 {
 .tags li {
     background-color: #e6c222;
     color: black;
-    margin-right: 0.4em;
+    margin: 0.6em 0.4em 0.6em 0;
     padding: 0.2em 0.4em;
     border-radius: 30px;
     cursor: pointer;
+}
+
+.filme {
+    display: flex;
+    margin-top: 2.5em;
+    margin-bottom: 2em;
+    background-color: #454567;
+    padding: 1.4em;
+    border-radius: 10px;
+    min-width: fit-content;
 }
 
 .dados {
@@ -41,17 +51,6 @@ h1 {
     text-align: justify;
 }
 
-/* #titulo {
-    font-weight: bold;
-    margin-top: 5px;
-} */
-
-.filme {
-    display: flex;
-    margin-top: 2.5em;
-    margin-bottom: 2em;
-    background-color: #454567;
-    padding: 2em;
-    border-radius: 10px;
-    min-width: fit-content;
+.sinopse{
+    font-size: 1.2em;
 }
