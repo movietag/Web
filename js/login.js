@@ -15,9 +15,12 @@ form.onsubmit = (ev) => {
                     localStorage.setItem('status', "true");
                     window.location.href = "../index.html";
                 }
+            else{
+                alert("Informações Incorretas");
+            }
             };
         });
-        alert("Informações Incorretas");
+
     }
 };   
         

@@ -40,19 +40,33 @@
         </nav>
     </header>
 
-    <section class="secao-caixa">
-        <h1>Bem-vindo de volta!</h1>
-        <div class="conteudo">
-            <form>
-                    <label for="uUsuario">Usuário/Email:</label>
-                    <input type="text" id="uUsuario" placeholder="Digite seu Usuário" required>
-                    <label for="uSenha">Senha:</label>
-                    <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha" required> 
-                    <a href="#">Esqueceu a senha?</a>
-                    <button type="submit" class="butao">Enviar</button>
-                    <p>Não possui conta? <a href="cadastro.html">Cadastrar</a></p>
-            </form>
+    <section>
+        <div class="secao-caixa">
+            <h1>Bem-vindo de volta!</h1>
+
+            <div class="conteudo">
+    
+                <form>
+                        <label for="uUsuario">Usuário/Email:</label>
+                        <input type="text" id="uUsuario" placeholder="Digite seu Usuário" required>
+                        <label for="uSenha">Senha:</label>
+                        <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha" required> 
+                        <a href="#">Esqueceu a senha?</a>
+                        <button type="submit" class="butao">Enviar</button>
+                        <p>Não possui conta? <a href="cadastro.html">Cadastrar</a></p>
+                </form>
+            </div>
+        </div>
+
+        <dialog open>
+            <p>Acesse o E-mail para recuperar a senha:</p>
+            <label for="recEmail">Aaa</label>
+            <input type="email" name="recEmail" id="recEmail">
+        </dialog>
     </section>
+</div>
+
+
 
     <footer>
         <img src="img/Group 3.svg" alt="">
