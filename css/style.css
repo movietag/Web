@@ -207,7 +207,7 @@ h1 {
     cursor: pointer;
 }
 
-.lista h1,h2{
+.lista h1,.lista h2{
     margin-bottom: 0.5em;
     color: white;
 }
