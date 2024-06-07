@@ -1,49 +1,71 @@
 const butao = document.querySelector("button");
-butao.addEventListener("click", function(){salvarDados()}) 
+const form = document.querySelector("#form-total");
 
-function salvarDados(){
-    uNome = document.querySelector("#uNome").value;
-    uEmail = document.querySelector("#uEmail").value;
-    uSenha = document.querySelector("#uSenha").value;
-    uConfSenha = document.querySelector("#uConfSenha").value;
+butao.addEventListener("click", function() {
+    salvarDados();
+});
 
-    if (uSenha !== uConfSenha){
-        alert("senhas não coincidem")
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    salvarDados();
+});
+
+function salvarDados() {
+    const uNome = document.querySelector("#uNome").value;
+    const uEmail = document.querySelector("#uEmail").value;
+    const uSenha = document.querySelector("#uSenha").value;
+    const uConfSenha = document.querySelector("#uConfSenha").value;
+
+    const iConfSenha = document.querySelector("#uConfSenha");
+
+    if (uSenha !== uConfSenha) {
+        iConfSenha.style.border = "1px solid red";
+        return;
     }
 
     const dados = {
-        nome: uNome, 
-        email: uEmail, 
+        nome: uNome,
+        email: uEmail,
         senha: uSenha
     };
-    
+
     let dadosString = "";
     const dadosArmazenados = localStorage.getItem('usuarioDados');
-    if (dadosArmazenados == null){
-        dadosGerais = [];
+    if (dadosArmazenados == null) {
+        const dadosGerais = [];
         dadosGerais.push(dados);
         dadosString = JSON.stringify(dadosGerais);
-    }
-    else{
-        if (dadosArmazenados) {
-            const usuarios = JSON.parse(dadosArmazenados);
-            if (usuarios.nome === uNome) {
-                alert("Nome de usuário já em uso.");
-                return;
+    } else {
+        const usuarios = JSON.parse(dadosArmazenados);
+        let nomeEmUso = false;
+        let emailEmUso = false;
+
+        usuarios.forEach(usuario => {
+            if (usuario.nome === uNome) {
+                nomeEmUso = true;
             }
-            if (usuarios.email === uEmail) {
-                alert("Endereço de e-mail já em uso.");
-                return;
+            if (usuario.email === uEmail) {
+                emailEmUso = true;
             }
+        });
+
+        if (nomeEmUso) {
+            alert("Nome de usuário já em uso.");
+            return;
         }
-        
+        if (emailEmUso) {
+            alert("Endereço de e-mail já em uso.");
+            return;
+        }
+
         const dadosAnteriores = JSON.parse(dadosArmazenados);
         dadosAnteriores.push(dados);
         dadosString = JSON.stringify(dadosAnteriores);
     }
-    localStorage.setItem('usuarioDados', dadosString);
-};
 
-function caixaVazia(input){
+    localStorage.setItem('usuarioDados', dadosString);
+}
+
+function caixaVazia(input) {
     input.innerHTML = "Este campo precisa ser preenchido!";
 }
