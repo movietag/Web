@@ -4,6 +4,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    justify-content: center;
     width: 100vw;
 }
 
@@ -63,6 +64,7 @@ a{
 }
 
 .conteudo{
+    position: relative;
     display: flex;
     border: 2px solid white;
     border-radius: 10px;
@@ -81,4 +83,18 @@ form label{
 
 .conteudo label, input{
     display: block;
+}
+
+dialog{
+    border-radius: 8px;
+    background-color: #515160;
+    color: white;
+    border: white solid thin;
+    margin: auto;
+    top: 35%;
+    padding: 2em;
+}
+
+.secao-caixa{
+    filter: blur(2px);
 }

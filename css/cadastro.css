@@ -30,19 +30,24 @@
     filter: invert(100%);
 }
 
-.secao-caixa p{
+#psenha{
     color: #bfbfbf;
     text-align: center;
     margin-top: 0.4em;
-
 }
 
-.secao-caixa p a{
+#psenhaA{
     color: #bfbfbf;
 }
-.secao-caixa a:hover{
+
+#psenhaA:hover{
     color: rgb(177, 159, 199);
     text-decoration: underline;
+}
+
+.alertas{
+    color: #d16161;
+    margin-bottom: 1vh;
 }
 
 .secao-caixa .butao{

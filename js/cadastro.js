@@ -8,7 +8,7 @@ function salvarDados(){
     uSenha = document.querySelector("#uSenha").value;
     uConfSenha = document.querySelector("#uConfSenha").value;
 
-    if (uSenha != uConfSenha){
+    if (uSenha !== uConfSenha){
         alert("senhas não coincidem")
     }
 
