@@ -196,44 +196,45 @@ input::placeholder{
 }
 
 #poster {
-    height: 200px;
+    max-width: 10em;
+    height: fit-content;
     border-radius: 10px;
 }
 
-#totalTags{
+.tags{
     list-style: none;
     padding-left: 0;
     display: flex;
 }
 
-#totalTags li {
+.tags li {
     background-color: #e6c222;
     color: black;
     margin-right: 8px;
     padding: 3px 7px;
     border-radius: 12px;
+    cursor: pointer;
 }
 
 .filme {
     display: flex;
+    margin-bottom: 2em;
     background-color: #454567;
-    padding: 20px;
+    padding: 1.5em;
     border-radius: 10px;
-    margin-bottom: 30px;
+    min-width: fit-content;
 }
 
-#texto {
-    margin-left: 20px;
-    font-size: 18px;
+.dados {
+    margin-left: 1em;
 }
 
 #sinopse {
     text-align: justify;
 }
 
-#titulo {
+.tituloFilme {
     font-weight: bold;
-    margin-top: 5px;
 }
 
 /*classe que oculta os inputs dos filtros de pesquisa*/
