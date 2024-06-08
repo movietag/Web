@@ -1,9 +1,18 @@
-
 // Evento do Menu
 const btnConta = document.querySelector("#btnConta");
 btnConta.addEventListener("click", (ev) => {showMenu(ev)});
 const menu = document.querySelector(".menu");
-var popup = document.getElementById("myPopup");
+const popup = document.getElementById("myPopup");
+
+// Altera os items que aparecem no backdown menu
+const backdownMenu = document.querySelector(".backdown-menu")
+for (let i = 0; i < backdownMenu.childElementCount; i++){
+
+    // i > 1: Perfil e Sair
+    if (i > 1){
+        backdownMenu.children[i].classList.toggle("item-show");
+    }
+}
 
 // Evento de Watchlist
 menu.children[1].addEventListener("click", (ev) => {
@@ -22,16 +31,6 @@ menu.children[1].addEventListener("click", (ev) => {
 
     }
 );
-
-// Altera os items que aparecem no backdown menu
-const backdownMenu = document.querySelector(".backdown-menu")
-for (let i = 0; i < backdownMenu.childElementCount; i++){
-
-    // i > 1: Perfil e Sair
-    if (i > 1){
-        backdownMenu.children[i].classList.toggle("item-show");
-    }
-}
 
 // Se o usuario estiver logado
 function verificaLogado(){
