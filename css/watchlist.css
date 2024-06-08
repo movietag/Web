@@ -1,40 +1,43 @@
 section{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    margin: 0 auto;
+}
+
+section .itens{
     flex-direction: column;
-    margin: 2em 11em;
-    
-}
-section h1{
-    margin-bottom: 1em;
-}
-section img{
-    max-width: 25vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    height: fit-content;
 }
 
-#dadosFilme{
-    display: flex;
-    border: 1px solid white;
-    padding: 1.4em;
-    margin-bottom: 1em;
+.item{
+    text-align: justify;
+    flex-direction: row;
+    max-width: 50em;
+    margin-bottom: 2em;
+    box-shadow: 0 5px 5px rgba(14, 14, 14, 0.505);
+    background-color: rgb(31, 31, 31);
     border-radius: 8px;
 }
 
-#dadosFilme #texto h2{
-    font-size: 1.4em;
+section .item:hover{
+    transform: scale(1);
 }
 
-#dadosFilme #texto p{
-    font-size: 0.9em;
+.item h2{
+    margin-top: 1em;
+}
+.item img{
+    max-width: 10em;
+    margin-right: 1em;
+    border-radius: 0;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
-#container-geral{
-    border: 1px solid white;
-    padding: 2em;
-    border-radius: 8px;
+.itens{
+    flex-direction: row;
 }
 
-#texto{
-    margin: 0.6em;
+.item p{
+    width: 100%;
 }

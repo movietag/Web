@@ -7,7 +7,6 @@ form.onsubmit = (ev) => {
     const uSenha = document.querySelector("#uSenha").value;
 
     const dadosArmazenados = localStorage.getItem('usuarioDados');
-    console.log(dadosArmazenados);
 
     if (dadosArmazenados) {
         const usuarios = JSON.parse(dadosArmazenados);
