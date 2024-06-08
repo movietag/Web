@@ -1,3 +1,6 @@
+const secaoCaixa = document.querySelector(".secao-caixa");
+const fDialog = document.querySelector("dialog form");
+
 const form = document.querySelector("form");
 form.onsubmit = (ev) => {
     const uUsuario = document.querySelector("#uUsuario").value;
@@ -22,5 +25,22 @@ form.onsubmit = (ev) => {
         });
 
     }
-};   
-        
+};
+
+// Esqueci a Senha
+const esqueceu = document.querySelector("form a");
+esqueceu.addEventListener("click", (ev)=>{
+    ev.preventDefault();
+    secaoCaixa.classList.toggle("blur");
+    fDialog.parentElement.showModal();
+
+})
+
+// Redefinir a senha
+
+fDialog.onsubmit = (ev) => {
+    ev.preventDefault();
+    secaoCaixa.classList.toggle("blur");
+    fDialog.parentElement.close();
+};
+

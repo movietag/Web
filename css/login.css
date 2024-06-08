@@ -15,7 +15,7 @@
 }
 
 .secao-caixa input{
-    width: 20vw;
+    width: 100%;
     color: rgb(230, 218, 211);
     background-color: #515160;
     border: none;
@@ -46,7 +46,7 @@ a{
     text-decoration: underline;
 }
 
-.secao-caixa .butao{
+.butao{
     width: 100%;
     padding: 0.5em;
     background-color: #e6c222;
@@ -55,10 +55,10 @@ a{
     cursor: pointer;
     font-size: 1rem;
     color: rgb(0, 0, 0);
-    margin-top: 2em;
+    margin-top: 1em;
 }
 
-.secao-caixa .butao:hover{
+.butao:hover{
     background-color: #c4a82c;
     transform: translateY(0.5px);
 }
@@ -87,14 +87,33 @@ form label{
 
 dialog{
     border-radius: 8px;
-    background-color: #515160;
+    background-color: rgb(37, 37, 37);
     color: white;
     border: white solid thin;
     margin: auto;
     top: 35%;
-    padding: 2em;
+    padding: 3em;
 }
 
-.secao-caixa{
+dialog input, dialog label, dialog span{
+    display: block;
+}
+dialog input{
+    width: 100%;
+    color: rgb(230, 218, 211);
+    background-color: #515160;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    padding: 0.5em;
+    outline: none;
+    margin: 1vh 0;
+}
+
+dialog span{
+    margin-bottom: 1em;
+}
+
+.blur{
     filter: blur(2px);
 }
