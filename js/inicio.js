@@ -7,17 +7,19 @@ fPesquisa.onsubmit = (ev) =>{ // Quando a pesquisa é submetida...
     ev.preventDefault(); // Não permite que a página reenicie
     const resultados = document.querySelector("#s02 .lista"); // Pega a div dos resultados para a preencher
     let busca = ev.target.pesquisa.value; // Pega o valor de dentro da pesquisa
-    fetch(`https://api.themoviedb.org/3/search/movie?query=${busca}&include_adult=false&language=pt-BR&page=1`, options) // API, enviando a busca
-        .then(response => response.json())
-        .then(json => carregaFilmes(resultados, json))
 
-    console.log(resultados);
-    pesquisa();
+    if (busca != ""){
+        fetch(`https://api.themoviedb.org/3/search/movie?query=${busca}&include_adult=false&language=pt-BR&page=1`, options) // API, enviando a busca
+            .then(response => response.json())
+            .then(json => carregaFilmes(resultados, json))
+        pesquisa(); 
+    }
+
 }
 
 
 // Funções 
-function pesquisa(){
+function pesquisa(){ // Função que mostra a div responsável pelos resultados
     const areas = document.querySelectorAll(".area");
     areas[0].style.display = "none";
     areas[1].style.display = "block";
@@ -25,18 +27,18 @@ function pesquisa(){
 
 const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elementos na div correspondente
     const itens = lista.lastElementChild;
-    itens.replaceChildren();
+    itens.replaceChildren(); // Apenas para zerar os filhos da div de itens
 
-    json.results.forEach(element => {
-        let item = document.createElement('div');
-        item.classList.add('item');
+    json.results.forEach(element => { // Para cada elemento de results de Json...
+        let item = document.createElement('div'); // Cria a div
+        item.classList.add('item'); // Adiciona a classe item, o estilizando
         
         item.innerHTML = `<a href="../visualizacaoProducao.html?query=${element.id}">
         <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
         <span>${element.original_title}</span>
-        </a>`;
+        </a>`; // Cria o item com sua imagem, link e título
         
-        itens.appendChild(item);
+        itens.appendChild(item); // Adiciona o item à div itens
     });
 }
 
@@ -49,7 +51,7 @@ const options = { //Opções enviadas para a API
     }
   };
 
-fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1', options)
+fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1', options) // Recebe os dados da lista 'popular' da API
     .then(response => response.json())
     .then(json => carregaFilmes(lista, json))
 

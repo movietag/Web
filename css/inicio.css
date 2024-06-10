@@ -48,3 +48,9 @@ form button{
     
 }
 
+#s02 .itens{
+    overflow-x: hidden;
+    overflow-y: scroll;
+    flex-wrap: wrap;
+}
+
