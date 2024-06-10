@@ -10,6 +10,7 @@ function pesquisa(){
     areas[1].style.display = "block";
 }
 
+// API
 const options = {
     method: 'GET',
     headers: {
@@ -29,11 +30,10 @@ const carregaLista = (json) => {
     itens.replaceChildren();
 
     json.results.forEach(element => {
-        const filhos = [];
         let item = document.createElement('div');
         item.classList.add('item');
         
-        item.innerHTML = `<a href="">
+        item.innerHTML = `<a href="../visualizacaoProducao.html?query=${element.id}">
         <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
         <span>${element.original_title}</span>
         </a>`;
