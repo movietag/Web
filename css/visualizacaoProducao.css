@@ -11,6 +11,8 @@
     width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: fit-content;
     
 }
 .wrapper{
@@ -21,9 +23,12 @@
 
 .plataformas_button{
     background-color: #e6c222;
-    padding: 1.5em;
     cursor: pointer;
     transition: all 0.2s;
+    width: 100%;
+    padding: 1em 0;
+    text-align: center;
+    border-radius: 0 0 8px 8px;
 }
 
 .plataformas_button:hover{
@@ -34,15 +39,16 @@
 .main-banner{
     width: 15em;
     min-width: 12em;
-
+    border-radius: 8px 8px 0 0;
 }
 
 .main-banner_banner_contents{
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3em;
     width: fit-content;
+    height: fit-content;
+    margin: 3em;
 }
 
 .banner_contents{
@@ -66,10 +72,18 @@
     color: #fff;
     display: flex;
     align-items: center;
+    margin-bottom: 2em;
 }
 
-.bxs-film{
-    font-size: 2rem;
+.porcentagem_titulo{
+    margin-left: 1em;
+}
+
+.bx-play{
+    font-size: 1.5rem;
+}
+.bx-star{
+    font-size: 1.5rem;
 }
 
 #mark{
@@ -86,6 +100,7 @@
     width: 100%;
     display: block;
     align-items: center;
+    margin-bottom: 2em;
 }
 
 .banner_titulo{
@@ -108,7 +123,7 @@
     padding: 0.2em;
 
 }
-.banner_description{
+.sinopse_info{
     width: 45rem;
     line-height: 1.3;
     padding-top: 1rem;
@@ -117,7 +132,12 @@
     height: fit-content;
 }
 
+.sinopse_titulo{
+    margin-bottom: 1em;
+}
+
 .banner_button{
+    display: flex;
     cursor: pointer;
     color: #fff;
     outline: none;
@@ -131,6 +151,7 @@
     padding-bottom: 0.5rem;
     background-color: rgba(51, 51, 51, 0.5);
     text-decoration: none;
+    align-items: center;
 }
 
 .banner_button:hover{
