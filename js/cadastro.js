@@ -2,25 +2,31 @@ const butao = document.querySelector("button");
 const form = document.querySelector("#form-total");
 
 butao.addEventListener("click", function() {
-    salvarDados();
+    validarDados();
 });
 
 form.addEventListener("submit", function(event) {
     event.preventDefault();
-    salvarDados();
+    validarDados();
 });
 
-function salvarDados() {
+function validarDados() {
     const uNome = document.querySelector("#uNome").value;
     const uEmail = document.querySelector("#uEmail").value;
     const uSenha = document.querySelector("#uSenha").value;
     const uConfSenha = document.querySelector("#uConfSenha").value;
 
+    const iNome = document.querySelector("#uNome");
+    const iEmail = document.querySelector("#uEmail");
+    const iSenha = document.querySelector("#uSenha");
     const iConfSenha = document.querySelector("#uConfSenha");
 
     if (uSenha !== uConfSenha) {
         iConfSenha.style.border = "1px solid red";
-        return;
+        senhaDif = true;
+    }
+    else{
+        senhaDif = false;
     }
 
     const dados = {
@@ -35,6 +41,7 @@ function salvarDados() {
         const dadosGerais = [];
         dadosGerais.push(dados);
         dadosString = JSON.stringify(dadosGerais);
+        localStorage.setItem('usuarioDados', dadosString);
     } else {
         const usuarios = JSON.parse(dadosArmazenados);
         let nomeEmUso = false;
@@ -48,21 +55,26 @@ function salvarDados() {
                 emailEmUso = true;
             }
         });
-
-        if (nomeEmUso) {
-            alert("Nome de usuário já em uso.");
-            return;
+        if (nomeEmUso || emailEmUso){
+            if (nomeEmUso) {
+                iNome.style.border = "1px solid red";
+                return;
+            }
+            if (emailEmUso) {
+                iEmail.style.border = "1px solid red";
+                return;
+            }
         }
-        if (emailEmUso) {
-            alert("Endereço de e-mail já em uso.");
-            return;
-        }
-
-        const dadosAnteriores = JSON.parse(dadosArmazenados);
-        dadosAnteriores.push(dados);
-        dadosString = JSON.stringify(dadosAnteriores);
+        salvarDados(dadosArmazenados, dados);
     }
 
+}
+
+
+function salvarDados(dadosArmazenados, dados){
+    const dadosAnteriores = JSON.parse(dadosArmazenados);
+    dadosAnteriores.push(dados);
+    dadosString = JSON.stringify(dadosAnteriores);
     localStorage.setItem('usuarioDados', dadosString);
 }
 
