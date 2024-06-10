@@ -194,12 +194,11 @@ h1 {
 /* Cada Filme */
 .item {
     display: flex;
+    margin-right: 2em;
     text-align: center;
     padding-right: 2em;
     max-width: 12em;
-    height: fit-content;
     flex-shrink: 0;
-    margin-bottom: 1em;
     transition: transform 450ms;
 }
 
@@ -218,7 +217,8 @@ h1 {
 }
 
 .item img{
-    width: 100%;
+    width: 12em;
+    height: 18em;
     border-radius: 10px;
 }
 
