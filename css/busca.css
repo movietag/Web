@@ -146,6 +146,9 @@ input::placeholder{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: absolute;
+    top: 18em;
+    left: 40vw;
 }
 
 #imagem{
