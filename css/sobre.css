@@ -18,3 +18,20 @@ h1{
 h2{
     margin-bottom: 0.4em;
 }
+
+#caixaImagens{
+    display: flex;
+    justify-content: center;
+    background-color: aquamarine;
+    gap: 5vw;
+    height: 150px;
+}
+
+.caixinhaImagem{
+    background-color: bisque;
+    height: fit-content;
+}
+
+#caixaImagens img {
+    width: 6vw;
+}
