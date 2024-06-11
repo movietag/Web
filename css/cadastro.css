@@ -92,3 +92,44 @@ form label{
     margin-bottom: 0.3rem;
 }
 
+@media (max-width: 768px){
+    .secao-caixa{
+        padding: 3vh;
+    }
+    .secao-caixa h1{
+        font-size: 2em;
+        margin: 0.2em;
+    }
+
+    .secao-caixa .butao{
+        max-width: 100%;
+        font-size: 1em;
+    }
+
+    .secao-caixa input{
+        width: 100%;
+        height: 5vh;
+        margin: 0.3em;
+        font-size: 1em;
+    }
+    .conteudo{
+        display: block;
+        width: 100%;
+        padding: 1vh;
+        border: none;
+    }
+
+    .icone{
+        font-size: 10vh;
+        display: flex;
+        justify-content: center;
+    }
+
+    .info-caixas{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+}
+
