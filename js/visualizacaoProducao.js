@@ -2,6 +2,9 @@
 // Evento de click dos icones
 const icon = document.querySelector("#mark");
 
+aberto = true;
+let backdropNormalcolor = backdrop.style.backgroundColor;
+
 icon.addEventListener("click", (ev) => {
     const classes = ["bx-bookmark", "bxs-bookmark"];
     if (icon.classList.contains(classes[0])){
@@ -12,6 +15,24 @@ icon.addEventListener("click", (ev) => {
         icon.classList.add(classes[0]);
     }
 });
+
+function abrirPlataformas(){
+    const dados = document.querySelector("#dados_gerais");
+    const plataformas = document.querySelector("#plataformas")
+    const backdrop = document.querySelector(".backdrop")
+    if (aberto){
+        dados.style.display = "none";
+        plataformas.style.display = "block";
+        aberto = false;
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+    }
+    else if(!aberto){
+        dados.style.display = "flex";
+        plataformas.style.display = "none";
+        aberto = true;
+        backdrop.style.backgroundColor =  backdropNormalcolor;
+    }
+}
 
 // Testes
 // // API

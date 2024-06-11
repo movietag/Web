@@ -7,7 +7,7 @@
 }
 
 .backdrop{
-    background-color: rgba(49, 49, 60, 0.500);
+    background-color: rgba(40, 40, 48, 0.5);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -29,11 +29,18 @@
     padding: 1em 0;
     text-align: center;
     border-radius: 0 0 8px 8px;
+    border: none;
 }
 
 .plataformas_button:hover{
     background-color: #000;
     color: #fff;
+}
+
+#plataformas{
+    min-width: 50vw;
+    margin-left: 2em;
+    display: none;
 }
 
 .main-banner{
@@ -63,7 +70,7 @@
     height: fit-content;
 }
 
-.dados_gerais{
+#dados_gerais{
     display: flex;
     align-items: center;
 }
