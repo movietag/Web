@@ -1,3 +1,20 @@
+h1{
+    text-align: center;
+    margin: 0.8em;
+}
+
+#caixaProjeto{
+    display: flex;
+    margin: auto 17vw;
+    gap: 2em;
+}
+
 .projeto{
     background-color: rgb(31, 31, 31);
+    padding: 1.5em;
+    border-radius: 15px;
+}
+
+h2{
+    margin-bottom: 0.4em;
 }
