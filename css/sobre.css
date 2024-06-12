@@ -14,10 +14,17 @@ h1{
     background-color: rgb(31, 31, 31);
     padding: 1.5em;
     border-radius: 15px;
+    width: 35vw;
 }
 
 h2{
     margin-bottom: 0.4em;
+    font-size: 1.5em;
+}
+
+.projeto p {
+    font-size: 1em;
+    text-align: justify;
 }
 
 #caixaImagens{
