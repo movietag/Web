@@ -122,9 +122,9 @@ function validarUso(){
         uEmail.style.border = "1px solid green";
         avisos[2].style.display = "none";
     }
+}
 
 // const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-
 
 function validarDados() {
     // Chama todas as funções de validação necessárias
