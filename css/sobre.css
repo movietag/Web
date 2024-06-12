@@ -9,6 +9,7 @@ h1{
     gap: 2em;
 }
 
+/*informacoes sobre nós*/
 .projeto{
     background-color: rgb(31, 31, 31);
     padding: 1.5em;
@@ -22,16 +23,14 @@ h2{
 #caixaImagens{
     display: flex;
     justify-content: center;
-    background-color: aquamarine;
+    align-items: center;
     gap: 5vw;
-    height: 150px;
+    height: 30vh;
 }
 
-.caixinhaImagem{
-    background-color: bisque;
-    height: fit-content;
-}
-
+/*fotos dos integrantes*/
 #caixaImagens img {
-    width: 6vw;
+    height: 16vh;
+    box-shadow: 0 0 10px 10px rgba(36, 36, 36, 0.671);
+    border-radius: 100%;
 }
