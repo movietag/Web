@@ -52,24 +52,29 @@
                 <!-- Formulario -->
                 <form id="form-total">
                     <div class="info-caixas">
-                        <label for="uNome">Usuário:</label>
-                        <input type="text" id="uNome" placeholder="Nome de usuário" required> 
-                        <small id="alertaN" class="alertas">oii</small>
+                        <label for="uNome">Nome:</label>
+                        <input type="text" id="uNome" placeholder="Nome da conta" class="camposInput"> 
+                        <small id="alertaN" class="alertas"></small>
+                    </div>
+                    <div class="info-caixas">
+                        <label for="uUsuario">Usuário:</label>
+                        <input type="text" id="uUsuario" placeholder="Nome de usuário" class="camposInput"> 
+                        <small id="alertaU" class="alertas">Este usuário já existe.</small>
                     </div>
                     <div class="info-caixas">
                         <label for="uEmail">Email:</label>
-                        <input type="email" id="uEmail" placeholder="Seu email" required>
-                        <small id="alertaE" class="alertas"></small>
+                        <input type="email" id="uEmail" placeholder="Seu email" class="camposInput">
+                        <small id="alertaE" class="alertas">Este email já existe.</small>
                     </div>
                     <div class="info-caixas">
                         <label for="uSenha">Senha:</label>
-                        <input type="password" name="uSenha" id="uSenha" placeholder="Sua senha" required>
-                        <small id="alertaS" class="alertas"></small>
+                        <input type="password" name="uSenha" id="uSenha" placeholder="Sua senha" class="camposInput">
+                        <small id="alertaS" class="alertas">A senha deve ter no mínimo 8 caracteres.</small>
                     </div>
                     <div class="info-caixas">
                         <label for="uConfSenha">Confirmar senha:</label>
-                        <input type="password" name="uConfSenha" id="uConfSenha" placeholder="Confirme a senha" required> 
-                        <small id="alertaCS" class="alertas"></small>
+                        <input type="password" name="uConfSenha" id="uConfSenha" placeholder="Confirme a senha" class="camposInput"> 
+                        <small id="alertaCS" class="alertas">As senhas devem ser iguais.</small>
                     </div>
                     <button class="butao" type="submit">Criar Conta</button> 
                     <p id="psenha">Já possui conta? <a href="index.html" id="psenhaA">Login</a></p>
