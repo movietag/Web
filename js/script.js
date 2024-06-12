@@ -84,10 +84,5 @@ function apareceAviso() {
     // Testa se o backdownMenu de conta
     if (backdownMenu.classList.contains("backdown-show")){
         backdownMenu.classList.toggle("backdown-show");
-    }
-
-    
+    } 
   }
-
-
-

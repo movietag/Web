@@ -26,6 +26,17 @@ form.onsubmit = (ev) => {
     }
 };
 
+
+
+
+
+
+
+
+
+
+
+
 // Esqueci a Senha
 const esqueceu = document.querySelector("form a");
 esqueceu.addEventListener("click", (ev)=>{

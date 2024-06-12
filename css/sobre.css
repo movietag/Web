@@ -4,9 +4,9 @@ h1{
 }
 
 #caixaProjeto{
+    justify-content: center;
     display: flex;
     margin: auto 17vw;
-    gap: 2em;
 }
 
 /*informacoes sobre nós*/
@@ -14,11 +14,11 @@ h1{
     background-color: rgb(31, 31, 31);
     padding: 1.5em;
     border-radius: 15px;
-    width: 35vw;
+    width: 40vw;
 }
 
 h2{
-    margin-bottom: 0.4em;
+    margin-bottom: 0.5em;
     font-size: 1.5em;
 }
 

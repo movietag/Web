@@ -1,9 +1,8 @@
-
 // Evento de click dos icones
 const icon = document.querySelector("#mark");
 
-aberto = true;
-// const backdropNormalcolor = backdrop.style.backgroundColor;
+// Define a variável 'aberto' como verdadeira
+let aberto = true;
 
 icon.addEventListener("click", (ev) => {
     const classes = ["bx-bookmark", "bxs-bookmark"]; // Lista de Classes dos Icones de Marcador
@@ -15,33 +14,33 @@ icon.addEventListener("click", (ev) => {
         icon.classList.add(classes[0]);
     }
 });
-const botao = document.querySelector("#plataformas_button");
-botao.addEventListener("click", abrirPlataformas);
+const botao = document.querySelector("#plataformas_button"); // Seleciona o botão de plataformas
+botao.addEventListener("click", abrirPlataformas); // Adiciona ouvidor de evento de click no botão de plataformas
 
 function abrirPlataformas() {
-    const dados = document.querySelector("#dados_gerais");
-    const plataformas = document.querySelector("#plataformas")
-    const backdrop = document.querySelector(".backdrop");
+    const dados = document.querySelector("#dados_gerais"); // Seleciona a seção de dados gerais
+    const plataformas = document.querySelector("#plataformas"); // Seleciona a seção de plataformas
+    const backdrop = document.querySelector(".backdrop"); // Seleciona o backdrop
 
     if (aberto) {
-        dados.style.display = "none";
-        plataformas.style.display = "block";
-        aberto = false;
-        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
-        botao.textContent = "Voltar"
+        dados.style.display = "none"; // Esconde os dados gerais
+        plataformas.style.display = "block"; // Mostra a seção de plataformas
+        aberto = false; // Define 'aberto' como falso
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Altera a cor de fundo
+        botao.textContent = "Voltar"; // Altera a cor de fundo
 
     }
     else if (!aberto) {
-        dados.style.display = "flex";
-        plataformas.style.display = "none";
-        aberto = true;
-        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
-        botao.textContent = "Disponível Neste Momento"
+        dados.style.display = "flex"; // Mostra os dados gerais
+        plataformas.style.display = "none"; // Esconde a seção de plataformas
+        aberto = true; // Define 'aberto' como verdadeiro
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Altera a cor de fundo
+        botao.textContent = "Disponível Neste Momento"; // Altera o texto do botão
     }
 }
 
-// Testes
-// // API
+
+// API
 
 var myParam = queryObj();
 console.log(myParam);
@@ -54,22 +53,27 @@ const options = {
     }
 };
 
+// Faz a requisição à API do The Movie Database para obter os dados do filme
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}?append_to_response=20&language=pt-BR`, options)
     .then(response => response.json())
     .then(json => carregaDados(json));
 
+// Faz a requisição à API para obter as tags do filme
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) // Palavra chave
     .then(response => response.json())
     .then(response => carregaTags(response));
 
+// Faz a requisição à API para obter o Elenco do filme
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=en-US`, options)
     .then(response => response.json())
     .then(response => carregaElenco(response));
 
+// Faz a requisição à API para obter os provedores de streaming
 fetch('https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers', options)
   .then(response => response.json())
   .then(response => console.log(response))
 
+// Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML
     var result = {}, keyValuePairs = location.search.slice(1).split("&");
     keyValuePairs.forEach(function (keyValuePair) { // Percorre cada valor
@@ -81,47 +85,48 @@ function queryObj() { // Pega os valores do link HTML
 
 // Atualizando Dados a partir da API
 function carregaDados(json) {
-    const banner = document.querySelector(".banner");
-    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Imagem de Fundo
+    const banner = document.querySelector("#banner"); // Seleciona o banner
+    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Define a imagem de fundo do banner
 
-    const bannerPrincipal = document.querySelector(".main-banner");
-    bannerPrincipal.setAttribute("src", `https://image.tmdb.org/t/p/w300${json.poster_path}`)
+    const bannerPrincipal = document.querySelector(".main-banner"); // Seleciona o banner principal
+    bannerPrincipal.setAttribute("src", `https://image.tmdb.org/t/p/w300${json.poster_path}`); // Define a imagem do poster
 
-    const titulo = document.querySelector(".titulo");
-    const anoLancamento = document.querySelector(".ano");
+    const titulo = document.querySelector(".titulo"); // Seleciona o título
+    const anoLancamento = document.querySelector(".ano"); // Seleciona o ano de lançamento
 
-    const dataEstreia = document.querySelector(".data_estreia");
-    dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`;
+    const dataEstreia = document.querySelector(".data_estreia"); // Seleciona a data de estreia
+    dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`; // Define a data de estreia e país de origem
 
     titulo.innerHTML = `${json.title}`; // Título
     const date = new Date(json.release_date); // Ano de Estréia
-    anoLancamento.innerHTML = `(${date.getFullYear()})`
+    anoLancamento.innerHTML = `(${date.getFullYear()})`;// Define o ano de lançamento
 
-    const sinopse = document.querySelector(".sinopse");
-    sinopse.innerHTML = json.overview;
+    const sinopse = document.querySelector(".sinopse"); // Seleciona a sinopse
+    sinopse.innerHTML = json.overview; // Define a sinopse
 
-    const duracao = document.querySelector(".duracao");
-    duracao.innerHTML = `${json.runtime}min`;
+    const duracao = document.querySelector(".duracao"); // Seleciona a duração
+    duracao.innerHTML = `${json.runtime}min`; // Define a duração do filme
 };
 
+// Função para carregar as tags do filme
 function carregaTags(json) {
-
-    const listaTags = document.querySelector(".tags");
-    listaTags.replaceChildren();
-    json.keywords.forEach(element => {
+    const listaTags = document.querySelector(".tags"); // Seleciona a lista de tags
+    listaTags.replaceChildren(); // Remove os filhos existentes
+    json.keywords.forEach(element => { // Para cada tag
         let item = document.createElement('a'); // Cria o a
         item.classList.add('item'); // Adiciona a classe item, o estilizando
 
-        item.setAttribute("href", `visualizacaoTag.html?query=${element.id}`);
-        item.innerHTML = element.name;
+        item.setAttribute("href", `visualizacaoTag.html?query=${element.id}`);// Define o link
+        item.innerHTML = element.name; // Define o texto
 
-        listaTags.appendChild(item);
+        listaTags.appendChild(item);// Adiciona o item à lista de tags
     });
 }
 
+// Função para carregar o elenco do filme
 function carregaElenco(json) {
-    const elenco = document.querySelector("#elenco");
-    elenco.lastElementChild.replaceChildren();
+    const elenco = document.querySelector("#elenco"); // Seleciona o elenco
+    elenco.lastElementChild.replaceChildren(); // Remove os filhos existentes
 
     json.cast.forEach(element => {
         let item = document.createElement('div'); // Cria a div
@@ -132,6 +137,6 @@ function carregaElenco(json) {
         <span>${element.name}</span>
         </a>`; // Cria o item com sua imagem, link e título
 
-        elenco.lastElementChild.appendChild(item);
+        elenco.lastElementChild.appendChild(item); // Adiciona o item ao elenco
     });
 }

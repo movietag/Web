@@ -3,6 +3,7 @@ section {
     margin: 0 7vw;
 }
 
+/* faz com que a caixa de filtros e o resto aparecam lado a lado */
 #conteudo {
     display: flex;
     justify-content: space-between;
@@ -14,6 +15,7 @@ h1 {
     margin: 0.7em 0 0.3em 0;
 }
 
+/* botao de mostrar/esconder todos os filtros */
 .botaoTodosFiltros{
     font-size: 0.9em;
     display: block;
@@ -46,15 +48,18 @@ h1 {
     width: 20vw;
 }
 
+/* icone do titulo */
 .bxs-filter-alt {
     margin-right: 0.2em;
     font-size: 1.1em;
 }
 
-.bx-chevron-down, .bx-chevron-up {
+/* setinha do filtro */
+.bx-chevron-down{
     margin-left: 0.3em;
 }
 
+/* roda a setinha do filtro */
 .cima{
     transform: rotate(180deg);
 }
@@ -109,11 +114,13 @@ input::placeholder{
     background-color: #c4a82c;
 }
 
+/* caixa que contem de input do filtro */
 .divInput{
     width: 100%;
     margin: 1.5vh 0;
 }
 
+/* caixas de organizar os checkboxs e seus labels */
 .divMaiorCheckbox{
     display: flex;
     flex-wrap: wrap;
@@ -123,6 +130,7 @@ input::placeholder{
     margin-right: 1.2em;
 }
 
+/* espaco entre um filtro e outro */
 .filtro + .filtro {
     margin-top: 1.5em;
 }
@@ -139,6 +147,7 @@ input::placeholder{
 .subrotulo{
     margin: 7px 0;
 }
+
 /*configuracao da imagem que aparece antes da pesquisa*/
 #antesPesquisa{
     width: 57vw;
