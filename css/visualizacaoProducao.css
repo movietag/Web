@@ -1,3 +1,4 @@
+/* Estilização do banner do fundo */
 #banner {
     background-size: cover;
     object-fit: contain;
@@ -5,6 +6,7 @@
     background-image: url("../img/posteres/banner.jpg");
 }
 
+/* Estilização do fundo escuro atrás do conteúdo do banner */
 .backdrop {
     background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
@@ -15,13 +17,14 @@
     transition: all 0.2s;
 }
 
+/*Estilização do centralizador do banner principal e o botão de plataformas*/
 .wrapper {
     color: #000;
     display: flex;
     flex-direction: column;
 }
 
-
+/* Estilização do conteúdo do banner */
 #contents {
     display: flex;
     justify-content: space-between;
@@ -30,6 +33,7 @@
     margin: 3em 10%;
 }
 
+/* Botão para ver plataformas disponiveis*/
 #plataformas_button {
     background-color: #e6c222;
     cursor: pointer;
@@ -41,25 +45,27 @@
     border: none;
 }
 
+/* Estilização do botão ao passar o mouse */
 .plataformas_button:hover {
     background-color: #000;
     color: #fff;
 }
 
+/* Seção oculta de plataformas */
 #plataformas {
     min-width: 50vw;
     padding-left: 2em;
     display: none;
 }
 
+/* Estilização da imagem principal da Producao */
 .main-banner {
     width: 15em;
     min-width: 12em;
     border-radius: 8px 8px 0 0;
 }
 
-
-
+/* Informacoes dentro do banner */
 .banner_contents {
     margin-left: 2em;
     height: 50%;
@@ -68,16 +74,19 @@
     justify-content: space-between;
 }
 
+/* Lista de tags */
 #lista-tag.lista {
     height: fit-content;
 }
 
+/* Dados gerais do banner */
 #dados_gerais {
     display: flex;
     align-items: center;
     width: 50vw;
 }
 
+/* Estilização da seção da avaliação */
 .score {
     color: #fff;
     display: flex;
@@ -85,28 +94,33 @@
     margin-bottom: 2em;
 }
 
+/* Margem para o título da porcentagem */
 .porcentagem_titulo {
     margin-left: 1em;
 }
 
+/* Tamanho do ícone de play */
 .bx-play {
     font-size: 1.5rem;
 }
 
+/* Tamanho do ícone de estrela */
 .bx-star {
     font-size: 1.5rem;
 }
 
+/* Tamanho do ícone de marcador */
 #mark {
     font-size: 1.5rem;
 }
 
-
+/* Estilização do ano de estreia*/
 .ano {
     color: #c9c9c9de;
     font-size: 2em;
 }
 
+/* Estilizacao da div que contem as informacoes principais da producao*/
 .banner_dados_titulo {
     width: 100%;
     display: block;
@@ -114,29 +128,30 @@
     margin-bottom: 2em;
 }
 
+/* Título do banner */
 .banner_titulo {
     display: flex;
     align-items: center;
 }
 
+/* Estilização do título */
 .titulo {
     font-size: 3rem;
     font-weight: 600;
     padding-bottom: 0.3rem;
 }
 
+/* Estilização da classificação etária */
 .classificacao_idade {
     color: #c9c9c9de;
-    ;
     border: solid 0.1em;
     border-radius: 0.2em;
     border-color: #c9c9c9de;
-    ;
-
     padding: 0.2em;
 
 }
 
+/* Informação da sinopse */
 .sinopse_info {
     width: 45rem;
     line-height: 1.3;
@@ -146,21 +161,24 @@
     margin-bottom: 1em;
 }
 
+/* Título da sinopse */
 .sinopse_titulo {
     margin-bottom: 0.5em;
 }
 
+/* Layout dos produtores */
 #produtores {
     grid-template-columns: 33% 33% 33%;
     display: grid;
     gap: 1em;
-
 }
 
+/* Estilização do card de produtor */
 .card_produtor {
     width: fit-content;
 }
 
+/* Estilização do botão do banner */
 .banner_button {
     display: flex;
     cursor: pointer;
@@ -179,24 +197,28 @@
     align-items: center;
 }
 
+/* Estilização do botão do banner ao passar o mouse */
 .banner_button:hover {
     color: #000;
     background-color: #e6e6e6;
     transition: all 0.2s;
 }
 
+/* Container dos botões do banner */
 .banner_buttons {
     color: #fff;
     display: flex;
     align-items: center;
 }
 
+/* Estilização das tags */
 .tags {
     justify-content: end;
     display: flex;
     flex-wrap: wrap;
 }
 
+/* Estilização dos links das tags */
 .tags a {
     background-color: #00000086;
     color: #ffffff;
@@ -209,10 +231,12 @@
     text-decoration: none;
 }
 
+/* Estilização das listas gerais */
 .lista {
     margin: 0 10%;
 }
 
+/* Estilização específica para a lista de tags */
 #lista-tag {
     margin: 0;
     flex-wrap: wrap;
@@ -220,10 +244,12 @@
     text-align: end;
 }
 
+/* Estilização da altura imagem principal do banner dentro de um contêiner */
 .main-banner img {
     min-height: 50%;
 }
 
+/* Estilização para ícones */
 .icon {
     filter: invert();
 }
