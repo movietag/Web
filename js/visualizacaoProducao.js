@@ -19,18 +19,22 @@ icon.addEventListener("click", (ev) => {
 function abrirPlataformas(){
     const dados = document.querySelector("#dados_gerais");
     const plataformas = document.querySelector("#plataformas")
-    const backdrop = document.querySelector(".backdrop")
+    const backdrop = document.querySelector(".backdrop");
+    const botao = document.querySelector(".plataformas_button");
     if (aberto){
         dados.style.display = "none";
         plataformas.style.display = "block";
         aberto = false;
-        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        botao.textContent = "Voltar"
+
     }
     else if(!aberto){
         dados.style.display = "flex";
         plataformas.style.display = "none";
         aberto = true;
-        backdrop.style.backgroundColor =  backdropNormalcolor;
+        backdrop.style.backgroundColor =  'rgba(0, 0, 0, 0.7)';
+        botao.textContent = "Disponível Neste Momento"
     }
 }
 

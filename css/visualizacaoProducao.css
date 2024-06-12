@@ -6,7 +6,7 @@
 }
 
 .backdrop{
-    background-color: rgba(0, 0, 0, 0.788);
+    background-color: rgba(0, 0, 0, 0.7);
     width: 100%;
     display: flex;
     justify-content: center;
@@ -142,7 +142,7 @@
 }
 
 .sinopse_titulo{
-    margin-bottom: 1em;
+    margin-bottom: 0.5em;
 }
 
 #produtores{
