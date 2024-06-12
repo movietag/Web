@@ -1,24 +1,25 @@
 .banner{
     background-size: cover;
-    background-position: center center;
     object-fit: contain;
     height: fit-content;
     background-image: url("../img/posteres/banner.jpg");
 }
 
 .backdrop{
-    background-color: rgba(40, 40, 48, 0.5);
+    background-color: rgba(0, 0, 0, 0.788);
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: fit-content;
-    
+    height: 35rem;
+    transition: all 0.2s;
 }
 .wrapper{
     color: #000;
     display: flex;
     flex-direction: column;
+    transition: all 0.2s;
 }
 
 .plataformas_button{
