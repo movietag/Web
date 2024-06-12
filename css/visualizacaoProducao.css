@@ -46,7 +46,7 @@
 }
 
 /* Estilização do botão ao passar o mouse */
-.plataformas_button:hover {
+#plataformas_button:hover {
     background-color: #000;
     color: #fff;
 }
