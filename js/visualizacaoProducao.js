@@ -54,7 +54,15 @@ const options = {
   
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}?append_to_response=20&language=pt-BR`, options)
     .then(response => response.json())
-    .then(json => carregaDados(json))
+    .then(json => carregaDados(json));
+
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) // Palavra chave
+  .then(response => response.json())
+  .then(response => carregaTags(response));
+
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=en-US`, options)
+  .then(response => response.json())
+  .then(response => carregaElenco(response));
 
 function queryObj() { // Pega os valores do link HTML
     var result = {}, keyValuePairs = location.search.slice(1).split("&");
@@ -64,10 +72,6 @@ function queryObj() { // Pega os valores do link HTML
     });
     return result;
 };
-
-fetch('https://api.themoviedb.org/3/movie/653346/keywords', options)
-  .then(response => response.json())
-  .then(response => carregaTags(response))
 
 // Atualizando Dados a partir da API
 function carregaDados(json){
@@ -102,12 +106,26 @@ function carregaTags(json){
         let item = document.createElement('a'); // Cria o a
         item.classList.add('item'); // Adiciona a classe item, o estilizando
         
-        item.innerHTML = `<a href="visualizacaoTag.html?query=${element.id}"> ${element.name}
-        </a>`; // Cria o item com o nome da tag
+        item.setAttribute("href", `visualizacaoTag.html?query=${element.id}`);
+        item.innerHTML = element.name;
 
         listaTags.appendChild(item);
     });
+}
 
-    
+function carregaElenco(json){
+    const elenco = document.querySelector("#elenco");
+    elenco.lastElementChild.replaceChildren();
 
+    json.cast.forEach(element =>{
+        let item = document.createElement('div'); // Cria a div
+        item.classList.add('item'); // Adiciona a classe item, o estilizando
+        
+        item.innerHTML = `<a href="../visualizacaoIntegrante.html?query=${element.id}">
+        <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
+        <span>${element.name}</span>
+        </a>`; // Cria o item com sua imagem, link e título
+
+        elenco.lastElementChild.appendChild(item);
+    });
 }

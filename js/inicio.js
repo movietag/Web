@@ -33,7 +33,7 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
         
-        item.innerHTML = `<a href="../visualizacaoProducao.html?query=${element.id}">
+        item.innerHTML = `<a href="visualizacaoProducao.html?query=${element.id}">
         <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
         <span>${element.title}</span>
         </a>`; // Cria o item com sua imagem, link e título
