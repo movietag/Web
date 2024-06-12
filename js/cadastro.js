@@ -15,11 +15,11 @@ const usuarios = JSON.parse(dadosArmazenados);
 console.log(usuarios);
 
 
-uNome.addEventListener("input", function(){
+uUsuario.addEventListener("input", function(){
     validarUso();
 });
 
-uUsuario.addEventListener("input", function(){
+uEmail.addEventListener("input", function(){
     validarUso();
 });
 
@@ -93,15 +93,20 @@ function validarUso(){
             emailEmUso = true;
         }
     });
-    if (usuarioEmUso || emailEmUso){
-        if (usuarioEmUso) {
-            uUsuario.style.border = "1px solid red";
-            avisos[1].style.display = "inline-block";
-        }
-        if (emailEmUso) {
-            uEmail.style.border = "1px solid red";
-            avisos[2].style.display = "inline-block";
-        }
+    if (usuarioEmUso) {
+        uUsuario.style.border = "1px solid red";
+        avisos[1].style.display = "inline-block";
+    } else {
+        uUsuario.style.border = "1px solid green";
+        avisos[1].style.display = "none";
+    }
+
+    if (emailEmUso) {
+        uEmail.style.border = "1px solid red";
+        avisos[2].style.display = "inline-block";
+    } else {
+        uEmail.style.border = "1px solid green";
+        avisos[2].style.display = "none";
     }
 }
 
