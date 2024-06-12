@@ -191,44 +191,6 @@
     align-items: center;
 }
 
-.row_poster {
-    width: fit-content;
-    object-fit: contain;
-    max-height: 100px;
-    margin-right: 10%;
-    transition: transform 450ms;
-    border-radius: 10%;
-}
-
-.row_posters {
-    margin-top: 20px;
-    display: grid;
-    grid-auto-flow: column;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-inline: contain;
-}
-
-.row_poster:hover {
-    transform: scale(1.08);
-}
-
-.row_posterLarge {
-    max-height: 250px;
-    border-radius: 10%;
-}
-
-
-.row_posterLarge:hover {
-    transform: scale(1.09);
-    border-radius: 10%;
-}
-
-.row {
-    color: white;
-    margin-left: 20px;
-}
-
 .tags {
     justify-content: end;
     display: flex;
@@ -259,9 +221,6 @@
 }
 
 .main-banner img {
-    border-radius: none;
-    max-width: 100px;
-    max-height: 100px;
     min-height: 50%;
 }
 
