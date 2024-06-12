@@ -14,6 +14,7 @@ const dadosArmazenados = localStorage.getItem('usuarioDados');
 const usuarios = JSON.parse(dadosArmazenados);
 console.log(usuarios);
 
+const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 uUsuario.addEventListener("input", function(){
     validarUso();
@@ -21,6 +22,7 @@ uUsuario.addEventListener("input", function(){
 
 uEmail.addEventListener("input", function(){
     validarUso();
+    validarEmail();
 });
 
 uSenha.addEventListener("input", function(){
@@ -41,6 +43,19 @@ form.addEventListener("submit", function(event) {
 });
 
 
+function validarEmail(){
+    if(emailRegexp.test(uEmail.value)){
+        console.log("valido")
+        uEmail.style.border = "1px solid green";
+        avisos[2].style.display = "none";
+        validarUso();
+    }
+    else{
+        
+        uEmail.style.border = "1px solid red";
+        avisos[2].style.display = "inline-block";
+    }
+}
 
 function validarUsuario(){
     if(uNome.value.length < 6){
@@ -80,7 +95,6 @@ function confSenha(){
 }
 
 function validarUso(){
-    console.log("entramo");
     let usuarioEmUso = false;
     let emailEmUso = false;
 
@@ -113,7 +127,27 @@ function validarUso(){
 // const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
 function validarDados() {
+    // Chama todas as funções de validação necessárias
+    validarUsuario();
+    validarEmail();
+    validarSenha();
+    confSenha();
 
+    // Verifica se algum campo não passou na validação
+    let camposValidos = true;
+    campos.forEach(campo => {
+        if (campo.style.border === "1px solid red") {
+            camposValidos = false;
+        }
+    });
+
+    // Se algum campo não for válido, não salva os dados
+    if (!camposValidos) {
+        console.log("Por favor, corrija os erros antes de enviar o formulário.");
+        return;
+    }
+
+    // Se todos os campos forem válidos, proceda com a operação de salvar os dados
     const dados = {
         nome: uNome.value,
         usuario: uUsuario.value,
@@ -121,24 +155,54 @@ function validarDados() {
         senha: uSenha.value
     };
 
-    let dadosString = "";
+    // Verifica se o nome de usuário e o e-mail já estão em uso
+    let usuarioEmUso = false;
+    let emailEmUso = false;
 
+    usuarios.forEach(usuario => {
+        if (usuario.usuario === dados.usuario) {
+            usuarioEmUso = true;
+        }
+        if (usuario.email === dados.email) {
+            emailEmUso = true;
+        }
+    });
+
+    if (usuarioEmUso) {
+        console.log("Nome de usuário já em uso. Por favor, escolha outro.");
+        return;
+    }
+
+    if (emailEmUso) {
+        console.log("O e-mail fornecido já está associado a uma conta. Por favor, use outro e-mail.");
+        return;
+    }
+
+    // Se tudo estiver correto, salva os dados
     if (dadosArmazenados == null) {
         const dadosGerais = [];
         dadosGerais.push(dados);
-        dadosString = JSON.stringify(dadosGerais);
-        localStorage.setItem('usuarioDados', dadosString);
+        localStorage.setItem('usuarioDados', JSON.stringify(dadosGerais));
     } else {
-        salvarDados(dadosArmazenados, dados); 
+        const dadosAnteriores = JSON.parse(dadosArmazenados);
+        dadosAnteriores.push(dados);
+        localStorage.setItem('usuarioDados', JSON.stringify(dadosAnteriores));
     }
-
 }
 
-// 
 
-function salvarDados(dadosArmazenados, dados){
-    const dadosAnteriores = JSON.parse(dadosArmazenados);
+function salvarDados(dadosArmazenados, dados) {
+    let dadosAnteriores = [];
+
+    // Verifica se há dados armazenados
+    if (dadosArmazenados !== null) {
+        dadosAnteriores = JSON.parse(dadosArmazenados);
+    }
+
+    // Adiciona os novos dados aos dados anteriores
     dadosAnteriores.push(dados);
-    dadosString = JSON.stringify(dadosAnteriores);
-    localStorage.setItem('usuarioDados', dadosString);
+
+    // Salva a nova array de dados no localStorage
+    localStorage.setItem('usuarioDados', JSON.stringify(dadosAnteriores));
+}
 }
