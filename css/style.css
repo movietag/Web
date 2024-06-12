@@ -66,6 +66,10 @@ footer a{
     font-size: 0.7em;
 }
 
+footer a:hover {
+    text-decoration: underline;
+}
+
 footer li{
     display: flex;
     align-items: center;
