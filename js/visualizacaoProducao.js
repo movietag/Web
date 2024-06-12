@@ -60,6 +60,10 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=en-U
   .then(response => response.json())
   .then(response => carregaElenco(response));
 
+fetch('https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers', options)
+  .then(response => response.json())
+  .then(response => console.log(response))
+
 function queryObj() { // Pega os valores do link HTML
     var result = {}, keyValuePairs = location.search.slice(1).split("&");
     keyValuePairs.forEach(function(keyValuePair) { // Percorre cada valor
