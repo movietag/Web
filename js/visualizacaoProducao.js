@@ -3,7 +3,7 @@
 const icon = document.querySelector("#mark");
 
 aberto = true;
-const backdropNormalcolor = backdrop.style.backgroundColor;
+// const backdropNormalcolor = backdrop.style.backgroundColor;
 
 icon.addEventListener("click", (ev) => {
     const classes = ["bx-bookmark", "bxs-bookmark"];
@@ -38,6 +38,7 @@ function abrirPlataformas(){
 // // API
 
 var myParam = queryObj();
+console.log(myParam);
 
 const options = {
     method: 'GET',
@@ -63,7 +64,7 @@ function queryObj() { // Pega os valores do link HTML
 // Atualizando Dados a partir da API
 function carregaDados(json){
     const banner = document.querySelector(".banner");
-    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w300${json.backdrop_path})`);
+    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w500${json.backdrop_path})`);
 
     // Pegando os elementos na Tela
     const titulo = document.querySelector(".titulo");
