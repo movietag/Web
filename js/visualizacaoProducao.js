@@ -61,7 +61,7 @@ function queryObj() { // Pega os valores do link HTML
     return result;
 };
 
-fetch('https://api.themoviedb.org/3/movie/653346/keywords', options)
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) // Palavra chave
   .then(response => response.json())
   .then(response => carregaTags(response))
 
@@ -98,8 +98,8 @@ function carregaTags(json){
         let item = document.createElement('a'); // Cria o a
         item.classList.add('item'); // Adiciona a classe item, o estilizando
         
-        item.innerHTML = `<a href="visualizacaoTag.html?query=${element.id}"> ${element.name}
-        </a>`; // Cria o item com o nome da tag
+        item.setAttribute("href", `visualizacaoTag.html?query=${element.id}`);
+        item.innerHTML = element.name;
 
         listaTags.appendChild(item);
     });
