@@ -69,9 +69,9 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=en-U
     .then(response => carregaElenco(response));
 
 // Faz a requisição à API para obter os provedores de streaming
-fetch('https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers', options)
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, options)
   .then(response => response.json())
-  .then(response => console.log(response))
+  .then(response => carregaProvedores(response))
 
 // Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML
@@ -139,4 +139,36 @@ function carregaElenco(json) {
 
         elenco.lastElementChild.appendChild(item); // Adiciona o item ao elenco
     });
+}
+
+function carregaProvedores(json){ // Função para carregar os dados dos provedores
+    const listaStream = document.querySelector("#lista-stream"); // Seleciona a lista de Stream
+    const listaAluguel = document.querySelector("#lista-aluguel"); // Seleciona a lista de Aluguel
+    const listaCompra = document.querySelector("#lista-compra"); // Seleciona a lista de Comppra
+
+    if (json.results.BR != null){ // Testa se os resultados no Brasil é nulo
+        if (json.results.BR.rent != null){ // Testa se o dicionário de aluguel é nulo
+            criaItens(json.results.BR.rent, listaAluguel); // Chama função que cria o item
+        }
+        if (json.results.BR.buy != null){
+            criaItens(json.results.BR.buy, listaCompra);
+        } 
+        if (json.results.BR.flatrate != null){
+            criaItens(json.results.BR.flatrate, listaStream);}
+
+
+        
+        };
+    }
+
+function criaItens(type, lista){ // Função que cria os itens dos provedores
+    type.forEach(element => {
+        let item = document.createElement('div');
+        item.classList.add("item-logo");
+        item.innerHTML = `<img src="https://image.tmdb.org/t/p/w300${element.logo_path}"></img>
+        <span> ${element.provider_name} </span>`; // Cria uma div com imagem e span
+
+        lista.appendChild(item); // Insere o item criado na div pai
+    })
+
 }

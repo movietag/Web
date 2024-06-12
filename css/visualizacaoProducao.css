@@ -253,3 +253,23 @@
 .icon {
     filter: invert();
 }
+
+/* Estilização da Logo dos Provedores */
+section .lista .item-logo img{
+    border-radius: 8px;
+    width: 2.5em;
+    margin-right: 0.5em;
+}
+
+/* Estilização da lista de plataformas */
+#plataformas .lista{
+    margin: 0;
+    display: flex;
+    margin-bottom: 2em;
+}
+
+#plataformas .lista .item-logo{
+    display: flex;
+    align-items: center;
+    margin-right: 1em;
+}
