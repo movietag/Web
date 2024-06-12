@@ -3,7 +3,6 @@
 const icon = document.querySelector("#mark");
 
 aberto = true;
-// const backdropNormalcolor = backdrop.style.backgroundColor;
 
 icon.addEventListener("click", (ev) => {
     const classes = ["bx-bookmark", "bxs-bookmark"];
@@ -24,13 +23,13 @@ function abrirPlataformas(){
         dados.style.display = "none";
         plataformas.style.display = "block";
         aberto = false;
-        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.7)';
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
     }
     else if(!aberto){
         dados.style.display = "flex";
         plataformas.style.display = "none";
         aberto = true;
-        backdrop.style.backgroundColor =  backdropNormalcolor;
+        backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
     }
 }
 
@@ -64,7 +63,7 @@ function queryObj() { // Pega os valores do link HTML
 // Atualizando Dados a partir da API
 function carregaDados(json){
     const banner = document.querySelector(".banner");
-    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w500${json.backdrop_path})`);
+    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`);
 
     // Pegando os elementos na Tela
     const titulo = document.querySelector(".titulo");
