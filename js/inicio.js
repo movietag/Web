@@ -35,7 +35,7 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
         
         item.innerHTML = `<a href="../visualizacaoProducao.html?query=${element.id}">
         <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
-        <span>${element.original_title}</span>
+        <span>${element.title}</span>
         </a>`; // Cria o item com sua imagem, link e título
         
         itens.appendChild(item); // Adiciona o item à div itens

@@ -6,7 +6,7 @@ aberto = true;
 // const backdropNormalcolor = backdrop.style.backgroundColor;
 
 icon.addEventListener("click", (ev) => {
-    const classes = ["bx-bookmark", "bxs-bookmark"];
+    const classes = ["bx-bookmark", "bxs-bookmark"]; // Lista de Classes dos Icones de Marcador
     if (icon.classList.contains(classes[0])){
         icon.classList.remove(classes[0]);
         icon.classList.add(classes[1]);
@@ -54,12 +54,16 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}?append_to_response=20
 
 function queryObj() { // Pega os valores do link HTML
     var result = {}, keyValuePairs = location.search.slice(1).split("&");
-    keyValuePairs.forEach(function(keyValuePair) {
+    keyValuePairs.forEach(function(keyValuePair) { // Percorre cada valor
         keyValuePair = keyValuePair.split('=');
         result[decodeURIComponent(keyValuePair[0])] = decodeURIComponent(keyValuePair[1]) || '';
     });
     return result;
 };
+
+fetch('https://api.themoviedb.org/3/movie/653346/keywords', options)
+  .then(response => response.json())
+  .then(response => carregaTags(response))
 
 // Atualizando Dados a partir da API
 function carregaDados(json){
@@ -72,7 +76,34 @@ function carregaDados(json){
     const titulo = document.querySelector(".titulo");
     const anoLancamento = document.querySelector(".ano");
 
+    const dataEstreia = document.querySelector(".data_estreia");
+    dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`;
+
     titulo.innerHTML = `${json.title}`; // Título
     const date = new Date(json.release_date); // Ano de Estréia
     anoLancamento. innerHTML = `(${date.getFullYear()})`
+
+    const sinopse = document.querySelector(".sinopse");
+    sinopse.innerHTML = json.overview;
+
+    const duracao = document.querySelector(".duracao");
+    duracao.innerHTML = `${json.runtime}min`;
 };
+
+function carregaTags(json){
+    
+    const listaTags = document.querySelector(".tags");
+    listaTags.replaceChildren();
+    json.keywords.forEach(element =>{
+        let item = document.createElement('a'); // Cria o a
+        item.classList.add('item'); // Adiciona a classe item, o estilizando
+        
+        item.innerHTML = `<a href="visualizacaoTag.html?query=${element.id}"> ${element.name}
+        </a>`; // Cria o item com o nome da tag
+
+        listaTags.appendChild(item);
+    });
+
+    
+
+}
