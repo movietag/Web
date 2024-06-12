@@ -30,7 +30,7 @@
     
 
 }
-.plataformas_button{
+#plataformas_button{
     background-color: #e6c222;
     cursor: pointer;
     transition: all 0.2s;
