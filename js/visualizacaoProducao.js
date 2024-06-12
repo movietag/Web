@@ -64,9 +64,11 @@ function queryObj() { // Pega os valores do link HTML
 // Atualizando Dados a partir da API
 function carregaDados(json){
     const banner = document.querySelector(".banner");
-    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w500${json.backdrop_path})`);
+    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Imagem de Fundo
 
-    // Pegando os elementos na Tela
+    const bannerPrincipal = document.querySelector(".main-banner");
+    bannerPrincipal.setAttribute("src", `https://image.tmdb.org/t/p/w300${json.poster_path}`)
+
     const titulo = document.querySelector(".titulo");
     const anoLancamento = document.querySelector(".ano");
 
