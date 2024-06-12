@@ -127,7 +127,7 @@ function carregaElenco(json) {
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
 
-        item.innerHTML = `<a href="../visualizacaoIntegrante.html?query=${element.id}">
+        item.innerHTML = `<a href="visualizacaoIntegrante.html?query=${element.id}">
         <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
         <span>${element.name}</span>
         </a>`; // Cria o item com sua imagem, link e título
