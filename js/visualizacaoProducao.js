@@ -111,7 +111,6 @@ function carregaDados(json) {
 // Função para carregar as tags do filme
 function carregaTags(json) {
     const listaTags = document.querySelector(".tags"); // Seleciona a lista de tags
-    listaTags.replaceChildren(); // Remove os filhos existentes
     json.keywords.forEach(element => { // Para cada tag
         let item = document.createElement('a'); // Cria o a
         item.classList.add('item'); // Adiciona a classe item, o estilizando
@@ -126,7 +125,6 @@ function carregaTags(json) {
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
     const elenco = document.querySelector("#elenco"); // Seleciona o elenco
-    elenco.lastElementChild.replaceChildren(); // Remove os filhos existentes
 
     json.cast.forEach(element => {
         let item = document.createElement('div'); // Cria a div

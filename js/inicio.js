@@ -27,7 +27,6 @@ function pesquisa(){ // Função que mostra a div responsável pelos resultados
 
 const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elementos na div correspondente
     const itens = lista.lastElementChild;
-    itens.replaceChildren(); // Apenas para zerar os filhos da div de itens
 
     json.results.forEach(element => { // Para cada elemento de results de Json...
         let item = document.createElement('div'); // Cria a div
