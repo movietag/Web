@@ -1,130 +1,197 @@
 /* Configurando Section */
 
-.secao-caixa{
+.secao-caixa {
     display: flex;
+    /* Define um container flexível */
     align-items: center;
+    /* Alinha itens no centro ao longo do eixo transversal */
     flex-direction: column;
+    /* Define a direção dos itens como coluna */
     width: 100vw;
+    /* Define a largura da seção como 100% da largura da janela de visualização */
 }
 
-.secao-caixa h1{
+.secao-caixa h1 {
     color: rgb(255, 255, 255);
+    /* Define a cor do texto como branca */
     font-size: 2.5em;
+    /* Define o tamanho da fonte */
     margin: 1.2em;
+    /* Define a margem em torno do título */
 }
 
-.secao-caixa input{
+.secao-caixa input {
     width: 20vw;
+    /* Define a largura do campo de entrada */
     color: #e6dad3;
+    /* Define a cor do texto */
     background-color: #515160;
+    /* Define a cor de fundo */
     border: none;
+    /* Remove a borda padrão */
     border-radius: 9px;
+    /* Define bordas arredondadas */
     font-size: 1rem;
+    /* Define o tamanho da fonte */
     padding: 0.5em;
+    /* Define o preenchimento interno */
     outline: none;
+    /* Remove o contorno ao focar no campo */
     margin-top: 0.5rem;
+    /* Define a margem superior */
 }
 
-
-#psenha{
+#psenha {
     color: #bfbfbf;
+    /* Define a cor do texto */
     text-align: center;
+    /* Alinha o texto ao centro */
     margin-top: 0.4em;
+    /* Define a margem superior */
 }
 
-#psenhaA{
+#psenhaA {
     color: #bfbfbf;
+    /* Define a cor do link */
 }
 
-#psenhaA:hover{
+#psenhaA:hover {
     color: rgb(177, 159, 199);
+    /* Define a cor do link ao passar o mouse */
     text-decoration: underline;
+    /* Adiciona sublinhado ao link ao passar o mouse */
 }
 
-.alertas{
+.alertas {
     display: none;
+    /* Esconde o elemento */
     color: #d16161;
+    /* Define a cor do texto como vermelho */
 }
 
-.secao-caixa .butao{
+.secao-caixa .butao {
     width: 100%;
+    /* Define a largura do botão */
     padding: 0.5em;
+    /* Define o preenchimento interno */
     background-color: #e6c222;
+    /* Define a cor de fundo */
     border: none;
+    /* Remove a borda padrão */
     border-radius: 8px;
+    /* Define bordas arredondadas */
     cursor: pointer;
+    /* Define o cursor como ponteiro ao passar sobre o botão */
     font-size: 1rem;
+    /* Define o tamanho da fonte */
     color: rgb(0, 0, 0);
+    /* Define a cor do texto */
     margin-top: 2em;
+    /* Define a margem superior */
 }
 
-.secao-caixa .butao:hover{
+.secao-caixa .butao:hover {
     background-color: #c4a82c;
+    /* Define a cor de fundo ao passar o mouse */
     transform: translateY(0.5px);
+    /* Muda a posição do botão ao passar o mouse */
 }
 
-.conteudo{
+.conteudo {
     display: flex;
+    /* Define um container flexível */
     border: 2px solid white;
+    /* Define a borda */
     border-radius: 10px;
+    /* Define bordas arredondadas */
     padding: 5vh;
+    /* Define o preenchimento interno */
     min-width: fit-content;
+    /* Define a largura mínima como suficiente para o conteúdo */
+    margin-bottom: 2em;
 }
 
-form label{
+form label {
     color: aliceblue;
+    /* Define a cor do texto do rótulo */
 }
 
-.icone{
+.icone {
     color: aliceblue;
+    /* Define a cor do ícone */
     font-size: 15vh;
+    /* Define o tamanho da fonte */
 }
 
-.conteudo label, input{
+.conteudo label,
+input {
     display: block;
+    /* Define o elemento como bloco */
 }
 
-.info-caixas{
+.info-caixas {
     margin-bottom: 0.3rem;
+    /* Define a margem inferior */
 }
 
-@media (max-width: 768px){
-    .secao-caixa{
+@media (max-width: 768px) {
+    .secao-caixa {
         padding: 3vh;
+        /* Define o preenchimento interno */
     }
-    .secao-caixa h1{
+
+    .secao-caixa h1 {
         font-size: 2em;
+        /* Ajusta o tamanho da fonte */
         margin: 0.2em;
+        /* Ajusta a margem */
     }
 
-    .secao-caixa .butao{
+    .secao-caixa .butao {
         max-width: 100%;
+        /* Define a largura máxima do botão */
         font-size: 1em;
+        /* Ajusta o tamanho da fonte */
     }
 
-    .secao-caixa input{
+    .secao-caixa input {
         width: 100%;
+        /* Ajusta a largura do campo de entrada */
         height: 5vh;
+        /* Ajusta a altura do campo de entrada */
         margin: 0.3em;
+        /* Ajusta a margem */
         font-size: 1em;
+        /* Ajusta o tamanho da fonte */
     }
-    .conteudo{
+
+    .conteudo {
         display: block;
+        /* Define o container como bloco */
         width: 100%;
+        /* Ajusta a largura */
         padding: 1vh;
+        /* Ajusta o preenchimento interno */
         border: none;
+        /* Remove a borda */
     }
 
-    .icone{
+    .icone {
         font-size: 10vh;
+        /* Ajusta o tamanho da fonte */
         display: flex;
+        /* Define um container flexível */
         justify-content: center;
+        /* Centraliza o conteúdo */
     }
 
-    .info-caixas{
+    .info-caixas {
         display: flex;
+        /* Define um container flexível */
         justify-content: center;
+        /* Centraliza o conteúdo */
         flex-direction: column;
+        /* Define a direção como coluna */
     }
-    
+
 }
