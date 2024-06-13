@@ -8,11 +8,11 @@ fPesquisa.onsubmit = (ev) =>{ // Quando a pesquisa é submetida...
     const resultados = document.querySelector("#s02 .lista"); // Pega a div dos resultados para a preencher
     let busca = ev.target.pesquisa.value; // Pega o valor de dentro da pesquisa
 
-    if (busca != ""){
-        fetch(`https://api.themoviedb.org/3/search/movie?query=${busca}&include_adult=false&language=pt-BR&page=1`, options) // API, enviando a busca
-            .then(response => response.json())
-            .then(json => carregaFilmes(resultados, json))
-        pesquisa(); 
+    if (busca != ""){ // Se a busca for diferente de vazio...
+        fetch(`https://api.themoviedb.org/3/search/movie?query=${busca}&include_adult=false&language=pt-BR&page=1`, options) // API, enviando a String busca e recebendo o resultado da busca
+            .then(response => response.json()) // Formato JSON
+            .then(json => carregaFilmes(resultados, json)) // Chama a função que carrega os filmes
+        pesquisa(); // Altera as divs da tela inicial para a de pesquisa
     }
 
 }
