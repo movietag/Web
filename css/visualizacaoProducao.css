@@ -3,7 +3,6 @@
     background-size: cover;
     object-fit: contain;
     height: fit-content;
-    background-image: url("../img/posteres/banner.jpg");
 }
 
 /* Estilização do fundo escuro atrás do conteúdo do banner */

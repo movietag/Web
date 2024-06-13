@@ -205,4 +205,3 @@ function salvarDados(dadosArmazenados, dados) {
     // Salva a nova array de dados no localStorage
     localStorage.setItem('usuarioDados', JSON.stringify(dadosAnteriores));
 }
-}
