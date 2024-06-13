@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <!-- Metadados essenciais -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Link para os arquivos de estilo CSS -->
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/style.css">
-    <!-- Título da página -->
     <title>Login</title>
-    <!-- Ícone da página -->
     <link rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
     <!-- Link para ícones da biblioteca Boxicons -->
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'>
-    <!-- Scripts JavaScript -->
     <script src="js/script.js" defer></script>
     <script src="js/login.js" defer></script>
 </head>
 <body>
-    <!-- Menu de navegação -->
     <header>
         <nav>
             <!-- Logo que leva à página inicial -->
@@ -63,7 +57,7 @@
 
         <!-- Diálogo para redefinição de senha -->
         <dialog>
-            <form>
+            <form method="dialog">
                 <span>Acesse o E-mail para redefinir a sua senha:</span>
                 <label for="recEmail">E-mail para recuperação: </label>
                 <input type="email" name="recEmail" id="recEmail">
@@ -72,7 +66,7 @@
         </dialog>
     </section>
 
-    <!-- Rodapé -->
+    <!-- Footer -->
     <footer>
         <img src="img/Logo-Branca.svg" alt="logo-MT">
         <ul class="column">
