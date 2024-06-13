@@ -12,6 +12,7 @@ section .itens{
 
 /* Estilizando o item(cada filme) */
 .item{
+    text-decoration: none;
     text-align: justify;
     flex-direction: row;
     max-width: 50em;
