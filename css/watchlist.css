@@ -2,6 +2,7 @@ section{
     margin: 0 auto;
 }
 
+/* Estilizando .itens, classe do Style geral  */
 section .itens{
     flex-direction: column;
     overflow-x: hidden;
@@ -9,6 +10,7 @@ section .itens{
     height: fit-content;
 }
 
+/* Estilizando o item(cada filme) */
 .item{
     text-align: justify;
     flex-direction: row;
@@ -17,10 +19,6 @@ section .itens{
     box-shadow: 0 5px 5px rgba(14, 14, 14, 0.505);
     background-color: rgb(31, 31, 31);
     border-radius: 8px;
-}
-
-section .item:hover{
-    transform: scale(1);
 }
 
 .item h2{
@@ -40,4 +38,9 @@ section .item:hover{
 
 .item p{
     width: 100%;
+}
+
+/* Para que a escala não mude ao passar o mouse  */
+section .item:hover{
+    transform: scale(1);
 }

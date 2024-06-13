@@ -1,3 +1,5 @@
+
+/* Estilizando a div container  */
 .container {
     display: flex;
     color: white;
@@ -24,6 +26,7 @@
     margin-bottom: 0.4em;
 }
 
+/* Mudando a classe .itens, classe que veio do Style Geral  */
 .itens{
     overflow-x: hidden;
     overflow-y: scroll;

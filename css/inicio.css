@@ -1,18 +1,9 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-
-/* body{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-} */
-
+/* Desaparece a div de resultados da pesquisa */
 #s02 {
     display: none;
 }
 
+/* Estilizando a Section  */
 section {
     margin: 2vh 2vh;
 }
@@ -43,11 +34,13 @@ form button{
     padding: 1em;
 }
 
+/* Alterações em lista, classe do Style geral  */
 .lista{
     margin: 3em 15%;
     
 }
 
+/* Troca a forma como o scroll aparece na tela (agora irá aparecer o scroll no eixo y)  */
 #s02 .itens{
     overflow-x: hidden;
     overflow-y: scroll;
