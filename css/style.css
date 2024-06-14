@@ -34,18 +34,18 @@ nav{
     padding: 1em;
 }
 
- /* Footer */
- footer{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
-    width: 100vw;
-    background-color:  rgba(36, 36, 36, 0.671);
-    padding: 2em;
-    color: white;
-    margin-top:auto; 
-  }
+/* Footer */
+footer{
+display: flex;
+justify-content: center;
+align-items: center;
+max-width: 100%;
+width: 100vw;
+background-color:  rgba(36, 36, 36, 0.671);
+padding: 2em;
+color: white;
+margin-top:auto; 
+}
 
 footer img{
     width: 10em;

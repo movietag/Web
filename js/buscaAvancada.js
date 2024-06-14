@@ -3,7 +3,8 @@
 const filtros = document.querySelectorAll(".divInput"); // Pega todos os filtros da página
 const divs = document.querySelectorAll(".rotulo"); // Pega todas as divs
 const botao = document.querySelector("#botaoPesquisar"); // Botão de pesquisar
-const resultados = document.getElementById("resultados"); // Div de resultados
+// const resultados = document.getElementById("resultados"); // Div de resultados
+const resultados = document.getElementById("itens");
 const antes = document.getElementById("antesPesquisa"); // Div que aparece antes da pesquisa
 const mostrar = document.querySelector("#botaoMostrar"); //Botão que mostra os filtros
 const esconder = document.querySelector("#botaoEsconder"); // Botão que esconde os filtros

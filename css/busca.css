@@ -175,7 +175,7 @@ input::placeholder{
 }
 
 /* configuracao dos dados dos filmes */
-#resultados {
+/*#resultados {
     margin-top: 4vh;
     margin-left: 5vw;
     width: 57vw;
@@ -219,7 +219,7 @@ input::placeholder{
 .sinopse {
     text-align: justify;
     font-size: 1.2em;
-}
+} */
 
 /*classe que oculta os inputs dos filtros de pesquisa*/
 .filtro-show {
