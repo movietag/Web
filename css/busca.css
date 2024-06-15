@@ -175,51 +175,15 @@ input::placeholder{
 }
 
 /* configuracao dos dados dos filmes */
-/*#resultados {
-    margin-top: 4vh;
+.resultados {
+    margin-top: 5vh;
     margin-left: 5vw;
-    width: 57vw;
     display: none;
 }
 
-.poster {
-    max-width: 10em;
-    height: fit-content;
-    border-radius: 10px;
+.filme p {
+    margin-top: 0;
 }
-
-.tags{
-    list-style: none;
-    padding-left: 0;
-    display: flex;
-}
-
-.tags li {
-    background-color: #e6c222;
-    color: black;
-    margin: 0.6em 0.4em 0.6em 0;
-    padding: 0.2em 0.4em;
-    border-radius: 30px;
-    cursor: pointer;
-}
-
-.filme {
-    display: flex;
-    margin-bottom: 2em;
-    background-color: #454567;
-    padding: 1.4em;
-    border-radius: 10px;
-    min-width: fit-content;
-}
-
-.dados {
-    margin-left: 1em;
-}
-
-.sinopse {
-    text-align: justify;
-    font-size: 1.2em;
-} */
 
 /*classe que oculta os inputs dos filtros de pesquisa*/
 .filtro-show {

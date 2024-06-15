@@ -1,3 +1,7 @@
+h1, h2, p:hover {
+    cursor:default;
+}
+
 /* tags do filme */
 .tags{
     list-style: none;
@@ -18,16 +22,16 @@ section{
     margin: 0 auto;
 }
 
-/* Estilizando .itens, classe do Style geral  */
-section .itens{
+/* Estilizando .resultados, classe do Style geral  */
+section .resultados{
     flex-direction: column;
     overflow-x: hidden;
     overflow-y: hidden;
     height: fit-content;
 }
 
-/* Estilizando o item(cada filme) */
-.item{
+/* Estilizando cada filme */
+.filme{
     text-decoration: none;
     text-align: justify;
     flex-direction: row;
@@ -38,11 +42,11 @@ section .itens{
     border-radius: 8px;
 }
 
-.item h2{
+.filme h2{
     margin-top: 1em;
 }
 
-.item img{
+.filme img{
     max-width: 10em;
     margin-right: 1em;
     border-radius: 0;
@@ -50,15 +54,16 @@ section .itens{
     border-bottom-left-radius: 8px;
 }
 
-.itens{
+.resultados{
     flex-direction: row;
 }
 
-.item p{
+.filme p{
+    margin-top: 1em;
     width: 100%;
 }
 
 /* Para que a escala não mude ao passar o mouse  */
-section .item:hover{
+section .filme:hover{
     transform: scale(1);
 }
