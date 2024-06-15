@@ -2,6 +2,10 @@ h1, h2, p:hover {
     cursor:default;
 }
 
+section{
+    margin: 0 auto;
+}
+
 /* tags do filme */
 .tags{
     list-style: none;
@@ -16,10 +20,6 @@ h1, h2, p:hover {
     padding: 0.2em 0.4em;
     border-radius: 30px;
     cursor: pointer;
-}
-
-section{
-    margin: 0 auto;
 }
 
 /* Estilizando .resultados, classe do Style geral  */
@@ -44,10 +44,18 @@ section .resultados{
 
 .filme h2{
     margin-top: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.filme span{
+    margin-left: 0.3em;
+    font-size: 0.8em;
+    color: #c9c9c9de;
 }
 
 .filme img{
-    max-width: 10em;
+    max-width: 15em;
     margin-right: 1em;
     border-radius: 0;
     border-top-left-radius: 8px;
@@ -59,7 +67,7 @@ section .resultados{
 }
 
 .filme p{
-    margin-top: 1em;
+    margin-top: 1em; /*apenas se o filme nao tiver tags; se ele tiver, tire a margin no css da pagina*/
     width: 100%;
 }
 
