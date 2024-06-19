@@ -176,9 +176,13 @@ input::placeholder{
 
 /* configuracao dos dados dos filmes */
 .resultados {
-    margin-top: 5vh;
-    margin-left: 5vw;
+    margin-top: 3vh;
     display: none;
+    justify-content: space-around;
+}
+
+.filme{
+    margin-right: 0;
 }
 
 .filme p {
