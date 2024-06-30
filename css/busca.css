@@ -150,8 +150,13 @@ input::placeholder{
 }
 
 /* adicionando cores as classificacoes*/
-#livre{
+/* #livre{
     background-color: rgb(54, 223, 54);
+} */
+
+#livre{
+    background-color: #e7bea6;
+    border: 0.09em solid white;
 }
 
 #livre:hover{
