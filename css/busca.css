@@ -155,7 +155,7 @@ input::placeholder{
 }
 
 #livre:hover{
-    background-color: rgba(54, 223, 54, 0.699);
+    background-color: rgba(54, 223, 54, 0.8);
 }
 
 #dez{
@@ -163,7 +163,7 @@ input::placeholder{
 }
 
 #dez:hover{
-    background-color: rgba(58, 186, 241, 0.692);
+    background-color: rgba(58, 186, 241, 0.8);
 }
 
 #doze{
@@ -171,19 +171,31 @@ input::placeholder{
 }
 
 #doze:hover{
-    background-color: rgba(227, 197, 0, 0.719);
+    background-color: rgba(227, 197, 0, 0.8);
 }
 
 #catorze{
     background-color: rgb(235, 154, 4);
 }
 
+#catorze:hover{
+    background-color: rgba(235, 154, 4, 0.8);
+}
+
 #dezesseis{
     background-color: rgb(233, 0, 0);
 }
 
+#dezesseis:hover{
+    background-color: rgb(233, 0, 0, 0.8);
+}
+
 #dezoito{
     background-color: black;
+}
+
+#dezoito:hover{
+    background-color: rgb(75, 75, 75);
 }
 
 /* botao para pesquisar */
