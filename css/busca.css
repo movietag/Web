@@ -27,7 +27,7 @@ h1 {
     border: none;
     width: fit-content;
     padding: 0.25em 0.6em;
-    border-radius: 10px;
+    border-radius: 10rem;
 }
 
 .botaoTodosFiltros:hover{
@@ -100,21 +100,6 @@ input::placeholder{
     align-items: center;
 }
 
-#botaoPesquisar {
-    display: block;
-    margin: 1.2em auto;
-    background-color: #e6c222;
-    border: none;
-    font-size: 1em;
-    padding: 0.6em 1em;
-    border-radius: 9px;
-}
-
-#botaoPesquisar:hover {
-    transform: translateY(1px);
-    background-color: #c4a82c;
-}
-
 /* caixa que contem de input do filtro */
 .divInput{
     width: 100%;
@@ -147,6 +132,63 @@ input::placeholder{
 
 .subrotulo{
     margin: 7px 0;
+}
+
+/* filtro classificacao indicativa */
+.divClassifInd{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8%;
+}
+
+.classifInd{
+    background-color: aquamarine;
+    border: none;
+    width: 1.6em;
+    height: 1.6em;
+    border-radius: 3px;
+}
+
+/* adicionando cores as classificacoes*/
+#livre{
+    background-color: rgb(54, 223, 54);
+}
+
+#dez{
+    background-color: rgb(58, 187, 241);
+}
+
+#doze{
+    background-color: rgb(226, 226, 0);
+}
+
+#catorze{
+    background-color: rgb(235, 154, 4);
+}
+
+#dezesseis{
+    background-color: rgb(233, 0, 0);
+}
+
+#dezoito{
+    background-color: black;
+    color: white;
+}
+
+/* botao para pesquisar */
+#botaoPesquisar {
+    display: block;
+    margin: 1.2em auto;
+    background-color: #e6c222;
+    border: none;
+    font-size: 1em;
+    padding: 0.6em 1em;
+    border-radius: 9px;
+}
+
+#botaoPesquisar:hover {
+    transform: translateY(1px);
+    background-color: #c4a82c;
 }
 
 /*configuracao da imagem que aparece antes da pesquisa*/
@@ -190,6 +232,6 @@ input::placeholder{
 }
 
 /*classe que oculta os inputs dos filtros de pesquisa*/
-.filtro-show {
+/* .filtro-show {
     display: none;
-}
+} */
