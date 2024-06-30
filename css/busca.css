@@ -154,12 +154,24 @@ input::placeholder{
     background-color: rgb(54, 223, 54);
 }
 
+#livre:hover{
+    background-color: rgba(54, 223, 54, 0.699);
+}
+
 #dez{
     background-color: rgb(58, 187, 241);
 }
 
+#dez:hover{
+    background-color: rgba(58, 186, 241, 0.692);
+}
+
 #doze{
-    background-color: rgb(210, 182, 5);
+    background-color: rgb(227, 197, 0);
+}
+
+#doze:hover{
+    background-color: rgba(227, 197, 0, 0.719);
 }
 
 #catorze{
@@ -172,10 +184,6 @@ input::placeholder{
 
 #dezoito{
     background-color: black;
-}
-
-button:hover{
-    color: aqua;
 }
 
 /* botao para pesquisar */
