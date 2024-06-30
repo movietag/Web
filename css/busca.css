@@ -142,11 +142,11 @@ input::placeholder{
 }
 
 .classifInd{
-    background-color: aquamarine;
     border: none;
     width: 1.6em;
     height: 1.6em;
     border-radius: 3px;
+    color: white;
 }
 
 /* adicionando cores as classificacoes*/
@@ -159,7 +159,7 @@ input::placeholder{
 }
 
 #doze{
-    background-color: rgb(226, 226, 0);
+    background-color: rgb(210, 182, 5);
 }
 
 #catorze{
@@ -172,7 +172,10 @@ input::placeholder{
 
 #dezoito{
     background-color: black;
-    color: white;
+}
+
+button:hover{
+    color: aqua;
 }
 
 /* botao para pesquisar */
