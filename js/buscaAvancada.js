@@ -64,3 +64,16 @@ function esconderTodos(mos, esc){
     mos.style.display = "block";
     esc.style.display = "none";
 }
+
+
+//botoes de classificacao
+const classifs = document.querySelectorAll(".classifInd");
+
+for(i = 0; i<classifs.length; i++){
+    let clas = classifs[i]; 
+    clas.addEventListener("click", function(){mudarFundo(clas)});
+}
+
+function mudarFundo(clas){
+    clas.style.backgroundColor = "white";
+}

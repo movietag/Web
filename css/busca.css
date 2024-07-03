@@ -42,7 +42,7 @@ h1 {
 
 /* configuracao filtros de pesquisa */
 #totalFiltros {
-    border: 0.1em solid white;
+    border: 0.07em solid white;
     border-radius: 10px;
     padding: 1.5vw;
     width: 20vw;
@@ -147,60 +147,61 @@ input::placeholder{
     height: 1.6em;
     border-radius: 3px;
     color: white;
+    background-color: #515160;
 }
 
-/* adicionando cores as classificacoes*/
-/* #livre{
-    background-color: rgb(54, 223, 54);
-} */
-
-#livre{
-    background-color: #e7bea6;
-    border: 0.09em solid white;
+.classifInd:hover{
+    animation: fadeIn 0.15s;
 }
 
+/* adicionando cores nas classificacoes*/
 #livre:hover{
-    background-color: rgba(54, 223, 54, 0.8);
+    background-color: rgb(39, 211, 39);
 }
 
-#dez{
-    background-color: rgb(58, 187, 241);
+#livre:focus{
+    background-color: rgb(39, 211, 39, 0.8);
 }
 
 #dez:hover{
-    background-color: rgba(58, 186, 241, 0.8);
+    background-color: rgb(51, 168, 218);
 }
 
-#doze{
-    background-color: rgb(227, 197, 0);
+#dez:focus{
+    background-color: rgb(51, 168, 218, 0.8);
 }
 
 #doze:hover{
-    background-color: rgba(227, 197, 0, 0.8);
+    background-color: rgb(215, 188, 9);
 }
 
-#catorze{
-    background-color: rgb(235, 154, 4);
+#doze:focus{
+    background-color: rgb(215, 188, 9, 0.8);
 }
 
 #catorze:hover{
-    background-color: rgba(235, 154, 4, 0.8);
+    background-color: rgb(235, 154, 4);
 }
 
-#dezesseis{
-    background-color: rgb(233, 0, 0);
+#catorze:focus{
+    background-color: rgb(235, 154, 4, 0.8);
 }
 
 #dezesseis:hover{
+    background-color: rgb(233, 0, 0);
+}
+
+#dezesseis:focus{
     background-color: rgb(233, 0, 0, 0.8);
 }
 
-#dezoito{
+#dezoito:hover{
     background-color: black;
 }
 
-#dezoito:hover{
-    background-color: rgb(75, 75, 75);
+#dezoito:focus{
+    background-color: black;
+    border: 0.09em solid white;
 }
 
 /* botao para pesquisar */
