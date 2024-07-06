@@ -155,53 +155,79 @@ input::placeholder{
 }
 
 /* adicionando cores nas classificacoes*/
-#livre:hover{
+.livre:hover{
     background-color: rgb(39, 211, 39);
 }
 
-#livre:focus{
+.livre:focus{
     background-color: rgb(39, 211, 39, 0.8);
 }
 
-#dez:hover{
+.dez:hover{
     background-color: rgb(51, 168, 218);
 }
 
-#dez:focus{
+.dez:focus{
     background-color: rgb(51, 168, 218, 0.8);
 }
 
-#doze:hover{
+.doze:hover{
     background-color: rgb(215, 188, 9);
 }
 
-#doze:focus{
+.doze:focus{
     background-color: rgb(215, 188, 9, 0.8);
 }
 
-#catorze:hover{
+.catorze:hover{
     background-color: rgb(235, 154, 4);
 }
 
-#catorze:focus{
+.catorze:focus{
     background-color: rgb(235, 154, 4, 0.8);
 }
 
-#dezesseis:hover{
+.dezesseis:hover{
     background-color: rgb(233, 0, 0);
 }
 
-#dezesseis:focus{
+.dezesseis:focus{
     background-color: rgb(233, 0, 0, 0.8);
 }
 
-#dezoito:hover{
+.dezoito:hover{
     background-color: black;
 }
 
-#dezoito:focus{
+.dezoito:focus{
     background-color: black;
     border: 0.09em solid white;
+}
+
+/*classes pras classificações quando clicadas*/
+
+.livreC{
+    background-color: rgb(39, 211, 39);
+}
+
+.dezC{
+    background-color: rgb(51, 168, 218);
+}
+
+.dozeC{
+    background-color: rgb(215, 188, 9);
+}
+
+.catorzeC{
+    background-color: rgb(235, 154, 4);
+}
+
+.dezesseisC{
+    background-color: rgb(233, 0, 0);
+}
+
+.dezoitoC{
+    background-color: black;
 }
 
 /* botao para pesquisar */

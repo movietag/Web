@@ -69,11 +69,40 @@ function esconderTodos(mos, esc){
 //botoes de classificacao
 const classifs = document.querySelectorAll(".classifInd");
 
+
 for(i = 0; i<classifs.length; i++){
     let clas = classifs[i]; 
-    clas.addEventListener("click", function(){mudarFundo(clas)});
+    clas.addEventListener("click", function(){
+        console.log(i);
+        if (i == 0){
+            clas.lastChild.classList.toggle("livreC");
+        } else if (i == 1){
+            clas.lastChild.classList.toggle("dezC");
+        } else if (i == 2){
+            clas.lastChild.classList.toggle("dozeC");
+        } else if (i == 3){
+            clas.lastChild.classList.toggle("catorzeC");
+        } else if (i == 4){
+            clas.lastChild.classList.toggle("dezesseisC");
+        } else if (i == 5){
+            clas.lastChild.classList.toggle("dezoitoC");
+        }
+    });
 }
 
-function mudarFundo(clas){
-    clas.style.backgroundColor = "white";
-}
+// function mudarFundo(clas, numero){
+//     console.log(numero);
+//     if (numero == 0){
+//         clas.lastChild.classList.toggle("livreC");
+//     } else if (numero == 1){
+//         clas.lastChild.classList.toggle("dezC");
+//     } else if (numero == 2){
+//         clas.lastChild.classList.toggle("dozeC");
+//     } else if (numero == 3){
+//         clas.lastChild.classList.toggle("catorzeC");
+//     } else if (numero == 4){
+//         clas.lastChild.classList.toggle("dezesseisC");
+//     } else if (numero == 5){
+//         clas.lastChild.classList.toggle("dezoitoC");
+//     }
+// }
