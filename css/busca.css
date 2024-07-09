@@ -150,84 +150,78 @@ input::placeholder{
     background-color: #515160;
 }
 
-.classifInd:hover{
-    animation: fadeIn 0.15s;
-}
-
 /* adicionando cores nas classificacoes*/
 .livre:hover{
     background-color: rgb(39, 211, 39);
-}
-
-.livre:focus{
-    background-color: rgb(39, 211, 39, 0.8);
 }
 
 .dez:hover{
     background-color: rgb(51, 168, 218);
 }
 
-.dez:focus{
-    background-color: rgb(51, 168, 218, 0.8);
-}
-
 .doze:hover{
     background-color: rgb(215, 188, 9);
-}
-
-.doze:focus{
-    background-color: rgb(215, 188, 9, 0.8);
 }
 
 .catorze:hover{
     background-color: rgb(235, 154, 4);
 }
 
-.catorze:focus{
-    background-color: rgb(235, 154, 4, 0.8);
-}
-
 .dezesseis:hover{
     background-color: rgb(233, 0, 0);
-}
-
-.dezesseis:focus{
-    background-color: rgb(233, 0, 0, 0.8);
 }
 
 .dezoito:hover{
     background-color: black;
 }
 
-.dezoito:focus{
-    background-color: black;
-    border: 0.09em solid white;
-}
-
 /*classes pras classificações quando clicadas*/
-
 .livreC{
     background-color: rgb(39, 211, 39);
+}
+
+.livreC:hover{
+    background-color: rgb(39, 211, 39, 0.8);
 }
 
 .dezC{
     background-color: rgb(51, 168, 218);
 }
 
+.dezC:hover{
+    background-color: rgb(51, 168, 218, 0.8);
+}
+
 .dozeC{
     background-color: rgb(215, 188, 9);
+}
+
+.dozeC:hover{
+    background-color: rgb(215, 188, 9, 0.8);
 }
 
 .catorzeC{
     background-color: rgb(235, 154, 4);
 }
 
+.catorzeC:hover{
+    background-color: rgb(235, 154, 4, 0.8);
+}
+
 .dezesseisC{
     background-color: rgb(233, 0, 0);
 }
 
+.dezesseisC:hover{
+    background-color: rgb(233, 0, 0, 0.8);
+}
+
 .dezoitoC{
     background-color: black;
+}
+
+.dezoitoC:hover{
+    border: 0.09em solid white;
 }
 
 /* botao para pesquisar */
@@ -287,6 +281,6 @@ input::placeholder{
 }
 
 /*classe que oculta os inputs dos filtros de pesquisa*/
-/* .filtro-show {
+.filtro-show {
     display: none;
-} */
+}
