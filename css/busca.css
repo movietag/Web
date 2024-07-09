@@ -6,10 +6,9 @@ section {
 /* faz com que a caixa de filtros e o resto aparecam lado a lado */
 #conteudo {
     display: flex;
-    gap: 12vw;
+    gap: 10vw;
     width: fit-content;
-    margin: 0;
-    background-color: aqua;
+    margin: 0 auto;
 }
 
 h1 {
