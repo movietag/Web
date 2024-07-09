@@ -6,13 +6,16 @@ section {
 /* faz com que a caixa de filtros e o resto aparecam lado a lado */
 #conteudo {
     display: flex;
-    justify-content: space-between;
+    gap: 12vw;
+    width: fit-content;
+    margin: 0;
+    background-color: aqua;
 }
 
 h1 {
     display: flex;
     align-items: center;
-    margin: 0.7em 0 0.3em 0;
+    margin: 1em 0 0.3em 0;
 }
 
 /* botao de mostrar/esconder todos os filtros */
@@ -41,22 +44,19 @@ h1 {
 }
 
 /* configuracao filtros de pesquisa */
+
+/* caixa de todos os filtros */
 #totalFiltros {
     border: 0.07em solid white;
     border-radius: 10px;
-    padding: 1.5vw;
-    width: 20vw;
+    padding: 1.5em;
+    width: 25em;
 }
 
 /* icone do titulo */
 .bxs-filter-alt {
     margin-right: 0.2em;
     font-size: 1.1em;
-}
-
-/* setinha do filtro */
-.bx-chevron-down{
-    margin-left: 0.3em;
 }
 
 /* roda a setinha do filtro */
@@ -67,6 +67,7 @@ h1 {
 .rotulo {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     font-size: 1.2rem;
     font-weight: bold;
 }
@@ -150,84 +151,78 @@ input::placeholder{
     background-color: #515160;
 }
 
-.classifInd:hover{
-    animation: fadeIn 0.15s;
-}
-
 /* adicionando cores nas classificacoes*/
 .livre:hover{
     background-color: rgb(39, 211, 39);
-}
-
-.livre:focus{
-    background-color: rgb(39, 211, 39, 0.8);
 }
 
 .dez:hover{
     background-color: rgb(51, 168, 218);
 }
 
-.dez:focus{
-    background-color: rgb(51, 168, 218, 0.8);
-}
-
 .doze:hover{
     background-color: rgb(215, 188, 9);
-}
-
-.doze:focus{
-    background-color: rgb(215, 188, 9, 0.8);
 }
 
 .catorze:hover{
     background-color: rgb(235, 154, 4);
 }
 
-.catorze:focus{
-    background-color: rgb(235, 154, 4, 0.8);
-}
-
 .dezesseis:hover{
     background-color: rgb(233, 0, 0);
-}
-
-.dezesseis:focus{
-    background-color: rgb(233, 0, 0, 0.8);
 }
 
 .dezoito:hover{
     background-color: black;
 }
 
-.dezoito:focus{
-    background-color: black;
-    border: 0.09em solid white;
-}
-
 /*classes pras classificações quando clicadas*/
-
 .livreC{
     background-color: rgb(39, 211, 39);
+}
+
+.livreC:hover{
+    background-color: rgb(39, 211, 39, 0.8);
 }
 
 .dezC{
     background-color: rgb(51, 168, 218);
 }
 
+.dezC:hover{
+    background-color: rgb(51, 168, 218, 0.8);
+}
+
 .dozeC{
     background-color: rgb(215, 188, 9);
+}
+
+.dozeC:hover{
+    background-color: rgb(215, 188, 9, 0.8);
 }
 
 .catorzeC{
     background-color: rgb(235, 154, 4);
 }
 
+.catorzeC:hover{
+    background-color: rgb(235, 154, 4, 0.8);
+}
+
 .dezesseisC{
     background-color: rgb(233, 0, 0);
 }
 
+.dezesseisC:hover{
+    background-color: rgb(233, 0, 0, 0.8);
+}
+
 .dezoitoC{
     background-color: black;
+}
+
+.dezoitoC:hover{
+    border: 0.09em solid white;
 }
 
 /* botao para pesquisar */
@@ -258,7 +253,7 @@ input::placeholder{
     left: 40vw;
 }
 
-#imagem{
+#antesPesquisa img{
     width: 10vw;
     margin-left: 15px;
 }
@@ -287,6 +282,6 @@ input::placeholder{
 }
 
 /*classe que oculta os inputs dos filtros de pesquisa*/
-/* .filtro-show {
+.filtro-show {
     display: none;
-} */
+}
