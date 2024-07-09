@@ -75,7 +75,7 @@ for(i = 0; i <classifs.childElementCount; i++){
     classifs.children[cont].addEventListener("click", function(){
         switch (cont){
             case 0:
-                classifs.children[cont].classList.toggle("livreC");
+                classifs.children[cont].classList.toggle("livreC");                
                 break;
 
             case 1:
