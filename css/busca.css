@@ -1,6 +1,9 @@
+body{
+    box-sizing: content-box;
+}
+
 section {
     color: white;
-    margin: 0 7vw;
 }
 
 /* faz com que a caixa de filtros e o resto aparecam lado a lado */
@@ -242,14 +245,12 @@ input::placeholder{
 
 /*configuracao da imagem que aparece antes da pesquisa*/
 #antesPesquisa{
-    width: 57vw;
+    width: 50em;
+    height: 35em;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    position: absolute;
-    top: 18em;
-    left: 40vw;
 }
 
 #antesPesquisa img{
