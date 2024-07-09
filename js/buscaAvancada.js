@@ -97,39 +97,3 @@ function esconderTodos(mos, esc){
     mos.style.display = "block";
     esc.style.display = "none";
 }
-
-
-//botoes de classificacao
-const classifs = document.querySelector(".divClassifInd");
-
-
-for(i = 0; i <classifs.childElementCount; i++){ 
-    let cont = i;
-    classifs.children[cont].addEventListener("click", function(){
-        switch (cont){
-            case 0:
-                classifs.children[cont].classList.toggle("livreC");
-                break;
-
-            case 1:
-                classifs.children[cont].classList.toggle("dezC");
-                break;
-
-            case 2:
-                classifs.children[cont].classList.toggle("dozeC");
-                break;
-
-            case 3:
-                classifs.children[cont].classList.toggle("catorzeC");
-                break;
-
-            case 4:
-                classifs.children[cont].classList.toggle("dezesseisC");
-                break;
-
-            case 5:
-                classifs.children[cont].classList.toggle("dezoitoC");
-                break;
-        }
-    })
-}
