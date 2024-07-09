@@ -67,42 +67,36 @@ function esconderTodos(mos, esc){
 
 
 //botoes de classificacao
-const classifs = document.querySelectorAll(".classifInd");
+const classifs = document.querySelector(".divClassifInd");
 
 
-for(i = 0; i<classifs.length; i++){
-    let clas = classifs[i]; 
-    clas.addEventListener("click", function(){
-        console.log(i);
-        if (i == 0){
-            clas.lastChild.classList.toggle("livreC");
-        } else if (i == 1){
-            clas.lastChild.classList.toggle("dezC");
-        } else if (i == 2){
-            clas.lastChild.classList.toggle("dozeC");
-        } else if (i == 3){
-            clas.lastChild.classList.toggle("catorzeC");
-        } else if (i == 4){
-            clas.lastChild.classList.toggle("dezesseisC");
-        } else if (i == 5){
-            clas.lastChild.classList.toggle("dezoitoC");
+for(i = 0; i <classifs.childElementCount; i++){ 
+    let cont = i;
+    classifs.children[cont].addEventListener("click", function(){
+        switch (cont){
+            case 0:
+                classifs.children[cont].classList.toggle("livreC");
+                break;
+
+            case 1:
+                classifs.children[cont].classList.toggle("dezC");
+                break;
+
+            case 2:
+                classifs.children[cont].classList.toggle("dozeC");
+                break;
+
+            case 3:
+                classifs.children[cont].classList.toggle("catorzeC");
+                break;
+
+            case 4:
+                classifs.children[cont].classList.toggle("dezesseisC");
+                break;
+
+            case 5:
+                classifs.children[cont].classList.toggle("dezoitoC");
+                break;
         }
-    });
+    })
 }
-
-// function mudarFundo(clas, numero){
-//     console.log(numero);
-//     if (numero == 0){
-//         clas.lastChild.classList.toggle("livreC");
-//     } else if (numero == 1){
-//         clas.lastChild.classList.toggle("dezC");
-//     } else if (numero == 2){
-//         clas.lastChild.classList.toggle("dozeC");
-//     } else if (numero == 3){
-//         clas.lastChild.classList.toggle("catorzeC");
-//     } else if (numero == 4){
-//         clas.lastChild.classList.toggle("dezesseisC");
-//     } else if (numero == 5){
-//         clas.lastChild.classList.toggle("dezoitoC");
-//     }
-// }
