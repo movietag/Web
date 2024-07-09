@@ -14,6 +14,7 @@ section{
 }
 
 .tags li {
+    font-size: 0.95em;
     background-color: #e6c222;
     color: black;
     margin: 0.6em 0.4em 0.6em 0;
