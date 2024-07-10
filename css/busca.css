@@ -174,7 +174,7 @@ input::placeholder{
     background-color: black;
 }
 
-/*classes pras classificações quando clicadas*/
+/* classes pras classificações quando clicadas */
 .livreC{
     background-color: rgb(39, 211, 39);
 }
@@ -262,11 +262,23 @@ input::placeholder{
     text-align: center;
 }
 
+/* select ordenar por */
+.resultados select{
+    background-color: aqua;
+    border: none;
+    box-sizing: border-box;
+}
+
+option{
+    border: none;
+}
+
 /* configuracao dos dados dos filmes */
 .resultados {
-    margin-top: 3vh;
     display: none;
     justify-content: space-around;
+    align-items: right;
+    padding: 0;
 }
 
 .filme{
