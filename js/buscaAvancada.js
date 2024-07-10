@@ -25,7 +25,7 @@ for (i = 0; i<divs.length; i++){ //repeticao pegando todas as setas e adicionand
 }
 
 mostrar.addEventListener("click", function(){mostrarTodos(mostrar, esconder)}); // Evento para mostrar os filtros
-esconder.addEventListener("click", function(){esconderTodos(mostrar, esconder, filtros, divs)}); // Evento para ocultar todos os filtros
+esconder.addEventListener("click", function(){esconderTodos(mostrar, esconder)}); // Evento para ocultar todos os filtros
 
 for(i = 0; i <classifs.childElementCount; i++){
     //mudando o fundo das classificacoes caso clicadas
@@ -82,7 +82,7 @@ function trocaSeta(div){ //gira as setas de acordo com se o input está mostrand
     div.lastChild.classList.toggle("cima");
 }
 
-function mostrarTodos(mos, esc){
+function mostrarTodos(mos, esc){  // funcao para mostrar os filtros
     for (i = 0; i < filtros.length; i++){
         mostraFiltro(divs[i], filtros[i]);
     }
@@ -90,7 +90,7 @@ function mostrarTodos(mos, esc){
     esc.style.display = "block";
 }
 
-function esconderTodos(mos, esc){
+function esconderTodos(mos, esc){ // Evento para ocultar todos os filtros
     for (i = 0; i < filtros.length; i++){
         mostraFiltro(divs[i], filtros[i]);
     }
