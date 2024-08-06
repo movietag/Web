@@ -33,25 +33,32 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
     json.results.forEach(element => { // Para cada elemento de results de Json...
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
-        
-        if (element.media_type === "tv" || element.media_type === "movie"){
-            item.innerHTML = `<a href="visualizacaoProducao.html?query=${element.id}">
-            <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
-            <span>${element.name}</span>
-            </a>`; // Cria o item com sua imagem, link e título
-            console.log("frango")
-        } else if(element.media_type === "person"){
-            console.log("Chora");
-
-        } else{
-            item.innerHTML = `<a href="visualizacaoProducao.html?query=${element.id}">
+        console.log(element.media_type)
+        if (element.media_type === "movie"){
+            item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
             <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
             <span>${element.title}</span>
             </a>`; // Cria o item com sua imagem, link e título
+            itens.appendChild(item); // Adiciona o item à div itens
+        } else if(element.media_type === "person"){
+            item.innerHTML = `<a href="visualizacaoIntegrante.html?type=person&query=${element.id}">
+            <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
+            <span>${element.name}</span>
+            </a>`; // Cria o item com sua imagem, link e título
+            itens.appendChild(item); // Adiciona o item à div itens
+
+        } else if(element.media_type === "tv"){
+            console.log("Conserta isso, Gui!")
+        } else{
+            item.innerHTML = `<a href="visualizacaoProducao.html?type=null&query=${element.id}">
+            <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+            <span>${element.title}</span>
+            </a>`; // Cria o item com sua imagem, link e título
+            itens.appendChild(item); // Adiciona o item à div itens
         }
 
         
-        itens.appendChild(item); // Adiciona o item à div itens
+
     });
 }
 
