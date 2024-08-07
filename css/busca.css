@@ -264,13 +264,11 @@ input::placeholder{
 
 /* select ordenar por */
 .resultados select{
-    background-color: aqua;
-    border: none;
-    box-sizing: border-box;
+    outline: none;
+    width: fit-content;
 }
 
 option{
-    border: none;
 }
 
 /* configuracao dos dados dos filmes */
