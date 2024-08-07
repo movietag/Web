@@ -13,24 +13,45 @@ const options = {
 
 fetch(`https://api.themoviedb.org/3/person/${myParam.query}}?language=pt-BR`, options)
   .then(response => response.json())
-  .then(response => carregaDados(response))
+  .then(response => carregaDados(response, 0))
 
-function carregaDados(json){
-    const foto = document.querySelector('#foto');
-    foto.setAttribute('src', `https://image.tmdb.org/t/p/w300${json.profile_path})`);
+function carregaDados(json, param){
 
-    const atividade = document.querySelector('#idAtividade');
-    atividade.innerHTML = json.known_for_department;
+    if (param === 0){
+        const foto = document.querySelector('#foto');
+        foto.setAttribute('src', `https://image.tmdb.org/t/p/w300${json.profile_path})`);
+    
+        const atividade = document.querySelector('#idAtividade');
+        atividade.innerHTML = json.known_for_department;
+    
+        const nome = document.querySelector('#nome');
+        nome.innerHTML = json.name;
+    
+        const bio = document.querySelector('#bio');
+        bio.innerHTML = json.biography;
+    
+        const aniversario = document.querySelector('#aniversario');
+        aniversario.innerHTML = json.birthday;
+        chamaAPI(json.id, json.name)
+    } else{
+        console.log(json);
+    }
 
-    const nome = document.querySelector('#nome');
-    nome.innerHTML = json.name;
 
-    const bio = document.querySelector('#bio');
-    bio.innerHTML = json.biography;
 
-    const aniversario = document.querySelector('#aniversario');
-    aniversario.innerHTML = json.birthday;
+
+
 }
+
+function chamaAPI(id, name){
+    fetch(`https://api.themoviedb.org/3/search/person?query=${name}&include_adult=false&language=en-US&page=1`, options)
+        .then(response => response.json())
+        .then(response => carregaDados(response, 1))
+    
+    
+}
+
+
 
 // Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML

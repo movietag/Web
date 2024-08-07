@@ -6,17 +6,25 @@
     margin: 5em 10%;
 }
 
+.container div h1 {
+    font-size: 3em;
+    margin: 0 0 0.5em 0;
+}
+
 .container img {
-    max-height: 35vh;
     border-radius: 8px;
     margin-right: 2em;
 }
 
 .container p {
     text-align: justify;
+    line-height: 1.7em;
 
 }
 
+.lista {
+    margin-top: 2em;
+}
 .container h1{
     font-size: 1.5em;
     margin-bottom: 0.8em;
@@ -31,5 +39,11 @@
     overflow-x: hidden;
     overflow-y: scroll;
     flex-wrap: wrap;
+}
+
+.info img {
+    min-width: 16em;
+    min-height: 22em;
+
 }
 
