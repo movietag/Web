@@ -35,13 +35,13 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
         item.classList.add('item'); // Adiciona a classe item, o estilizando
         console.log(element.media_type)
         if (element.media_type === "movie"){
-            item.innerHTML = `<a href="visualizacaoProducao.php?type=movie&query=${element.id}">
+            item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
             <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
             <span>${element.title}</span>
             </a>`; // Cria o item com sua imagem, link e título
             itens.appendChild(item); // Adiciona o item à div itens
         } else if(element.media_type === "person"){
-            item.innerHTML = `<a href="visualizacaoIntegrante.php?type=person&query=${element.id}">
+            item.innerHTML = `<a href="visualizacaoIntegrante.html?type=person&query=${element.id}">
             <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
             <span>${element.name}</span>
             </a>`; // Cria o item com sua imagem, link e título
@@ -50,7 +50,7 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
         } else if(element.media_type === "tv"){
             console.log("Conserta isso, Gui!")
         } else{
-            item.innerHTML = `<a href="visualizacaoProducao.php?type=null&query=${element.id}">
+            item.innerHTML = `<a href="visualizacaoProducao.html?type=null&query=${element.id}">
             <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
             <span>${element.title}</span>
             </a>`; // Cria o item com sua imagem, link e título

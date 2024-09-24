@@ -20,7 +20,7 @@ menu.children[1].addEventListener("click", (ev) => {
     // Se estiver logado...
     if(verificaLogado() === true){
         // Permite o usuario navegar ate Watchlist
-        ev.target.setAttribute("href", "visualizacaoWatchlist.php");
+        ev.target.setAttribute("href", "visualizacaoWatchlist.html");
     } else{
         ev.preventDefault();
 
