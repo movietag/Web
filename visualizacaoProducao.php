@@ -19,10 +19,10 @@
     <header>
         <nav>
             <!-- Link para a página inicial com o logotipo -->
-            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
             <ul class="menu">
                 <!-- Itens do Menu  -->
-                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav"> <a href="buscaAvancada.php">Busca Avançada</a></li>
 
                 <!-- Link para a Watchlist com mensagem popup -->
                 <li class="lista-nav" id="popup">
@@ -32,9 +32,9 @@
                 <li class="lista-nav" id="btnConta">
                     <div>Conta</div>
                     <ul class="backdown-menu">
-                        <li><a href="login.html">Entrar</a></li>
-                        <li><a href="cadastro.html">Registrar</a></li>
-                        <li><a href="editarPerfil.html">Perfil</a></li>
+                        <li><a href="login.php">Entrar</a></li>
+                        <li><a href="cadastro.php">Registrar</a></li>
+                        <li><a href="editarPerfil.php">Perfil</a></li>
                         <li><a href=""></a>Sair</li>
                     </ul>
                 </li>
@@ -174,7 +174,7 @@
             <li>
                 <h2>Básico</h2>
             </li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
 
         <ul class="column">

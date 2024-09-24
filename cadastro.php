@@ -17,10 +17,10 @@
     <header>
         <nav>
             <!-- Link para a página inicial com o logo -->
-            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
             <ul class="menu">
                 <!-- Itens do Menu -->
-                <li class="lista-nav"><a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav"><a href="buscaAvancada.php">Busca Avançada</a></li>
                 
                 <!-- Item do menu com popup de aviso -->
                 <li class="lista-nav" id="popup">
@@ -31,9 +31,9 @@
                 <li class="lista-nav" id="btnConta">
                     <div>Conta</div>
                     <ul class="backdown-menu">
-                        <li><a href="login.html">Entrar</a></li>
-                        <li><a href="cadastro.html">Registrar</a></li>
-                        <li><a href="editarPerfil.html">Perfil</a></li>
+                        <li><a href="login.php">Entrar</a></li>
+                        <li><a href="cadastro.php">Registrar</a></li>
+                        <li><a href="editarPerfil.php">Perfil</a></li>
                         <li><a href=""></a>Sair</li>
                     </ul>
                 </li>
@@ -81,7 +81,7 @@
                     </div>
                     <button class="butao" type="submit">Criar Conta</button> 
                     <small id="alertaErro" class="alertas">Corrija as informações erradas!</small>
-                    <p id="psenha">Já possui conta? <a href="login.html" id="psenhaA">Login</a></p>
+                    <p id="psenha">Já possui conta? <a href="login.php" id="psenhaA">Login</a></p>
                 </form>
                 
             </div>
@@ -96,7 +96,7 @@
         <!-- Coluna Básico -->
         <ul class="column">
             <li><h2>Básico</h2></li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
 
         <!-- Coluna Contato -->

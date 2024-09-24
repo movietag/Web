@@ -16,10 +16,10 @@
     <header>
         <nav>
             <!-- Logo que leva à página inicial -->
-            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
             <ul class="menu">
                 <!-- Itens do Menu -->
-                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav"> <a href="buscaAvancada.php">Busca Avançada</a></li>
                 <li class="lista-nav" id="popup">
                     <a href="">Watchlist</a>
                     <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
@@ -27,9 +27,9 @@
                 <li class="lista-nav" id="btnConta">
                     <div>Conta</div>
                     <ul class="backdown-menu">
-                        <li><a href="login.html">Entrar</a></li>
-                        <li><a href="cadastro.html">Registrar</a></li>
-                        <li><a href="editarPerfil.html">Perfil</a></li>
+                        <li><a href="login.php">Entrar</a></li>
+                        <li><a href="cadastro.php">Registrar</a></li>
+                        <li><a href="editarPerfil.php">Perfil</a></li>
                         <li><a href=""></a>Sair</li>
                     </ul>
                 </li>
@@ -50,7 +50,7 @@
                     <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha">
                     <a href="#">Esqueceu a senha?</a>
                     <button type="submit" class="butao">Enviar</button>
-                    <p>Não possui conta? <a href="cadastro.html">Cadastrar</a></p>
+                    <p>Não possui conta? <a href="cadastro.php">Cadastrar</a></p>
                 </form>
             </div>
         </div>
@@ -71,7 +71,7 @@
         <img src="img/Logo-Branca.svg" alt="logo-MT">
         <ul class="column">
             <li><h2>Básico</h2></li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
         <ul class="column">
             <li><h2>Contato</h2></li>

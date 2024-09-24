@@ -115,7 +115,7 @@ function carregaTags(json) {
         let item = document.createElement('a'); // Cria o a
         item.classList.add('item'); // Adiciona a classe item, o estilizando
 
-        item.setAttribute("href", `visualizacaoTag.html?query=${element.id}`);// Define o link
+        item.setAttribute("href", `visualizacaoTag.php?query=${element.id}`);// Define o link
         item.innerHTML = element.name; // Define o texto
 
         listaTags.appendChild(item);// Adiciona o item à lista de tags
@@ -130,7 +130,7 @@ function carregaElenco(json) {
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
 
-        item.innerHTML = `<a href="visualizacaoIntegrante.html?query=${element.id}">
+        item.innerHTML = `<a href="visualizacaoIntegrante.php?query=${element.id}">
         <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
         <span>${element.name}</span>
         </a>`; // Cria o item com sua imagem, link e título
