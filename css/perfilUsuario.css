@@ -1,0 +1,102 @@
+#grandeUsuario{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4vh auto;
+    max-width: 60em;
+}
+
+.bx{
+    font-size: 12vh;
+    color: aliceblue;
+}
+
+.dados1{
+    display: flex;
+    align-items: center;
+}
+
+.dados2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#username{
+    font-size: 1.4em;
+}
+
+#email{
+    color: darkgray;
+}
+
+.rotulo{
+    font-weight: bold;
+}
+
+#botao{
+    background-color: rgb(128, 128, 128, 0.3);
+    color: white;
+    border: none;
+    border-radius: 7px;
+    height: 2.5em;
+    width: 11em;
+    cursor: pointer;
+}
+
+#botao:hover{
+    background-color: rgb(128, 128, 128, 0.45);
+}
+
+hr{
+    max-width: 65em;
+    margin: 0 auto;
+}
+
+.tabs{
+    margin: 7vh auto;
+    width: 35em;
+}
+
+
+
+/* tags do filme */
+.tags{
+    list-style: none;
+    padding-left: 0;
+    display: flex;
+}
+
+.tags li {
+    font-size: 0.95em;
+    background-color: #e6c222;
+    color: black;
+    margin: 0.6em 0.4em 0.6em 0;
+    padding: 0.2em 0.5em;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* filmes avaliados */
+.filme{
+    text-decoration: none;
+}
+
+.filme h2{
+    margin-top: 1em;
+    display: flex;
+    align-items: center;
+}
+
+.filme span{
+    margin-left: 0.3em;
+    font-size: 0.8em;
+    color: #c9c9c9de;
+}
+
+.filme img{
+    max-width: 10em;
+    margin-right: 1em;
+    border-radius: 8px;
+}

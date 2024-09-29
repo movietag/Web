@@ -1,5 +1,3 @@
-var chartPizzas = document.querySelector("#chartPizzas");
-
 const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 const yValues = [55, 49, 44, 24, 15];
 const barColors = [
@@ -12,6 +10,40 @@ const barColors = [
 
 new Chart("chartPizzas", {
     type: "pie",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        title: {
+        display: true,
+        text: "World Wide Wine Production 2018"
+        }
+    }
+});
+
+new Chart("chartLinhas", {
+    type: "line",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        title: {
+        display: true,
+        text: "World Wide Wine Production 2018"
+        }
+    }
+});
+
+new Chart("chartBarras", {
+    type: "horizontalBar",
     data: {
         labels: xValues,
         datasets: [{
