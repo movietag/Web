@@ -3,9 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil</title>
+    <!-- Link para ícones da biblioteca Boxicons -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' >
+    <link rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
+    <!--bootstrap-->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+    <!--css para a div class="tabs"-->
+    <link rel="stylesheet" href="css/segmentedButton.css">
+    <link rel="stylesheet" href="css/perfilUsuario.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/perfilUsuario.js"></script>
+    <script src="js/script.js" defer></script>
+    <title>Movie Tag ∙ Perfil</title>
 </head>
 <body>
-    
+    <header>
+        <nav>
+            <!-- Logo que leva à página inicial -->
+            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <ul class="menu">
+                <!-- Itens do Menu -->
+                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav" id="popup">
+                    <a href="">Watchlist</a>
+                    <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
+                </li>
+                <li class="lista-nav" id="btnConta">
+                    <div>Conta</div>
+                    <ul class="backdown-menu">
+                        <li><a href="login.html">Entrar</a></li>
+                        <li><a href="cadastro.html">Registrar</a></li>
+                        <li><a href="perfilUsuario.html">Perfil</a></li>
+                        <li><a href=""></a>Sair</li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <div id="grandeUsuario">
+            <div class="pequenoUsuario">
+                <i class='bx bxs-user'></i>
+                <p>username</p>
+                <p>email@gmail.com</p>
+            </div>
+            <div class="pequenoUsuario">
+                <p>Avaliações</p>
+                <p>27</p>
+            </div>
+            <div class="pequenoUsuario">
+                <p>Tags Criadas</p>
+                <p>15</p>
+            </div>
+            <button>Editar Perfil</button>
+        </div>
+        <hr>
+        <!-- <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked>
+            <label class="btn btn-outline-primary" for="btnradio1">Radio 1</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio2">Radio 2</label>
+          
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio3" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio3">Radio 3</label>
+        </div> -->
+        <div class="tabs">
+            <input type="radio" id="html" name="fav_language" value="HTML" checked>
+            <label for="html">HTML</label>
+            <input type="radio" id="css" name="fav_language" value="CSS">
+            <label for="css">CSS</label>
+            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
+            <label for="javascript">JavaScript</label>
+          </div>
+        <canvas id="chartPizzas"></canvas>
+        <canvas id="chartLinhas"></canvas>
+        <canvas id="chartBarras"></canvas>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <img src="img/Logo-Branca.svg" alt="logo-MT">
+        <ul class="column">
+            <li><h2>Básico</h2></li>
+            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+        </ul>
+        <ul class="column">
+            <li><h2>Contato</h2></li>
+            <li>
+                <i class='bx bx-envelope'></i>
+                <a href="mailto:movietag.pi@gmail.com">movietag.pi@gmail.com</a>
+            </li>
+            <li>
+                <i class='bx bxl-instagram'></i>
+                <a href="https://www.instagram.com/movietag.pi/">movietag.pi</a>
+            </li>
+        </ul>
+    </footer>
+<!--chart.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<!--bootstrap-->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> -->
 </body>
 </html>
