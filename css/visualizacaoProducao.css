@@ -272,3 +272,21 @@ section .lista .item-logo img{
     align-items: center;
     margin-right: 1em;
 }
+
+.lista .vertical {
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+}
+
+.vertical img{
+    margin-right: 1em;
+}
+.vertical .item{
+    text-align: left;
+    margin-bottom: 3em;
+}
+
+.vertical p{
+    width: 100vw;
+}

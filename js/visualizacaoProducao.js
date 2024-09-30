@@ -1,5 +1,6 @@
 // Evento de click dos icones
 const icon = document.querySelector("#mark");
+const divTemp = document.querySelector("#temporadas");
 
 // Define a variável 'aberto' como verdadeira
 let aberto = true;
@@ -45,6 +46,10 @@ function abrirPlataformas() {
 var myParam = queryObj();
 console.log(myParam);
 
+if (myParam.type !== "tv"){
+    divTemp.style.display = "none";
+}
+
 const options = {
     method: 'GET',
     headers: {
@@ -53,6 +58,7 @@ const options = {
     }
 };
 
+if (myParam.type === "movie"){
 // Faz a requisição à API do The Movie Database para obter os dados do filme
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}?append_to_response=20&language=pt-BR`, options)
     .then(response => response.json())
@@ -64,14 +70,19 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) /
     .then(response => carregaTags(response));
 
 // Faz a requisição à API para obter o Elenco do filme
-fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=en-US`, options)
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=pt-BR`, options)
     .then(response => response.json())
     .then(response => carregaElenco(response));
 
 // Faz a requisição à API para obter os provedores de streaming
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, options)
-  .then(response => response.json())
-  .then(response => carregaProvedores(response))
+    .then(response => response.json())
+    .then(response => carregaProvedores(response))
+} else if (myParam.type === "tv"){
+    fetch(`https://api.themoviedb.org/3/tv/${myParam.query}?language=pt-BR`, options)
+        .then(response => response.json())
+        .then(response => carregaDados(response))
+}
 
 // Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML
@@ -95,17 +106,26 @@ function carregaDados(json) {
     const anoLancamento = document.querySelector(".ano"); // Seleciona o ano de lançamento
 
     const dataEstreia = document.querySelector(".data_estreia"); // Seleciona a data de estreia
-    dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`; // Define a data de estreia e país de origem
-
-    titulo.innerHTML = `${json.title}`; // Título
-    const date = new Date(json.release_date); // Ano de Estréia
-    anoLancamento.innerHTML = `(${date.getFullYear()})`;// Define o ano de lançamento
 
     const sinopse = document.querySelector(".sinopse"); // Seleciona a sinopse
     sinopse.innerHTML = json.overview; // Define a sinopse
 
-    const duracao = document.querySelector(".duracao"); // Seleciona a duração
-    duracao.innerHTML = `${json.runtime}min`; // Define a duração do filme
+    if (myParam.type === "movie"){
+        dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`; // Define a data de estreia e país de origem
+        titulo.innerHTML = `${json.title}`; // Título
+        const date = new Date(json.release_date); // Ano de Estréia
+        anoLancamento.innerHTML = `(${date.getFullYear()})`;// Define o ano de lançamento
+
+
+
+        const duracao = document.querySelector(".duracao"); // Seleciona a duração
+        duracao.innerHTML = `${json.runtime}min`; // Define a duração do filme
+    } else if(myParam.type === "tv"){
+        titulo.innerHTML = `${json.name}`;
+
+    }
+    
+    
 };
 
 // Função para carregar as tags do filme
@@ -170,3 +190,4 @@ function criaItens(type, lista){ // Função que cria os itens dos provedores
     })
 
 }
+

@@ -1,6 +1,6 @@
 // Pegando os Elementos na DOM
 const fPesquisa = document.querySelector("form"); // Formulário da Pesquisa
-const lista = document.querySelector(".lista"); // Pega  a div em que o conteúdo 'Popular' aparece (Apenas para demonstração)
+const lista = document.querySelectorAll(".lista"); // Pega  a div em que o conteúdo 'Popular' aparece (Apenas para demonstração)
 
 // Adicionando Eventos
 fPesquisa.onsubmit = (ev) =>{ // Quando a pesquisa é submetida...
@@ -9,7 +9,7 @@ fPesquisa.onsubmit = (ev) =>{ // Quando a pesquisa é submetida...
     let busca = ev.target.pesquisa.value; // Pega o valor de dentro da pesquisa
 
     if (busca != ""){ // Se a busca for diferente de vazio...
-        fetch(`https://api.themoviedb.org/3/search/multi?query=${busca}}&include_adult=false&language=en-US&page=1`, options)
+        fetch(`https://api.themoviedb.org/3/search/multi?query=${busca}}&include_adult=false&language=pt-BR&page=1`, options)
             .then(response => response.json())
             .then(response => carregaFilmes(resultados, response))
         pesquisa(); // Altera as divs da tela inicial para a de pesquisa
@@ -48,9 +48,13 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
             itens.appendChild(item); // Adiciona o item à div itens
 
         } else if(element.media_type === "tv"){
-            console.log("Conserta isso, Gui!")
+            item.innerHTML = `<a href="visualizacaoProducao.html?type=tv&query=${element.id}">
+            <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+            <span>${element.name}</span>
+            </a>`; // Cria o item com sua imagem, link e título
+            itens.appendChild(item); // Adiciona o item à div itens
         } else{
-            item.innerHTML = `<a href="visualizacaoProducao.html?type=null&query=${element.id}">
+            item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
             <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
             <span>${element.title}</span>
             </a>`; // Cria o item com sua imagem, link e título
@@ -73,6 +77,15 @@ const options = { //Opções enviadas para a API
 
 fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1', options) // Recebe os dados da lista 'popular' da API
     .then(response => response.json())
-    .then(json => carregaFilmes(lista, json))
+    .then(json => carregaFilmes(lista[0], json))
+
+fetch('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1', options)
+    .then(response => response.json())
+    .then(json => carregaFilmes(lista[1], json))
+
+
+fetch('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1', options)
+    .then(response => response.json())
+    .then(json => carregaFilmes(lista[2], json))
 
 
