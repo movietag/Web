@@ -6,9 +6,9 @@
     max-width: 60em;
 }
 
-.bx{
+.bxs-user{
     font-size: 12vh;
-    color: aliceblue;
+    color: white;
 }
 
 .dados1{
@@ -43,6 +43,7 @@
     height: 2.5em;
     width: 11em;
     cursor: pointer;
+    font-size: 0.9em;
 }
 
 #botao:hover{
@@ -54,10 +55,12 @@ hr{
     margin: 0 auto;
 }
 
-.tabs{
+/* .tabs{
     margin: 7vh auto;
     width: 35em;
-}
+    background-color: rgb(128, 128, 128, 0.45);
+    border: 3px solid rgba(0, 0, 0, 0);
+} */
 
 
 

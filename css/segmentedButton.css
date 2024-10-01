@@ -11,25 +11,15 @@
     --speed: 0.25s;
 }
 
-/* body {
-	display: grid;
-	place-items: center;
-	min-height: 100vh;
-	align-content: center;
-	gap: 2rem;
-	background: hsl(0 0% 90%);
-	font-family:  "SF Pro Text", "SF Pro Icons", "AOS Icons", "Helvetica Neue", Helvetica, Arial, sans-serif, system-ui;
-} */
-
 .tabs {
 	height: var(--height);
 	display: grid;
 	grid-auto-flow: column;
-	background: hsl(0 0% 0%);
+	background: rgba(31, 31, 31, 0.404);
 	border-radius: var(--radius);
 	grid-auto-columns: 1fr;
 	position: relative;
-	border: var(--border) solid hsl(0 0% 0%);
+	border: var(--border) solid transparent;
 }
 
 .tabs {
@@ -76,15 +66,14 @@
 	display: grid;
 	border-radius: calc(var(--radius) - var(--border));
 	place-items: center;
-	color: hsl(0 0% 100% / calc(0.5 + var(--highlight, 0)));
-	transition: background, color;
-  transition-duration: 0.25s;
-  transition-timing-function: var(--ease, ease);
+	color: white;
+  	transition-duration: 0.25s;
+  	transition-timing-function: var(--ease, ease);
 }
 
 input:not(:checked) + label:hover {
 	--highlight: 0.35;
-	background: hsl(0 0% 20%);
+	background: rgba(51, 51, 51, 0.5);
 }
 
 .tabs::after {
@@ -92,14 +81,14 @@ input:not(:checked) + label:hover {
 	content: "";
 	width: calc(100% / var(--count));
 	height: 100%;
-	background: hsl(0 0% 100%);
+	background-color: #1b1b1b;
 	position: absolute;
 	border-radius: calc(var(--radius) - var(--border));
 	mix-blend-mode: difference;
 	translate: calc(var(--active, 0) * 100%) 0;
 	transition: translate, outline-color;
-  transition-duration: var(--speed);
-  transition-timing-function: var(--ease, ease);
+  	transition-duration: var(--speed);
+  	transition-timing-function: var(--ease, ease);
 	outline: 2px solid transparent;
 }
 
