@@ -149,7 +149,7 @@ h1{
 .classificacao_idade {
     color: #c9c9c9de;
     border: solid 0.1em;
-    border-radius: 0.2em;
+    border-radius: 8px;
     border-color: #c9c9c9de;
     padding: 0.2em;
 
@@ -198,7 +198,7 @@ h1{
     background-color: #00000086;
     text-decoration: none;
     align-items: center;
-    border-color: #242424;
+    border-color: #646464;
     border-style: solid;
     border-width: 1px;
 }
@@ -229,7 +229,7 @@ h1{
 .tags a {
     background-color: #00000086;
     color: #ffffff;
-    border-radius: 13px;
+    border-radius: 8px;
     text-align: center;
     padding: 0.5em;
     margin: 0.2em 0.2em;
@@ -324,7 +324,7 @@ section .lista .item-logo img{
     background-color: black;
     color: white;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 8px;
     white-space: nowrap; /* Evita quebras de linha */
     opacity: 0; /* Invisível inicialmente */
     pointer-events: none; /* Evita interação com o tooltip */
@@ -354,7 +354,7 @@ section .lista .item-logo img{
     background-color: black;
     color: white;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 8px;
     white-space: nowrap; /* Evita quebras de linha */
     opacity: 0; /* Invisível inicialmente */
     pointer-events: none; /* Evita interação com o tooltip */
@@ -365,3 +365,46 @@ section .lista .item-logo img{
   .tooltip_add_a_lista:hover::after {
     opacity: 0.7; /* Mostra o tooltip no hover */
   }
+
+dialog {
+    background-color: #333; /* Cor do fundo do diálogo */
+    border: none; /* Remove a borda padrão */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    color: white;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.7); /* Fundo escurecido */
+}
+
+.dialog-header, .dialog-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dialog-footer {
+    margin-top: 20px;
+}
+
+button {
+    background-color: #e6c222;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 20px;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px;
+}
+
+button.cancel-btn {
+    background-color: #555;
+    color: white;
+}
+
+button.cancel-btn:hover {
+    background-color: #777;
+}
