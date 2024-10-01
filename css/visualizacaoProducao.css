@@ -1,3 +1,8 @@
+h1{
+    margin-right: 1vw;
+}
+
+
 /* Estilização do banner do fundo */
 #banner {
     background-size: cover;
@@ -183,17 +188,19 @@
     cursor: pointer;
     color: #fff;
     outline: none;
-    border: none;
     font-weight: 700;
-    border-radius: 0.2vw;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    background-color: rgba(51, 51, 51, 0.5);
+    background-color: #00000086;
     text-decoration: none;
     align-items: center;
+    border-color: #242424;
+    border-style: solid;
+    border-width: 1px;
 }
 
 /* Estilização do botão do banner ao passar o mouse */
@@ -201,6 +208,7 @@
     color: #000;
     background-color: #e6e6e6;
     transition: all 0.2s;
+    border-color: #e6e6e6;
 }
 
 /* Container dos botões do banner */
@@ -297,3 +305,63 @@ section .lista .item-logo img{
     width: 10.5em;
     height: 15.75em;
 }
+
+
+/* Estilizando o link/botão */
+.tooltip_avaliar {
+    position: relative; /* Necessário para o posicionamento do tooltip */
+    display: inline-block; 
+    text-decoration: none;
+  }
+  
+  /* Estilo do tooltip (inicialmente escondido) */
+  .tooltip_avaliar::after {
+    content: "Avaliar"; /* Texto que aparecerá no tooltip */
+    position: absolute;
+    bottom: 100%; /* Posiciona o tooltip acima do link */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap; /* Evita quebras de linha */
+    opacity: 0; /* Invisível inicialmente */
+    pointer-events: none; /* Evita interação com o tooltip */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Mostrando o tooltip no hover */
+  .tooltip_avaliar:hover::after {
+    opacity: 0.7; /* Mostra o tooltip no hover */
+  }
+  
+
+/* Estilizando o link/botão */
+.tooltip_add_a_lista {
+    position: relative; /* Necessário para o posicionamento do tooltip */
+    display: inline-block; 
+    text-decoration: none;
+  }
+  
+  /* Estilo do tooltip (inicialmente escondido) */
+  .tooltip_add_a_lista::after {
+    content: "Adicionar à Lista"; /* Texto que aparecerá no tooltip */
+    position: absolute;
+    bottom: 100%; /* Posiciona o tooltip acima do link */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    white-space: nowrap; /* Evita quebras de linha */
+    opacity: 0; /* Invisível inicialmente */
+    pointer-events: none; /* Evita interação com o tooltip */
+    transition: opacity 0.3s ease;
+  }
+  
+  /* Mostrando o tooltip no hover */
+  .tooltip_add_a_lista:hover::after {
+    opacity: 0.7; /* Mostra o tooltip no hover */
+  }
