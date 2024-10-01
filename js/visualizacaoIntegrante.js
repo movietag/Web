@@ -13,11 +13,11 @@ const options = {
 
 fetch(`https://api.themoviedb.org/3/person/${myParam.query}}?language=pt-BR`, options)
   .then(response => response.json())
-  .then(response => carregaDados(response, 0))
+  .then(response => carregaDados(response))
 
-function carregaDados(json, param){
+function carregaDados(json, n){
 
-    if (param === 0){
+    if (n !== 1){
         const foto = document.querySelector('#foto');
         foto.setAttribute('src', `https://image.tmdb.org/t/p/w300${json.profile_path})`);
     
@@ -28,30 +28,27 @@ function carregaDados(json, param){
         nome.innerHTML = json.name;
     
         const bio = document.querySelector('#bio');
-        bio.innerHTML = json.biography;
     
         const aniversario = document.querySelector('#aniversario');
         aniversario.innerHTML = json.birthday;
-        chamaAPI(json.id, json.name)
+
+        if(json.biography === ""){
+            chamaApiIngles();
+        }else{
+            bio.innerHTML = json.biography;
+        }
     } else{
-        console.log(json);
+        bio.innerHTML = json.biography;
     }
-
-
-
-
+    
 
 }
 
-function chamaAPI(id, name){
-    fetch(`https://api.themoviedb.org/3/search/person?query=${name}&include_adult=false&language=en-US&page=1`, options)
+function chamaApiIngles(){
+    fetch(`https://api.themoviedb.org/3/person/${myParam.query}?language=en-US`, options)
         .then(response => response.json())
         .then(response => carregaDados(response, 1))
-    
-    
 }
-
-
 
 // Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML
