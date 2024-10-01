@@ -24,7 +24,7 @@
 
 .tabs {
 	margin: 7vh auto;
-    width: 60em;
+    max-width: 60em;
 	--ease: linear(
     0, 0.1641 3.52%, 0.311 7.18%,
     0.4413 10.99%, 0.5553 14.96%,
