@@ -78,11 +78,19 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=pt-B
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, options)
     .then(response => response.json())
     .then(response => carregaProvedores(response))
+
+
 } else if (myParam.type === "tv"){
     fetch(`https://api.themoviedb.org/3/tv/${myParam.query}?language=pt-BR`, options)
         .then(response => response.json())
         .then(response => carregaDados(response))
+    
+    fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/credits?language=pt-BR`, options)
+        .then(response => response.json())
+        .then(response => carregaElenco(response))
 }
+
+
 
 // Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML
@@ -93,6 +101,22 @@ function queryObj() { // Pega os valores do link HTML
     });
     return result;
 };
+
+function carregaTemporadas(json){
+
+    json.seasons.forEach(element => {
+        const date = new Date(element.air_date); // Ano de Estréia
+        let item = document.createElement('div'); // Cria a div
+        item.classList.add('item'); // Adiciona a classe item, o estilizando
+
+        item.innerHTML = `<img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+        <div> <h3>${element.name}</h3> <h3>${date.getFullYear()} • ${element.episode_count} episódios</h3>
+        <p>Esta temporada começou a ser exibida em ${date.toLocaleDateString()}</p> 
+        <p>${element.overview}</p> </div>`;
+
+        divTemp.lastElementChild.appendChild(item); 
+    });
+}
 
 // Atualizando Dados a partir da API
 function carregaDados(json) {
@@ -122,6 +146,7 @@ function carregaDados(json) {
         duracao.innerHTML = `${json.runtime}min`; // Define a duração do filme
     } else if(myParam.type === "tv"){
         titulo.innerHTML = `${json.name}`;
+        carregaTemporadas(json);
 
     }
     
