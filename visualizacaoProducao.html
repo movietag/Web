@@ -81,7 +81,7 @@
 
                             <div class="banner_buttons">
                                 <button class="banner_button tooltip_avaliar" ><i class='bx bx-star'></i></i></button>
-                                <button class="banner_button tooltip_add_a_lista" id = "openDialog"><i id="mark" class='bx bx-bookmark'></i></button>
+                                <button class="banner_button tooltip_add_a_lista" id = "openDialog_salvar_prod"><i id="mark" class='bx bx-bookmark'></i></button>
                                 <a href="https://www.youtube.com/watch?v=QqmbrvluQRA" class="banner_button"><i
                                         class='bx bx-play'></i>Assistir Trailer</a>                                
 
@@ -174,11 +174,11 @@
 
     </div>
 
-
+    
     <dialog class="dialog" id="myDialog">
         <div class="dialog-header">
             <span>Salvar Produção em</span>
-            <a href="#">+ Nova Lista</a>
+            <a id="navaLista">+ Nova Lista</a>
         </div>
         <div class="dialog-content">
             <label>
@@ -201,6 +201,19 @@
         <div class="dialog-footer">
             <button class="cancel-btn" id="cancelDialog">Cancelar</button>
             <button id="confirmDialog">OK</button>
+        </div>
+    </dialog>
+    
+    <dialog id="myDialog">
+        <div class="dialog-header">
+            Nova Lista
+        </div>
+        <div class="dialog-content">
+            <input type="text" placeholder="Inserir título da lista...">
+        </div>
+        <div class="dialog-footer">
+            <button class="cancel-btn" id="cancelDialog">Cancelar</button>
+            <button class="create-btn">Criar</button>
         </div>
     </dialog>
 

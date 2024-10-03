@@ -1,21 +1,36 @@
+const openNovaLista = document.getElementById('novaLista');
+const dialogNovaLista = document.getElementById('myDialog');
+
+// Abre o diálogo quando o botão é clicado
+openNovaLista.addEventListener('click', () => {
+    dialogNovaLista.showModal(); // Exibe o diálogo como modal
+});
+
+
+
+
+
+
+
+
 // Seleciona o botão e o diálogo
-const openButton = document.getElementById('openDialog');
-const dialog = document.getElementById('myDialog');
+const openSalvarProd = document.getElementById('openDialog_salvar_prod')
+const dialogSalvarProd = document.getElementById('myDialog');
 const cancelButton = document.getElementById('cancelDialog');
 
 // Abre o diálogo quando o botão é clicado
-openButton.addEventListener('click', () => {
-    dialog.showModal(); // Exibe o diálogo como modal
+openSalvarProd.addEventListener('click', () => {
+    dialogSalvarProd.showModal(); // Exibe o diálogo como modal
 });
 
 // Fecha o diálogo ao clicar no botão "Cancelar"
 cancelButton.addEventListener('click', () => {
-    dialog.close(); // Fecha o diálogo
+    dialogSalvarProd.close(); // Fecha o diálogo
 });
 
 // Fecha o diálogo ao clicar no botão "OK"
 document.getElementById('confirmDialog').addEventListener('click', () => {
-    dialog.close(); // Fecha o diálogo
+    dialogSalvarProd.close(); // Fecha o diálogo
 });
 
 // Evento de click dos icones

@@ -376,7 +376,7 @@ dialog {
 }
 
 dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.7); /* Fundo escurecido */
+    background-color: rgba(0, 0, 0, 0.65); /* Fundo escurecido */
 }
 
 .dialog-header, .dialog-footer {
@@ -407,4 +407,8 @@ button.cancel-btn {
 
 button.cancel-btn:hover {
     background-color: #777;
+}
+
+.dialog{
+    margin: auto;
 }
