@@ -60,21 +60,21 @@
         </div>
         <hr>
         <div class="tabs">
-            <input type="radio" id="html" name="fav_language" value="HTML" checked>
-            <label for="html">Estatísticas</label>
-            <input type="radio" id="css" name="fav_language" value="CSS">
-            <label for="css">Tags</label>
-            <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-            <label for="javascript">Avaliações</label>
+            <input type="radio" id="estatisticas" name="menuPartes" value="estatisticas" checked>
+            <label for="estatisticas">Estatísticas</label>
+            <input type="radio" id="tags" name="menuPartes" value="tags">
+            <label for="tags">Tags</label>
+            <input type="radio" id="avaliacoes" name="menuPartes" value="avaliacoes">
+            <label for="avaliacoes">Avaliações</label>
         </div>
 
-        <div id="pagCharts">
+        <div class="show pagCharts">
             <canvas id="chartPizzas"></canvas>
             <canvas id="chartLinhas"></canvas>
             <canvas id="chartBarras"></canvas>
         </div>
 
-        <div id="pagTags">
+        <div class="show pagTags">
             <ul class="tags">
                 <li>Alien</li>
                 <li>Baseado em HQs</li>
@@ -95,10 +95,18 @@
             </ul>    
         </div>
 
-        <div id="pagAvals">
+        <div class="pagAvals">
             <a href="visualizacaoProducao.html?type=movie&query=142" class="filme">
                 <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
                 <h2>O Segredo de Brokeback Mountain<span>(2005)</span></h2>
+            </a>
+            <a href="visualizacaoProducao.html?type=movie&query=142" class="filme">
+                <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
+                <h2>A Cor Púrpura<span>(1985)</span></h2>
+            </a>
+            <a href="visualizacaoProducao.html?type=movie&query=142" class="filme">
+                <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
+                <h2>Alice No País das Maravilhas<span>(2010)</span></h2>
             </a>
         </div>
     </section>

@@ -1,6 +1,27 @@
 document.querySelector("#botao").onclick = function () {
-    location.href = "editarPefil.html";
+    window.location = "editarPerfil.html";
 };
+
+// document.querySelector("#estatisticas").addEventListener("click", function () {
+//     document.querySelector(".pagCharts").classList.remove("show");
+//     document.querySelector(".pagTags").classList.add("show");
+//     document.querySelector(".pagAvals").classList.add("show");
+// });
+
+// document.querySelector("#tags").addEventListener("click", function () {
+//     document.querySelector(".pagCharts").classList.add("show");
+//     document.querySelector(".pagTags").classList.remove("show");
+//     document.querySelector(".pagAvals").classList.add("show");
+// });
+
+// document.querySelector("#avaliacoes").addEventListener("click", function () {
+//     document.querySelector(".pagCharts").classList.add("show");
+//     document.querySelector(".pagTags").classList.add("show");
+//     document.querySelector(".pagAvals").classList.remove("show");
+// });
+
+
+
 
 const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 const yValues = [55, 49, 44, 24, 15];

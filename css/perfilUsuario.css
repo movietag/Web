@@ -53,9 +53,20 @@
 hr{
     max-width: 65em;
     margin: 0 auto;
+    border: 1px solid grey;
+}
+
+#chartLinhas{
+    max-width: 60vw;
+    margin: 2em auto;
 }
 
 
+
+/* classe pra sumir e mostrar */
+.show{
+    display: none;
+}
 
 /* tags do filme */
 .tags{
@@ -76,28 +87,26 @@ hr{
 
 /* filmes avaliados */
 .filme{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-decoration: none;
+    max-width: 11.5em;
 }
 
 .filme h2{
-    margin-top: 1em;
-    display: flex;
-    align-items: center;
+    text-align: center;
+    margin: 0.5em 0;
+    font-size: 1em;
 }
 
 .filme span{
     margin-left: 0.3em;
-    font-size: 0.8em;
+    font-size: 0.9em;
     color: #c9c9c9de;
 }
 
 .filme img{
     max-width: 10em;
-    margin-right: 1em;
     border-radius: 8px;
-}
-
-#chartLinhas{
-    max-width: 60vw;
-    margin: 2em auto;
 }
