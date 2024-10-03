@@ -295,11 +295,13 @@ section .lista .item-logo img{
 .vertical .item{
     text-align: left;
     margin-bottom: 3em;
+    transform: none;
+    cursor: default;
 }
 
 .vertical p{
-    width: 100vw;
-}
+    width: 40vw;
+} 
 
 #elenco .item img{
     width: 10.5em;
@@ -409,6 +411,22 @@ button.cancel-btn:hover {
     background-color: #777;
 }
 
+.dialog-content input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: transparent;
+    color: #ddd;
+    font-size: 14px;
+}
+
 .dialog{
     margin: auto;
 }
+
+/*Omena vai acertar dps :) ass.:Laun
+.card{
+    background-color: #e6c222;
+}*/

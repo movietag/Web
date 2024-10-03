@@ -1,22 +1,9 @@
-const openNovaLista = document.getElementById('novaLista');
-const dialogNovaLista = document.getElementById('myDialog');
-
-// Abre o diálogo quando o botão é clicado
-openNovaLista.addEventListener('click', () => {
-    dialogNovaLista.showModal(); // Exibe o diálogo como modal
-});
-
-
-
-
-
-
-
+// Dialog Salvar Prod
 
 // Seleciona o botão e o diálogo
 const openSalvarProd = document.getElementById('openDialog_salvar_prod')
-const dialogSalvarProd = document.getElementById('myDialog');
-const cancelButton = document.getElementById('cancelDialog');
+const dialogSalvarProd = document.getElementById('myDialogSalvarProd');
+const cancelButtonSalvarProd = document.getElementById('cancelDialogSalvarProd');
 
 // Abre o diálogo quando o botão é clicado
 openSalvarProd.addEventListener('click', () => {
@@ -24,13 +11,38 @@ openSalvarProd.addEventListener('click', () => {
 });
 
 // Fecha o diálogo ao clicar no botão "Cancelar"
-cancelButton.addEventListener('click', () => {
+cancelButtonSalvarProd.addEventListener('click', () => {
     dialogSalvarProd.close(); // Fecha o diálogo
 });
 
 // Fecha o diálogo ao clicar no botão "OK"
-document.getElementById('confirmDialog').addEventListener('click', () => {
+document.getElementById('confirmDialogSalvarProd').addEventListener('click', () => {
     dialogSalvarProd.close(); // Fecha o diálogo
+});
+
+
+
+
+// Dialog Nova Lista
+const openNovaLista = document.getElementById('novaLista');
+const dialogNovaLista = document.getElementById('myDialogNovaLista');
+const cancelButtonNovaLista = document.getElementById('cancelDialogNovaLista');
+
+// Abre o diálogo quando o botão é clicado
+openNovaLista.addEventListener('click', () => {
+    dialogNovaLista.showModal(); // Exibe o diálogo como modal
+    dialogSalvarProd.close(); // Fecha o diálogo
+});
+
+// Fecha o diálogo ao clicar no botão "Cancelar"
+cancelButtonNovaLista.addEventListener('click', () => {
+    dialogNovaLista.close(); // Fecha o diálogo
+    dialogSalvarProd.showModal();
+})
+
+// Fecha o diálogo ao clicar no botão "OK"
+document.getElementById('confirmDialogCriarNovaLista').addEventListener('click', () => {
+    dialogNovaLista.close(); // Fecha o diálogo
 });
 
 // Evento de click dos icones
@@ -40,16 +52,19 @@ const divTemp = document.querySelector("#temporadas");
 // Define a variável 'aberto' como verdadeira
 let aberto = true;
 
-icon.addEventListener("click", (ev) => {
-    const classes = ["bx-bookmark", "bxs-bookmark"]; // Lista de Classes dos Icones de Marcador
-    if (icon.classList.contains(classes[0])) {
-        icon.classList.remove(classes[0]);
-        icon.classList.add(classes[1]);
-    } else {
-        icon.classList.remove(classes[1]);
-        icon.classList.add(classes[0]);
-    }
-});
+
+//Configurar depois par ficar marcado se a pessoa adicionar a produção em alguma lista
+
+// icon.addEventListener("click", (ev) => {
+//     const classes = ["bx-bookmark", "bxs-bookmark"]; // Lista de Classes dos Icones de Marcador
+//     if (icon.classList.contains(classes[0])) {
+//         icon.classList.remove(classes[0]);
+//         icon.classList.add(classes[1]);
+//     } else {
+//         icon.classList.remove(classes[1]);
+//         icon.classList.add(classes[0]);
+//     }
+// });
 const botao = document.querySelector("#plataformas_button"); // Seleciona o botão de plataformas
 botao.addEventListener("click", abrirPlataformas); // Adiciona ouvidor de evento de click no botão de plataformas
 
@@ -143,6 +158,8 @@ function carregaTemporadas(json){
         const date = new Date(element.air_date); // Ano de Estréia
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
+        item.classList.add('card'); // Adiciona a classe item, o estilizando
+        
 
         item.innerHTML = `<img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
         <div> <h3>${element.name}</h3> <h3>${date.getFullYear()} • ${element.episode_count} episódios</h3>
