@@ -1,3 +1,7 @@
+document.querySelector("#botao").onclick = function () {
+    location.href = "editarPefil.html";
+};
+
 const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 const yValues = [55, 49, 44, 24, 15];
 const barColors = [
