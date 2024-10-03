@@ -8,6 +8,10 @@ const barColors = [
     "#1e7145"
 ];
 
+const linexValues = ["Jan", "Fev", "Mar", "Abril", "Maio"];
+
+
+
 new Chart("chartPizzas", {
     type: "pie",
     data: {
@@ -28,17 +32,25 @@ new Chart("chartPizzas", {
 new Chart("chartLinhas", {
     type: "line",
     data: {
-        labels: xValues,
+        labels: linexValues ,
         datasets: [{
-        backgroundColor: barColors,
+        label: "TAG1",
+        lineTension: 0,
+        borderColor: 'rgba(75, 192, 192, 1)',
         data: yValues
         }]
     },
     options: {
-        title: {
-        display: true,
-        text: "World Wide Wine Production 2018"
+        plugins: {
+            title: {
+                display: true,
+                text: "Taxa de Salvamentos em Tags Criadas Por Você",
+                font: {
+                    size: 24,
+                }
+            }
         }
+        
     }
 });
 
@@ -58,3 +70,4 @@ new Chart("chartBarras", {
         }
     }
 });
+
