@@ -426,6 +426,32 @@ button.cancel-btn:hover {
     margin: auto;
 }
 
+/* Estilo das estrelas */
+.star-rating {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star {
+    font-size: 30px;
+    color: #aaa; /* Cor padrão das estrelas */
+    transition: color 0.3s;
+}
+
+.star:hover,
+.star-rating input:checked ~ .star {
+    color: #ffc107; /* Cor amarela ao passar o mouse */
+}
+
+#novaLista{
+    color: #777;
+}
+
 /*Omena vai acertar dps :) ass.:Laun
 .card{
     background-color: #e6c222;

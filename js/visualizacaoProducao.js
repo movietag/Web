@@ -1,3 +1,65 @@
+// Seleciona o botão e o diálogo
+const openButtonAvaliar = document.getElementById('openDialogAvaliar');
+const dialogAvaliar = document.getElementById('myDialogAvaliar');
+const cancelButtonAvaliar = document.getElementById('cancelDialogAvaliar');
+
+// Abre o diálogo quando o botão é clicado
+openButtonAvaliar.addEventListener('click', () => {
+    dialogAvaliar.showModal(); // Exibe o diálogo como modal
+});
+
+// Fecha o diálogo ao clicar no botão "Cancelar"
+cancelButtonAvaliar.addEventListener('click', () => {
+    dialogAvaliar.close(); // Fecha o diálogo
+});
+
+// Fecha o diálogo ao clicar no botão "Avaliar"
+document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
+    dialogAvaliar.close(); // Fecha o diálogo
+});
+
+
+// Seleciona as estrelas e adiciona a funcionalidade de seleção
+const stars = document.querySelectorAll('.star');
+stars.forEach(star => {
+    star.addEventListener('mouseover', () => {
+        // Muda a cor das estrelas ao passar o mouse
+        resetStarColors();
+        star.style.color = '#ffc107';
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            if (prevSibling.classList.contains('star')) {
+                prevSibling.style.color = '#ffc107';
+            }
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    });
+
+    star.addEventListener('click', () => {
+        // Marca a estrela selecionada ao clicar
+        resetStarColors();
+        star.style.color = '#ffc107';
+        star.previousElementSibling.checked = true; // Marca o input associado
+        let prevSibling = star.previousElementSibling;
+        while (prevSibling) {
+            if (prevSibling.classList.contains('star')) {
+                prevSibling.style.color = '#ffc107';
+            }
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    });
+});
+
+function resetStarColors() {
+    stars.forEach(star => {
+        star.style.color = '#aaa';
+    });
+}
+
+
+
+
+
 // Dialog Salvar Prod
 
 // Seleciona o botão e o diálogo
