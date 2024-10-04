@@ -2,23 +2,23 @@ document.querySelector("#botao").onclick = function () {
     window.location = "editarPerfil.html";
 };
 
-// document.querySelector("#estatisticas").addEventListener("click", function () {
-//     document.querySelector(".pagCharts").classList.remove("show");
-//     document.querySelector(".pagTags").classList.add("show");
-//     document.querySelector(".pagAvals").classList.add("show");
-// });
+document.querySelector("#estatisticas").addEventListener("click", function () {
+    document.querySelector(".pagCharts").classList.remove("show");
+    document.querySelector(".pagTags").classList.add("show");
+    document.querySelector(".pagAvals").classList.add("show");
+});
 
-// document.querySelector("#tags").addEventListener("click", function () {
-//     document.querySelector(".pagCharts").classList.add("show");
-//     document.querySelector(".pagTags").classList.remove("show");
-//     document.querySelector(".pagAvals").classList.add("show");
-// });
+document.querySelector("#tags").addEventListener("click", function () {
+    document.querySelector(".pagCharts").classList.add("show");
+    document.querySelector(".pagTags").classList.remove("show");
+    document.querySelector(".pagAvals").classList.add("show");
+});
 
-// document.querySelector("#avaliacoes").addEventListener("click", function () {
-//     document.querySelector(".pagCharts").classList.add("show");
-//     document.querySelector(".pagTags").classList.add("show");
-//     document.querySelector(".pagAvals").classList.remove("show");
-// });
+document.querySelector("#avaliacoes").addEventListener("click", function () {
+    document.querySelector(".pagCharts").classList.add("show");
+    document.querySelector(".pagTags").classList.add("show");
+    document.querySelector(".pagAvals").classList.remove("show");
+});
 
 
 

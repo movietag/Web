@@ -63,16 +63,20 @@ hr{
 
 
 
-/* classe pra sumir e mostrar */
-.show{
-    display: none;
-}
 
 /* tags do filme */
+.pagTags{
+    margin: 0 2em 3em 2em;
+}
+
 .tags{
+    margin: 0 auto;
     list-style: none;
     padding-left: 0;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 40em;
 }
 
 .tags li {
@@ -99,7 +103,8 @@ hr{
     flex-direction: column;
     align-items: center;
     text-decoration: none;
-    max-width: 11.5em;
+    width: 11.5em;
+    margin-bottom: 1.5em;
 }
 
 .filme h2{
@@ -117,4 +122,9 @@ hr{
 .filme img{
     max-width: 10em;
     border-radius: 8px;
+}
+
+/* classe pra sumir e mostrar */
+.show{
+    display: none;
 }
