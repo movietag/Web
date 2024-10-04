@@ -263,6 +263,10 @@ function carregaDados(json) {
         carregaTemporadas(json);
 
     }
+
+    if (json.poster_path === ""){
+        bannerPrincipal.setAttribute("src", "./img/");
+    }
     
     
 };
