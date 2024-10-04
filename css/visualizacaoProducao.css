@@ -419,6 +419,19 @@ button.cancel-btn:hover {
     background-color: transparent;
     color: #ddd;
     font-size: 14px;
+    transition: box-shadow 0.3s ease, border-bottom 0.3s ease; /* Transição suave */
+}
+
+.dialog-content input[type="text"]:focus {
+    outline: none; /* Remove o contorno padrão */
+    border-bottom: 1px solid transparent; /* Linha inferior invisível */
+    box-shadow: 0 1px 0 0 #7a7a7a, 0 3px 0 0 #7a7a7a; /* Sombra criando a linha grossa */
+}
+
+.dialog-content input[type="text"]:hover {
+    outline: none; /* Remove o contorno padrão */
+    border-bottom: 1px solid transparent; /* Linha inferior invisível */
+    box-shadow: 0 1px 0 0 #7a7a7a, 0 3px 0 0 #7a7a7a; /* Sombra criando a linha grossa */
 }
 
 .dialog{
