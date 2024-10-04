@@ -217,13 +217,17 @@ function queryObj() { // Pega os valores do link HTML
 function carregaTemporadas(json){
 
     json.seasons.forEach(element => {
+        let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
+        if (element.poster_path === null){
+            url = "./img/placeholder/MovieTag-NotFoundImage.png";
+        }
         const date = new Date(element.air_date); // Ano de Estréia
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
         item.classList.add('card'); // Adiciona a classe item, o estilizando
         
 
-        item.innerHTML = `<img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+        item.innerHTML = `<img src=${url}>
         <div> <h3>${element.name}</h3> <h3>${date.getFullYear()} • ${element.episode_count} episódios</h3>
         <p>Esta temporada começou a ser exibida em ${date.toLocaleDateString()}</p> 
         <p>${element.overview}</p> </div>`;
@@ -263,6 +267,10 @@ function carregaDados(json) {
         carregaTemporadas(json);
 
     }
+
+    console.log(json);
+    if (json.poster_path === null) bannerPrincipal.setAttribute("src", "./img/placeholder/MovieTag-NotFoundImage.png");
+    
     
     
 };
@@ -283,16 +291,24 @@ function carregaTags(json) {
 
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
+    console.log(json);
+    
     const elenco = document.querySelector("#elenco"); // Seleciona o elenco
 
     json.cast.forEach(element => {
+        let url = `https://image.tmdb.org/t/p/w300${element.profile_path}`;
         let item = document.createElement('div'); // Cria a div
         item.classList.add('item'); // Adiciona a classe item, o estilizando
 
+        if (element.profile_path === null){
+            url = "./img/placeholder/MovieTag-NotFoundImage.png";
+        }
+
         item.innerHTML = `<a href="visualizacaoIntegrante.html?query=${element.id}">
-        <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
+        <img src=${url}>
         <span>${element.name}</span>
         </a>`; // Cria o item com sua imagem, link e título
+
 
         elenco.lastElementChild.appendChild(item); // Adiciona o item ao elenco
     });
