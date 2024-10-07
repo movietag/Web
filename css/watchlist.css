@@ -1,4 +1,16 @@
 #caixinha{
     display: flex;
-    
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bxs-edit-alt{
+    color: white;
+    font-size: 1.8em;
+}
+
+span{
+    font-size: 0.59em;
+    color: grey;
+    margin-left: 0.7em;
 }
