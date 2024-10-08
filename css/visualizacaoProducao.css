@@ -384,12 +384,13 @@ dialog::backdrop {
 .dialog-header, .dialog-footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
 }
 
 .dialog-footer {
-    margin-top: 20px;
+    margin-top: 1em;
+    justify-content: flex-end;
 }
+
 
 button {
     background-color: #e6c222;
@@ -402,8 +403,10 @@ button {
 }
 
 button.cancel-btn {
-    background-color: #555;
+    background-color: #55555500;
     color: white;
+    transition: all 0.2s ease;
+    margin-right: 1em;
 }
 
 button.cancel-btn:hover {
@@ -425,13 +428,13 @@ button.cancel-btn:hover {
 .dialog-content input[type="text"]:focus {
     outline: none; /* Remove o contorno padrão */
     border-bottom: 1px solid transparent; /* Linha inferior invisível */
-    box-shadow: 0 1px 0 0 #7a7a7a, 0 3px 0 0 #7a7a7a; /* Sombra criando a linha grossa */
+    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
 }
 
 .dialog-content input[type="text"]:hover {
     outline: none; /* Remove o contorno padrão */
     border-bottom: 1px solid transparent; /* Linha inferior invisível */
-    box-shadow: 0 1px 0 0 #7a7a7a, 0 3px 0 0 #7a7a7a; /* Sombra criando a linha grossa */
+    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
 }
 
 .dialog{
@@ -450,7 +453,7 @@ button.cancel-btn:hover {
 }
 
 .star {
-    font-size: 30px;
+    font-size: 2.5em;
     color: #aaa; /* Cor padrão das estrelas */
     transition: color 0.3s;
 }
@@ -462,7 +465,18 @@ button.cancel-btn:hover {
 
 #novaLista{
     color: #777;
+    cursor: pointer;
 }
+
+.dialog-header{
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+#myDialogAvaliar{
+    width: 20vw;
+}
+
 
 /*Omena vai acertar dps :) ass.:Laun
 .card{
