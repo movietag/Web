@@ -11,11 +11,6 @@
     margin: 0 0 0.5em 0;
 }
 
-.container img {
-    border-radius: 8px;
-    margin-right: 2em;
-}
-
 .container p {
     text-align: justify;
     line-height: 1.7em;
@@ -42,8 +37,24 @@
 }
 
 .info img {
-    min-width: 16em;
+    width: 100%;
     min-height: 22em;
+    /* border-radius: 8px; */
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
 
+}
+
+
+.info{
+    margin-right: 2em;
+    min-width:16em;
+    height: fit-content;
+    border-radius: 8px;
+    background-color: rgb(31, 31, 31);
+}
+
+.texto{
+    padding: 0.8em;
 }
 
