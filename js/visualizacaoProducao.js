@@ -186,6 +186,10 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=pt-B
     .then(response => response.json())
     .then(response => carregaElenco(response));
 
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=pt-BR`, options)
+    .then(response => response.json())
+    .then(response => carregaEquipe(response));
+
 // Faz a requisição à API para obter os provedores de streaming
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, options)
     .then(response => response.json())
@@ -200,6 +204,10 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
     fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/credits?language=pt-BR`, options)
         .then(response => response.json())
         .then(response => carregaElenco(response))
+    
+    fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/credits?language=pt-BR`, options)
+        .then(response => response.json())
+        .then(response => carregaEquipe(response))
 }
 
 
@@ -252,6 +260,9 @@ function carregaDados(json) {
     const sinopse = document.querySelector(".sinopse"); // Seleciona a sinopse
     sinopse.innerHTML = json.overview; // Define a sinopse
 
+    const nota = document.querySelector(".porcentagem");
+    nota.innerHTML = `${Math.round(json.vote_average * 10)}%`;
+
     if (myParam.type === "movie"){
         dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`; // Define a data de estreia e país de origem
         titulo.innerHTML = `${json.title}`; // Título
@@ -292,7 +303,6 @@ function carregaTags(json) {
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
     console.log(json);
-    
     const elenco = document.querySelector("#elenco"); // Seleciona o elenco
 
     json.cast.forEach(element => {
@@ -306,12 +316,52 @@ function carregaElenco(json) {
 
         item.innerHTML = `<a href="visualizacaoIntegrante.html?query=${element.id}">
         <img src=${url}>
-        <span>${element.name}</span>
+        <span>${element.name} | ${element.character}</span>
         </a>`; // Cria o item com sua imagem, link e título
 
 
         elenco.lastElementChild.appendChild(item); // Adiciona o item ao elenco
     });
+}
+
+function carregaEquipe(json){
+    console.log(json);
+    const produtores = document.querySelector("#produtores");
+
+    json.crew.forEach(element => {
+
+        if (element.job === "Director" || element.job === "Writer"){
+            let item = document.createElement('li');
+            item.classList.add('card_produtor');
+            
+            // Criando as tags manualmente
+            let h3 = document.createElement('h3');
+            h3.classList.add('nome_produtor');
+            h3.textContent = element.name;
+            
+            let p = document.createElement('p');
+            p.classList.add('funcao_produtor');
+            p.textContent = element.job;
+            
+            // Anexando as tags criadas ao item
+            item.appendChild(h3);
+            item.appendChild(p);
+            
+            // Adicionando o item à lista
+            console.log(item);
+            produtores.appendChild(item);
+        }
+        
+    })
+    // <li class="card_produtor">
+    //                                 <h3 class="nome_produtor">
+    //                                     Kelsey Mann
+    //                                 </h3>
+    //                                 <p class="funcao_produtor">
+    //                                     Diretor
+    //                                 </p>
+    //                             </li>
+
 }
 
 function carregaProvedores(json){ // Função para carregar os dados dos provedores
