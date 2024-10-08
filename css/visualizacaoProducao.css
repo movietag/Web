@@ -477,7 +477,21 @@ button.cancel-btn:hover {
     width: 20vw;
 }
 
+#myDialogSalvarProd{
+    width: 25vw;
+}
 
+span{
+    cursor: default;
+}
+
+hr{
+    color: #555;
+}
+
+label input[type="checkbox"]{
+    padding: 1em;
+}
 /*Omena vai acertar dps :) ass.:Laun
 .card{
     background-color: #e6c222;
