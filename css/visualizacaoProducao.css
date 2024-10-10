@@ -192,7 +192,6 @@ h1{
     border-radius: 8px;
     padding-left: 1rem;
     padding-right: 1rem;
-    margin-right: 1rem;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
     background-color: #00000086;
@@ -201,13 +200,14 @@ h1{
     border-color: #646464;
     border-style: solid;
     border-width: 1px;
+    height: fit-content;
+    transition: all 0.2s;
 }
 
 /* Estilização do botão do banner ao passar o mouse */
 .banner_button:hover {
     color: #000;
     background-color: #e6e6e6;
-    transition: all 0.2s;
     border-color: #e6e6e6;
 }
 
@@ -289,18 +289,23 @@ section .lista .item-logo img{
 
 .vertical img{
     margin-right: 1em;
+    border-end-end-radius: 0;
+    border-start-end-radius: 0;
     width: 9em;
     height: 13.5em;
 }
 .vertical .item{
+    background-color: rgb(31, 31, 31);
     text-align: left;
-    margin-bottom: 3em;
+    max-width: 100%;
+    margin-bottom: 2em;
     transform: none;
     cursor: default;
+    border-radius: 8px;
 }
 
 .vertical p{
-    width: 40vw;
+    width: 100%;
 } 
 
 #elenco .item img{
@@ -308,6 +313,10 @@ section .lista .item-logo img{
     height: 15.75em;
 }
 
+
+.icon_button{
+    margin-right: 1em;;
+}
 
 /* Estilizando o link/botão */
 .tooltip_avaliar {
@@ -436,7 +445,46 @@ label input[type="checkbox"]{
     padding: 1em;
 }
 
-/*Omena vai acertar dps :) ass.:Laun
-.card{
+#tagsAssociadas_add{
+    display: flex;
+    justify-content: space-between;
+
+}
+
+#addtag{
+    margin-left: 1em;;
+    margin-bottom: 1em;
     background-color: #e6c222;
-}*/
+    color: #000;
+    border: solid #000;
+    border-width: 1px;
+}
+
+#addtag:hover{
+    color: #ffffff;
+    background-color: #000000;
+    transition: all 0.2s;
+    border-color: #e6e6e6;
+    transition: all 0.2s;
+    border: 1px solid #ffffff;
+}
+
+.sub-p{
+    color: gray;
+}
+
+#elenco .item{
+    width: 12em;
+    margin: 0;
+}
+
+#elenco .item-background{
+    background-color: rgb(31, 31, 31);
+    border-radius: 8px;
+}
+
+#elenco .item img{
+    width: 100%;
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+}
