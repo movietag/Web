@@ -9,9 +9,10 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/filmes.css">
     <link rel="stylesheet" href="css/watchlist.css">
+    <link rel="stylesheet" href="css/editarLista.css">
     <script src="js/script.js" defer></script>
     <script src="js/watchlist.js" defer></script>
-    <title>Movie Tag ∙ Minha Lista</title>
+    <title>Movie Tag ∙ Editar Lista</title>
 </head>
 <body>
     <!-- Menu -->
@@ -39,7 +40,7 @@
     </header>
     <section>
         <div id="caixinha">
-            <h1>Nome da Lista<a id="novaProducao">+ Nova Produção</a></h1>
+            <h1>Nome da Lista<spam id="novaProducao">+ Nova Produção</spam></h1>
             <!-- dialog adicionar produção -->
             <dialog id="buscarFilme">
                 <div class="dialog-header">
@@ -67,16 +68,18 @@
                     </a>
                 </div>
             </dialog>
-            <a href="editarLista.html"><i class='bx bxs-edit-alt'></i></a>
+            <a href="visualizacaoWatchlist.html"><i class='bx bx-check'></i></a>
         </div>
         <!--caixa com todos os filmes-->
         <div class="itens resultados">
-            <!-- Item --> 
+            <!-- Item -->
             <a href="visualizacaoProducao.html?query=382614"  class="item filme">
                 <img src="img/posteres/Poster-TBH.jpg" alt="Poster do Filme">
                 <!-- texto -->
                 <div>
-                    <h2>O Livro de Henry<span>(2017)</span></h2>
+                    <div id="tituloLixo">
+                        <h2>O Livro de Henry<span>(2017)</span></h2><i class='bx bxs-trash'></i>
+                    </div>
                     <p>Henry e Peter são dois irmãos criados pela sua mãe solteira, Susan. 
                         Henry, apaixonado pela sua vizinha Christina, escreve um livro de resgate para tirá-la dos maus tratos do pai policial. 
                         Quando sua mãe descobre sobre o seu plano, ela decide que eles irão colocar a ideia em prática.</p>    

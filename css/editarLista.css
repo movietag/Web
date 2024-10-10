@@ -1,0 +1,19 @@
+.bx-check{
+    font-size: 2.3em;
+}
+
+#tituloLixo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5em;
+}
+
+#tituloLixo h2{
+    margin-top: 0;
+}
+
+.bxs-trash{
+    color: #c50707;
+    font-size: 1.4em;
+}
