@@ -1,0 +1,26 @@
+#itens-gerais{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* max-width: 70vw; */
+}
+
+#caixa-listas{
+    display: flex;
+    justify-content: center;
+}
+#imgs{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 40vw;
+
+}
+
+.poster{
+    max-width: 10em;
+    border-radius: 0;
+    margin-left: 1.8rem;
+    margin-bottom: 1.8rem;
+}
