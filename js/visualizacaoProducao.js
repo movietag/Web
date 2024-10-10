@@ -314,10 +314,10 @@ function carregaElenco(json) {
             url = "./img/placeholder/MovieTag-NotFoundImage.png";
         }
 
-        item.innerHTML = `<a href="visualizacaoIntegrante.html?query=${element.id}">
+        item.innerHTML = `<div class="item-background"><a href="visualizacaoIntegrante.html?query=${element.id}">
         <img src=${url}>
-        <span>${element.name} | ${element.character}</span>
-        </a>`; // Cria o item com sua imagem, link e título
+        <p>${element.name}</p> <p class="sub-p">${element.character}</p>
+        </a></div>`; // Cria o item com sua imagem, link e título
 
 
         elenco.lastElementChild.appendChild(item); // Adiciona o item ao elenco

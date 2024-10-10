@@ -289,18 +289,23 @@ section .lista .item-logo img{
 
 .vertical img{
     margin-right: 1em;
+    border-end-end-radius: 0;
+    border-start-end-radius: 0;
     width: 9em;
     height: 13.5em;
 }
 .vertical .item{
+    background-color: rgb(31, 31, 31);
     text-align: left;
-    margin-bottom: 3em;
+    max-width: 100%;
+    margin-bottom: 2em;
     transform: none;
     cursor: default;
+    border-radius: 8px;
 }
 
 .vertical p{
-    width: 40vw;
+    width: 100%;
 } 
 
 #elenco .item img{
@@ -492,7 +497,24 @@ hr{
 label input[type="checkbox"]{
     padding: 1em;
 }
-/*Omena vai acertar dps :) ass.:Laun
-.card{
-    background-color: #e6c222;
-}*/
+
+
+.sub-p{
+    color: gray;
+}
+
+#elenco .item{
+    width: 12em;
+    margin: 0;
+}
+
+#elenco .item-background{
+    background-color: rgb(31, 31, 31);
+    border-radius: 8px;
+}
+
+#elenco .item img{
+    width: 100%;
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+}
