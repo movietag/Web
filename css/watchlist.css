@@ -28,4 +28,23 @@ dialog input[type="text"]{
 .bx-search-alt-2{
     color: grey;
     font-size: 14px;
+    margin: auto 0 auto 1em;
+    padding-bottom: 0.5em;
+}
+
+.filmeBusca{
+    display: flex;
+}
+
+.filmeBusca img {
+    max-width: 15vh;
+    border-radius: 8px;
+}
+
+.filmeBusca div{
+    margin-left: 1em;
+}
+
+.filmeBusca h2, .filmeBusca p{
+    
 }
