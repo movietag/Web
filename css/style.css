@@ -3,7 +3,7 @@
 
 /* Reset CSS  */
 *{
-    font-family: 'Kanit';
+    font-family: 'Kanit', 'Roboto';
     font-weight: 300;
     margin: 0;
     padding: 0;
@@ -286,4 +286,58 @@ header img:hover{
 @keyframes fadeIn {
     from {opacity: 0;}
     to {opacity:1 ;}
+}
+
+/* dialogs */
+dialog {
+    background-color: #333; /* Cor do fundo do diálogo */
+    border: none; /* Remove a borda padrão */
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
+    color: white;
+    margin: auto;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.65); /* Fundo escurecido */
+}
+
+.dialog-header, .dialog-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dialog-footer {
+    margin-top: 1em;
+    justify-content: flex-end;
+}
+
+dialog input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: transparent;
+    color: #ddd;
+    font-size: 14px;
+    transition: box-shadow 0.3s ease, border-bottom 0.3s ease; /* Transição suave */
+}
+
+dialog input[type="text"]:focus {
+    outline: none; /* Remove o contorno padrão */
+    border-bottom: 1px solid transparent; /* Linha inferior invisível */
+    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
+}
+
+dialog input[type="text"]:hover {
+    outline: none; /* Remove o contorno padrão */
+    border-bottom: 1px solid transparent; /* Linha inferior invisível */
+    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
+}
+
+.dialog-header{
+    font-size: 1.5em;
+    font-weight: bolder;
 }

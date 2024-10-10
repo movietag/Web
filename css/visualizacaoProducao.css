@@ -289,18 +289,23 @@ section .lista .item-logo img{
 
 .vertical img{
     margin-right: 1em;
+    border-end-end-radius: 0;
+    border-start-end-radius: 0;
     width: 9em;
     height: 13.5em;
 }
 .vertical .item{
+    background-color: rgb(31, 31, 31);
     text-align: left;
-    margin-bottom: 3em;
+    max-width: 100%;
+    margin-bottom: 2em;
     transform: none;
     cursor: default;
+    border-radius: 8px;
 }
 
 .vertical p{
-    width: 40vw;
+    width: 100%;
 } 
 
 #elenco .item img{
@@ -372,29 +377,13 @@ section .lista .item-logo img{
     opacity: 0.7; /* Mostra o tooltip no hover */
   }
 
-dialog {
-    background-color: #333; /* Cor do fundo do diálogo */
-    border: none; /* Remove a borda padrão */
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-    color: white;
+#myDialogAvaliar{
+    width: 20vw;
 }
 
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.65); /* Fundo escurecido */
+#myDialogSalvarProd{
+    width: 25vw;
 }
-
-.dialog-header, .dialog-footer {
-    display: flex;
-    justify-content: space-between;
-}
-
-.dialog-footer {
-    margin-top: 1em;
-    justify-content: flex-end;
-}
-
 
 button {
     background-color: #e6c222;
@@ -415,34 +404,6 @@ button.cancel-btn {
 
 button.cancel-btn:hover {
     background-color: #777;
-}
-
-.dialog-content input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-bottom: 1px solid #555;
-    background-color: transparent;
-    color: #ddd;
-    font-size: 14px;
-    transition: box-shadow 0.3s ease, border-bottom 0.3s ease; /* Transição suave */
-}
-
-.dialog-content input[type="text"]:focus {
-    outline: none; /* Remove o contorno padrão */
-    border-bottom: 1px solid transparent; /* Linha inferior invisível */
-    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
-}
-
-.dialog-content input[type="text"]:hover {
-    outline: none; /* Remove o contorno padrão */
-    border-bottom: 1px solid transparent; /* Linha inferior invisível */
-    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
-}
-
-.dialog{
-    margin: auto;
 }
 
 /* Estilo das estrelas */
@@ -470,19 +431,6 @@ button.cancel-btn:hover {
 #novaLista{
     color: #777;
     cursor: pointer;
-}
-
-.dialog-header{
-    font-size: 1.5em;
-    font-weight: bolder;
-}
-
-#myDialogAvaliar{
-    width: 20vw;
-}
-
-#myDialogSalvarProd{
-    width: 25vw;
 }
 
 span{
@@ -520,7 +468,23 @@ label input[type="checkbox"]{
     transition: all 0.2s;
     border: 1px solid #ffffff;
 }
-/*Omena vai acertar dps :) ass.:Laun
-.card{
-    background-color: #e6c222;
-}*/
+
+.sub-p{
+    color: gray;
+}
+
+#elenco .item{
+    width: 12em;
+    margin: 0;
+}
+
+#elenco .item-background{
+    background-color: rgb(31, 31, 31);
+    border-radius: 8px;
+}
+
+#elenco .item img{
+    width: 100%;
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+}
