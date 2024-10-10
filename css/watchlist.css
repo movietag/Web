@@ -20,6 +20,12 @@
     margin-right: 0;
 }
 
+dialog{
+    position: absolute;
+    top: 10.5em;
+    right: 4em;
+}
+
 dialog input[type="text"]{
     padding: 0.5em 0;
     margin: 0 0 10px 0;

@@ -40,6 +40,33 @@
     <section>
         <div id="caixinha">
             <h1>Nome da Lista<a id="novaProducao">+ Nova Produção</a></h1>
+            <!-- dialog adicionar produção -->
+            <dialog id="buscarFilme">
+                <div class="dialog-header">
+                    <input type="text" name="tituloFilme" id="tituloFilme" placeholder="Digite o nome da produção..."><i class='bx bx-search-alt-2'></i>
+                </div>
+                <div class="dialog-content">
+                    <a href="" class="filmeBusca">
+                        <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ckklq45UxUkwgHve9xItXqXr06r.jpg" alt="Poster do Filme">
+                        <!-- texto -->
+                        <div>
+                            <h2>Midnight Cowboy<span>(1969)</span></h2>
+                            <p>Dirigido por John Schlesinger</p>
+                            <p>Filme</p>
+                        </div>
+                    </a>
+                    <hr>
+                    <a href="" class="filmeBusca">
+                        <img src="https://www.themoviedb.org/t/p/w1280/3eVSQJdiBin6A7F7nsg62eJFf0Y.jpg" alt="Poster do Filme">
+                        <!-- texto -->
+                        <div>
+                            <h2>Midnight Mass<span>(2021)</span></h2>
+                            <p>Criado por Mike Flanagan</p>
+                            <p>Série</p>
+                        </div>
+                    </a>
+                </div>
+            </dialog>
             <a href=""><i class='bx bxs-edit-alt'></i></a>
         </div>
         <!--caixa com todos os filmes-->
@@ -82,33 +109,6 @@
                 </div>
             </a>
         </div>
-        <!-- dialog adicionar produção -->
-        <dialog id="buscarFilme" open>
-            <div class="dialog-header">
-                <input type="text" name="tituloFilme" id="tituloFilme" placeholder="Digite o nome da produção..."><i class='bx bx-search-alt-2'></i>
-            </div>
-            <div class="dialog-content">
-                <a href="" class="filmeBusca">
-                    <img src="https://www.themoviedb.org/t/p/w600_and_h900_bestv2/ckklq45UxUkwgHve9xItXqXr06r.jpg" alt="Poster do Filme">
-                    <!-- texto -->
-                    <div>
-                        <h2>Midnight Cowboy<span>(1969)</span></h2>
-                        <p>Dirigido por John Schlesinger</p>
-                        <p>Filme</p>
-                    </div>
-                </a>
-                <hr>
-                <a href="" class="filmeBusca">
-                    <img src="https://www.themoviedb.org/t/p/w1280/3eVSQJdiBin6A7F7nsg62eJFf0Y.jpg" alt="Poster do Filme">
-                    <!-- texto -->
-                    <div>
-                        <h2>Midnight Mass<span>(2021)</span></h2>
-                        <p>Criado por Mike Flanagan</p>
-                        <p>Série</p>
-                    </div>
-                </a>
-            </div>
-        </dialog>
     </section>
     <!-- Footer -->
     <footer>
