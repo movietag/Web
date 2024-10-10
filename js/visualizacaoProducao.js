@@ -21,6 +21,8 @@ document.getElementById('confirmDialogAvaliar').addEventListener('click', () => 
 
 // Seleciona as estrelas e adiciona a funcionalidade de seleção
 const stars = document.querySelectorAll('.star');
+let selectedStar = null; // Variável para armazenar a estrela selecionada
+
 stars.forEach(star => {
     star.addEventListener('mouseover', () => {
         // Muda a cor das estrelas ao passar o mouse
@@ -37,6 +39,7 @@ stars.forEach(star => {
 
     star.addEventListener('click', () => {
         // Marca a estrela selecionada ao clicar
+        selectedStar = star; // Atualiza a estrela selecionada
         resetStarColors();
         star.style.color = '#ffc107';
         star.previousElementSibling.checked = true; // Marca o input associado
@@ -48,6 +51,13 @@ stars.forEach(star => {
             prevSibling = prevSibling.previousElementSibling;
         }
     });
+
+    star.addEventListener('mouseleave', () => {
+        // Volta a cor das estrelas ao estado selecionado quando o mouse sai
+        if (selectedStar) {
+            applySelectedStarColors(); // Mantém as estrelas preenchidas até a selecionada
+        }
+    });
 });
 
 function resetStarColors() {
@@ -55,6 +65,21 @@ function resetStarColors() {
         star.style.color = '#aaa';
     });
 }
+
+function applySelectedStarColors() {
+    // Preenche as estrelas até a estrela selecionada
+    if (selectedStar) {
+        selectedStar.style.color = '#ffc107';
+        let prevSibling = selectedStar.previousElementSibling;
+        while (prevSibling) {
+            if (prevSibling.classList.contains('star')) {
+                prevSibling.style.color = '#ffc107';
+            }
+            prevSibling = prevSibling.previousElementSibling;
+        }
+    }
+}
+
 
 
 

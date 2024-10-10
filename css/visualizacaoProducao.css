@@ -248,7 +248,6 @@ h1{
     margin: 0;
     flex-wrap: wrap;
     width: 20vw;
-    text-align: end;
 }
 
 /* Estilização da altura imagem principal do banner dentro de um contêiner */
@@ -490,6 +489,7 @@ label input[type="checkbox"]{
 #elenco .item{
     width: 12em;
     margin: 0;
+    margin-bottom: 1em;
 }
 
 #elenco .item-background{
