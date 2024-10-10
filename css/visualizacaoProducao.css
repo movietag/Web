@@ -373,29 +373,13 @@ section .lista .item-logo img{
     opacity: 0.7; /* Mostra o tooltip no hover */
   }
 
-dialog {
-    background-color: #333; /* Cor do fundo do diálogo */
-    border: none; /* Remove a borda padrão */
-    border-radius: 15px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra */
-    color: white;
+#myDialogAvaliar{
+    width: 20vw;
 }
 
-dialog::backdrop {
-    background-color: rgba(0, 0, 0, 0.65); /* Fundo escurecido */
+#myDialogSalvarProd{
+    width: 25vw;
 }
-
-.dialog-header, .dialog-footer {
-    display: flex;
-    justify-content: space-between;
-}
-
-.dialog-footer {
-    margin-top: 1em;
-    justify-content: flex-end;
-}
-
 
 button {
     background-color: #e6c222;
@@ -416,34 +400,6 @@ button.cancel-btn {
 
 button.cancel-btn:hover {
     background-color: #777;
-}
-
-.dialog-content input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: none;
-    border-bottom: 1px solid #555;
-    background-color: transparent;
-    color: #ddd;
-    font-size: 14px;
-    transition: box-shadow 0.3s ease, border-bottom 0.3s ease; /* Transição suave */
-}
-
-.dialog-content input[type="text"]:focus {
-    outline: none; /* Remove o contorno padrão */
-    border-bottom: 1px solid transparent; /* Linha inferior invisível */
-    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
-}
-
-.dialog-content input[type="text"]:hover {
-    outline: none; /* Remove o contorno padrão */
-    border-bottom: 1px solid transparent; /* Linha inferior invisível */
-    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
-}
-
-.dialog{
-    margin: auto;
 }
 
 /* Estilo das estrelas */
@@ -473,19 +429,6 @@ button.cancel-btn:hover {
     cursor: pointer;
 }
 
-.dialog-header{
-    font-size: 1.5em;
-    font-weight: bolder;
-}
-
-#myDialogAvaliar{
-    width: 20vw;
-}
-
-#myDialogSalvarProd{
-    width: 25vw;
-}
-
 span{
     cursor: default;
 }
@@ -498,6 +441,7 @@ label input[type="checkbox"]{
     padding: 1em;
 }
 
+<<<<<<< HEAD
 
 .sub-p{
     color: gray;
@@ -518,3 +462,9 @@ label input[type="checkbox"]{
     border-end-end-radius: 0;
     border-end-start-radius: 0;
 }
+=======
+/*Omena vai acertar dps :) ass.:Laun
+.card{
+    background-color: #e6c222;
+}*/
+>>>>>>> c6d788c4c36ec784ad5bab0665818f122eb3ec48
