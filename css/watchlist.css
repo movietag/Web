@@ -5,7 +5,7 @@
 }
 
 .bxs-edit-alt{
-    color: grey;
+    color: white;
     font-size: 1.8em;
 }
 
@@ -34,6 +34,8 @@ dialog input[type="text"]{
 
 .filmeBusca{
     display: flex;
+    text-decoration: none;
+    margin-top: 0.3em;
 }
 
 .filmeBusca img {
@@ -45,6 +47,20 @@ dialog input[type="text"]{
     margin-left: 1em;
 }
 
-.filmeBusca h2, .filmeBusca p{
-    
+.filmeBusca h2{
+    font-size: 1em;
+}
+
+.filmeBusca p{
+    font-size: 0.8em;
+}
+
+hr{
+    border-color: #555555;
+    margin: 1em 0;
+}
+
+span{
+    color: grey;
+    margin-left: 0.3em;
 }
