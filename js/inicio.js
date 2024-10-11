@@ -35,27 +35,48 @@ const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elemento
         item.classList.add('item'); // Adiciona a classe item, o estilizando
         console.log(element.media_type)
         if (element.media_type === "movie"){
+            let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
+            if (element.poster_path === null){
+                url = "./img/placeholder/MovieTag-NotFoundImage.png";
+            };
+
             item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
-            <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+            <img src=${url}>
             <span>${element.title}</span>
             </a>`; // Cria o item com sua imagem, link e título
             itens.appendChild(item); // Adiciona o item à div itens
         } else if(element.media_type === "person"){
+            let url = `https://image.tmdb.org/t/p/w300${element.profile_path}`;
+            if (element.profile_path === null){
+                url = "./img/placeholder/MovieTag-NotFoundImage.png";
+            };
+            
             item.innerHTML = `<a href="visualizacaoIntegrante.html?type=person&query=${element.id}">
-            <img src="https://image.tmdb.org/t/p/w300${element.profile_path}"}>
+            <img src=${url}>
             <span>${element.name}</span>
             </a>`; // Cria o item com sua imagem, link e título
             itens.appendChild(item); // Adiciona o item à div itens
 
         } else if(element.media_type === "tv"){
+            let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
+            if (element.poster_path === null){
+                url = "./img/placeholder/MovieTag-NotFoundImage.png";
+            };
+
             item.innerHTML = `<a href="visualizacaoProducao.html?type=tv&query=${element.id}">
-            <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+            <img src=${url}>
             <span>${element.name}</span>
             </a>`; // Cria o item com sua imagem, link e título
             itens.appendChild(item); // Adiciona o item à div itens
         } else{
+            let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
+            if (element.poster_path === null) {
+                url = "./img/placeholder/MovieTag-NotFoundImage.png";
+            };
+
+
             item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
-            <img src="https://image.tmdb.org/t/p/w300${element.poster_path}"}>
+            <img src=${url}>
             <span>${element.title}</span>
             </a>`; // Cria o item com sua imagem, link e título
             itens.appendChild(item); // Adiciona o item à div itens

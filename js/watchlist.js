@@ -1,6 +1,6 @@
 // Seleciona o botão e o diálogo
-const openNovaProd = document.getElementById('#novaProducao');
-const dialogNovaProd = document.getElementById('#buscarFilme');
+const openNovaProd = document.getElementById('novaProducao');
+const dialogNovaProd = document.getElementById('buscarFilme');
 // const cancelButtonAvaliar = document.getElementById('cancelDialogAvaliar');
 
 // Abre o diálogo quando o botão é clicado
