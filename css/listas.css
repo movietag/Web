@@ -1,31 +1,83 @@
-#caixa-listas{
-    display: flex;
-    max-width: 65vw;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-#info-listas{
-    display: flex;
-
-}
-
-a{
-    color: aliceblue;
-    font-size: 0.8rem;
-}
-
-a:hover{
-    color: #c0be2c;
+body{
+    box-sizing: border-box;
 }
 
 h1{
     align-self: center;
 }
 
+a{
+    text-decoration: none;
+}
+
+#criarListas{
+    display: flex;
+    align-items: center;
+    width: fit-content;
+}
+
+#caixaUm{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10em;
+    background-color: rgb(62, 62, 62);
+    height: 15em;
+}
+
+#caixaUm p{
+    font-size: 6em;
+}
+
+#caixaDois, #caixaTres{
+    width: 0.6em;
+}
+
+#caixaDois{
+    height: 13.5em;
+    background-color: rgb(81, 81, 81);
+}
+
+#caixaTres{
+    height: 12em;
+    background-color: rgb(100, 100, 100);
+}
+
+#caixa-listas{
+    display: flex;
+    max-width: 65vw;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-bottom: 2em;
+    gap: 2em;
+}
+
+#caixinha-listas{
+    color: aliceblue;
+}
+
+#caixinha-listas:hover{
+    color: #c0be2c;
+}
+
 .poster{
     max-width: 10em;
     border-radius: 0;
-    margin-left: 2rem;
-    margin-top: 1.8rem;
+}
+
+#info-listas{
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    margin-top: 0.5em;
+}
+
+#info-listas h2{
+    max-width: 6em;
+}
+
+#info-listas p{
+    color: grey;
+    margin-top: 0.5em;
 }
