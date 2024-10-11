@@ -52,18 +52,28 @@ stars.forEach(star => {
         }
     });
 
+
     star.addEventListener('mouseleave', () => {
-        // Volta a cor das estrelas ao estado selecionado quando o mouse sai
+        // Ao sair, mantém as estrelas selecionadas
         if (selectedStar) {
-            applySelectedStarColors(); // Mantém as estrelas preenchidas até a selecionada
+            applySelectedStarColors(); // Volta à seleção anterior
+        }
+        if(selectedStar == null){
+            resetStarColors();
         }
     });
 });
 
 function resetStarColors() {
+    if(selectedStar == null){
     stars.forEach(star => {
         star.style.color = '#aaa';
     });
+    } else{
+        stars.forEach(star => {
+            star.style.color = 'rgba(255, 193, 7, 0.5)';
+        });
+    }
 }
 
 function applySelectedStarColors() {
@@ -71,11 +81,22 @@ function applySelectedStarColors() {
     if (selectedStar) {
         selectedStar.style.color = '#ffc107';
         let prevSibling = selectedStar.previousElementSibling;
+        
+        // Preenche as estrelas anteriores com a cor cheia
         while (prevSibling) {
             if (prevSibling.classList.contains('star')) {
                 prevSibling.style.color = '#ffc107';
             }
             prevSibling = prevSibling.previousElementSibling;
+        }
+
+        // As estrelas posteriores
+        let nextSibling = selectedStar.nextElementSibling;
+        while (nextSibling) {
+            if (nextSibling.classList.contains('star')) {
+                nextSibling.style.color = 'rgba(255, 193, 7, 0.5)'; // Cor de fundo 
+            }
+            nextSibling = nextSibling.nextElementSibling;
         }
     }
 }
