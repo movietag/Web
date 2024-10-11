@@ -17,3 +17,13 @@
     color: #c50707;
     font-size: 1.4em;
 }
+
+h1 input[type="text"]{
+    font-size: 0.7em;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5em 0.7em;
+    outline: none;
+    background-color: #515160;
+    color: white;
+}
