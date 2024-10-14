@@ -1,112 +1,111 @@
-// Pegando os Elementos na DOM
-const fPesquisa = document.querySelector("form"); // Formulário da Pesquisa
-const lista = document.querySelectorAll(".lista"); // Pega  a div em que o conteúdo 'Popular' aparece (Apenas para demonstração)
+// Elementos da DOM
+const formularioPesquisa = document.querySelector("form"); // Formulário de pesquisa
+const listasFilmes = document.querySelectorAll(".lista"); // Lista de filmes popular e outras
 
-// Adicionando Eventos
-fPesquisa.onsubmit = (ev) =>{ // Quando a pesquisa é submetida...
-    ev.preventDefault(); // Não permite que a página reenicie
-    const resultados = document.querySelector("#s02 .lista"); // Pega a div dos resultados para a preencher
-    let busca = ev.target.pesquisa.value; // Pega o valor de dentro da pesquisa
-
-    if (busca != ""){ // Se a busca for diferente de vazio...
-        fetch(`https://api.themoviedb.org/3/search/multi?query=${busca}}&include_adult=false&language=pt-BR&page=1`, options)
-            .then(response => response.json())
-            .then(response => carregaFilmes(resultados, response))
-        pesquisa(); // Altera as divs da tela inicial para a de pesquisa
-    }
-
-}
-
-
-// Funções
-function pesquisa(){ // Função que mostra a div responsável pelos resultados
-    const areas = document.querySelectorAll(".area");
-    areas[0].style.display = "none";
-    areas[1].style.display = "block";
-}
-
-const carregaFilmes = (lista, json) => { //Carrega o JSON, guardando os elementos na div correspondente
-    const itens = lista.lastElementChild;
-
-    itens.replaceChildren();
-
-    json.results.forEach(element => { // Para cada elemento de results de Json...
-        let item = document.createElement('div'); // Cria a div
-        item.classList.add('item'); // Adiciona a classe item, o estilizando
-        console.log(element.media_type)
-        if (element.media_type === "movie"){
-            let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
-            if (element.poster_path === null){
-                url = "./img/placeholder/MovieTag-NotFoundImage.png";
-            };
-
-            item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
-            <img src=${url}>
-            <span>${element.title}</span>
-            </a>`; // Cria o item com sua imagem, link e título
-            itens.appendChild(item); // Adiciona o item à div itens
-        } else if(element.media_type === "person"){
-            let url = `https://image.tmdb.org/t/p/w300${element.profile_path}`;
-            if (element.profile_path === null){
-                url = "./img/placeholder/MovieTag-NotFoundImage.png";
-            };
-            
-            item.innerHTML = `<a href="visualizacaoIntegrante.html?type=person&query=${element.id}">
-            <img src=${url}>
-            <span>${element.name}</span>
-            </a>`; // Cria o item com sua imagem, link e título
-            itens.appendChild(item); // Adiciona o item à div itens
-
-        } else if(element.media_type === "tv"){
-            let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
-            if (element.poster_path === null){
-                url = "./img/placeholder/MovieTag-NotFoundImage.png";
-            };
-
-            item.innerHTML = `<a href="visualizacaoProducao.html?type=tv&query=${element.id}">
-            <img src=${url}>
-            <span>${element.name}</span>
-            </a>`; // Cria o item com sua imagem, link e título
-            itens.appendChild(item); // Adiciona o item à div itens
-        } else{
-            let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
-            if (element.poster_path === null) {
-                url = "./img/placeholder/MovieTag-NotFoundImage.png";
-            };
-
-
-            item.innerHTML = `<a href="visualizacaoProducao.html?type=movie&query=${element.id}">
-            <img src=${url}>
-            <span>${element.title}</span>
-            </a>`; // Cria o item com sua imagem, link e título
-            itens.appendChild(item); // Adiciona o item à div itens
-        }
-
-        
-
-    });
-}
-
-// API
-const options = { //Opções enviadas para a API
+// Opções de configuração da API
+const opcoesApi = {
     method: 'GET',
     headers: {
-      accept: 'application/json',
-      Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWExZjFhNGRjYzY2M2EzMTRlNmUwMDhhOGI5YWEyYyIsInN1YiI6IjY1ZDkxNjJiMGYwZGE1MDE2MjMyMjViMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qCV25ZQQfVb7YOVnVVFI_xn7MAnNYMbZRrj0SApcL7k'
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWExZjFhNGRjYzY2M2EzMTRlNmUwMDhhOGI5YWEyYyIsInN1YiI6IjY1ZDkxNjJiMGYwZGE1MDE2MjMyMjViMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qCV25ZQQfVb7YOVnVVFI_xn7MAnNYMbZRrj0SApcL7k'
     }
-  };
+};
 
-fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1', options) // Recebe os dados da lista 'popular' da API
-    .then(response => response.json())
-    .then(json => carregaFilmes(lista[0], json))
+// Evento de submissão da pesquisa
+formularioPesquisa.onsubmit = (evento) => {
+    evento.preventDefault(); // Evita o recarregamento da página
+    const areaResultados = document.querySelector("#s02 .lista"); // Área onde os resultados serão exibidos
+    const termoPesquisa = evento.target.pesquisa.value; // Termo da pesquisa
 
-fetch('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1', options)
-    .then(response => response.json())
-    .then(json => carregaFilmes(lista[1], json))
+    if (termoPesquisa) { // Se o termo de pesquisa não for vazio
+        buscarFilmes(termoPesquisa, areaResultados);
+        exibirAreaPesquisa(); // Exibe a área de pesquisa
+    }
+};
 
+// Função para buscar filmes na API
+const buscarFilmes = (termo, lista) => {
+    const url = `https://api.themoviedb.org/3/search/multi?query=${termo}&include_adult=false&language=pt-BR&page=1`;
 
-fetch('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1', options)
-    .then(response => response.json())
-    .then(json => carregaFilmes(lista[2], json))
+    fetch(url, opcoesApi)
+        .then(response => response.json())
+        .then(dados => carregarFilmes(lista, dados));
+};
 
+// Função para exibir a área de pesquisa
+const exibirAreaPesquisa = () => {
+    const areas = document.querySelectorAll(".area");
+    areas[0].style.display = "none"; // Esconde a tela inicial
+    areas[1].style.display = "block"; // Mostra a tela de resultados
+};
+
+// Função para carregar filmes e outros resultados na lista
+const carregarFilmes = (lista, dados) => {
+    const containerItens = lista.lastElementChild;
+    containerItens.replaceChildren(); // Limpa os itens anteriores
+
+    dados.results.forEach(item => {
+        const elemento = document.createElement('div');
+        elemento.classList.add('item');
+
+        const { urlImagem, nome, urlDetalhes } = gerarDetalhesItem(item);
+        elemento.innerHTML = `
+            <a href="${urlDetalhes}">
+                <img src="${urlImagem}">
+                <span>${nome}</span>
+            </a>
+        `;
+        containerItens.appendChild(elemento);
+    });
+};
+
+// Função para gerar os detalhes de cada item (filme, série ou pessoa)
+const gerarDetalhesItem = (item) => {
+    let urlImagem;
+    let nome;
+    let urlDetalhes;
+
+    if (item.media_type === "movie") {
+        urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
+        nome = item.title;
+        urlDetalhes = `visualizacaoProducao.html?type=movie&query=${item.id}`;
+    } else if (item.media_type === "person") {
+        urlImagem = criarUrlImagem(item.profile_path, 'MovieTag-NotFoundImage.png');
+        nome = item.name;
+        urlDetalhes = `visualizacaoIntegrante.html?type=person&query=${item.id}`;
+    } else if (item.media_type === "tv") {
+        urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
+        nome = item.name;
+        urlDetalhes = `visualizacaoProducao.html?type=tv&query=${item.id}`;
+    } else {
+        urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
+        nome = item.title || item.name; // Caso especial
+        urlDetalhes = `visualizacaoProducao.html?type=movie&query=${item.id}`;
+    }
+
+    return { urlImagem, nome, urlDetalhes };
+};
+
+// Função para criar a URL da imagem ou usar uma imagem substituta se não houver
+const criarUrlImagem = (caminho, imagemPadrao) => {
+    return caminho ? `https://image.tmdb.org/t/p/w300${caminho}` : `./img/placeholder/${imagemPadrao}`;
+};
+
+// Carrega listas iniciais da API (Popular, Em exibição, Melhor avaliados)
+const carregarListasIniciais = () => {
+    const urlsListas = [
+        'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1',
+        'https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1',
+        'https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1'
+    ];
+
+    urlsListas.forEach((url, index) => {
+        fetch(url, opcoesApi)
+            .then(response => response.json())
+            .then(json => carregarFilmes(listasFilmes[index], json));
+    });
+};
+
+// Inicializa o carregamento das listas iniciais ao carregar a página
+carregarListasIniciais();
 
