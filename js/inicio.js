@@ -68,19 +68,19 @@ const gerarDetalhesItem = (item) => {
     if (item.media_type === "movie") {
         urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
         nome = item.title;
-        urlDetalhes = `visualizacaoProducao.html?type=movie&query=${item.id}`;
+        urlDetalhes = `visualizacaoProducao.php?type=movie&query=${item.id}`;
     } else if (item.media_type === "person") {
         urlImagem = criarUrlImagem(item.profile_path, 'MovieTag-NotFoundImage.png');
         nome = item.name;
-        urlDetalhes = `visualizacaoIntegrante.html?type=person&query=${item.id}`;
+        urlDetalhes = `visualizacaoIntegrante.php?type=person&query=${item.id}`;
     } else if (item.media_type === "tv") {
         urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
         nome = item.name;
-        urlDetalhes = `visualizacaoProducao.html?type=tv&query=${item.id}`;
+        urlDetalhes = `visualizacaoProducao.php?type=tv&query=${item.id}`;
     } else {
         urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
         nome = item.title || item.name; // Caso especial
-        urlDetalhes = `visualizacaoProducao.html?type=movie&query=${item.id}`;
+        urlDetalhes = `visualizacaoProducao.php?type=movie&query=${item.id}`;
     }
 
     return { urlImagem, nome, urlDetalhes };

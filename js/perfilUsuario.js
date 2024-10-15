@@ -1,5 +1,5 @@
 document.querySelector("#botao").onclick = function () {
-    window.location = "editarPerfil.html";
+    window.location = "editarPerfil.php";
 };
 
 document.querySelector("#estatisticas").addEventListener("click", function () {

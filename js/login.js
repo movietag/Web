@@ -38,7 +38,7 @@ form.onsubmit = (ev) => {
                 // Verifica se a senha corresponde
                 if(pessoa.senha === uSenha.value){
                     // Redireciona para a página principal e define o status como "true" no localStorage
-                    window.location.href = "index.html";
+                    window.location.href = "index.php";
                     localStorage.setItem('status', "true");
                 } else {
                     // Se a senha não corresponder, altera a borda dos campos de entrada para vermelho
