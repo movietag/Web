@@ -1,5 +1,5 @@
 <nav>
-    <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+    <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
     <ul class="menu">
         <!-- Itens do Menu  -->
         <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
