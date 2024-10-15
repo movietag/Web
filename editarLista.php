@@ -18,10 +18,10 @@
     <!-- Menu -->
     <header>
         <nav>
-            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
             <ul class="menu">
                 <!-- Itens do Menu  -->
-                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav"> <a href="buscaAvancada.php">Busca Avançada</a></li>
                 <li class="lista-nav" id="popup">
                     <a href="">Minhas Listas</a>
                     <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
@@ -29,9 +29,9 @@
                 <li class="lista-nav" id="btnConta">
                     <div>Conta</div>
                     <ul class="backdown-menu">
-                        <li ><a href="login.html">Entrar</a></li>
-                        <li><a href="cadastro.html">Registrar</a></li>
-                        <li><a href="perfilUsuario.html">Perfil</a></li>
+                        <li ><a href="login.php">Entrar</a></li>
+                        <li><a href="cadastro.php">Registrar</a></li>
+                        <li><a href="perfilUsuario.php">Perfil</a></li>
                         <li><a href=""></a>Sair</li>
                     </ul>
                 </li>
@@ -68,12 +68,12 @@
                     </a>
                 </div>
             </dialog>
-            <a href="visualizacaoWatchlist.html"><i class='bx bx-check'></i></a>
+            <a href="visualizacaoWatchlist.php"><i class='bx bx-check'></i></a>
         </div>
         <!--caixa com todos os filmes-->
         <div class="itens resultados">
             <!-- Item -->
-            <a href="visualizacaoProducao.html?query=382614"  class="item filme">
+            <a href="visualizacaoProducao.php?query=382614"  class="item filme">
                 <img src="img/posteres/Poster-TBH.jpg" alt="Poster do Filme">
                 <!-- texto -->
                 <div>
@@ -86,7 +86,7 @@
                         Quando sua mãe descobre sobre o seu plano, ela decide que eles irão colocar a ideia em prática.</p>    
                 </div>
             </a>
-            <a href="visualizacaoProducao.html?query=438631" class="item filme">
+            <a href="visualizacaoProducao.php?query=438631" class="item filme">
                 <img src="img/posteres/Poster-Duna-1.jpg" alt="Poster do Filme">
                 <!-- texto -->
                 <div>
@@ -99,7 +99,7 @@
                         A única fonte da especiaria Melange, a substância mais importante do cosmos, Arrakis se mostra ser um planeta nem um pouco fácil de governar.</p>
                 </div>
             </a>
-            <a href="visualizacaoProducao.html?query=142" class="item filme">
+            <a href="visualizacaoProducao.php?query=142" class="item filme">
                 <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
                 <!-- texto -->
                 <div>
@@ -110,7 +110,7 @@
                     <p>Um conto de amor sobre o relacionamento de dois jovens, Ennis Del Mar, um rancheiro de Wyoming e Jack Twist, um vaqueiro de rodeio, que se encontram no verão de 1963, e nos anos seguintes lutam secretamente para entender e se manter o amor que nutrem um pelo outro.</p>
                 </div>
             </a>
-            <a href="visualizacaoProducao.html?query=324857" class="item filme">
+            <a href="visualizacaoProducao.php?query=324857" class="item filme">
                 <img src="img/posteres/miranhaverso.jpg" alt="Poster do Filme">
                 <!-- texto -->
                 <div>
@@ -129,7 +129,7 @@
         
         <ul class="column">
             <li><h2>Básico</h2></li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
 
         <ul class="column">

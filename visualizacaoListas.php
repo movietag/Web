@@ -15,10 +15,10 @@
     <!-- Menu -->
     <header>
         <nav>
-            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
             <ul class="menu">
                 <!-- Itens do Menu  -->
-                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav"> <a href="buscaAvancada.php">Busca Avançada</a></li>
             
                 <li class="lista-nav" id="popup">
                     <a href="">Minhas Listas</a>
@@ -27,9 +27,9 @@
                 <li class="lista-nav" id="btnConta">
                     <div>Conta</div>
                     <ul class="backdown-menu">
-                        <li ><a href="login.html">Entrar</a></li>
-                        <li><a href="cadastro.html">Registrar</a></li>
-                        <li><a href="perfilUsuario.html">Perfil</a></li>
+                        <li ><a href="login.php">Entrar</a></li>
+                        <li><a href="cadastro.php">Registrar</a></li>
+                        <li><a href="perfilUsuario.php">Perfil</a></li>
                         <li><a href=""></a>Sair</li>
                     </ul>
                 </li>
@@ -39,14 +39,14 @@
     <h1>Minhas Listas</h1>
     <section>  
         <div id="caixa-listas">
-            <a href="editarLista.html">
+            <a href="editarLista.php">
                 <div id="criarListas">
                     <div id="caixaUm"><p>+</p></div>
                     <div id="caixaDois"></div>
                     <div id="caixaTres"></div>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.html" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -57,7 +57,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.html" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -68,7 +68,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.html" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -79,7 +79,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.html" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -90,7 +90,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.html" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -110,7 +110,7 @@
         
         <ul class="column">
             <li><h2>Básico</h2></li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
 
         <ul class="column">

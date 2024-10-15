@@ -18,10 +18,10 @@
     <header>
         <nav>
             <!-- Logo que leva à página inicial -->
-            <a href="index.html"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
+            <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
             <ul class="menu">
                 <!-- Itens do Menu -->
-                <li class="lista-nav"> <a href="buscaAvancada.html">Busca Avançada</a></li>
+                <li class="lista-nav"> <a href="buscaAvancada.php">Busca Avançada</a></li>
                 <li class="lista-nav" id="popup">
                     <a href="">Minhas Listas</a>
                     <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
@@ -29,9 +29,9 @@
                 <li class="lista-nav" id="btnConta">
                     <div>Conta</div>
                     <ul class="backdown-menu">
-                        <li><a href="login.html">Entrar</a></li>
-                        <li><a href="cadastro.html">Registrar</a></li>
-                        <li><a href="perfilUsuario.html">Perfil</a></li>
+                        <li><a href="login.php">Entrar</a></li>
+                        <li><a href="cadastro.php">Registrar</a></li>
+                        <li><a href="perfilUsuario.php">Perfil</a></li>
                         <li><a href=""></a>Sair</li>
                     </ul>
                 </li>
@@ -95,27 +95,27 @@
         </div>
 
         <div class="show pagAvals">
-            <a href="visualizacaoProducao.html?type=movie&query=142" class="filme">
+            <a href="visualizacaoProducao.php?type=movie&query=142" class="filme">
                 <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
                 <h2>O Segredo de Brokeback Mountain<span>(2005)</span></h2>
             </a>
-            <a href="visualizacaoProducao.html?type=movie&query=873" class="filme">
+            <a href="visualizacaoProducao.php?type=movie&query=873" class="filme">
                 <img src="https://www.themoviedb.org/t/p/w1280/xMiXnyVOIM8ZXr1DlnsKKcwHuil.jpg" alt="Poster do Filme">
                 <h2>A Cor Púrpura<span>(1985)</span></h2>
             </a>
-            <a href="visualizacaoProducao.html?type=tv&query=76331" class="filme">
+            <a href="visualizacaoProducao.php?type=tv&query=76331" class="filme">
                 <img src="https://www.themoviedb.org/t/p/w1280/7HW47XbkNQ5fiwQFYGWdw9gs144.jpg" alt="Poster do Filme">
                 <h2>Succession<span>(2018)</span></h2>
             </a>
-            <a href="visualizacaoProducao.html?type=movie&query=12155" class="filme">
+            <a href="visualizacaoProducao.php?type=movie&query=12155" class="filme">
                 <img src="https://www.themoviedb.org/t/p/w1280/fjaiHtykx4LcHJLzhKhn7tNPpAj.jpg" alt="Poster do Filme">
                 <h2>Alice no País das Maravilhas<span>(2010)</span></h2>
             </a>
-            <a href="visualizacaoProducao.html?type=tv&query=61889" class="filme">
+            <a href="visualizacaoProducao.php?type=tv&query=61889" class="filme">
                 <img src="https://www.themoviedb.org/t/p/w1280/x7zUHG5cko4ZXQO2209Qc2aoyrc.jpg" alt="Poster do Filme">
                 <h2>Demolidor<span>(2015)</span></h2>
             </a>
-            <a href="visualizacaoProducao.html?type=movie&query=858017" class="filme">
+            <a href="visualizacaoProducao.php?type=movie&query=858017" class="filme">
                 <img src="https://www.themoviedb.org/t/p/w1280/xDpqCK2MSaz5vCUHymed12sPFyR.jpg" alt="Poster do Filme">
                 <h2>Eu Vi o Brilho da TV<span>(2024)</span></h2>
             </a>
@@ -127,7 +127,7 @@
         <img src="img/Logo-Branca.svg" alt="logo-MT">
         <ul class="column">
             <li><h2>Básico</h2></li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
         <ul class="column">
             <li><h2>Contato</h2></li>

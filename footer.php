@@ -3,7 +3,7 @@
         
         <ul class="column">
             <li><h2>Básico</h2></li>
-            <li><a href="sobre.html">Sobre o MovieTag</a></li>
+            <li><a href="sobre.php">Sobre o MovieTag</a></li>
         </ul>
 
         <ul class="column">
