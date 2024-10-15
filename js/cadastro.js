@@ -148,6 +148,6 @@ function validarDados() {
 
     usuarios.push(dados); // Adiciona os novos dados ao array de usuários
     localStorage.setItem('usuarioDados', JSON.stringify(usuarios)); // Salva os usuários no localStorage
-    window.location.href = "index.html"; // Redireciona para a página inicial
+    window.location.href = "index.php"; // Redireciona para a página inicial
     localStorage.setItem('status', "true"); // Define o status como true no localStorage
 }

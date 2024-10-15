@@ -393,7 +393,7 @@ function carregaTags(json) {
         let item = document.createElement('a'); // Cria o a
         item.classList.add('item'); // Adiciona a classe item, o estilizando
 
-        item.setAttribute("href", `visualizacaoTag.html?query=${element.id}`);// Define o link
+        item.setAttribute("href", `visualizacaoTag.php?query=${element.id}`);// Define o link
         item.innerHTML = element.name; // Define o texto
 
         listaTags.appendChild(item);// Adiciona o item à lista de tags
@@ -414,7 +414,7 @@ function carregaElenco(json) {
             url = "./img/placeholder/MovieTag-NotFoundImage.png";
         }
 
-        item.innerHTML = `<div class="item-background"><a href="visualizacaoIntegrante.html?query=${element.id}">
+        item.innerHTML = `<div class="item-background"><a href="visualizacaoIntegrante.php?query=${element.id}">
         <img src=${url}>
         <p>${element.name}</p> <p class="sub-p">${element.character}</p>
         </a></div>`; // Cria o item com sua imagem, link e título
