@@ -6,7 +6,7 @@
     
         <li class="lista-nav" id="popup">
             <a href="">Minhas Listas</a>
-            <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Watchlist!</span>    
+            <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Minhas Listas</span>    
         </li>
         <li class="lista-nav" id="btnConta">
             <img id="img-user" src="img/circle_user_icon.svg" alt="" srcset="">
