@@ -11,6 +11,7 @@ openButtonAdicionarTag.addEventListener('click', () => {
 const inputTag = document.getElementById('inputTag');
 const confirmTag = document.getElementById('confirmTag');
 const tagsContainer = document.getElementById('tagsContainer');
+const cancelButtonAdicionarTag = document.getElementById('cancelDialogAdicionarTag');
 
 // Função para adicionar uma nova tag
 function adicionarTag() {
@@ -35,6 +36,15 @@ inputTag.addEventListener('keypress', (e) => {
     }
 });
 
+// Fecha o diálogo ao clicar no botão "Cancelar"
+cancelButtonAdicionarTag.addEventListener('click', () => {
+    dialogAdicionarTag.close(); // Fecha o diálogo
+});
+
+// Fecha o diálogo ao clicar no botão "Avaliar"
+document.getElementById('confirmDialogAdicionarTag').addEventListener('click', () => {
+    dialogAdicionarTag.close(); // Fecha o diálogo
+});
 
 
 
