@@ -451,7 +451,7 @@ label input[type="checkbox"]{
 
 }
 
-#addtag{
+#openDialogAdicionarTag{
     margin-left: 1em;;
     margin-bottom: 1em;
     background-color: #e6c222;
@@ -462,7 +462,7 @@ label input[type="checkbox"]{
     font-weight: normal;
 }
 
-#addtag:hover{
+#openDialogAdicionarTag:hover{
     color: #ffffff;
     background-color: #000000;
     transition: all 0.2s;
@@ -501,4 +501,69 @@ label input[type="checkbox"]{
     width: 100%;
     border-end-end-radius: 0;
     border-end-start-radius: 0;
+}
+
+
+
+
+/*Adicionar Tag*/
+
+/* Tag Input Dialog */
+#tagsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.tag {
+    background-color: #444;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: inline-block;
+}
+
+.tag-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#inputTag {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: transparent;
+    color: #ddd;
+    font-size: 14px;
+    transition: box-shadow 0.3s ease, border-bottom 0.3s ease;
+}
+
+#inputTag:focus {
+    outline: none;
+    border-bottom: 1px solid transparent;
+    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9;
+}
+
+.check-btn {
+    background-color: #444;
+    color: #ddd;
+    border: none;
+    border-radius: 50%;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.check-btn:hover {
+    background-color: #555;
+}
+
+#recomendacoesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
 }

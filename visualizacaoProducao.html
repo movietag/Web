@@ -122,7 +122,7 @@
 
                     <div id="tagsAssociadas_add">
                         <h2>Tags Associadas</h2>
-                        <button class="banner_button" id="addtag">Adicionar Tag</button>
+                        <button class="banner_button" id="openDialogAdicionarTag">Adicionar Tag</button>
                     </div>
 
                     <div class="tags">
@@ -224,6 +224,40 @@
             <button class="confirm-btn" id="confirmDialogAvaliar">Avaliar</button>
         </div>
     </dialog>
+
+
+        <!-- Dialog Adicionar Tag -->
+    <dialog id="myDialogAdicionarTag">
+        <div class="dialog-header">Adicionar Tag</div>
+        <hr>
+        <div class="dialog-content">
+            <!-- Contêiner das tags adicionadas -->
+            <div id="tagsContainer"></div>
+
+            <!-- Input para adicionar novas tags -->
+            <div class="tag-input-wrapper">
+                <input type="text" id="inputTag" placeholder="Adicionar Tag">
+                <button id="confirmTag" class="check-btn">&#10004;</button> <!-- Verificação (✔️) -->
+            </div>
+
+            <!-- Espaço para recomendações -->
+            <div id="recomendacoesContainer">
+                <span class="tag">Dark</span>
+                <span class="tag">Desventuras</span>
+                <span class="tag">Dinossauro</span>
+                <span class="tag">Doce</span>
+                <span class="tag">Drama</span>
+                <span class="tag">Droga</span>
+                <span class="tag">Dragão</span>
+            </div>
+        </div>
+
+        <div class="dialog-footer">
+            <button class="cancel-btn" id="cancelDialogTag">Cancelar</button>
+            <button class="confirm-btn" id="confirmDialogTag">Adicionar</button>
+        </div>
+    </dialog>
+
 
 
     <!-- Footer -->

@@ -1,3 +1,47 @@
+//Adicionar Tag
+const openButtonAdicionarTag = document.getElementById('openDialogAdicionarTag');
+const dialogAdicionarTag = document.getElementById('myDialogAdicionarTag');
+
+openButtonAdicionarTag.addEventListener('click', () => {
+    dialogAdicionarTag.showModal(); // Exibe o diálogo como modal
+});
+
+
+// Elementos HTML
+const inputTag = document.getElementById('inputTag');
+const confirmTag = document.getElementById('confirmTag');
+const tagsContainer = document.getElementById('tagsContainer');
+
+// Função para adicionar uma nova tag
+function adicionarTag() {
+    const tagText = inputTag.value.trim();
+    if (tagText) {
+        const newTag = document.createElement('span');
+        newTag.className = 'tag';
+        newTag.textContent = tagText;
+        tagsContainer.appendChild(newTag);
+        inputTag.value = ''; // Limpa o input para nova tag
+    }
+}
+
+// Eventos
+confirmTag.addEventListener('click', adicionarTag);
+
+// Permite adicionar tag ao pressionar "Enter"
+inputTag.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Evita quebra de linha
+        adicionarTag();
+    }
+});
+
+
+
+
+
+
+
+
 // Seleciona o botão e o diálogo
 const openButtonAvaliar = document.getElementById('openDialogAvaliar');
 const dialogAvaliar = document.getElementById('myDialogAvaliar');
