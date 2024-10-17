@@ -93,6 +93,7 @@ hr{
 .itens{
     overflow-x: hidden;
 }
+
 .pagAvals{
     flex-wrap: wrap;
     justify-content: space-between;
