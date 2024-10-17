@@ -18,7 +18,7 @@
     </header>
     <h1>Minhas Listas</h1>
     <section>  
-        <div id="caixa-listas">
+        <div id="itens caixa-listas">
             <a href="editarLista.php">
                 <div id="criarListas">
                     <div id="caixaUm"><p>+</p></div>
@@ -26,7 +26,7 @@
                     <div id="caixaTres"></div>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="item caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -37,7 +37,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="item caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -48,7 +48,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="item caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -59,7 +59,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="item caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -70,7 +70,7 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoWatchlist.php" class="item caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>

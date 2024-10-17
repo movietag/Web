@@ -74,7 +74,7 @@
             </ul>    
         </div>
 
-        <div class="show pagAvals itens">
+        <div id="aa" class="show itens pagAvals">
             <a href="visualizacaoProducao.php?type=movie&query=142" class="item filme">
                 <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
                 <h2>O Segredo de Brokeback Mountain<span>(2005)</span></h2>

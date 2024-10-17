@@ -32,7 +32,7 @@
 }
 
 .rotulo{
-    font-weight: bold;
+    font-weight: 400;
 }
 
 #botao{
@@ -60,9 +60,6 @@ hr{
     max-width: 60vw;
     margin: 2em auto;
 }
-
-
-
 
 /* tags do filme */
 .pagTags{
@@ -92,6 +89,13 @@ hr{
 /* filmes avaliados */
 .itens{
     overflow-x: hidden;
+    flex-wrap: wrap;
+}
+
+.item{
+    flex-direction: column;
+    margin-right: 0;
+    padding-right: 0;
 }
 
 .pagAvals{
@@ -101,7 +105,7 @@ hr{
     margin: 0 auto;
 }
 
-.item{
+.itens .item a{
     margin-right: 0;
     padding-right: 0;
 }
