@@ -50,26 +50,6 @@
                 <div class="lista">
                     <h2>Filmes Relacionados</h2>
                     <div class="itens">
-                        <div class="item">
-                            <a href="visualizacaoProducao.php?query=693134">  
-                                <img src="img/posteres/Poster-Duna.jpg" alt="Poster-Filme">
-                                <span>Duna: Parte Dois (2024)</span>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a href="visualizacaoProducao.php?query=438631"> 
-                                <img src="img/posteres/Poster-Duna-1.jpg" alt="Poster-Filme">
-                                <span>Duna (2021)</span>
-                            </a>
-                        </div>
-
-                        <div class="item">
-                            <a href="visualizacaoProducao.php?query=398818"> 
-                                <img src="img/posteres/Poster-MCPSN.jpg" alt="Poster-Filme">
-                                <span>Me Chame Pelo Seu Nome (2017)</span>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
