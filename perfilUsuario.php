@@ -48,9 +48,16 @@
             <label for="avaliacoes">Avaliações</label>
         </div>
 
-        <div class="pagCharts">
-            <canvas id="chartLinhas"></canvas>
-            <canvas id="chartBarras"></canvas>
+        <div class="dashboard"> 
+            <div class="chart-container">
+                <canvas id="chartLinhas"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chartBarras"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chartPizzas"></canvas>
+            </div>
         </div>
 
         <div class="show pagTags">

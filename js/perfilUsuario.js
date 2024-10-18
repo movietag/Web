@@ -3,19 +3,19 @@ document.querySelector("#botao").onclick = function () {
 };
 
 document.querySelector("#estatisticas").addEventListener("click", function () {
-    document.querySelector(".pagCharts").classList.remove("show");
+    document.querySelector(".dashboard").classList.remove("show");
     document.querySelector(".pagTags").classList.add("show");
     document.querySelector(".pagAvals").classList.add("show");
 });
 
 document.querySelector("#tags").addEventListener("click", function () {
-    document.querySelector(".pagCharts").classList.add("show");
+    document.querySelector(".dashboard").classList.add("show");
     document.querySelector(".pagTags").classList.remove("show");
     document.querySelector(".pagAvals").classList.add("show");
 });
 
 document.querySelector("#avaliacoes").addEventListener("click", function () {
-    document.querySelector(".pagCharts").classList.add("show");
+    document.querySelector(".dashboard").classList.add("show");
     document.querySelector(".pagTags").classList.add("show");
     document.querySelector(".pagAvals").classList.remove("show");
 });
@@ -35,6 +35,39 @@ const barColors = [
 
 const linexValues = ["Jan", "Fev", "Mar", "Abril", "Maio"];
 
+const engajamentoLabels = ["Tag 1", "Tag 2", "Tag 3", "Tag 4", "Tag 5"];
+const engajamentoData = [12, 19, 3, 5, 2];
+const engajamentoColors = [
+    "#ff6384",
+    "#36a2eb",
+    "#ffce56",
+    "#4bc0c0",
+    "#9966ff"
+];
+
+new Chart("chartEngajamento", {
+    type: "bar",
+    data: {
+        labels: engajamentoLabels,
+        datasets: [{
+            label: "Tags Criadas",
+            backgroundColor: engajamentoColors,
+            data: engajamentoData
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            title: {
+                display: true,
+                text: "Engajamento em Tags Criadas",
+                font: {
+                    size: 24,
+                }
+            }
+        }
+    }
+});
 
 
 new Chart("chartPizzas", {
