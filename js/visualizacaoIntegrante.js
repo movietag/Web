@@ -15,6 +15,10 @@ fetch(`https://api.themoviedb.org/3/person/${myParam.query}}?language=pt-BR`, op
   .then(response => response.json())
   .then(response => carregaDados(response))
 
+fetch(`https://api.themoviedb.org/3/person/${myParam.query}/combined_credits?language=pt-BR`, options)
+  .then(response => response.json())
+  .then(response => carregaFilmes(response))
+
 function carregaDados(json, n){
 
     if (n !== 1){
@@ -40,8 +44,48 @@ function carregaDados(json, n){
     } else{
         bio.innerHTML = json.biography;
     }
-    
+}
 
+function carregaFilmes(data){
+    const movies = data.cast; // ou data.crew, dependendo do que você deseja
+    // Ordenar os filmes pela popularidade
+
+    const sortedMovies = movies.sort((a, b) => {
+        // Primeiro compara o order
+        if (a.order !== b.order) {
+            return a.order - b.order; // Ordena por 'order' de forma ascendente
+        }
+        // Se os orders forem iguais, compara a popularidade
+        return b.popularity - a.popularity}); // Ordena por 'popularity' de forma descendente
+
+    // Exibir os filmes ordenados
+    const itens = document.querySelector('.lista').lastElementChild;
+    criaFilmes(sortedMovies, itens)
+    console.log(sortedMovies)
+}
+
+function criaFilmes(movies, itens){
+
+    const limitedMovies = movies.slice(0, 7);
+    limitedMovies.forEach(element => {
+        let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
+        if (element.poster_path === null){
+            url = "./img/placeholder/MovieTag-NotFoundImage.png";
+        }
+
+        let item = document.createElement('div'); // Cria a div
+        item.classList.add('item'); // Adiciona a classe item, o estilizando
+        item.classList.add('card'); // Adiciona a classe item, o estilizando
+        
+
+        item.innerHTML = `<a href="visualizacaoProducao.php?type=${element.media_type}&query=${element.id}">  
+        <img src=${url}>
+        <span>${element.title || element.name}</a>`
+
+        itens.appendChild(item)
+
+        
+    }) 
 }
 
 function chamaApiIngles(){
