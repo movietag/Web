@@ -168,8 +168,3 @@ canvas {
     height: auto !important;
 }
 
-.pagCharts {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
