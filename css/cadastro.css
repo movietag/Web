@@ -11,15 +11,6 @@
     /* Define a largura da seção como 100% da largura da janela de visualização */
 }
 
-.secao-caixa h1 {
-    color: rgb(255, 255, 255);
-    /* Define a cor do texto como branca */
-    font-size: 2.5em;
-    /* Define o tamanho da fonte */
-    margin: 1.2em;
-    /* Define a margem em torno do título */
-}
-
 .secao-caixa input {
     width: 20vw;
     /* Define a largura do campo de entrada */

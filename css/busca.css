@@ -81,7 +81,7 @@ input[type="text"], input[type="number"], input[type="date"]{
     border: none;
     padding: 0.8em;
     outline: none;
-    background-color: #515160;
+    background-color: rgba(81, 81, 96, 0.6);
     color: white;
 }
 

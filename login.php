@@ -6,8 +6,8 @@
     <!-- Link para ícones da biblioteca Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css'  rel='stylesheet' >
     <link rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
-    <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/login.css">
     <script src="js/script.js" defer></script>
     <script src="js/login.js" defer></script>
     <title>Movie Tag ∙ Login</title>

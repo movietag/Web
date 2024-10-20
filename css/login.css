@@ -1,24 +1,17 @@
 /* Configuração da seção principal */
 .secao-caixa {
-    display: flex; /* Define layout flexível para a seção */
-    align-items: center; /* Alinha itens ao centro verticalmente */
-    flex-direction: column; /* Organiza itens em coluna */
-    justify-content: center; /* Centraliza itens horizontalmente */
-    width: 100vw; /* Define a largura da seção como 100% da viewport */
-}
-
-/* Estilo do título na seção principal */
-.secao-caixa h1 {
-    color: rgb(255, 255, 255); /* Define a cor do texto como branca */
-    font-size: 2.5em; /* Define o tamanho da fonte */
-    margin: 1.2em; /* Define margem ao redor do título */
+    display: flex; /*Define layout flexível para a seção*/
+    align-items: center; /*Alinha itens ao centro verticalmente*/
+    flex-direction: column; /*Organiza itens em coluna*/
+    justify-content: center; /*Centraliza itens horizontalmente*/
+    width: 100vw; /*Define a largura da seção como 100% da viewport*/
 }
 
 /* Estilo dos campos de entrada na seção principal */
 .secao-caixa input {
     width: 100%; /* Define a largura dos inputs como 100% do container */
     color: rgb(230, 218, 211); /* Define a cor do texto nos inputs */
-    background-color: #515160; /* Define a cor de fundo dos inputs */
+    background-color: rgba(81, 81, 96, 0.6); /* Define a cor de fundo dos inputs */
     border: none; /* Remove borda dos inputs */
     border-radius: 9px; /* Define borda arredondada */
     font-size: 1rem; /* Define o tamanho da fonte */
@@ -69,11 +62,15 @@ a {
     position: relative; /* Define posição relativa */
     display: flex; /* Define layout flexível */
     justify-content: center; /* Centraliza conteúdo */
-    border: 2px solid white; /* Define borda branca */
+    background-color: rgb(31, 31, 31);
     border-radius: 10px; /* Define borda arredondada */
-    padding: 5vh; /* Define padding interno */
-    min-width: fit-content; /* Define largura mínima para conteúdo */
-    margin: 2em; /* Define margem ao redor do container */
+    padding: 1.7em 2em; /* Define padding interno */
+    min-width: 30vw; /* Define largura mínima para conteúdo */
+    margin-bottom: 2em; /* Define margem ao redor do container */
+}
+
+form{
+    width: 100%;
 }
 
 /* Estilo das labels nos formulários */
@@ -94,12 +91,11 @@ form label {
 
 /* Estilo do diálogo modal */
 dialog {
-    border-radius: 8px; /* Define borda arredondada */
+    border-radius: 20px; /* Define borda arredondada */
     background-color: rgb(37, 37, 37); /* Define a cor de fundo */
     color: white; /* Define a cor do texto */
-    border: white solid thin; /* Define borda branca fina */
     margin: auto; /* Centraliza o diálogo */
-    padding: 3em; /* Define padding interno */
+    padding: 1.8em; /* Define padding interno */
 }
 
 /* Estilo dos elementos dentro do diálogo */
@@ -111,7 +107,7 @@ dialog input, dialog label, dialog span {
 dialog input {
     width: 100%; /* Define a largura dos inputs como 100% do container */
     color: rgb(230, 218, 211); /* Define a cor do texto */
-    background-color: #515160; /* Define a cor de fundo */
+    background-color: rgba(81, 81, 96, 0.6); /* Define a cor de fundo */
     border: none; /* Remove borda */
     border-radius: 8px; /* Define borda arredondada */
     font-size: 1rem; /* Define o tamanho da fonte */
