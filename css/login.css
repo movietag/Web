@@ -59,7 +59,6 @@ a {
 
 /* Estilo do container de conteúdo */
 .conteudo {
-    position: relative; /* Define posição relativa */
     display: flex; /* Define layout flexível */
     justify-content: center; /* Centraliza conteúdo */
     background-color: rgb(31, 31, 31);

@@ -16,7 +16,7 @@
     /* Define a largura do campo de entrada */
     color: #e6dad3;
     /* Define a cor do texto */
-    background-color: #515160;
+    background-color: rgba(81, 81, 96, 0.6);
     /* Define a cor de fundo */
     border: none;
     /* Remove a borda padrão */
@@ -89,17 +89,16 @@
 }
 
 .conteudo {
-    display: flex;
-    /* Define um container flexível */
-    border: 2px solid white;
-    /* Define a borda */
-    border-radius: 10px;
-    /* Define bordas arredondadas */
-    padding: 5vh;
-    /* Define o preenchimento interno */
-    min-width: fit-content;
-    /* Define a largura mínima como suficiente para o conteúdo */
-    margin-bottom: 2em;
+    display: flex; /* Define layout flexível */
+    background-color: rgb(31, 31, 31);
+    border-radius: 10px; /* Define borda arredondada */
+    padding: 1.7em 2em; /* Define padding interno */
+    min-width: 30vw; /* Define largura mínima para conteúdo */
+    margin-bottom: 2em; /* Define margem ao redor do container */
+}
+
+form{
+    width: 100%;
 }
 
 form label {
@@ -163,8 +162,6 @@ input {
         /* Ajusta a largura */
         padding: 1vh;
         /* Ajusta o preenchimento interno */
-        border: none;
-        /* Remove a borda */
     }
 
     .icone {
