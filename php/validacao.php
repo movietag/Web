@@ -1,9 +1,9 @@
 <?php
 // Verifica se o método da requisição é POST
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Recebe os dados do fetch (json)
-    $pesquisa = $_POST['pesquisa'];
-
+   
+    $pesquisa = $_POST['pesquisa'] ?? 'Nenhuma pesquisa informada';
+    var_dump($pesquisa);
 
     // Aqui você pode adicionar suas verificações, por exemplo:
     if (isset($pesquisa)) {
