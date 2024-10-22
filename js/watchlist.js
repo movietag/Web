@@ -1,7 +1,7 @@
 // Seleciona o botão e o diálogo
 const openNovaProd = document.getElementById('novaProducao');
 const dialogNovaProd = document.getElementById('buscarFilme');
-// const cancelButtonAvaliar = document.getElementById('cancelDialogAvaliar');
+const fechar = document.getElementById('botaoCancel');
 
 // Abre o diálogo quando o botão é clicado
 openNovaProd.addEventListener('click', () => {
@@ -9,6 +9,6 @@ openNovaProd.addEventListener('click', () => {
 });
 
 // Fecha o diálogo ao clicar no botão "Cancelar"
-// cancelButtonAvaliar.addEventListener('click', () => {
-//     dialogAvaliar.close(); // Fecha o diálogo
-// });
+fechar.addEventListener('click', () => {
+    dialogNovaProd.close(); // Fecha o diálogo
+});

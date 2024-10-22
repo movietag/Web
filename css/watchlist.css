@@ -31,11 +31,14 @@ dialog input[type="text"]{
     margin: 0 0 10px 0;
 }
 
-.bx-search-alt-2{
-    color: grey;
-    font-size: 14px;
-    margin: auto 0 auto 1em;
-    padding-bottom: 0.5em;
+.dialog-header button{
+    color: rgb(155, 155, 155);
+    font-size: 1em;
+    margin: auto 0.6em 0.5em 0;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .filmeBusca{
