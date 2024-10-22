@@ -1,23 +1,25 @@
 function detectTheme() {
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    } else {
-      return 'light';
-    }
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   
-const userTheme = detectTheme();
-
-function updateFavicon(theme) { 
+  function updateFavicon(theme) { 
     const favicon = document.getElementById('favicon');
     if (theme === 'dark') { 
-        favicon.href = 'Logo-Preta.svg';
+      favicon.href = './img/Logo-Branca-Mini.svg';
     } else { 
-        favicon.href = 'favicon-light.ico';
+      favicon.href = './img/Logo-Preta.svg';
     } 
-} 
-const currentTheme = userTheme;
-updateFavicon(currentTheme); 
+  }
+  
+  // Atualiza o favicon com base no tema inicial
+  updateFavicon(detectTheme());
+  
+  // Adiciona um listener para detectar mudanças no tema
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    const newTheme = event.matches ? 'dark' : 'light';
+    updateFavicon(newTheme);
+  });
+  
 
 
 
