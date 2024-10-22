@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Link para ícones da biblioteca Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' >
-    <link rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
+    <link id='favicon' rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
     <!--css para a div class="tabs"-->
     <link rel="stylesheet" href="css/segmentedButton.css">
     <link rel="stylesheet" href="css/style.css">
