@@ -20,14 +20,6 @@ function detectTheme() {
     updateFavicon(newTheme);
   });
   
-
-
-
-
-
-
-
-
 // Evento do Menu
 const btnConta = document.querySelector("#btnConta");
 btnConta.addEventListener("click", (ev) => {showMenu(ev)});

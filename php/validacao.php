@@ -1,16 +1,21 @@
 <?php
-// Verifica se o método da requisição é POST
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-   
-    $pesquisa = $_POST['pesquisa'] ?? 'Nenhuma pesquisa informada';
-    var_dump($pesquisa);
+header('Content-Type: application/json'); // Define o tipo de conteúdo como JSON
 
-    // Aqui você pode adicionar suas verificações, por exemplo:
-    if (isset($pesquisa)) {
-        // Supondo que você valide o usuário e senha de alguma forma
-        $pesquisa = filter_var($pesquisa, FILTER_SANITIZE_SPECIAL_CHARS);
-        echo json_encode(['status' => 'ok', 'message' => 'Dados validados com sucesso!']);
-    } else {
-    echo json_encode(['status' => 'error', 'message' => 'Método de requisição inválido.']);
-}}
+// Obtém a entrada JSON
+$data = json_decode(file_get_contents('php://input'), true);
+
+// Verifica se os dados foram recebidos
+if ($data) {
+    // Aqui você pode processar os dados como quiser
+    $pesquisa = htmlspecialchars($data['pesquisa'], ENT_QUOTES, 'UTF-8');
+
+    $status = 'ok'; // Supondo que a validação seja bem-sucedida
+    $message = 'Dados recebidos com sucesso!';
+
+    // Retorna a resposta em formato JSON
+    echo json_encode(['status' => $status, 'message' => $message]);
+} else {
+    // Se não receber dados, retornar um erro
+    echo json_encode(['status' => 'error', 'message' => 'Nenhum dado recebido']);
+}
 ?>
