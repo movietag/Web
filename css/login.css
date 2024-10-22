@@ -1,71 +1,71 @@
 /* Configuração da seção principal */
 .secao-caixa {
-    display: flex; /*Define layout flexível para a seção*/
-    align-items: center; /*Alinha itens ao centro verticalmente*/
-    flex-direction: column; /*Organiza itens em coluna*/
-    justify-content: center; /*Centraliza itens horizontalmente*/
-    width: 100vw; /*Define a largura da seção como 100% da viewport*/
+    display: flex; 
+    align-items: center;
+    flex-direction: column; 
+    justify-content: center;
+    width: 100vw;
 }
 
 /* Estilo dos campos de entrada na seção principal */
 .secao-caixa input {
-    width: 100%; /* Define a largura dos inputs como 100% do container */
-    color: rgb(230, 218, 211); /* Define a cor do texto nos inputs */
-    background-color: rgba(81, 81, 96, 0.6); /* Define a cor de fundo dos inputs */
-    border: none; /* Remove borda dos inputs */
-    border-radius: 9px; /* Define borda arredondada */
-    font-size: 1rem; /* Define o tamanho da fonte */
-    padding: 0.5em; /* Define padding interno */
-    outline: none; /* Remove contorno ao focar no input */
-    margin: 1vh 0; /* Define margem vertical */
+    width: 100%;
+    color: rgb(230, 218, 211); 
+    background-color: rgba(81, 81, 96, 0.6); 
+    border: none; 
+    border-radius: 9px;
+    font-size: 1rem; 
+    padding: 0.5em; 
+    outline: none; 
+    margin: 1vh 0; 
 }
 
 /* Estilo dos parágrafos na seção principal */
 .secao-caixa p {
-    color: #bfbfbf; /* Define a cor do texto */
-    text-align: center; /* Centraliza o texto */
-    margin-top: 0.4em; /* Define margem superior */
+    color: #bfbfbf;
+    text-align: center;
+    margin-top: 0.4em; 
 }
 
 /* Estilo para links */
 a {
-    color: #bfbfbf; /* Define a cor dos links */
+    color: #bfbfbf;
 }
 
 /* Estilo para links ao passar o mouse */
 .secao-caixa a:hover {
-    color: rgb(177, 159, 199); /* Muda a cor ao passar o mouse */
-    text-decoration: underline; /* Sublinha o texto */
+    color: rgb(177, 159, 199); 
+    text-decoration: underline;
 }
 
 /* Estilo dos botões */
 .butao {
-    width: 100%; /* Define a largura do botão como 100% do container */
-    padding: 0.5em; /* Define padding interno */
-    background-color: #e6c222; /* Define a cor de fundo */
-    border: none; /* Remove borda */
-    border-radius: 8px; /* Define borda arredondada */
-    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
-    font-size: 1rem; /* Define o tamanho da fonte */
-    color: rgb(0, 0, 0); /* Define a cor do texto */
-    margin-top: 1em; /* Define margem superior */
+    width: 100%; 
+    padding: 0.5em;
+    background-color: #e6c222; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: rgb(0, 0, 0); 
+    margin-top: 1em;
 }
 
 /* Estilo dos botões ao passar o mouse */
 .butao:hover {
-    background-color: #c4a82c; /* Muda a cor de fundo */
-    transform: translateY(0.5px); /* Move o botão levemente */
+    background-color: #c4a82c; 
+    transform: translateY(0.5px); 
 }
 
 /* Estilo do container de conteúdo */
 .conteudo {
-    display: flex; /* Define layout flexível */
-    justify-content: center; /* Centraliza conteúdo */
+    display: flex; 
+    justify-content: center; 
     background-color: rgb(31, 31, 31);
-    border-radius: 10px; /* Define borda arredondada */
-    padding: 1.7em 2em; /* Define padding interno */
-    min-width: 30vw; /* Define largura mínima para conteúdo */
-    margin-bottom: 2em; /* Define margem ao redor do container */
+    border-radius: 10px; 
+    padding: 1.7em 2em;
+    min-width: 30vw; 
+    margin-bottom: 2em; 
 }
 
 form{
@@ -74,53 +74,21 @@ form{
 
 /* Estilo das labels nos formulários */
 form label {
-    color: aliceblue; /* Define a cor do texto */
+    color: aliceblue; 
 }
 
 /* Estilo de ícones */
 .icone {
-    color: aliceblue; /* Define a cor do ícone */
-    font-size: 15vh; /* Define o tamanho do ícone */
+    color: aliceblue; 
+    font-size: 15vh;
 }
 
 /* Estilo das labels e inputs dentro do container de conteúdo */
 .conteudo label, input {
-    display: block; /* Define como blocos */
-}
-
-/* Estilo do diálogo modal */
-dialog {
-    border-radius: 20px; /* Define borda arredondada */
-    background-color: rgb(37, 37, 37); /* Define a cor de fundo */
-    color: white; /* Define a cor do texto */
-    margin: auto; /* Centraliza o diálogo */
-    padding: 1.8em; /* Define padding interno */
-}
-
-/* Estilo dos elementos dentro do diálogo */
-dialog input, dialog label, dialog span {
-    display: block; /* Define como blocos */
-}
-
-/* Estilo dos inputs dentro do diálogo */
-dialog input {
-    width: 100%; /* Define a largura dos inputs como 100% do container */
-    color: rgb(230, 218, 211); /* Define a cor do texto */
-    background-color: rgba(81, 81, 96, 0.6); /* Define a cor de fundo */
-    border: none; /* Remove borda */
-    border-radius: 8px; /* Define borda arredondada */
-    font-size: 1rem; /* Define o tamanho da fonte */
-    padding: 0.5em; /* Define padding interno */
-    outline: none; /* Remove contorno ao focar no input */
-    margin: 1vh 0; /* Define margem vertical */
-}
-
-/* Estilo dos spans dentro do diálogo */
-dialog span {
-    margin-bottom: 1em; /* Define margem inferior */
+    display: block;
 }
 
 /* Estilo para adicionar efeito de desfoque */
 .blur {
-    filter: blur(2px); /* Aplica filtro de desfoque */
+    filter: blur(2px);
 }

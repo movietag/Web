@@ -313,7 +313,7 @@ dialog::backdrop {
     justify-content: flex-end;
 }
 
-dialog input[type="text"] {
+dialog input[type="text"], input[type="email"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -325,13 +325,13 @@ dialog input[type="text"] {
     transition: box-shadow 0.3s ease, border-bottom 0.3s ease; /* Transição suave */
 }
 
-dialog input[type="text"]:focus {
+dialog input[type="text"]:focus, input[type="email"]:focus {
     outline: none; /* Remove o contorno padrão */
     border-bottom: 1px solid transparent; /* Linha inferior invisível */
     box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
 }
 
-dialog input[type="text"]:hover {
+dialog input[type="text"]:hover,input[type="email"]:hover {
     outline: none; /* Remove o contorno padrão */
     border-bottom: 1px solid transparent; /* Linha inferior invisível */
     box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
