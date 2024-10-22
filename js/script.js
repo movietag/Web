@@ -1,3 +1,31 @@
+function detectTheme() {
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    } else {
+      return 'light';
+    }
+  }
+  
+const userTheme = detectTheme();
+
+function updateFavicon(theme) { 
+    const favicon = document.getElementById('favicon');
+    if (theme === 'dark') { 
+        favicon.href = 'Logo-Preta.svg';
+    } else { 
+        favicon.href = 'favicon-light.ico';
+    } 
+} 
+const currentTheme = userTheme;
+updateFavicon(currentTheme); 
+
+
+
+
+
+
+
+
 // Evento do Menu
 const btnConta = document.querySelector("#btnConta");
 btnConta.addEventListener("click", (ev) => {showMenu(ev)});
