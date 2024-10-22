@@ -34,9 +34,15 @@
         <div class="area">
             <!-- Listas de Filmes -->
             <div class="lista">
+                <div>
+                    <h1>Popular </h1>
+                    <div class="seletores">
+                        <div class="seletor">Filme</div> <div class="seletor">Série</div>
+                    </div>
+                </div>
 
                 <!-- Titulo da Lista -->
-                <h1>Popular </h1>
+
 
                 <!-- Div de Itens preenchida via JS  -->
                 <div class="itens">

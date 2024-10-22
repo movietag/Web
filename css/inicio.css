@@ -46,3 +46,24 @@ form button{
     overflow-y: scroll;
     flex-wrap: wrap;
 }
+
+.lista div{
+    display: flex;
+    align-items: center;
+}
+
+.lista div h1{
+    margin: 0;
+    margin-right: 0.5em;
+
+}
+
+.seletores {
+    padding: 0.5em;
+    display: flex;
+    border: white solid thin;
+    border-radius: 16px;
+    color: white;
+    justify-content: space-between;
+    width: 6vw;
+}
