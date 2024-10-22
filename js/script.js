@@ -1,3 +1,33 @@
+function detectTheme() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  }
+  
+  function updateFavicon(theme) { 
+    const favicon = document.getElementById('favicon');
+    if (theme === 'dark') { 
+      favicon.href = './img/Logo-Branca-Mini.svg';
+    } else { 
+      favicon.href = './img/Logo-Preta.svg';
+    } 
+  }
+  
+  // Atualiza o favicon com base no tema inicial
+  updateFavicon(detectTheme());
+  
+  // Adiciona um listener para detectar mudanças no tema
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    const newTheme = event.matches ? 'dark' : 'light';
+    updateFavicon(newTheme);
+  });
+  
+
+
+
+
+
+
+
+
 // Evento do Menu
 const btnConta = document.querySelector("#btnConta");
 btnConta.addEventListener("click", (ev) => {showMenu(ev)});

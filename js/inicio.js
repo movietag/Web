@@ -14,13 +14,29 @@ const opcoesApi = {
 // Evento de submissão da pesquisa
 formularioPesquisa.onsubmit = (evento) => {
     evento.preventDefault(); // Evita o recarregamento da página
+    const formData = new FormData(evento.target)
+    fetch('./php/validacao.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: formData
+    })
+    .then(response => response.json())  // Converte a resposta do PHP para JSON
+    .then(data => {
+        if (data.status === 'ok') {
+            console.log('Validação bem-sucedida:', data.message);
+        } else {
+            console.log('Erro de validação:', data.message);
+        }
+    })
     const areaResultados = document.querySelector("#s02 .lista"); // Área onde os resultados serão exibidos
     const termoPesquisa = evento.target.pesquisa.value; // Termo da pesquisa
 
-    if (termoPesquisa) { // Se o termo de pesquisa não for vazio
-        buscarFilmes(termoPesquisa, areaResultados);
-        exibirAreaPesquisa(); // Exibe a área de pesquisa
-    }
+    // if (termoPesquisa) { // Se o termo de pesquisa não for vazio
+    //     buscarFilmes(termoPesquisa, areaResultados);
+    //     exibirAreaPesquisa(); // Exibe a área de pesquisa
+    // }
 };
 
 // Função para buscar filmes na API
