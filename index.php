@@ -21,7 +21,7 @@
 
 
         <!-- Pesquisa -->
-        <form id="fPesquisa">
+        <form id="fPesquisa" method="POST">
             <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome da produção, tag, diretor...">
             <button id="pesq1" type="submit">Pesquisar</button>
         </form>
