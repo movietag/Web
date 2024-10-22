@@ -14,6 +14,22 @@ const opcoesApi = {
 // Evento de submissão da pesquisa
 formularioPesquisa.onsubmit = (evento) => {
     evento.preventDefault(); // Evita o recarregamento da página
+    fetch('./php/validacao.php', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(evento.target.pesquisa.value)  // Envia os dados ao PHP em formato JSON
+      })
+        .then(response => response.json())  // Converte a resposta do PHP para JSON
+        .then(data => {
+          if (data.status === 'ok') {
+            console.log('Validação bem-sucedida:', data.message);
+          } else {
+            console.error('Erro de validação:', data.message);
+          }
+        })
+        .catch(error => console.error('Erro na requisição:', error));
     const areaResultados = document.querySelector("#s02 .lista"); // Área onde os resultados serão exibidos
     const termoPesquisa = evento.target.pesquisa.value; // Termo da pesquisa
 
