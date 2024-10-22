@@ -1,25 +1,33 @@
 function detectTheme() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  }
-  
-  function updateFavicon(theme) { 
+}
+
+function updateFavicon(theme) {
     const favicon = document.getElementById('favicon');
-    if (theme === 'dark') { 
-      favicon.href = './img/Logo-Branca-Mini.svg';
-    } else { 
-      favicon.href = './img/Logo-Preta.svg';
-    } 
-  }
-  
-  // Atualiza o favicon com base no tema inicial
-  updateFavicon(detectTheme());
-  
-  // Adiciona um listener para detectar mudanças no tema
-  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+    if (theme === 'dark') {
+        favicon.href = './img/Logo-Branca-Mini.svg';
+    } else {
+        favicon.href = './img/Logo-Preta.svg';
+    }
+}
+
+// Atualiza o favicon com base no tema inicial
+updateFavicon(detectTheme());
+
+// Adiciona um listener para detectar mudanças no tema
+const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+
+function handleChange(event) {
     const newTheme = event.matches ? 'dark' : 'light';
     updateFavicon(newTheme);
-  });
-  
+}
+
+// Usando onchange para garantir compatibilidade
+mediaQueryList.addEventListener('change', handleChange); // Para navegadores que suportam
+mediaQueryList.onchange = handleChange; // Para navegadores mais antigos
+
+// Caso a propriedade addEventListener não funcione, você pode usar o onchange como fallback
+
 // Evento do Menu
 const btnConta = document.querySelector("#btnConta");
 btnConta.addEventListener("click", (ev) => {showMenu(ev)});
@@ -69,6 +77,7 @@ verificaLogado();
 
 // Aparecer o Menu
 function showMenu(){
+    console.log("Salve");
     backdownMenu.classList.toggle("backdown-show");
 
     // Se o popup de Watchlist estiver aparecendo
@@ -107,4 +116,4 @@ function apareceAviso() {
     if (backdownMenu.classList.contains("backdown-show")){
         backdownMenu.classList.toggle("backdown-show");
     } 
-  }
+  } 
