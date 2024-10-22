@@ -17,26 +17,26 @@ formularioPesquisa.onsubmit = (evento) => {
     fetch('./php/validacao.php', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify(evento.target.pesquisa.value)  // Envia os dados ao PHP em formato JSON
-      })
-        .then(response => response.json())  // Converte a resposta do PHP para JSON
-        .then(data => {
-          if (data.status === 'ok') {
+        body: evento.target
+    })
+    .then(response => response.json())  // Converte a resposta do PHP para JSON
+    .then(data => {
+        if (data.status === 'ok') {
             console.log('Validação bem-sucedida:', data.message);
-          } else {
+        } else {
             console.error('Erro de validação:', data.message);
-          }
-        })
-        .catch(error => console.error('Erro na requisição:', error));
+        }
+    })
+    .catch(error => console.error('Erro na requisição:', error));
     const areaResultados = document.querySelector("#s02 .lista"); // Área onde os resultados serão exibidos
     const termoPesquisa = evento.target.pesquisa.value; // Termo da pesquisa
 
-    if (termoPesquisa) { // Se o termo de pesquisa não for vazio
-        buscarFilmes(termoPesquisa, areaResultados);
-        exibirAreaPesquisa(); // Exibe a área de pesquisa
-    }
+    // if (termoPesquisa) { // Se o termo de pesquisa não for vazio
+    //     buscarFilmes(termoPesquisa, areaResultados);
+    //     exibirAreaPesquisa(); // Exibe a área de pesquisa
+    // }
 };
 
 // Função para buscar filmes na API
