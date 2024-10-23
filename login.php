@@ -35,20 +35,10 @@
             </div>
         </div>
 
-        <!-- Diálogo para redefinição de senha -->
-        <!-- <dialog>
-            <form method="dialog">
-                <span>Acesse o E-mail para redefinir a sua senha:</span>
-                <label for="recEmail">E-mail para recuperação: </label>
-                <input type="email" name="recEmail" id="recEmail">
-                <button type="submit" class="butao">Enviar</button>
-            </form> 
-        </dialog> -->
-
         <dialog id="myDialogNovaLista">
             <form action="POST" method="dialog">
                 <div class="dialog-header">
-                    Acesse o E-mail para redefinir a sua senha:
+                    Acesse o E-mail para redefinir a sua senha
                 </div>
                 <hr>
                 <div class="dialog-content">
@@ -56,7 +46,7 @@
                 </div>
                 <div class="dialog-footer">
                     <button class="cancel-btn" id="cancelDialogNovaLista">Cancelar</button>
-                    <button type="submit">Criar</button>
+                    <button class="confirm-btn" type="submit">Criar</button>
                 </div>
             </form>
     </dialog>

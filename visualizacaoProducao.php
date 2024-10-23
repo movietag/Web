@@ -155,7 +155,7 @@
         </div>
         <div class="dialog-footer">
             <button class="cancel-btn" id="cancelDialogSalvarProd">Cancelar</button>
-            <button id="confirmDialogSalvarProd">OK</button>
+            <button class="confirm-btn" id="confirmDialogSalvarProd">OK</button>
         </div>
     </dialog>
 
@@ -170,7 +170,7 @@
         </div>
         <div class="dialog-footer">
             <button class="cancel-btn" id="cancelDialogNovaLista">Cancelar</button>
-            <button id="confirmDialogCriarNovaLista">Criar</button>
+            <button class="confirm-btn" id="confirmDialogCriarNovaLista">Criar</button>
         </div>
     </dialog>
 

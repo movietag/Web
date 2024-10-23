@@ -313,7 +313,7 @@ dialog::backdrop {
     justify-content: flex-end;
 }
 
-dialog input[type="text"], input[type="email"] {
+dialog input[type="text"], dialog input[type="email"] {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -325,13 +325,13 @@ dialog input[type="text"], input[type="email"] {
     transition: box-shadow 0.3s ease, border-bottom 0.3s ease; /* Transição suave */
 }
 
-dialog input[type="text"]:focus, input[type="email"]:focus {
+dialog input[type="text"]:focus, dialog input[type="email"]:focus {
     outline: none; /* Remove o contorno padrão */
     border-bottom: 1px solid transparent; /* Linha inferior invisível */
     box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
 }
 
-dialog input[type="text"]:hover,input[type="email"]:hover {
+dialog input[type="text"]:hover, dialog input[type="email"]:hover {
     outline: none; /* Remove o contorno padrão */
     border-bottom: 1px solid transparent; /* Linha inferior invisível */
     box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9; /* Sombra criando a linha grossa */
@@ -340,6 +340,32 @@ dialog input[type="text"]:hover,input[type="email"]:hover {
 .dialog-header{
     font-size: 1.5em;
     font-weight: bolder;
+}
+
+button.confirm-btn {
+    background-color: #e6c222;
+    border: none;
+    border-radius: 15px;
+    padding: 8px 20px;
+    color: #333;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+button.cancel-btn {
+    border: none;
+    border-radius: 15px;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-weight: 600;
+    background-color: #55555500;
+    color: white;
+    transition: all 0.2s ease;
+    margin-right: 1em;
+}
+
+button.cancel-btn:hover {
+    background-color: #777;
 }
 
 #img-user{

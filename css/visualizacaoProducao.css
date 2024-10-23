@@ -385,27 +385,6 @@ section .lista .item-logo img{
     height: fit-content;
 }
 
-button {
-    background-color: #e6c222;
-    border: none;
-    border-radius: 15px;
-    padding: 8px 20px;
-    color: #333;
-    cursor: pointer;
-    font-weight: bold;
-}
-
-button.cancel-btn {
-    background-color: #55555500;
-    color: white;
-    transition: all 0.2s ease;
-    margin-right: 1em;
-}
-
-button.cancel-btn:hover {
-    background-color: #777;
-}
-
 /* Estilo das estrelas */
 .star-rating {
     display: flex;

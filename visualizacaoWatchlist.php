@@ -24,7 +24,7 @@
             <!-- dialog adicionar produção -->
             <dialog id="buscarFilme">
                 <div class="dialog-header">
-                    <button id="botaoCancel">X</button>
+                    <button class="cancel-btn" id="botaoCancel">X</button>
                     <input type="text" name="tituloFilme" id="tituloFilme" placeholder="Digite o nome da produção...">
                 </div>
                 <div class="dialog-content">
