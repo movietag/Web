@@ -416,10 +416,6 @@ span{
     cursor: default;
 }
 
-hr{
-    border-color: #555;
-}
-
 label input[type="checkbox"]{
     padding: 1em;
 }

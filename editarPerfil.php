@@ -19,21 +19,20 @@
     </header>
 
     <section>
-        <div class="formulario">
+        <div class="formulario secao-caixa">
             <h1>Editar Perfil</h1>
             <!-- Formulario -->
-            <form class="form-total"></form>
-                <fieldset>
-                <!-- Icone -->
-                <div class="icone">
-                    <i class='bx bxs-user'></i>
-                    <!-- Input para arquivos -->
-                    <input type="file" name="uFile" id="uFile"> 
+            <form class="form-total">
+                <div class="conteudo">
+                    <!-- Icone -->
+                    <div class="icone">
+                        <i class='bx bxs-user'></i>
+                        <!-- Input para arquivos -->
+                        <input type="file" name="uFile" id="uFile"> 
+                    </div>
                 </div>
-                </fieldset>
-
-                <!-- Dados do Usuário  -->
-                <fieldset>
+                <div class="conteudo">
+                    <!-- Dados do Usuário  -->
                     <label for="uNome">Usuário:</label>
                     <input type="text" id="uNome" placeholder="Nome de usuário" required> 
                     <label for="uEmail">Email:</label>
@@ -42,13 +41,10 @@
                     <input type="password" name="uSenha" id="uSenha" placeholder="Sua senha" required> 
                     <label for="uSenha">Confirmar Nova Senha:</label>
                     <input type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme a senha" required> 
-                    <button class="butao">Salvar Mudanças</button> 
-                </fieldset>
-
+                    <button class="butao">Salvar Mudanças</button>
+                </div>
             </form>
-                
         </div>
-       
     </section>
 
     <!-- Footer -->
