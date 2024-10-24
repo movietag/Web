@@ -1,6 +1,7 @@
 // Elementos da DOM
 const formularioPesquisa = document.querySelector("form"); // Formulário de pesquisa
 const listasFilmes = document.querySelectorAll(".lista"); // Lista de filmes popular e outras
+const seletores = document.querySelectorAll('.seletor');
 
 // Opções de configuração da API
 const opcoesApi = {
@@ -10,6 +11,81 @@ const opcoesApi = {
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWExZjFhNGRjYzY2M2EzMTRlNmUwMDhhOGI5YWEyYyIsInN1YiI6IjY1ZDkxNjJiMGYwZGE1MDE2MjMyMjViMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qCV25ZQQfVb7YOVnVVFI_xn7MAnNYMbZRrj0SApcL7k'
     }
 };
+
+// Evento de Troca da Lista para Filme/Serie
+listasFilmes.forEach(lista => {
+    const seletores = lista.querySelectorAll('.seletor');
+
+    seletores.forEach(seletor => {
+        seletor.addEventListener('click', () => {
+            // Remove a classe "selecionado" do seletor oposto
+            seletores.forEach(s => {
+                if (s !== seletor) {
+                    s.classList.remove('selecionado');
+                }
+            });
+            // Adiciona a classe "selecionado" ao seletor clicado
+            seletor.classList.add('selecionado');
+            // Chame sua função para alterar a lista se necessário
+            alteraLista(seletor);
+        });
+    });
+});
+
+function alteraLista(seletor){
+    switch(seletor.dataset.name){
+        case 'filmePopular':
+            fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1', opcoesApi)
+                .then(res => res.json())
+                .then(res => itensComMediaType(res, "movie"))
+                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            break;
+        
+        case 'seriePopular':
+            fetch('https://api.themoviedb.org/3/tv/popular?language=pt-BR&page=1', opcoesApi)
+                .then(res => res.json())
+                .then(res => itensComMediaType(res, "tv"))
+                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            break;
+        
+        case 'filmeTop':
+            fetch('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1', opcoesApi)
+                .then(res => res.json())
+                .then(res => itensComMediaType(res, "movie"))
+                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            break;
+        case 'serieTop':
+            fetch('https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=1', opcoesApi)
+                .then(res => res.json())
+                .then(res => itensComMediaType(res, "tv"))
+                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            break;
+        
+        case 'serieNovidade':
+            fetch('https://api.themoviedb.org/3/tv/on_the_air?language=pt-BR&page=1', opcoesApi)
+                .then(res => res.json())
+                .then(res => itensComMediaType(res, "tv"))
+                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            break;
+
+        case 'filmeNovidade':
+            fetch('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1', opcoesApi)
+                .then(res => res.json())
+                .then(res => itensComMediaType(res, "movie"))
+                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            break;
+
+            
+
+    }
+}
+
+function itensComMediaType(json, type){
+    json.map(item => {
+    return {
+        ...item, // copia as propriedades existentes
+        media_type:type  // define o media_type
+    };});}
 
 // Evento de submissão da pesquisa
 formularioPesquisa.onsubmit = (evento) => {

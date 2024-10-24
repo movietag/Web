@@ -37,12 +37,23 @@
                 <div>
                     <h1>Popular </h1>
                     <div class="seletores">
-                        <div class="seletor">Filme</div> <div class="seletor">Série</div>
+                        <div class="seletor selecionado" data-name='filmePopular'>Filme</div> <div class="seletor" data-name="seriePopular">Série</div>
+                    </div>
+                </div>
+                <div class="itens">
+                </div>
+            </div>
+
+            <div class="lista">
+
+                <!-- Titulo da Lista -->
+                <div>
+                <h1>Novidades</h1>
+                <div class="seletores">
+                        <div class="seletor selecionado" data-name='filmeNovidade'>Filme</div> <div class="seletor" data-name="serieNovidade">Série</div>
                     </div>
                 </div>
 
-                <!-- Titulo da Lista -->
-
 
                 <!-- Div de Itens preenchida via JS  -->
                 <div class="itens">
@@ -52,17 +63,14 @@
             <div class="lista">
 
                 <!-- Titulo da Lista -->
-                <h1>No Cinema </h1>
 
-                <!-- Div de Itens preenchida via JS  -->
-                <div class="itens">
-                </div>
-            </div>
-
-            <div class="lista">
-
-                <!-- Titulo da Lista -->
+                <div>
                 <h1>Top Avaliações </h1>
+                <div class="seletores">
+                        <div class="seletor selecionado" data-name='filmeTop'>Filme</div> <div class="seletor" data-name="serieTop">Série</div>
+                    </div>
+                </div>
+
 
                 <!-- Div de Itens preenchida via JS  -->
                 <div class="itens">
