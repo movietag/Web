@@ -1,3 +1,18 @@
+.conteudo{
+    display: block;
+    max-width: 35vw;
+}
+
+form{
+    width: fit-content;
+}
+
+.icone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* .formulario {
     margin: 2em auto;
     max-width: fit-content;

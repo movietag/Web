@@ -377,18 +377,16 @@ button.cancel-btn:hover {
 }
 
 /*css de formularios no site (págtinas busca avancada, login, cadastro e editar perfil do usuario)*/
-/* Configuração da seção principal */
 
+/* Configuração da seção principal */
 .secao-caixa {
     display: flex; 
     align-items: center;
-    flex-direction: column; 
-    justify-content: center;
-    width: 100vw;
+    flex-direction: column;
 }
 
 /* Estilo dos campos de entrada na seção principal */
-.secao-caixa input {
+.secao-caixa input[type="email"],input[type="password"], input[type="text"] {
     width: 100%;
     color: rgb(230, 218, 211); 
     background-color: rgba(81, 81, 96, 0.6); 
@@ -400,26 +398,8 @@ button.cancel-btn:hover {
     margin: 1vh 0; 
 }
 
-/* Estilo dos parágrafos na seção principal */
-.secao-caixa p {
-    color: #bfbfbf;
-    text-align: center;
-    margin-top: 0.4em; 
-}
-
-/* Estilo para links */
-a {
-    color: #bfbfbf;
-}
-
-/* Estilo para links ao passar o mouse */
-.secao-caixa a:hover {
-    color: rgb(177, 159, 199); 
-    text-decoration: underline;
-}
-
 /* Estilo dos botões */
-.butao {
+.secao-caixa .butao {
     width: 100%; 
     padding: 0.5em;
     background-color: #e6c222; 
@@ -432,7 +412,7 @@ a {
 }
 
 /* Estilo dos botões ao passar o mouse */
-.butao:hover {
+.secao-caixa .butao:hover {
     background-color: #c4a82c; 
     transform: translateY(0.5px); 
 }
@@ -440,7 +420,6 @@ a {
 /* Estilo do container de conteúdo */
 .conteudo {
     display: flex; 
-    justify-content: center; 
     background-color: rgb(31, 31, 31);
     border-radius: 10px; 
     padding: 1.7em 2em;
@@ -464,6 +443,6 @@ form label {
 }
 
 /* Estilo das labels e inputs dentro do container de conteúdo */
-.conteudo label, input {
+.conteudo label, input[type="email"],input[type="password"], input[type="text"]{
     display: block;
 }
