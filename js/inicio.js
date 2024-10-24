@@ -39,6 +39,7 @@ function alteraLista(seletor){
                 .then(res => res.json())
                 .then(res => itensComMediaType(res, "movie"))
                 .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            
             break;
         
         case 'seriePopular':
@@ -81,11 +82,14 @@ function alteraLista(seletor){
 }
 
 function itensComMediaType(json, type){
-    json.map(item => {
-    return {
-        ...item, // copia as propriedades existentes
-        media_type:type  // define o media_type
-    };});}
+    json.results.forEach(item => {
+        item.media_type = type;  // Modifica diretamente o item dentro de json.results
+    });
+
+    console.log(json);  // Mostra o JSON modificado no console
+    return json;  // Retorna o JSON modificado
+}
+
 
 // Evento de submissão da pesquisa
 formularioPesquisa.onsubmit = (evento) => {
@@ -137,6 +141,7 @@ const exibirAreaPesquisa = () => {
 
 // Função para carregar filmes e outros resultados na lista
 const carregarFilmes = (lista, dados) => {
+    console.log(dados)
     const containerItens = lista.lastElementChild;
     containerItens.replaceChildren(); // Limpa os itens anteriores
 
