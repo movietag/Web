@@ -1,26 +1,3 @@
-/* Configuração da seção principal */
-
-.secao-caixa {
-    display: flex; 
-    align-items: center;
-    flex-direction: column; 
-    justify-content: center;
-    width: 100vw;
-}
-
-/* Estilo dos campos de entrada na seção principal */
-.secao-caixa input {
-    width: 100%;
-    color: rgb(230, 218, 211); 
-    background-color: rgba(81, 81, 96, 0.6); 
-    border: none; 
-    border-radius: 9px;
-    font-size: 1rem; 
-    padding: 0.5em; 
-    outline: none; 
-    margin: 1vh 0; 
-}
-
 /* Estilo dos parágrafos na seção principal */
 .secao-caixa p {
     color: #bfbfbf;
@@ -37,59 +14,4 @@ a {
 .secao-caixa a:hover {
     color: rgb(177, 159, 199); 
     text-decoration: underline;
-}
-
-/* Estilo dos botões */
-.butao {
-    width: 100%; 
-    padding: 0.5em;
-    background-color: #e6c222; 
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: rgb(0, 0, 0); 
-    margin-top: 1em;
-}
-
-/* Estilo dos botões ao passar o mouse */
-.butao:hover {
-    background-color: #c4a82c; 
-    transform: translateY(0.5px); 
-}
-
-/* Estilo do container de conteúdo */
-.conteudo {
-    display: flex; 
-    justify-content: center; 
-    background-color: rgb(31, 31, 31);
-    border-radius: 10px; 
-    padding: 1.7em 2em;
-    min-width: 30vw; 
-    margin-bottom: 2em; 
-}
-
-form{
-    width: 100%;
-}
-
-/* Estilo das labels nos formulários */
-form label {
-    color: aliceblue; 
-}
-
-/* Estilo de ícones */
-.icone {
-    color: aliceblue; 
-    font-size: 15vh;
-}
-
-/* Estilo das labels e inputs dentro do container de conteúdo */
-.conteudo label, input {
-    display: block;
-}
-
-/* Estilo para adicionar efeito de desfoque */
-.blur {
-    filter: blur(2px);
 }

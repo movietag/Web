@@ -376,3 +376,74 @@ button.cancel-btn:hover {
 #img-user{
     font-size: 0.3em;
 }
+
+/*css de formularios no site (págtinas busca avancada, login, cadastro e editar perfil do usuario)*/
+
+/* Configuração da seção principal */
+.secao-caixa {
+    display: flex; 
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Estilo dos campos de entrada na seção principal */
+.secao-caixa input[type="email"],input[type="password"], input[type="text"] {
+    width: 100%;
+    color: rgb(230, 218, 211); 
+    background-color: rgba(81, 81, 96, 0.6); 
+    border: none; 
+    border-radius: 9px;
+    font-size: 1rem; 
+    padding: 0.5em; 
+    outline: none; 
+    margin: 1vh 0; 
+}
+
+/* Estilo dos botões */
+.secao-caixa .butao {
+    width: 100%; 
+    padding: 0.5em;
+    background-color: #e6c222; 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: rgb(0, 0, 0); 
+    margin-top: 1em;
+}
+
+/* Estilo dos botões ao passar o mouse */
+.secao-caixa .butao:hover {
+    background-color: #c4a82c; 
+    transform: translateY(0.5px); 
+}
+
+/* Estilo do container de conteúdo */
+.conteudo {
+    display: flex; 
+    background-color: rgb(31, 31, 31);
+    border-radius: 10px; 
+    padding: 1.7em 2em;
+    min-width: 30vw; 
+    margin-bottom: 2em; 
+}
+
+form{
+    width: 100%;
+}
+
+/* Estilo das labels nos formulários */
+form label {
+    color: aliceblue; 
+}
+
+/* Estilo de ícones */
+.icone {
+    color: aliceblue; 
+    font-size: 15vh;
+}
+
+/* Estilo das labels e inputs dentro do container de conteúdo */
+.conteudo label, input[type="email"],input[type="password"], input[type="text"]{
+    display: block;
+}

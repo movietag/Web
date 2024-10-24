@@ -46,7 +46,7 @@
                 </div>
                 <div class="dialog-footer">
                     <button class="cancel-btn" id="cancelDialogNovaLista">Cancelar</button>
-                    <button class="confirm-btn" type="submit">Criar</button>
+                    <button class="confirm-btn" type="submit">Enviar</button>
                 </div>
             </form>
     </dialog>
