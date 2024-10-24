@@ -8,15 +8,15 @@
 }
 
 .secao-caixa input {
-    width: 20vw;
-    color: #e6dad3;
+    width: 100%;
+    color: rgb(230, 218, 211);
     background-color: rgba(81, 81, 96, 0.6);
     border: none;
     border-radius: 9px;
     font-size: 1rem;
     padding: 0.5em;
     outline: none;
-    margin-top: 0.5rem;
+    margin: 1vh 0;
 }
 
 #psenha {
