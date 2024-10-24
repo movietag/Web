@@ -488,7 +488,11 @@ label input[type="checkbox"]{
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    margin-bottom: 15px;
+    margin-top: 1em;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    scrollbar-color: #e6c222 rgba(0, 0, 0, 0);
+    max-height: 6em;
 }
 
 .tag {
@@ -542,3 +546,10 @@ label input[type="checkbox"]{
     gap: 10px;
     margin-top: 15px;
 }
+
+#myDialogAdicionarTag{
+    min-width: 20vw;
+    max-width: 30vw;
+}
+
+  
