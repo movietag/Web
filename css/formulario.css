@@ -1,4 +1,4 @@
-.formulario {
+/* .formulario {
     margin: 2em auto;
     max-width: fit-content;
 }
@@ -17,8 +17,8 @@ fieldset {
 
 .formulario input[type="email"],input[type="password"], input[type="text"]{
     width: 100%;
-    color: #e6dad3;
-    background-color: #515160;
+    color: rgb(230, 218, 211);
+    background-color: rgb(81, 81, 96);
     border: none;
     border-radius: 9px;
     font-size: 1rem;
@@ -28,7 +28,6 @@ fieldset {
     margin-top: 0.3em;
 }
 
-/* olhinho do password */
 ::-ms-reveal{
     filter: invert(100%);
 }
@@ -56,6 +55,4 @@ fieldset {
     align-items: center;
     color: aliceblue;
     font-size: 15vh;
-}
-
-
+} */

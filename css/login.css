@@ -4,7 +4,6 @@
     display: flex; 
     align-items: center;
     flex-direction: column; 
-    justify-content: center;
     width: 100vw;
 }
 
@@ -40,7 +39,7 @@ a {
 }
 
 /* Estilo dos botões */
-.butao {
+.secao-caixa .butao {
     width: 100%; 
     padding: 0.5em;
     background-color: #e6c222; 
@@ -53,7 +52,7 @@ a {
 }
 
 /* Estilo dos botões ao passar o mouse */
-.butao:hover {
+.secao-caixa .butao:hover {
     background-color: #c4a82c; 
     transform: translateY(0.5px); 
 }
@@ -61,7 +60,6 @@ a {
 /* Estilo do container de conteúdo */
 .conteudo {
     display: flex; 
-    justify-content: center; 
     background-color: rgb(31, 31, 31);
     border-radius: 10px; 
     padding: 1.7em 2em;
