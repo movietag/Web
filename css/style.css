@@ -303,6 +303,10 @@ dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.65); /* Fundo escurecido */
 }
 
+dialog hr{
+    border-color: #555;
+}
+
 .dialog-header, .dialog-footer {
     display: flex;
     justify-content: space-between;
