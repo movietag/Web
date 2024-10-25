@@ -23,150 +23,152 @@
         <h1>Filtros de Pesquisa</h1>
         <div id="conteudo">
             <!--filtros pra pesquisar-->
-            <div id="pesquisar">
+            <div>
                 <!-- botao de mostrar e esconder -->
                 <button class="botaoTodosFiltros" id="botaoMostrar">Mostrar tudo</button>
                 <button class="botaoTodosFiltros" id="botaoEsconder">Esconder tudo</button>
-                <!-- caixa com todos os filtros -->
-                <div id="totalFiltros">
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Título da produção<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput" >
-                            <input type="text" name="titulo" id="tituloProducao" class="inputGrande" placeholder="ex.: Vingadores">
-                        </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Tipo de produção<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput divMaiorCheckbox">
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="filme" id="filme">
-                                <label for="filme">Filme</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="serie" id="serie">
-                                <label for="serie">Série</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="minisserie" id="minisserie">
-                                <label for="minisserie">Minissérie</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="animacao" id="animacao">
-                                <label for="animacao">Animação</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="curta" id="curta">
-                                <label for="curta">Curta-Metragem</label>
+                <form action="" method="">
+                    <!-- todos os filtros -->
+                    <div id="totalFiltros">
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Título da produção<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput" >
+                                <input type="text" name="titulo" id="tituloProducao" class="inputGrande" placeholder="ex.: Vingadores">
                             </div>
                         </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Data de lançamento<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput">
-                            <p class="subrotulo">Por ano</p>
-                            <input type="number" name="anoLancamento" id="anoLancamento" class="inputGrande" placeholder="ex.:1990">
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Tipo de produção<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput divMaiorCheckbox">
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="filme" id="filme">
+                                    <label for="filme">Filme</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="serie" id="serie">
+                                    <label for="serie">Série</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="minisserie" id="minisserie">
+                                    <label for="minisserie">Minissérie</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="animacao" id="animacao">
+                                    <label for="animacao">Animação</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="curta" id="curta">
+                                    <label for="curta">Curta-Metragem</label>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Avaliações<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput">
-                            <p class="subrotulo">Em porcentagem</p>
-                            <div id="avaliacao">
-                                <input type="number" name="avaliacaoMenor" id="avaliacaoMenor" placeholder="ex.: 60">
-                                <p>a</p>
-                                <input type="number" name="avaliacaoMaior" id="avaliacaoMaior" placeholder="ex.: 100">
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Data de lançamento<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput">
+                                <p class="subrotulo">Por ano</p>
+                                <input type="number" name="anoLancamento" id="anoLancamento" class="inputGrande" placeholder="ex.:1990">
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Avaliações<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput">
+                                <p class="subrotulo">Em porcentagem</p>
+                                <div id="avaliacao">
+                                    <input type="number" name="avaliacaoMenor" id="avaliacaoMenor" placeholder="ex.: 60">
+                                    <p>a</p>
+                                    <input type="number" name="avaliacaoMaior" id="avaliacaoMaior" placeholder="ex.: 100">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Gênero<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput">
+                                <input type="text" name="genero" id="genero" class="inputGrande" placeholder="ex.: Romance">
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Tags<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput">
+                                <input type="text" name="tag" id="tag" class="inputGrande" placeholder="ex.: Segunda Guerra Mundial">
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Plataformas<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput divMaiorCheckbox">
+                                <!--checar api pra ver -->
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="netflix" id="netflix">
+                                    <label for="netflix">Netflix</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="primeVideo" id="primeVideo">
+                                    <label for="primeVideo">Prime Video</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="max" id="max">
+                                    <label for="max">HBO Max</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="star" id="star">
+                                    <label for="star">Star+</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="apple" id="apple">
+                                    <label for="apple">Apple TV+</label>
+                                </div>
+                                <!-- caixa juntando checkbox e label -->
+                                <div class="divMenorCheckbox">
+                                    <input type="checkbox" name="disney" id="disney">
+                                    <label for="disney">Disney+</label>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Idioma<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput">
+                                <input type="text" name="idioma" id="idioma" class="inputGrande" placeholder="ex.: Espanhol">
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Tempo de duração<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput">
+                                <p class="subrotulo">Em minutos</p>
+                                <input type="number" name="duracao" id="duracao" class="inputGrande" placeholder="ex.: 180">
+                            </div>
+                        </div>
+                        <!-- caixa com um filtro -->
+                        <div class="filtro">
+                            <p class="rotulo">Classificação indicativa<i class='bx bx-chevron-down'></i></p>
+                            <div class="divInput divClassifInd">
+                                <button class="classifInd livre">L</button>
+                                <button class="classifInd dez">10</button>
+                                <button class="classifInd doze">12</button>
+                                <button class="classifInd catorze">14</button>
+                                <button class="classifInd dezesseis">16</button>
+                                <button class="classifInd dezoito">18</button>
                             </div>
                         </div>
                     </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Gênero<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput">
-                            <input type="text" name="genero" id="genero" class="inputGrande" placeholder="ex.: Romance">
-                        </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Tags<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput">
-                            <input type="text" name="tag" id="tag" class="inputGrande" placeholder="ex.: Segunda Guerra Mundial">
-                        </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Plataformas<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput divMaiorCheckbox">
-                            <!--checar api pra ver -->
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="netflix" id="netflix">
-                                <label for="netflix">Netflix</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="primeVideo" id="primeVideo">
-                                <label for="primeVideo">Prime Video</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="max" id="max">
-                                <label for="max">HBO Max</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="star" id="star">
-                                <label for="star">Star+</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="apple" id="apple">
-                                <label for="apple">Apple TV+</label>
-                            </div>
-                            <!-- caixa juntando checkbox e label -->
-                            <div class="divMenorCheckbox">
-                                <input type="checkbox" name="disney" id="disney">
-                                <label for="disney">Disney+</label>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Idioma<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput">
-                            <input type="text" name="idioma" id="idioma" class="inputGrande" placeholder="ex.: Espanhol">
-                        </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Tempo de duração<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput">
-                            <p class="subrotulo">Em minutos</p>
-                            <input type="number" name="duracao" id="duracao" class="inputGrande" placeholder="ex.: 180">
-                        </div>
-                    </div>
-                    <!-- caixa com um filtro -->
-                    <div class="filtro">
-                        <p class="rotulo">Classificação indicativa<i class='bx bx-chevron-down'></i></p>
-                        <div class="divInput divClassifInd">
-                            <button class="classifInd livre">L</button>
-                            <button class="classifInd dez">10</button>
-                            <button class="classifInd doze">12</button>
-                            <button class="classifInd catorze">14</button>
-                            <button class="classifInd dezesseis">16</button>
-                            <button class="classifInd dezoito">18</button>
-                        </div>
-                    </div>
-                </div>
-                <button id="botaoPesquisar">Pesquisar</button>
+                    <button id="botaoPesquisar">Pesquisar</button>
+                </form>
             </div>
             <!--imagem que aparece antes da pesquisa-->
             <div id="antesPesquisa">

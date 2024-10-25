@@ -7,7 +7,7 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet' >
     <link id='favicon' rel="shortcut icon" href="img/Logo-Preta.svg" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/formulario.css">
+    <link rel="stylesheet" href="css/editarPerfil.css">
     <script defer src="js/script.js"></script>
     <title>Movie Tag ∙ Editando Perfil</title>
 </head>

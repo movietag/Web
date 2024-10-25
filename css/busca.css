@@ -1,7 +1,3 @@
-section {
-    color: white;
-}
-
 /* faz com que a caixa de filtros e o resto aparecam lado a lado */
 #conteudo {
     display: flex;
@@ -10,10 +6,8 @@ section {
     margin: 0 auto;
 }
 
-h1 {
-    display: flex;
-    align-items: center;
-    margin: 1em 0 0.3em 0;
+h1{
+    margin-bottom: 0;
 }
 
 /* botao de mostrar/esconder todos os filtros */
@@ -43,18 +37,12 @@ h1 {
 
 /* configuracao filtros de pesquisa */
 
-/* caixa de todos os filtros */
+/* form de todos os filtros */
 #totalFiltros {
     border: 0.07em solid white;
     border-radius: 10px;
     padding: 1.5em;
     width: 25em;
-}
-
-/* icone do titulo */
-.bxs-filter-alt {
-    margin-right: 0.2em;
-    font-size: 1.1em;
 }
 
 /* roda a setinha do filtro */
@@ -67,14 +55,14 @@ h1 {
     align-items: center;
     justify-content: space-between;
     font-size: 1.2rem;
-    font-weight: 400;
+    font-weight: 500;
 }
 
 label {
     font-size: 1rem;
 }
 
-input[type="text"], input[type="number"], input[type="date"]{
+input[type="text"], input[type="number"]{
     font-size: 1rem;
     height: 2.5em;
     border-radius: 5px;
@@ -83,14 +71,6 @@ input[type="text"], input[type="number"], input[type="date"]{
     outline: none;
     background-color: rgba(81, 81, 96, 0.6);
     color: white;
-}
-
-input[type="date"]{
-    color: #e6dad3;
-}
-
-input::placeholder{
-    color: #e6dad3;
 }
 
 #avaliacao {
@@ -130,7 +110,7 @@ input::placeholder{
 }
 
 .subrotulo{
-    margin: 7px 0;
+    margin-bottom: 0.4em;
 }
 
 /* filtro classificacao indicativa */
@@ -241,7 +221,7 @@ input::placeholder{
 
 /*configuracao da imagem que aparece antes da pesquisa*/
 #antesPesquisa{
-    width: 50em;
+    min-width: 40vw;
     height: 35em;
     display: flex;
     align-items: center;
@@ -250,7 +230,7 @@ input::placeholder{
 }
 
 #antesPesquisa img{
-    width: 10vw;
+    min-width: 10em;
     margin-left: 15px;
 }
 

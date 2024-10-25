@@ -387,7 +387,7 @@ button.cancel-btn:hover {
 }
 
 /* Estilo dos campos de entrada na seção principal */
-.secao-caixa input[type="email"], .secao-caixa input[type="password"], .secao-caixa input[type="text"] {
+.secao-caixa input[type="email"], .secao-caixa input[type="password"], .secao-caixa input[type="text"], .secao-caixa input[type="number"] {
     width: 100%;
     color: rgb(230, 218, 211); 
     background-color: rgba(81, 81, 96, 0.6); 
@@ -444,6 +444,6 @@ form label {
 }
 
 /* Estilo das labels e inputs dentro do container de conteúdo */
-.conteudo label, .conteudo input[type="email"], .conteudo input[type="password"], .conteudo input[type="text"]{
+.conteudo label, .conteudo input[type="email"], .conteudo input[type="password"], .conteudo input[type="text"], .conteudo input[type="number"]{
     display: block;
 }
