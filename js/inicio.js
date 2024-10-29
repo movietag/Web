@@ -107,7 +107,7 @@ formularioPesquisa.onsubmit = (evento) => {
     const formData = new FormData(evento.target);
     const data = Object.fromEntries(formData); // Converte FormData em um objeto
 
-    fetch('./php/validacao.php', {
+    fetch('./php/validacaoInicio.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
