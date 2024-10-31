@@ -255,7 +255,7 @@
 
             <a href="#" class="forgot-link">Esqueceu a senha?</a>
 
-            <button class="confirm-btn login-btn">Entrar</button>
+            <button id="login-btn">Entrar</button>
 
             <div class="separator">OU</div>
 

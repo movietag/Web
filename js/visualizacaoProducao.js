@@ -1,3 +1,24 @@
+//fecha popup se clicar fora
+document.querySelectorAll('dialog').forEach(dialog => {
+    dialog.addEventListener('click', function(event) {
+        // Verifica se o clique foi no diálogo e não dentro do seu conteúdo
+        const rect = dialog.getBoundingClientRect();
+        const isInDialog = (
+            event.clientX >= rect.left &&
+            event.clientX <= rect.right &&
+            event.clientY >= rect.top &&
+            event.clientY <= rect.bottom
+        );
+
+        if (!isInDialog) {
+            dialog.close(); // Fecha o diálogo
+        }
+    });
+});
+
+
+
+
 //Esconder senha do popup de login
 const dialogLogin = document.getElementById('myDialogLogin');
 const toggleSenha = document.getElementById('toggleSenha');
