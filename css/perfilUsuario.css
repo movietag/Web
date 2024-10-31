@@ -38,7 +38,7 @@
 #botao{
     background-color: rgb(128, 128, 128, 0.3);
     color: white;
-    border: none;
+    border: none; 
     border-radius: 7px;
     height: 2.5em;
     width: 11em;
@@ -150,15 +150,15 @@ hr{
     flex-wrap: wrap;
     justify-content: space-around; /* Distribui os gráficos uniformemente */
     margin: 2em auto;
-    max-width: 80%; /* Ajusta a largura máxima do dashboard */
+    max-width: 90%; /* Ajusta a largura máxima do dashboard */
 }
 
 .chart-container {
-    background: #b9b6b6;
-    border-radius: 0.5rem;
+    background:  rgba(36, 36, 36, 0.671);
+    border-radius: 1rem;
     margin: 1em; /* Espaçamento entre os gráficos */
     flex: 1 1 20vw; /* Permite que os gráficos se ajustem responsivamente */
-    max-width: 50vw; /* Limita a largura máxima dos gráficos */
+    max-width: 40vw; /* Limita a largura máxima dos gráficos */
 }
 
 canvas {

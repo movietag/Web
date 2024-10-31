@@ -3,6 +3,9 @@ const formularioPesquisa = document.querySelector("form"); // Formulário de pes
 const listasFilmes = document.querySelectorAll(".lista"); // Lista de filmes popular e outras
 const seletores = document.querySelectorAll('.seletor');
 
+// Cache de requisições
+const cache = {};
+
 // Opções de configuração da API
 const opcoesApi = {
     method: 'GET',
@@ -10,6 +13,25 @@ const opcoesApi = {
         accept: 'application/json',
         Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWExZjFhNGRjYzY2M2EzMTRlNmUwMDhhOGI5YWEyYyIsInN1YiI6IjY1ZDkxNjJiMGYwZGE1MDE2MjMyMjViMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qCV25ZQQfVb7YOVnVVFI_xn7MAnNYMbZRrj0SApcL7k'
     }
+};
+
+const fetchComCache = (url) => {
+    // Verifica se a resposta já está no cache
+    if (cache[url]) {
+        return Promise.resolve(cache[url]); // Retorna os dados do cache
+    }
+
+    // Se não estiver no cache, faz a requisição
+    return fetch(url, opcoesApi)
+        .then(response => response.json())
+        .then(data => {
+            cache[url] = data; // Armazena o resultado no cache
+            return data; // Retorna os dados da API
+        })
+        .catch(error => {
+            console.error(`Erro ao fazer fetch para a URL: ${url}`, error);
+            throw error; // Propaga o erro para ser tratado externamente
+        });
 };
 
 // Evento de Troca da Lista para Filme/Serie
@@ -32,60 +54,50 @@ listasFilmes.forEach(lista => {
     });
 });
 
-function alteraLista(seletor){
-    switch(seletor.dataset.name){
+function alteraLista(seletor) {
+    let url = '';
+
+    switch (seletor.dataset.name) {
         case 'filmePopular':
-            fetch('https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1', opcoesApi)
-                .then(res => res.json())
-                .then(res => itensComMediaType(res, "movie"))
-                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            url = 'https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1';
             break;
-        
         case 'seriePopular':
-            fetch('https://api.themoviedb.org/3/tv/popular?language=pt-BR&page=1', opcoesApi)
-                .then(res => res.json())
-                .then(res => itensComMediaType(res, "tv"))
-                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            url = 'https://api.themoviedb.org/3/tv/popular?language=pt-BR&page=1';
             break;
-        
         case 'filmeTop':
-            fetch('https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1', opcoesApi)
-                .then(res => res.json())
-                .then(res => itensComMediaType(res, "movie"))
-                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            url = 'https://api.themoviedb.org/3/movie/top_rated?language=pt-BR&page=1';
             break;
         case 'serieTop':
-            fetch('https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=1', opcoesApi)
-                .then(res => res.json())
-                .then(res => itensComMediaType(res, "tv"))
-                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            url = 'https://api.themoviedb.org/3/tv/top_rated?language=pt-BR&page=1';
             break;
-        
         case 'serieNovidade':
-            fetch('https://api.themoviedb.org/3/tv/on_the_air?language=pt-BR&page=1', opcoesApi)
-                .then(res => res.json())
-                .then(res => itensComMediaType(res, "tv"))
-                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            url = 'https://api.themoviedb.org/3/tv/on_the_air?language=pt-BR&page=1';
             break;
-
         case 'filmeNovidade':
-            fetch('https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1', opcoesApi)
-                .then(res => res.json())
-                .then(res => itensComMediaType(res, "movie"))
-                .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            url = 'https://api.themoviedb.org/3/movie/now_playing?language=pt-BR&page=1';
             break;
+    }
 
-            
-
+    if (url) {
+        // Usa a função fetchComCache em vez do fetch diretamente
+        fetchComCache(url)
+            .then(res => itensComMediaType(res, seletor.dataset.name.includes('filme') ? "movie" : "tv"))
+            .then(res => carregarFilmes(seletor.parentElement.parentElement.parentElement, res))
+            .catch(error => {
+                console.error('Erro ao carregar lista:', error);
+            });
     }
 }
 
+
 function itensComMediaType(json, type){
-    json.map(item => {
-    return {
-        ...item, // copia as propriedades existentes
-        media_type:type  // define o media_type
-    };});}
+    json.results.forEach(item => {
+        item.media_type = type;  // Modifica diretamente o item dentro de json.results
+    });
+
+    return json;  // Retorna o JSON modificado
+}
+
 
 // Evento de submissão da pesquisa
 formularioPesquisa.onsubmit = (evento) => {
@@ -95,7 +107,7 @@ formularioPesquisa.onsubmit = (evento) => {
     const formData = new FormData(evento.target);
     const data = Object.fromEntries(formData); // Converte FormData em um objeto
 
-    fetch('./php/validacao.php', {
+    fetch('./php/validacaoInicio.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -105,7 +117,6 @@ formularioPesquisa.onsubmit = (evento) => {
     .then(response => response.json())  // Converte a resposta do PHP para JSON
     .then(data => {
         if (data.status === 'ok') {
-            console.log('Validação bem-sucedida:', data.message);
             if (termoPesquisa) { // Se o termo de pesquisa não for vazio
                 buscarFilmes(termoPesquisa, areaResultados);
                 exibirAreaPesquisa(); // Exibe a área de pesquisa
@@ -196,9 +207,11 @@ const carregarListasIniciais = () => {
     ];
 
     urlsListas.forEach((url, index) => {
-        fetch(url, opcoesApi)
-            .then(response => response.json())
-            .then(json => carregarFilmes(listasFilmes[index], json));
+        fetchComCache(url)
+            .then(json => carregarFilmes(listasFilmes[index], json))
+            .catch(error => {
+                console.error(`Erro ao carregar lista inicial para URL: ${url}`, error);
+            });
     });
 };
 

@@ -1,0 +1,14 @@
+.conteudo{
+    display: block;
+    max-width: 35vw;
+}
+
+form{
+    width: fit-content;
+}
+
+.icone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

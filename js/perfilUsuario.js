@@ -49,7 +49,7 @@ new Chart("chartPizzas", {
         title: {
         display: true,
         text: "Gêneros Mais Assistidos",
-        fontColor: '#000'
+        fontColor: '#fff'
         }
     }
 });
@@ -70,7 +70,14 @@ new Chart("chartLinhas", {
         title:{
             display: true,
             text: "teste",
-            fontColor: '#000'
+            fontColor: '#fff'
+        },
+        scales:{
+            x:{
+                border:{
+                    color: '#fff'
+                }
+            }
         }
         
     }
@@ -87,11 +94,10 @@ new Chart("chartBarras", {
     },
     options: {
         title: {
-        display: true,
-        text: "Engajamento em Tags Criadas Por Você",
-        fontColor: '#000'
-        }
-        
+            display: true,
+            text: "Engajamento em Tags Criadas Por Você",
+            fontColor: '#fff',
+        } 
     }
 });
 

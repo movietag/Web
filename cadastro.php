@@ -30,20 +30,15 @@
                 </div>
 
                 <!-- Formulário de cadastro -->
-                <form id="form-total">
-                    <div class="info-caixas">
-                        <label for="uNome">Nome:</label>
-                        <input type="text" id="uNome" placeholder="Nome da conta" class="camposInput"> 
-                        <small id="alertaN" class="alertas"></small>
-                    </div>
+                <form method="POST" action="php/cadastrarUsuario.php" id="form-total">
                     <div class="info-caixas">
                         <label for="uUsuario">Usuário:</label>
-                        <input type="text" id="uUsuario" placeholder="Nome de usuário" class="camposInput"> 
+                        <input name="uUsuario" type="text" id="uUsuario" placeholder="Nome de usuário" class="camposInput"> 
                         <small id="alertaU" class="alertas">Este usuário já existe.</small>
                     </div>
                     <div class="info-caixas">
                         <label for="uEmail">Email:</label>
-                        <input type="email" id="uEmail" placeholder="Seu email" class="camposInput">
+                        <input name="uEmail" type="email" id="uEmail" placeholder="Seu email" class="camposInput">
                         <small id="alertaE" class="alertas">Este email já existe.</small>
                     </div>
                     <div class="info-caixas">
@@ -53,10 +48,10 @@
                     </div>
                     <div class="info-caixas">
                         <label for="uConfSenha">Confirmar senha:</label>
-                        <input type="password" name="uConfSenha" id="uConfSenha" placeholder="Confirme a senha" class="camposInput"> 
+                        <input name="confirmSenha" type="password" name="uConfSenha" id="uConfSenha" placeholder="Confirme a senha" class="camposInput"> 
                         <small id="alertaCS" class="alertas">As senhas devem ser iguais.</small>
                     </div>
-                    <button class="butao" type="submit">Criar Conta</button> 
+                    <button class="butao" name="btn-cadastrar" type="submit">Criar Conta</button> 
                     <small id="alertaErro" class="alertas">Corrija as informações erradas!</small>
                     <p id="psenha">Já possui conta? <a href="login.php" id="psenhaA">Login</a></p>
                 </form>

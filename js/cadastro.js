@@ -11,8 +11,8 @@ const campos = document.querySelectorAll('.camposInput'); // Seleciona todos os 
 const avisos = document.querySelectorAll('.alertas'); // Seleciona todos os elementos de alerta
 
 const dadosArmazenados = localStorage.getItem('usuarioDados'); // Obtém os dados armazenados no localStorage
-const usuarios = JSON.parse(dadosArmazenados) || []; // Converte os dados em objeto JavaScript ou inicializa um array vazio se não houver dados
-console.log(usuarios); // Exibe os usuários armazenados no console
+// const usuarios = JSON.parse(dadosArmazenados) || []; // Converte os dados em objeto JavaScript ou inicializa um array vazio se não houver dados
+// console.log(usuarios); // Exibe os usuários armazenados no console
 
 const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i; // Expressão regular para validação de email
 
@@ -28,7 +28,10 @@ butao.addEventListener("click", validarDados);
 
 // Impede o envio padrão do formulário
 form.addEventListener("submit", function(event) {
-    event.preventDefault();
+    if(!validarDados()){
+        event.preventDefault();
+    }
+
 });
 
 // Função para validar o campo de email
@@ -92,14 +95,14 @@ function validarUso(){
     let usuarioEmUso = false;
     let emailEmUso = false;
 
-    usuarios.forEach(usuario => {
-        if (usuario.usuario === uUsuario.value) {
-            usuarioEmUso = true;
-        }
-        if (usuario.email === uEmail.value) {
-            emailEmUso = true;
-        }
-    });
+    // usuarios.forEach(usuario => {
+    //     if (usuario.usuario === uUsuario.value) {
+    //         usuarioEmUso = true;
+    //     }
+    //     if (usuario.email === uEmail.value) {
+    //         emailEmUso = true;
+    //     }
+    // });
 
     if (usuarioEmUso) {
         uUsuario.style.border = "1px solid red"; // Define borda vermelha se o usuário já estiver em uso
@@ -125,7 +128,7 @@ function validarDados() {
     validarEmail(); // Valida o campo de email
     validarSenha(); // Valida o campo de senha
     confSenha(); // Valida o campo de confirmação de senha
-    validarUso(); // Valida se o usuário e o email já estão em uso
+    // validarUso(); // Valida se o usuário e o email já estão em uso
 
     let camposValidos = true;
     campos.forEach(campo => {
@@ -139,15 +142,15 @@ function validarDados() {
         return;
     }
 
-    const dados = {
-        nome: uNome.value,
-        usuario: uUsuario.value,
-        email: uEmail.value,
-        senha: uSenha.value
-    };
+    // const dados = {
+    //     nome: uNome.value,
+    //     usuario: uUsuario.value,
+    //     email: uEmail.value,
+    //     senha: uSenha.value
+    // };
 
-    usuarios.push(dados); // Adiciona os novos dados ao array de usuários
-    localStorage.setItem('usuarioDados', JSON.stringify(usuarios)); // Salva os usuários no localStorage
-    window.location.href = "index.php"; // Redireciona para a página inicial
-    localStorage.setItem('status', "true"); // Define o status como true no localStorage
+    // usuarios.push(dados); // Adiciona os novos dados ao array de usuários
+    // localStorage.setItem('usuarioDados', JSON.stringify(usuarios)); // Salva os usuários no localStorage
+    // window.location.href = "index.php"; // Redireciona para a página inicial
+    // localStorage.setItem('status', "true"); // Define o status como true no localStorage
 }
