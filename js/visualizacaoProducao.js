@@ -1,3 +1,24 @@
+//Esconder senha do popup de login
+const dialogLogin = document.getElementById('myDialogLogin');
+const toggleSenha = document.getElementById('toggleSenha');
+const loginSenha = document.getElementById('loginSenha');
+
+toggleSenha.addEventListener('click', () => {
+    if (loginSenha.type === 'password') {
+        loginSenha.type = 'text';
+        toggleSenha.innerHTML = '&#128065;'; // Ícone de olho aberto
+    } else {
+        loginSenha.type = 'password';
+        toggleSenha.innerHTML = '&#128065;'; // Ícone de olho
+    }
+});
+
+
+
+
+
+
+
 //Adicionar Tag
 const openButtonAdicionarTag = document.getElementById('openDialogAdicionarTag');
 const dialogAdicionarTag = document.getElementById('myDialogAdicionarTag');
@@ -69,6 +90,7 @@ cancelButtonAvaliar.addEventListener('click', () => {
 
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
+    dialogLogin.showModal();
     dialogAvaliar.close(); // Fecha o diálogo
 });
 

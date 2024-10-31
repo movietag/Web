@@ -565,7 +565,7 @@ label input[type="checkbox"]{
 
 
 
-/* Estilo geral do dialog */
+/* 
 dialog {
     background-color: #333;
     border: none;
@@ -575,7 +575,7 @@ dialog {
     color: white;
     width: 300px;
     margin: auto;
-}
+} */
 
 dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.65);
