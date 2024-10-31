@@ -51,12 +51,19 @@ function carregaFilmes(data){
     // Ordenar os filmes pela popularidade
 
     const sortedMovies = movies.sort((a, b) => {
-        // Primeiro compara o order
-        if (a.order !== b.order) {
-            return a.order - b.order; // Ordena por 'order' de forma ascendente
+        // Primeiro compara o vote_count de forma decrescente
+        if (a.vote_count !== b.vote_count) {
+            return b.vote_count - a.vote_count; // Ordena por 'vote_count' de forma decrescente
         }
-        // Se os orders forem iguais, compara a popularidade
-        return b.popularity - a.popularity}); // Ordena por 'popularity' de forma descendente
+        // Se os vote_count forem iguais, compara a popularidade de forma decrescente
+        if (a.popularity !== b.popularity) {
+            return b.popularity - a.popularity; // Ordena por 'popularity' de forma decrescente
+        }
+        // Se os vote_count e a popularidade forem iguais, compara o order de forma ascendente
+        return a.order - b.order; // Ordena por 'order' de forma ascendente
+    });
+    
+    
 
     // Exibir os filmes ordenados
     const itens = document.querySelector('.lista').lastElementChild;
@@ -66,8 +73,8 @@ function carregaFilmes(data){
 
 function criaFilmes(movies, itens){
 
-    const limitedMovies = movies.slice(0, 7);
-    limitedMovies.forEach(element => {
+    // const limitedMovies = movies.slice(0, 7);
+    movies.forEach(element => {
         let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
         if (element.poster_path === null){
             url = "./img/placeholder/MovieTag-NotFoundImage.png";

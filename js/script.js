@@ -1,3 +1,6 @@
+
+
+
 function detectTheme() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
@@ -97,7 +100,7 @@ function logado(){
 
 // Altera o front se a pessoa estiver deslogada
 function deslogado(){
-    localStorage.removeItem('status');
+    // localStorage.removeItem('status');
     apareceItem();
 
 }
@@ -117,3 +120,20 @@ function apareceAviso() {
         backdownMenu.classList.toggle("backdown-show");
     } 
   } 
+
+  document.addEventListener('DOMContentLoaded', function() {
+    fetch('./php/verificaLogin.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedIn) {
+                console.log("Usuário está logado.");
+                logado();
+                // Aqui você pode adicionar a lógica para usuários logados
+            } else {
+                deslogado();
+                console.log("Usuário não está logado.");
+                // Aqui você pode adicionar a lógica para usuários não logados
+            }
+        })
+        .catch(error => console.error('Erro ao verificar o login:', error));
+});

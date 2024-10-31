@@ -23,13 +23,13 @@
             <h1>Bem-vindo de volta!</h1>
             <div class="conteudo">
                 <!-- Formulário de login -->
-                <form id="form-total">
-                    <label for="uUsuario">Usuário/Email:</label>
+                <form method="POST" action="php/loginUsuario" id="form-total">
+                    <label for="uUsuario" name="uUsuario-Email">Usuário/Email:</label>
                     <input type="text" id="uUsuario" placeholder="Digite seu Usuário">
-                    <label for="uSenha">Senha:</label>
+                    <label for="uSenha" name="uSenha">Senha:</label>
                     <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha">
                     <a href="#">Esqueceu a senha?</a>
-                    <button type="submit" class="butao">Enviar</button>
+                    <button type="submit" name="btn-Login" class="butao">Enviar</button>
                     <p>Não possui conta? <a href="cadastro.php">Cadastrar</a></p>
                 </form>
             </div>
