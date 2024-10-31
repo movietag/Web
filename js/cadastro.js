@@ -142,6 +142,8 @@ function validarDados() {
         return;
     }
 
+    return camposValidos;
+
     // const dados = {
     //     nome: uNome.value,
     //     usuario: uUsuario.value,

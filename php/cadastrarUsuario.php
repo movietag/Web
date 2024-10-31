@@ -1,5 +1,6 @@
 <?php
 // Iniciar Sessão
+
 session_start();
 
 if (isset($_POST['btn-cadastrar'])):
@@ -8,13 +9,6 @@ if (isset($_POST['btn-cadastrar'])):
     $uEmail = filter_input(INPUT_POST, 'uEmail', FILTER_SANITIZE_EMAIL);
     $uSenha = filter_input(INPUT_POST, 'uSenha', FILTER_SANITIZE_SPECIAL_CHARS);
     $confirmSenha = filter_input(INPUT_POST, 'confirmSenha', FILTER_SANITIZE_SPECIAL_CHARS);
-
-    // Verificação de confirmação de senha
-    if ($uSenha !== $confirmSenha) {
-        $_SESSION['mensagem'] = "As senhas não coincidem!";
-        header('Location: ./cadastro.php');
-        exit;
-    }
 
     // Hash da senha
     $uSenha = password_hash($uSenha, PASSWORD_DEFAULT);
@@ -25,7 +19,7 @@ if (isset($_POST['btn-cadastrar'])):
     // Inserir no banco de dados com pathImg nulo
     $sql = "INSERT INTO USUARIO (usuario, email, senha, pathImg) VALUES ('$uUsuario', '$uEmail', '$uSenha', NULL)";
 
-    if (mysqli_query($connect, $sql)){
+    if (mysqli_query($conn, $sql)){
         $_SESSION['mensagem'] = "Cadastro com sucesso!";
         header('Location: ./index.php');
     } else {

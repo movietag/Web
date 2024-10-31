@@ -1,13 +1,15 @@
 <?php
-$host = "sql202.infinityfree.com";  // MySQL Hostname
-$usuario = "if0_37517870";          // MySQL Username
-$senha = "f1lminho";                // MySQL Password
-$banco = "if0_37517870_movietagdb"; // Nome do Banco de Dados
-$porta = 3306;                      // MySQL Port (opcional)
+$servername = "sql202.infinityfree.com";
+$username = "if0_37517870";
+$password = "f1lminho";
+$dbname = "if0_37517870_movietagdb";
 
-// Montando a DSN
-$connect =mysqli_connect($host,$usuario,$senha,$banco);
-if(mysqli_connect_error()):
-	echo "Falha na conexão: ". mysqli_connect_error();
-endif;
+// Criando a conexão
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// Verificando a conexão
+if (!$conn) {
+  die("Connection failed: " . mysqli_connect_error());
+}
+echo "Connected successfully";
 ?>
