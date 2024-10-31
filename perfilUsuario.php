@@ -49,15 +49,19 @@
         </div>
 
         <div class="dashboard"> 
+            <div class="chart-containerP">
+                <canvas id="chartPizzas" class="chartPizzas"></canvas>
+            </div>
+            <div class="chart-containerP"  >
+                <canvas id="chartPizzas2" class="chartPizzas"></canvas>
+            </div>
             <div class="chart-container">
                 <canvas id="chartLinhas"></canvas>
             </div>
             <div class="chart-container">
                 <canvas id="chartBarras"></canvas>
             </div>
-            <div class="chart-container">
-                <canvas id="chartPizzas"></canvas>
-            </div>
+            
         </div>
 
         <div class="show pagTags">

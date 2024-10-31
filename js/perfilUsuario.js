@@ -54,6 +54,24 @@ new Chart("chartPizzas", {
     }
 });
 
+new Chart("chartPizzas2", {
+    type: "pie",
+    data: {
+        labels: xValues,
+        datasets: [{
+        backgroundColor: barColors,
+        data: yValues
+        }]
+    },
+    options: {
+        title: {
+        display: true,
+        text: "FSAGDFSGDSGAS",
+        fontColor: '#fff'
+        }
+    }
+});
+
 new Chart("chartLinhas", {
     type: "line",
     data: {
@@ -72,16 +90,17 @@ new Chart("chartLinhas", {
             text: "teste",
             fontColor: '#fff'
         },
-        scales:{
-            x:{
-                border:{
-                    color: '#fff'
+        scales: {
+            x: {
+                border: {
+                color: 'red'
                 }
             }
         }
+    }
         
     }
-});
+);
 
 new Chart("chartBarras", {
     type: "horizontalBar",
