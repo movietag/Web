@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/visualizacaoProducao.css">
     <script src="js/script.js" defer></script>
     <script src="js/visualizacaoProducao.js" defer></script>
-    <title>Movie Tag ∙ Produção</title>
+    <title>MovieTag ∙ Produção</title>
 </head>
 
 
@@ -237,6 +237,34 @@
             <button class="confirm-btn" id="confirmDialogAdicionarTag">Adicionar</button>
         </div>
     </dialog>
+
+
+        <!-- Dialog de Login -->
+    <dialog id="myDialogLogin">
+        <div class="dialog-header">Faça login para executar essa ação</div>
+        <hr>
+        <div class="dialog-content">
+            <label for="loginUsuario">Usuário / Email</label>
+            <input type="text" id="loginUsuario" placeholder="Digite seu usuário">
+
+            <label for="loginSenha">Senha</label>
+            <div class="password-wrapper">
+                <input type="password" id="loginSenha" placeholder="Digite sua senha">
+                <button type="button" id="toggleSenha" class="eye-btn">&#128065;</button> <!-- Ícone de olho -->
+            </div>
+
+            <a href="#" class="forgot-link">Esqueceu a senha?</a>
+
+            <button class="confirm-btn login-btn">Entrar</button>
+
+            <div class="separator">OU</div>
+
+            <div class="register-link">
+                Não possui conta? <a href="#">Cadastrar</a>
+            </div>
+        </div>
+    </dialog>
+
 
 
 

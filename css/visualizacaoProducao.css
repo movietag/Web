@@ -552,4 +552,121 @@ label input[type="checkbox"]{
     max-width: 30vw;
 }
 
+#confirmTag{
+    min-width: 2em;
+    border-radius: 8px;
+    height: max-content;
+}
   
+
+
+
+
+
+
+
+/* Estilo geral do dialog */
+dialog {
+    background-color: #333;
+    border: none;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: white;
+    width: 300px;
+    margin: auto;
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.dialog-header {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.dialog-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+.dialog-content input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: none;
+    border-bottom: 1px solid #555;
+    background-color: transparent;
+    color: #ddd;
+    font-size: 14px;
+    transition: border-bottom 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dialog-content input:focus {
+    outline: none;
+    border-bottom: 1px solid transparent;
+    box-shadow: 0 1px 0 0 #c9c9c9, 0 3px 0 0 #c9c9c9;
+}
+
+.password-wrapper {
+    position: relative;
+}
+
+.eye-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #ddd;
+    cursor: pointer;
+}
+
+.forgot-link {
+    display: block;
+    margin-top: 10px;
+    text-align: right;
+    color: #ccc;
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    background-color: #ffcc00;
+    color: black;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    width: 100%;
+    margin-top: 15px;
+    cursor: pointer;
+}
+
+.separator {
+    margin: 20px 0;
+    text-align: center;
+    font-size: 12px;
+    color: #bbb;
+}
+
+.register-link {
+    text-align: center;
+    font-size: 12px;
+}
+
+.register-link a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
