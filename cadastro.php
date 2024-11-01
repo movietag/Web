@@ -22,15 +22,19 @@
         <div class="secao-caixa">
             <!-- Título da seção -->
             <h1>Criar Conta</h1>
-            <div class="conteudo">
-
-                <!-- Icone de usuário -->
-                <div class="icone">
-                    <i class='bx bxs-user'></i>
+            <!-- Formulário de cadastro -->
+            <form method="POST" action="php/cadastrarUsuario.php" id="form-total">
+                <div class="conteudo">
+                    <!-- Icone -->
+                    <div class="icone">
+                        <img id="fotoUser" src="img/circle_user_icon.svg" alt="Imagem de Perfil do Usuário">
+                        <!-- Input para arquivos -->
+                        <input type="file" name="uFile" id="uFile"> 
+                    </div>
                 </div>
 
-                <!-- Formulário de cadastro -->
-                <form method="POST" action="php/cadastrarUsuario.php" id="form-total">
+                <div class="conteudo">
+                    
                     <div class="info-caixas">
                         <label for="uUsuario">Usuário:</label>
                         <input name="uUsuario" type="text" id="uUsuario" placeholder="Nome de usuário" class="camposInput"> 
@@ -54,9 +58,9 @@
                     <button class="butao" name="btn-cadastrar" type="submit">Criar Conta</button> 
                     <small id="alertaErro" class="alertas">Corrija as informações erradas!</small>
                     <p id="psenha">Já possui conta? <a href="login.php" id="psenhaA">Login</a></p>
-                </form>
                 
-            </div>
+                </div>
+            </form>
         </div>
         
     </section>

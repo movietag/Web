@@ -22,7 +22,7 @@
     <section>
         <div id="grandeUsuario">
             <div class="dados1">
-                <i class='bx bxs-user'></i>
+                <img id="fotoUser" src="img/circle_user_icon.svg" alt="Imagem de Perfil do Usuário">
                 <div>
                     <p id="username">UserName</p>
                     <p id="email">email@gmail.com</p>

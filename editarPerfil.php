@@ -26,7 +26,7 @@
                 <div class="conteudo">
                     <!-- Icone -->
                     <div class="icone">
-                        <i class='bx bxs-user'></i>
+                        <img id="fotoUser" src="img/circle_user_icon.svg" alt="Imagem de Perfil do Usuário">
                         <!-- Input para arquivos -->
                         <input type="file" name="uFile" id="uFile"> 
                     </div>

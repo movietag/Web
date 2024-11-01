@@ -12,3 +12,8 @@ form{
     justify-content: center;
     align-items: center;
 }
+
+#fotoUser {
+    width: 15vh;
+    margin-right: 0.2em;
+}

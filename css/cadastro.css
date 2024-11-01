@@ -1,3 +1,23 @@
+.conteudo{
+    display: block;
+    max-width: 35vw;
+}
+
+form{
+    width: fit-content;
+}
+
+.icone{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#fotoUser {
+    width: 15vh;
+    margin-right: 0.2em;
+}
+
 .info-caixas {
     margin-bottom: 0.3rem;
 }

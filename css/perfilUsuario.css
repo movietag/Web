@@ -6,9 +6,9 @@
     max-width: 60em;
 }
 
-.bxs-user{
-    font-size: 12vh;
-    color: white;
+#fotoUser {
+    width: 12vh;
+    margin-right: 1em;
 }
 
 .dados1{
