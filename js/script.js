@@ -1,152 +1,99 @@
+let statusLogin = false;
 
-
-
-function detectTheme() {
+// Detecta o tema do sistema (escuro ou claro)
+function detectarTema() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
 
-function updateFavicon(theme) {
+// Atualiza o favicon com base no tema
+function atualizarFavicon(tema) {
     const favicon = document.getElementById('favicon');
-    if (theme === 'dark') {
-        favicon.href = './img/Logo-Branca-Mini.svg';
-    } else {
-        favicon.href = './img/Logo-Preta.svg';
-    }
+    favicon.href = tema === 'dark' ? './img/Logo-Branca-Mini.svg' : './img/Logo-Preta.svg';
 }
 
-// Atualiza o favicon com base no tema inicial
-updateFavicon(detectTheme());
+// Inicializa o favicon com base no tema atual
+atualizarFavicon(detectarTema());
 
-// Adiciona um listener para detectar mudanças no tema
-const mediaQueryList = window.matchMedia('(prefers-color-scheme: dark)');
+// Detecta mudanças no tema do sistema e atualiza o favicon
+const mediaQueryTema = window.matchMedia('(prefers-color-scheme: dark)');
+mediaQueryTema.addEventListener('change', (evento) => atualizarFavicon(evento.matches ? 'dark' : 'light'));
 
-function handleChange(event) {
-    const newTheme = event.matches ? 'dark' : 'light';
-    updateFavicon(newTheme);
-}
-
-// Usando onchange para garantir compatibilidade
-mediaQueryList.addEventListener('change', handleChange); // Para navegadores que suportam
-mediaQueryList.onchange = handleChange; // Para navegadores mais antigos
-
-// Caso a propriedade addEventListener não funcione, você pode usar o onchange como fallback
-
-// Evento do Menu
+// Evento de clique no botão de conta
 const btnConta = document.querySelector("#btnConta");
-btnConta.addEventListener("click", (ev) => {showMenu(ev)});
+btnConta.addEventListener("click", exibirMenu);
 const menu = document.querySelector(".menu");
-const popup = document.getElementById("myPopup");
+const popupAviso = document.getElementById("myPopup");
+const menuDropdown = document.querySelector(".backdown-menu");
 
-// Altera os items que aparecem no backdown menu
-const backdownMenu = document.querySelector(".backdown-menu")
-for (let i = 0; i < backdownMenu.childElementCount; i++){
+// Evento de acesso à Watchlist
+menu.children[1].addEventListener("click", (evento) => {
+    if (statusLogin) {
+        evento.target.setAttribute("href", "visualizacaoListas.php");
+    } else {
+        evento.preventDefault();
+        exibirAviso();
+        evento.target.setAttribute("href", "");
+    }
+});
 
-    // i > 1: Perfil e Sair
-    if (i > 1){
-        backdownMenu.children[i].classList.toggle("item-show");
+// Exibe ou oculta o menu de conta
+function exibirMenu() {
+    menuDropdown.classList.toggle("backdown-show");
+    if (popupAviso.classList.contains("show")) {
+        popupAviso.classList.remove("show");
     }
 }
 
-// Evento de Watchlist
-menu.children[1].addEventListener("click", (ev) => {
-
-    // Se estiver logado...
-    if(verificaLogado() === true){
-        // Permite o usuario navegar ate Watchlist
-        ev.target.setAttribute("href", "visualizacaoListas.php");
-    } else{
-        ev.preventDefault();
-
-        //Popup de Aviso
-        apareceAviso();
-        ev.target.setAttribute("href", "");
-    }
-
-    }
-);
-
-// Se o usuario estiver logado
-function verificaLogado(){
-    if (localStorage.getItem('status') != null){
-        logado();
-        return true;
-    } else{
-        return
+// Exibe ou oculta o aviso de login na Watchlist
+function exibirAviso() {
+    popupAviso.classList.toggle("show");
+    if (menuDropdown.classList.contains("backdown-show")) {
+        menuDropdown.classList.remove("backdown-show");
     }
 }
 
-// Chama a funcao para verificar se o usuario esta logado
-verificaLogado();
-
-// Aparecer o Menu
-function showMenu(){
-    console.log("Salve");
-    backdownMenu.classList.toggle("backdown-show");
-
-    // Se o popup de Watchlist estiver aparecendo
-    if (popup.classList.contains("show")){
-
-        // Some o popup
-        popup.classList.toggle("show");
-    }
+// Atualiza a interface para usuário logado
+function usuarioLogado() {
+    statusLogin = true;
+    atualizarItensMenu();
+    menuDropdown.lastElementChild.addEventListener("click", usuarioDeslogado);
 }
 
-// Altera o frond se a pessoa estiver logada
-function logado(){
-    apareceItem();
-    // Se clicar em sair, deslogado é chamado
-    backdownMenu.lastElementChild.addEventListener("click", deslogado);
-}
-
-// Altera o front se a pessoa estiver deslogada
-function deslogado(){
-    // localStorage.removeItem('status');
+// Atualiza a interface para usuário deslogado
+function usuarioDeslogado() {
+    console.log('Saindo');
+    statusLogin = false;
     fetch('./php/deslogarUsuario.php')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error("Erro ao deslogar");
-        }
-        return response.text(); // ou response.json() se o PHP retornar JSON
-    })
-    .then(data => {
-        console.log("Usuário deslogado com sucesso:", data);
-        apareceItem(); // Chama a função para atualizar a interface
-    })
-    .catch(error => {
-        console.error("Erro ao deslogar o usuário:", error);
-    });
-
+        .then(response => {
+            if (!response.ok) throw new Error("Erro ao deslogar");
+            return response.text();
+        })
+        .then(data => {
+            console.log("Usuário deslogado com sucesso:", data);
+            atualizarItensMenu();
+            window.location.href = "index.php";
+        })
+        .catch(error => console.error("Erro ao deslogar o usuário:", error));
 }
 
-// Atualiza os itens que devem aparecer no backdownMenu
-function apareceItem(){
-    for (let i = 0; i < backdownMenu.childElementCount; i++){
-        backdownMenu.children[i].classList.toggle("item-show");
-}}
+// Atualiza os itens que devem aparecer no menu de conta
+function atualizarItensMenu() {
+    for (let item of menuDropdown.children) {
+        item.classList.toggle("item-show");
+    }
+}
 
-// Popup de Watchlist
-function apareceAviso() {
-    popup.classList.toggle("show");
-
-    // Testa se o backdownMenu de conta
-    if (backdownMenu.classList.contains("backdown-show")){
-        backdownMenu.classList.toggle("backdown-show");
-    } 
-  } 
-
-  document.addEventListener('DOMContentLoaded', function() {
+// Verifica o status de login ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
     fetch('./php/verificaLogin.php')
         .then(response => response.json())
         .then(data => {
             if (data.loggedIn) {
                 console.log("Usuário está logado.");
-                logado();
-                // Aqui você pode adicionar a lógica para usuários logados
+                usuarioLogado();
             } else {
-                // deslogado();
                 console.log("Usuário não está logado.");
-                // Aqui você pode adicionar a lógica para usuários não logados
             }
         })
-        // .catch(error => console.error('Erro ao verificar o login:', error));
+        .catch(error => console.error('Erro ao verificar o login:', error));
 });

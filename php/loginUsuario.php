@@ -10,10 +10,8 @@ if (isset($_POST['btn-Login'])):
     require_once 'config.php';
 
     // Consulta para verificar se o usuário ou e-mail existe
-    $sql = "SELECT * FROM USUARIO WHERE usuario = '$uUsuarioEmail' OR email = '$uUsuarioEmail'";
+    $sql = "SELECT * FROM USUARIO WHERE usuario = 'guiihocosta' OR email = 'guiihocosta@gmail.com'";
     $result = mysqli_query($conn, $sql);
-
-    $_SESSION['result'] = $result;
 
     if (mysqli_num_rows($result) > 0) {
         $rows = mysqli_fetch_assoc($result);

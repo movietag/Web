@@ -11,10 +11,10 @@
         <li class="lista-nav" id="btnConta">
             <img id="img-user" src="img/circle_user_icon.svg" alt="" srcset="">
             <ul class="backdown-menu">
-                <li ><a href="login.php">Entrar</a></li>
+                <li><a href="login.php">Entrar</a></li>
                 <li><a href="cadastro.php">Registrar</a></li>
-                <li><a href="perfilUsuario.php">Perfil</a></li>
-                <li><a href=""></a>Sair</li>
+                <li class="item-show"><a href="perfilUsuario.php">Perfil</a></li>
+                <li class="item-show"><a href=""></a>Sair</li>
             </ul>
 
         </li>
