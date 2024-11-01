@@ -14,16 +14,19 @@
 </head>
 <body>
     <header>
-    <?php require 'navbar.php'; ?>
+    <?php 
+    session_start();
+    require 'navbar.php'; ?>
     </header>
 
     <!-- Seção principal de login -->
     <section>
         <div class="secao-caixa">
             <h1>Bem-vindo de volta!</h1>
+            <?php echo $_SESSION['mensagem']?>
             <div class="conteudo">
                 <!-- Formulário de login -->
-                <form method="POST" action="php/loginUsuario" id="form-total">
+                <form method="POST" action="php/loginUsuario.php" id="form-total">
                     <label for="uUsuario" name="uUsuario-Email">Usuário/Email:</label>
                     <input type="text" id="uUsuario" placeholder="Digite seu Usuário">
                     <label for="uSenha" name="uSenha">Senha:</label>

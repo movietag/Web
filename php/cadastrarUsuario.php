@@ -22,7 +22,7 @@ if (isset($_POST['btn-cadastrar'])):
 
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['mensagem'] = "Nome de usuário ou e-mail já cadastrado!";
-        header('Location: ./cadastro.php');
+        header('Location: /cadastro.php');
         exit;
     } else {
         // Inserir no banco de dados com pathImg nulo
@@ -30,7 +30,7 @@ if (isset($_POST['btn-cadastrar'])):
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['mensagem'] = "Cadastro com sucesso!";
-            $_SESSION['status'] = True;
+            $_SESSION['status'] = true;
             header('Location: /index.php');
         } else {
             $_SESSION['mensagem'] = "Erro ao cadastrar!";

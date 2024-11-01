@@ -101,7 +101,20 @@ function logado(){
 // Altera o front se a pessoa estiver deslogada
 function deslogado(){
     // localStorage.removeItem('status');
-    apareceItem();
+    fetch('./php/deslogarUsuario.php')
+    .then(response => {
+        if (!response.ok) {
+            throw new Error("Erro ao deslogar");
+        }
+        return response.text(); // ou response.json() se o PHP retornar JSON
+    })
+    .then(data => {
+        console.log("Usuário deslogado com sucesso:", data);
+        apareceItem(); // Chama a função para atualizar a interface
+    })
+    .catch(error => {
+        console.error("Erro ao deslogar o usuário:", error);
+    });
 
 }
 
@@ -130,10 +143,10 @@ function apareceAviso() {
                 logado();
                 // Aqui você pode adicionar a lógica para usuários logados
             } else {
-                deslogado();
+                // deslogado();
                 console.log("Usuário não está logado.");
                 // Aqui você pode adicionar a lógica para usuários não logados
             }
         })
-        .catch(error => console.error('Erro ao verificar o login:', error));
+        // .catch(error => console.error('Erro ao verificar o login:', error));
 });
