@@ -27,8 +27,8 @@
             <div class="conteudo">
                 <!-- Formulário de login -->
                 <form method="POST" action="php/loginUsuario.php" id="form-total">
-                    <label for="uUsuario" name="uUsuario-Email">Usuário/Email:</label>
-                    <input type="text" id="uUsuario" placeholder="Digite seu Usuário">
+                    <label for="uUsuario">Usuário/Email:</label>
+                    <input type="text" name="uUsuario-Email" id="uUsuario" placeholder="Digite seu Usuário">
                     <label for="uSenha" name="uSenha">Senha:</label>
                     <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha">
                     <a href="#">Esqueceu a senha?</a>

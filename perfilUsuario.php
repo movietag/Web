@@ -16,7 +16,9 @@
 </head>
 <body>
     <header>
-    <?php require 'navbar.php'; ?>
+    <?php 
+    session_start();
+    require_once 'navbar.php'; ?>
     </header>
 
     <section>
@@ -24,7 +26,7 @@
             <div class="dados1">
                 <img id="fotoUser" src="img/circle_user_icon.svg" alt="Imagem de Perfil do Usuário">
                 <div>
-                    <p id="username">UserName</p>
+                    <p id="username"><?php $SESSION['dados']?></p>
                     <p id="email">email@gmail.com</p>
                 </div>
             </div>

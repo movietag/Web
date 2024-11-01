@@ -3,14 +3,14 @@
 session_start();
 if (isset($_POST['btn-Login'])):
     // Tratamento dos inputs
-    $uUsuarioEmail = filter_input(INPUT_POST, 'uUsuario-Email', FILTER_SANITIZE_SPECIAL_CHARS);
-    $uSenha = filter_input(INPUT_POST, 'uSenha', FILTER_SANITIZE_SPECIAL_CHARS);
+    $uUsuarioEmail = filter_var($_POST['uUsuario-Email'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);
+    $uSenha = filter_var($_POST['uSenha'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);    
 
     // Conexão
     require_once 'config.php';
 
     // Consulta para verificar se o usuário ou e-mail existe
-    $sql = "SELECT * FROM USUARIO WHERE usuario = 'guiihocosta' OR email = 'guiihocosta@gmail.com'";
+    $sql = "SELECT * FROM USUARIO WHERE usuario = '$uUsuarioEmail' OR email = '$uUsuarioEmail'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -19,6 +19,7 @@ if (isset($_POST['btn-Login'])):
         // Verifica se a senha corresponde ao hash armazenado no banco de dados
         if (password_verify($uSenha, $senhaBanco)) {
             $_SESSION['status'] = true;
+            $_SESSION['dados'] = $rows;
             header('Location: /index.php');
             exit;
         } else {
@@ -33,4 +34,5 @@ if (isset($_POST['btn-Login'])):
     }
 
 endif;
+
 ?>

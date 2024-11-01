@@ -23,7 +23,6 @@ if (isset($_POST['btn-cadastrar'])):
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['mensagem'] = "Nome de usuário ou e-mail já cadastrado!";
         header('Location: /cadastro.php');
-        exit;
     } else {
         // Inserir no banco de dados com pathImg nulo
         $sql = "INSERT INTO USUARIO (usuario, email, senha, pathImg) VALUES ('$uUsuario', '$uEmail', '$uSenha', NULL)";
