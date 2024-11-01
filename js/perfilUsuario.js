@@ -91,7 +91,7 @@ new Chart("chartLinhas", {
             fontColor: '#fff'
         },
         scales: {
-            x: {
+            xAxes: {
                 border: {
                 color: 'red'
                 }
