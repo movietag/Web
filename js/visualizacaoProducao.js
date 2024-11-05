@@ -1,3 +1,31 @@
+function progressBar(value){
+    value = Math.trunc(value*10);
+    let progressBar = document.querySelector(".circular-progress");
+    let valueContainer = document.querySelector(".value-container");
+
+    let progressValue = 0;
+    let progressEndValue = value;
+    let speed = 1;
+    let progress = setInterval(() => {
+    progressValue++;
+    valueContainer.textContent = `${progressValue}%`;
+    progressBar.style.background = `conic-gradient(
+        #e6c222 ${progressValue * 3.6}deg,
+        #e3dbb5 ${progressValue * 3.6}deg
+    )`;
+    if (progressValue == progressEndValue) {
+        clearInterval(progress);
+    }
+    }, speed);
+
+}
+
+
+
+
+
+
+
 //fecha popup se clicar fora
 document.querySelectorAll('dialog').forEach(dialog => {
     dialog.addEventListener('click', function(event) {
@@ -404,7 +432,7 @@ function carregaDados(json) {
     sinopse.innerHTML = json.overview; // Define a sinopse
 
     const nota = document.querySelector(".porcentagem");
-    nota.innerHTML = `${Math.round(json.vote_average * 10)}%`;
+    progressBar(json.vote_average);
 
     if (myParam.type === "movie"){
         dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`; // Define a data de estreia e país de origem
@@ -496,15 +524,6 @@ function carregaEquipe(json){
         }
         
     })
-    // <li class="card_produtor">
-    //                                 <h3 class="nome_produtor">
-    //                                     Kelsey Mann
-    //                                 </h3>
-    //                                 <p class="funcao_produtor">
-    //                                     Diretor
-    //                                 </p>
-    //                             </li>
-
 }
 
 function carregaProvedores(json){ // Função para carregar os dados dos provedores
@@ -521,9 +540,6 @@ function carregaProvedores(json){ // Função para carregar os dados dos provedo
         } 
         if (json.results.BR.flatrate != null){
             criaItens(json.results.BR.flatrate, listaStream);}
-
-
-        
         };
     }
 
