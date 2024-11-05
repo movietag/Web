@@ -19,7 +19,12 @@ if (isset($_POST['btn-Login'])):
         // Verifica se a senha corresponde ao hash armazenado no banco de dados
         if (password_verify($uSenha, $senhaBanco)) {
             $_SESSION['status'] = true;
-            $_SESSION['dados'] = $rows;
+            $_SESSION['dados'] = [
+                "id" => $rows['id'],
+                "usuario" => $rows["usuario"],
+                "email" => $rows["email"],
+                "foto" => $rows['pathImg']
+        ];
             header('Location: /index.php');
             exit;
         } else {

@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/visualizacaoProducao.css">
     <script src="js/script.js" defer></script>
     <script src="js/visualizacaoProducao.js" defer></script>
+    <link rel="stylesheet" href="css/style_progressbar.css"/>
+    <!-- <script src="js/script_progressbar.js" defer></script> -->
     <title>MovieTag ∙ Produção</title>
 </head>
 
@@ -55,7 +57,14 @@
 
                             <!--Avaliacao-->
                             <div class="score">
-                                <h2 class="porcentagem"></h2>
+                            <div class="container">
+                                <div class="circular-progress">
+                                    <div class="value-container">0%</div>
+                                </div>
+                                </div>
+
+                                <!-- <h2 class="porcentagem"></h2> -->
+
                                 <h3 class="porcentagem_titulo">Classificação dos Usuários</h3>
                             </div>
 
