@@ -75,32 +75,46 @@ new Chart("chartPizzas2", {
 new Chart("chartLinhas", {
     type: "line",
     data: {
-        labels: linexValues ,
+        labels: ["Jan", "Fev", "Mar", "Abril", "Maio"], // etiquetas do eixo x
         datasets: [{
-        label: "Batata",
-        borderColor: '#e6c222',
-        data: yValues,
-        tension: 0
+            label: "Batata",
+            borderColor: '#e6c222',
+            data: [55, 49, 44, 24, 15], // dados do gráfico
+            tension: 0
         }]
     },
-    options:{
+    options: {
         responsive: true,
-        title:{
-            display: true,
-            text: "teste",
-            fontColor: '#fff'
-        },
         scales: {
-            xAxes: {
-                border: {
-                color: 'red'
+            x: {
+                grid: {
+                    display: false // remove o grid do eixo x
+                },
+                ticks: {
+                    color: '#fff' // Cor das labels no eixo x (opcional)
+                }
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false // remove o grid do eixo y
+                },
+                ticks: {
+                    color: '#fff' // Cor das labels no eixo y (opcional)
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#fff' // Cor das labels da legenda (opcional)
                 }
             }
         }
     }
-        
-    }
-);
+});
+
+
 
 new Chart("chartBarras", {
     type: "horizontalBar",
@@ -119,4 +133,3 @@ new Chart("chartBarras", {
         } 
     }
 });
-

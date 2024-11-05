@@ -62,8 +62,7 @@
             </div>
             <div class="chart-container">
                 <canvas id="chartBarras"></canvas>
-            </div>
-            
+            </div> 
         </div>
 
         <div class="show pagTags">
@@ -118,6 +117,6 @@
     <!-- Footer -->
     <?php include 'footer.php'; ?>
 <!--chart.js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
 </body>
 </html>
