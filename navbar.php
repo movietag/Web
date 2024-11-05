@@ -1,3 +1,15 @@
+<?php 
+    session_start();
+    $imageSrc = 'img/circle_user_icon.svg';
+
+    if (isset($_SESSION['dados']['foto'])) {
+        $base64Img = $_SESSION['dados']['foto'];
+        // Check if it's a valid base64 string
+        if (base64_decode($base64Img, true)) {
+            $imageSrc = 'data:image/jpeg;base64,' . $base64Img;
+        }
+    }
+?>
 <nav>
     <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
     <ul class="menu">
@@ -9,7 +21,7 @@
             <span class="popuptext" id="myPopup">Você precisa estar logado para acessar Minhas Listas</span>    
         </li>
         <li class="lista-nav" id="btnConta">
-            <img id="img-user" src="img/circle_user_icon.svg" alt="" srcset="">
+            <img id="img-user" src="<?php echo htmlspecialchars($imageSrc); ?>" alt="" srcset="">
             <ul class="backdown-menu">
                 <li><a href="login.php">Entrar</a></li>
                 <li><a href="cadastro.php">Registrar</a></li>

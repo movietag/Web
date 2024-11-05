@@ -285,19 +285,6 @@ const divTemp = document.querySelector("#temporadas");
 // Define a variável 'aberto' como verdadeira
 let aberto = true;
 
-
-//Configurar depois par ficar marcado se a pessoa adicionar a produção em alguma lista
-
-// icon.addEventListener("click", (ev) => {
-//     const classes = ["bx-bookmark", "bxs-bookmark"]; // Lista de Classes dos Icones de Marcador
-//     if (icon.classList.contains(classes[0])) {
-//         icon.classList.remove(classes[0]);
-//         icon.classList.add(classes[1]);
-//     } else {
-//         icon.classList.remove(classes[1]);
-//         icon.classList.add(classes[0]);
-//     }
-// });
 const botao = document.querySelector("#plataformas_button"); // Seleciona o botão de plataformas
 botao.addEventListener("click", abrirPlataformas); // Adiciona ouvidor de evento de click no botão de plataformas
 

@@ -32,7 +32,7 @@ if (isset($_POST['btn-cadastrar'])):
         header('Location: /cadastro.php');
     } else {
         // Inserir no banco de dados com pathImg nulo
-        $sql = "INSERT INTO USUARIO (usuario, email, senha, pathImg) VALUES ('$uUsuario', '$uEmail', '$uSenhaHash', " . ($imageBase64 ? "'" . mysqli_real_escape_string($conn, $imageBase64) . "'" : "NULL") . ")";
+        $sql = "INSERT INTO USUARIO (usuario, email, senha, pathImg) VALUES ('$uUsuario', '$uEmail', '$uSenha', " . ($imageBase64 ? "'" . mysqli_real_escape_string($conn, $imageBase64) . "'" : "NULL") . ")";
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['mensagem'] = "Cadastro com sucesso!";

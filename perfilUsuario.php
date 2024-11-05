@@ -17,16 +17,6 @@
 <body>
     <header>
     <?php 
-    session_start();
-    $imageSrc = 'img/circle_user_icon.svg';
-
-    if (isset($_SESSION['dados']['pathImg'])) {
-        $base64Img = $_SESSION['dados']['pathImg'];
-        // Check if it's a valid base64 string
-        if (base64_decode($base64Img, true)) {
-            $imageSrc = 'data:image/jpeg;base64,' . $base64Img;
-        }
-    }
     require_once 'navbar.php'; ?>
     </header>
 
