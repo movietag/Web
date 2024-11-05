@@ -23,13 +23,13 @@
             <!-- Título da seção -->
             <h1>Criar Conta</h1>
             <!-- Formulário de cadastro -->
-            <form method="POST" action="php/cadastrarUsuario.php" id="form-total">
+            <form method="POST" action="php/cadastrarUsuario.php" enctype="multipart/form-data" id="form-total">
                 <div class="conteudo">
                     <!-- Icone -->
                     <div class="icone">
                         <img id="fotoUser" src="img/circle_user_icon.svg" alt="Imagem de Perfil do Usuário">
                         <!-- Input para arquivos -->
-                        <input type="file" name="uFile" id="uFile"> 
+                        <input type="file" accept="image/*" name="uFile" id="uFile"> 
                     </div>
                 </div>
 

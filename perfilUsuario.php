@@ -18,16 +18,25 @@
     <header>
     <?php 
     session_start();
+    $imageSrc = 'img/circle_user_icon.svg';
+
+    if (isset($_SESSION['dados']['pathImg'])) {
+        $base64Img = $_SESSION['dados']['pathImg'];
+        // Check if it's a valid base64 string
+        if (base64_decode($base64Img, true)) {
+            $imageSrc = 'data:image/jpeg;base64,' . $base64Img;
+        }
+    }
     require_once 'navbar.php'; ?>
     </header>
 
     <section>
         <div id="grandeUsuario">
             <div class="dados1">
-                <img id="fotoUser" src="img/circle_user_icon.svg" alt="Imagem de Perfil do Usuário">
+            <img id="fotoUser" src="<?php echo htmlspecialchars($imageSrc); ?>" alt="Imagem de Perfil do Usuário">
                 <div>
-                    <p id="username"><?php $SESSION['dados']?></p>
-                    <p id="email">email@gmail.com</p>
+                    <p id="username"><?php echo $_SESSION['dados']['usuario']?></p>
+                    <p id="email"><?php echo $_SESSION['dados']['email']?></p>
                 </div>
             </div>
             <div class="dados2">
