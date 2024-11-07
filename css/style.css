@@ -10,6 +10,15 @@
     box-sizing: border-box; 
 }
 
+.img-user{
+    display: flex;
+    flex-direction: row;
+}
+.img-user img{
+    margin-right: 0;
+    /* font-size: 3em; */
+}
+
 /* Alterando a cor dos textos de algumas tags */
 h1, h2, h3, p, span{
     color: white;
@@ -130,8 +139,8 @@ ul, li{
 
 .menu img{
     border-radius: 50%;
-    width: 8em;
-    height: 8em;
+    width: 4em;
+    height: 4em;
 }
 
 /* Configurando menu backdown */
@@ -377,10 +386,6 @@ button.cancel-btn {
 
 button.cancel-btn:hover {
     background-color: #777;
-}
-
-#img-user{
-    font-size: 0.3em;
 }
 
 /*css de formularios no site (páginas login, cadastro e editar perfil do usuario)*/
