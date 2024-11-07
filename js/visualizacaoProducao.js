@@ -1,3 +1,20 @@
+let logado = false;
+
+// Verifica o status de login ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('./php/fetchLogin.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedIn) {
+                console.log("Usuário está logado.");
+                logado = true;
+            } else {
+                console.log("Usuário não está logado.");
+            }
+        })
+        .catch(error => console.error('Erro ao verificar o login:', error));
+});
+
 function progressBar(value){
     value = Math.trunc(value*10);
     let progressBar = document.querySelector(".circular-progress");
@@ -20,12 +37,6 @@ function progressBar(value){
 
 }
 
-
-
-
-
-
-
 //fecha popup se clicar fora
 document.querySelectorAll('dialog').forEach(dialog => {
     dialog.addEventListener('click', function(event) {
@@ -44,9 +55,6 @@ document.querySelectorAll('dialog').forEach(dialog => {
     });
 });
 
-
-
-
 //Esconder senha do popup de login
 const dialogLogin = document.getElementById('myDialogLogin');
 const toggleSenha = document.getElementById('toggleSenha');
@@ -63,17 +71,17 @@ toggleSenha.addEventListener('click', () => {
 });
 
 
-
-
-
-
-
 //Adicionar Tag
 const openButtonAdicionarTag = document.getElementById('openDialogAdicionarTag');
 const dialogAdicionarTag = document.getElementById('myDialogAdicionarTag');
 
 openButtonAdicionarTag.addEventListener('click', () => {
-    dialogAdicionarTag.showModal(); // Exibe o diálogo como modal
+    if(logado){
+        dialogAdicionarTag.showModal(); // Exibe o diálogo como modal
+    }else{
+        dialogLogin.showModal();
+    }
+    
 });
 
 
@@ -129,7 +137,12 @@ const cancelButtonAvaliar = document.getElementById('cancelDialogAvaliar');
 
 // Abre o diálogo quando o botão é clicado
 openButtonAvaliar.addEventListener('click', () => {
-    dialogAvaliar.showModal(); // Exibe o diálogo como modal
+    if(logado){
+        dialogAvaliar.showModal(); // Exibe o diálogo como modal
+    }else{
+        dialogLogin.showModal();
+    }
+
 });
 
 // Fecha o diálogo ao clicar no botão "Cancelar"
@@ -139,9 +152,11 @@ cancelButtonAvaliar.addEventListener('click', () => {
 
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
-    dialogLogin.showModal();
     dialogAvaliar.close(); // Fecha o diálogo
 });
+
+
+
 
 
 // Seleciona as estrelas e adiciona a funcionalidade de seleção
@@ -240,7 +255,12 @@ const cancelButtonSalvarProd = document.getElementById('cancelDialogSalvarProd')
 
 // Abre o diálogo quando o botão é clicado
 openSalvarProd.addEventListener('click', () => {
-    dialogSalvarProd.showModal(); // Exibe o diálogo como modal
+    if(logado){
+        dialogSalvarProd.showModal(); // Exibe o diálogo como modal
+    }else{
+        dialogLogin.showModal();
+        console.log("sem vacu");
+    } 
 });
 
 // Fecha o diálogo ao clicar no botão "Cancelar"
