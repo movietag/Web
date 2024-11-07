@@ -61,7 +61,6 @@ function usuarioLogado() {
 
 // Atualiza a interface para usuário deslogado
 function usuarioDeslogado() {
-    console.log('Saindo');
     statusLogin = false;
     fetch('./php/deslogarUsuario.php')
         .then(response => {
@@ -85,7 +84,7 @@ function atualizarItensMenu() {
 
 // Verifica o status de login ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
-    fetch('./php/verificaLogin.php')
+    fetch('./php/fetchLogin.php')
         .then(response => response.json())
         .then(data => {
             if (data.loggedIn) {

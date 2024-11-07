@@ -12,35 +12,6 @@ form.onsubmit = (ev) => {
     if (!verificaVazio) {
         ev.preventDefault();
     }
-
-    // Seleciona os campos de entrada de usuário e senha
-
-
-    // Obtém os dados de usuários armazenados no localStorage
-    // const dadosArmazenados = localStorage.getItem('usuarioDados');
-
-    // Verifica se existem dados armazenados
-    // if (dadosArmazenados) {
-    //     // Converte os dados armazenados de string para objeto JSON
-    //     const usuarios = JSON.parse(dadosArmazenados);
-
-    //     // Percorre a lista de usuários para verificar se há correspondência com os dados de entrada
-    //     usuarios.forEach(pessoa => {
-    //         // Verifica se o nome ou email do usuário correspondem ao valor do campo de entrada
-    //         if ((pessoa.nome === uUsuario.value) || (pessoa.email === uUsuario.value)) {
-    //             // Verifica se a senha corresponde
-    //             if(pessoa.senha === uSenha.value){
-    //                 // Redireciona para a página principal e define o status como "true" no localStorage
-    //                 window.location.href = "index.php";
-    //                 // localStorage.setItem('status', "true");
-    //             } else {
-    //                 // Se a senha não corresponder, altera a borda dos campos de entrada para vermelho
-    //                 uUsuario.style.border = "1px solid red";
-    //                 uSenha.style.border = "1px solid red";
-    //             }
-    //         }
-    //     });
-    // }
 };
 
 // Seleciona o link "Esqueceu a senha?"

@@ -6,8 +6,4 @@ function verificaLogado() {
         return $_SESSION['status'];
         }
 }
-
-// Retornando o resultado como JSON
-header('Content-Type: application/json');
-echo json_encode(['loggedIn' => verificaLogado()]);
 ?>
