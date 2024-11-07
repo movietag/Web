@@ -269,7 +269,7 @@
             <div class="separator">OU</div>
 
             <div class="register-link">
-                Não possui conta? <a href="#">Cadastrar</a>
+                Não possui conta? <a href="cadastro.php">Cadastrar</a>
             </div>
         </div>
     </dialog>
