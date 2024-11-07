@@ -116,6 +116,6 @@
     <!-- Footer -->
     <?php include 'footer.php'; ?>
 <!--chart.js-->
-<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6"></script>
 </body>
 </html>

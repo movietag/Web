@@ -80,7 +80,7 @@ new Chart("chartLinhas", {
             label: "Batata",
             borderColor: '#e6c222',
             data: [55, 49, 44, 24, 15], // dados do gráfico
-            tension: 0
+            tension: 0.4
         }]
     },
     options: {
@@ -92,15 +92,24 @@ new Chart("chartLinhas", {
                 },
                 ticks: {
                     color: '#fff' // Cor das labels no eixo x (opcional)
-                }
+                },
+                border:{
+                    display: true,
+                    color: '#7f807d'
+                },
             },
             y: {
                 beginAtZero: true,
                 grid: {
-                    display: false // remove o grid do eixo y
+                    display: true, // remove o grid do eixo y
+                    color: '#7f807d',
                 },
                 ticks: {
                     color: '#fff' // Cor das labels no eixo y (opcional)
+                },
+                border:{
+                    display: true,
+                    color: '#7f807d',
                 }
             }
         },
