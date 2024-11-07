@@ -126,7 +126,7 @@ new Chart("chartLinhas", {
 
 
 new Chart("chartBarras", {
-    type: "horizontalBar",
+    type: "bar",
     data: {
         labels: xValues,
         datasets: [{
@@ -135,6 +135,7 @@ new Chart("chartBarras", {
         }]
     },
     options: {
+        indexAxes: 'x',
         title: {
             display: true,
             text: "Engajamento em Tags Criadas Por Você",
