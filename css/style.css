@@ -12,6 +12,7 @@
 
 .img-user{
     display: flex;
+    align-items: center;
     flex-direction: row;
 }
 .img-user img{
@@ -139,8 +140,8 @@ ul, li{
 
 .menu img{
     border-radius: 50%;
-    width: 4em;
-    height: 4em;
+    width: 3em;
+    height: 3em;
 }
 
 /* Configurando menu backdown */

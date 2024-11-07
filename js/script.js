@@ -61,7 +61,6 @@ function usuarioLogado() {
 
 // Atualiza a interface para usuário deslogado
 function usuarioDeslogado() {
-    console.log('Saindo');
     statusLogin = false;
     fetch('./php/deslogarUsuario.php')
         .then(response => {

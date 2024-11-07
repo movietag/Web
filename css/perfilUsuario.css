@@ -150,22 +150,22 @@ hr{
     flex-wrap: wrap;
     justify-content: space-around; /* Distribui os gráficos uniformemente */
     margin: 2em auto;
-    max-width: 50%; /* Ajusta a largura máxima do dashboard */
+    max-width: 65%; /* Ajusta a largura máxima do dashboard */
 }
 
 .chart-container {
     background:  rgba(36, 36, 36, 0.671);
     border-radius: 1rem;
     margin: 1em; /* Espaçamento entre os gráficos */
-    flex: 1 1 20vw; /* Permite que os gráficos se ajustem responsivamente */
+    flex: 1 1 45%; /* Permite que os gráficos se ajustem responsivamente */
     max-width: 40vw; /* Limita a largura máxima dos gráficos */
 }
 .chart-containerP {
     background:  rgba(36, 36, 36, 0.671);
     border-radius: 1rem;
     margin: 1em; /* Espaçamento entre os gráficos */
-    flex: 1 1 20vw; /* Permite que os gráficos se ajustem responsivamente */
-    max-width: 50vw; /* Limita a largura máxima dos gráficos */
+    flex: 1 1 45%; /* Permite que os gráficos se ajustem responsivamente */
+    max-width: 40vw; /* Limita a largura máxima dos gráficos */
 }
 
 canvas {
@@ -181,5 +181,6 @@ canvas {
 
 .chartPizzas{
     margin: 2rem auto;
+    max-width: 15vw;
 }
 

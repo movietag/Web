@@ -46,10 +46,12 @@ new Chart("chartPizzas", {
         }]
     },
     options: {
-        title: {
-        display: true,
-        text: "Gêneros Mais Assistidos",
-        fontColor: '#fff'
+        plugins:{
+            title: {
+                display: true,
+                text: "FSAGDFSGDSGAS",
+                color: '#fff'
+                }
         }
     }
 });
@@ -64,11 +66,14 @@ new Chart("chartPizzas2", {
         }]
     },
     options: {
-        title: {
-        display: true,
-        text: "FSAGDFSGDSGAS",
-        fontColor: '#fff'
+        plugins:{
+            title: {
+                display: true,
+                text: "FSAGDFSGDSGAS",
+                color: '#fff'
+                }
         }
+        
     }
 });
 
@@ -99,10 +104,9 @@ new Chart("chartLinhas", {
                 },
             },
             y: {
-                beginAtZero: true,
                 grid: {
                     display: true, // remove o grid do eixo y
-                    color: '#7f807d',
+                    color: '#424242',
                 },
                 ticks: {
                     color: '#fff' // Cor das labels no eixo y (opcional)
@@ -118,12 +122,15 @@ new Chart("chartLinhas", {
                 labels: {
                     color: '#fff' // Cor das labels da legenda (opcional)
                 }
+            },
+            title: {
+                display: true,
+                text: "Engajamento em Tags Criadas Por Você",
+                color: '#fff',
             }
         }
     }
 });
-
-
 
 new Chart("chartBarras", {
     type: "bar",
@@ -135,11 +142,42 @@ new Chart("chartBarras", {
         }]
     },
     options: {
-        indexAxes: 'x',
-        title: {
-            display: true,
-            text: "Engajamento em Tags Criadas Por Você",
-            fontColor: '#fff',
-        } 
+        indexAxis: 'y',
+        plugins:{
+            title: {
+                display: true,
+                text: "Engajamento em Tags Criadas Por Você",
+                color: '#fff',
+            } 
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: true, // remove o grid do eixo x
+                    color: '#424242'
+                },
+                ticks: {
+                    color: '#fff' // Cor das labels no eixo x (opcional)
+                },
+                border:{
+                    display: true,
+                    color: '#7f807d'
+                },
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false,
+                },
+                ticks: {
+                    color: '#fff' // Cor das labels no eixo y (opcional)
+                },
+                border:{
+                    display: true,
+                    color: '#7f807d',
+                }
+            }
+        },
+
     }
 });
