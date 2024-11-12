@@ -118,15 +118,15 @@ if (isset($_POST['btn-cadastrar'])):
                     "email" => $rows["email"],
                     "foto" => $rows['pathImg']
                 );
-                header('Location: /index.php');
+                header('Location: /Web/index.php');
             } else {
                 $_SESSION['mensagem'] = "Erro ao cadastrar!";
-                header('Location: /cadastro.php');
+                header('Location:  /Web/cadastro.php');
             }
         }
     } catch (PDOException $e) {
         $_SESSION['mensagem'] = "Erro ao conectar ao banco de dados: " . $e->getMessage();
-        header('Location: /cadastro.php');
+        header('Location:  /Web/cadastro.php');
     }
 endif;
 ?>
