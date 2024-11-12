@@ -34,7 +34,7 @@ function progressBar(value){
         clearInterval(progress);
     }
     }, speed);
-
+    console.log(value);
 }
 
 //fecha popup se clicar fora
