@@ -7,7 +7,7 @@ if (isset($_POST['btn-Login'])):
     $uSenha = filter_var($_POST['uSenha'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);    
 
     // Conexão
-    require_once 'config.php';
+    require_once 'database.php';
 
     // Consulta para verificar se o usuário ou e-mail existe
     $sql = "SELECT * FROM USUARIO WHERE usuario = '$uUsuarioEmail' OR email = '$uUsuarioEmail'";
