@@ -21,7 +21,7 @@
     <section>
         <div class="secao-caixa">
             <!-- Título da seção -->
-            <h1>Criar Conta</h1>
+            <h1>Cadastro</h1>
             <!-- Formulário de cadastro -->
             <form method="POST" action="php/cadastrarUsuario.php" enctype="multipart/form-data" id="form-total">
                 <div class="conteudo">

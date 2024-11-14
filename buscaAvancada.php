@@ -20,7 +20,7 @@
     </header>
     
     <section>
-        <h1>Filtros de Pesquisa</h1>
+        <h1>Busca avançada</h1>
         <div id="conteudo">
             <!--filtros pra pesquisar-->
             <div>
