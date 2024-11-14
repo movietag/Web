@@ -1,7 +1,6 @@
 <?php 
     session_start();
     require_once 'php/imagemBase64.php';
-
 ?>
 <nav>
     <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
@@ -20,8 +19,8 @@
             </div>
 
             <ul class="backdown-menu">
-                <li><a href="login.php">Entrar</a></li>
-                <li><a href="cadastro.php">Registrar</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li><a href="cadastro.php">Cadastro</a></li>
                 <li class="item-show"><a href="perfilUsuario.php">Perfil</a></li>
                 <li class="item-show"><a href=""></a>Sair</li>
             </ul>

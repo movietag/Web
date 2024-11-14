@@ -22,7 +22,7 @@
     <!-- Seção principal de login -->
     <section>
         <div class="secao-caixa">
-            <h1>Bem-vindo de volta!</h1>
+            <h1>Login</h1>
             <?php echo $_SESSION['mensagem']?>
             <div class="conteudo">
                 <!-- Formulário de login -->
