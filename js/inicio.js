@@ -162,6 +162,31 @@ const carregarFilmes = (lista, dados) => {
                 <span>${nome}</span>
             </a>
         `;
+        elemento.addEventListener('click', (ev) => {
+            ev.preventDefault(); // Previne a ação padrão temporariamente
+            
+            fetch('./php/acessarProducao.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: item.id })
+            })
+            .then(response => response.json()) // Converte a resposta do PHP para JSON
+            .then(data => {
+                if (data.success) {  // Verifica se o sucesso é true
+                    console.log('Sucesso:', data.message);
+                    ev.target.click(); // Dispara o evento novamente para continuar o clique
+                } else {
+                    console.log('Erro:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+            });
+        });
+        
+
         containerItens.appendChild(elemento);
     });
 };
