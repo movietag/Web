@@ -34,9 +34,9 @@
                 <div class="conteudo">
                     <!-- Dados do Usuário  -->
                     <label for="uNome">Usuário:</label>
-                    <input type="text" id="uNome" name="uUsuario" placeholder=<?php echo $_SESSION['dados']['usuario']?> required> 
+                    <input type="text" id="uNome" name="uUsuario" value=<?php echo $_SESSION['dados']['usuario']?> required> 
                     <label for="uEmail">Email:</label>
-                    <input type="email" id="uEmail" name="uEmail" placeholder=<?php echo $_SESSION['dados']['email']?> required>
+                    <input type="email" id="uEmail" name="uEmail" value=<?php echo $_SESSION['dados']['email']?> required>
                     <label for="uSenha">Senha:</label>
                     <input type="password" name="uSenha" id="uSenha" placeholder="Sua senha" required> 
                     <label for="uSenha">Confirmar Nova Senha:</label>
