@@ -135,10 +135,7 @@ hr{
     border-radius: 8px;
 }
 
-/* classe pra sumir e mostrar */
-.show{
-    display: none;
-}
+
 
 
 
@@ -151,6 +148,11 @@ hr{
     justify-content: space-around; /* Distribui os gráficos uniformemente */
     margin: 2em auto;
     max-width: 65%; /* Ajusta a largura máxima do dashboard */
+}
+
+/* classe pra sumir e mostrar */
+.show{
+    display: none;
 }
 
 .chart-container {

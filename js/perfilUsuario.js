@@ -26,11 +26,11 @@ document.querySelector("#avaliacoes").addEventListener("click", function () {
 const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 const yValues = [55, 49, 44, 24, 15];
 const barColors = [
+    "#8C22E6",
+    "#E66F22",
     "#e6c222",
-    "#e6c222",
-    "#e6c222",
-    "#e6c222",
-    "#e6c222"
+    "#2223E6",
+    "#E69A22"
 ];
 
 const linexValues = ["Jan", "Fev", "Mar", "Abril", "Maio"];
@@ -56,37 +56,30 @@ new Chart("chartPizzas", {
     }
 });
 
-new Chart("chartPizzas2", {
-    type: "pie",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        plugins:{
-            title: {
-                display: true,
-                text: "FSAGDFSGDSGAS",
-                color: '#fff'
-                }
-        }
-        
-    }
-});
-
 new Chart("chartLinhas", {
     type: "line",
     data: {
         labels: ["Jan", "Fev", "Mar", "Abril", "Maio"], // etiquetas do eixo x
         datasets: [{
             label: "Batata",
-            borderColor: '#e6c222',
-            data: [55, 49, 44, 24, 15], // dados do gráfico
+            borderColor: '#E66F22',
+            data: [55, 72, 44, 24, 49], // dados do gráfico
             tension: 0.4
-        }]
+        },
+        {
+            label: "Arroz",
+            borderColor: '#8C22E6',
+            data: [65, 35, 49, 32, 14], // dados do gráfico
+            tension: 0.4
+        },
+        {
+            label: "Arroz",
+            borderColor: '#e6c222',
+            data: [29, 64, 39, 52, 22], // dados do gráfico
+            tension: 0.4
+        }
+
+        ]
     },
     options: {
         responsive: true,

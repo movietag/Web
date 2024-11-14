@@ -53,9 +53,6 @@
             <div class="chart-containerP">
                 <canvas id="chartPizzas" class="chartPizzas"></canvas>
             </div>
-            <div class="chart-containerP"  >
-                <canvas id="chartPizzas2" class="chartPizzas"></canvas>
-            </div>
             <div class="chart-container">
                 <canvas id="chartLinhas"></canvas>
             </div>
