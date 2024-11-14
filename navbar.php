@@ -1,7 +1,6 @@
 <?php 
     session_start();
     require_once 'php/imagemBase64.php';
-
 ?>
 <nav>
     <a href="index.php"><img src="img/Logo-Branca.svg" alt="logo-MT"></a>
