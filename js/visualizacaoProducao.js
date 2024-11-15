@@ -151,7 +151,9 @@ document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (
             }
         })
         .catch(error => console.error('Erro na requisição:', error));
-});
+    
+    tagsContainer.replaceChildren;
+    });
 
 
 // Permite adicionar tag ao pressionar "Enter"

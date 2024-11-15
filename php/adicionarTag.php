@@ -44,10 +44,11 @@ function inserirTag($tag, $idUsu) {
     $stmt->bindParam(':nome', $tag);
     $stmt->bindParam(':idUsu', $idUsu);
     if ($stmt->execute()) {
-        return Database::lastInsertId();
+        // Retorna o último ID inserido
+        return verificarTagExistente($tag);
     }
-    return null;
 }
+
 
 function relacaoProducaoTagExiste($idProd, $idTag) {
     $sql = "SELECT * FROM PRODUCAO_TAG WHERE idProd = :idProd AND idTag = :idTag";
@@ -70,25 +71,33 @@ function processarTags($tags, $idProd, $idUsu) {
     $tagsInseridas = [];
     $tagsExistentes = [];
     foreach ($tags as $tag) {
-        $tag = trim($tag);
+        $tag = trim($tag); // Remove espaços em branco
         if (empty($tag)) {
-            continue;
+            continue; // Ignora tags vazias
         }
-
+    
+        // Verifica se a tag já existe
         $idTag = verificarTagExistente($tag);
-        if (!$idTag) {
+    
+        // Se a tag não existir, insere uma nova
+        if (is_null($idTag)) {
             $idTag = inserirTag($tag, $idUsu);
-            if ($idTag) {
-                $tagsInseridas[] = $tag;
+            if (is_null($idTag)) {
+                jsonResponse(false, "Erro ao inserir a tag '$tag'.");
+                continue; // Pula para a próxima tag se a inserção falhar
             }
+            $tagsInseridas[] = $tag;
         } else {
             $tagsExistentes[] = $tag;
         }
-
-        if (!relacaoProducaoTagExiste($idProd, $idTag)) {
-            criarRelacaoProducaoTag($idProd, $idTag);
+    
+        // Verifica e cria a relação entre a produção e a tag
+        if (!is_null($idTag) && !relacaoProducaoTagExiste($idProd, $idTag)) {
+            if (!criarRelacaoProducaoTag($idProd, $idTag)) {
+                jsonResponse(false, "Erro ao criar a relação para a tag '$tag'.");
+            }
         }
-    }
+    }      
     return ['inseridas' => $tagsInseridas, 'existentes' => $tagsExistentes];
 }
 
