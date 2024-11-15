@@ -564,7 +564,6 @@ async function obterIdProducao() {
         const data = await response.json();
 
         if (data.success) {
-            console.log("ID da Produção:", data.idProd);
             return data.idProd;
         } else {
             console.error(data.message);
@@ -575,35 +574,43 @@ async function obterIdProducao() {
 }
 
 async function carregaTags() {
-
-    const idProd = obterIdProducao();    
+    const idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
     const listaTags = document.querySelector(".tags");
 
     try {
-        // Faz uma requisição para buscar as tags associadas à produção
-        const response = await fetch(`php/receberTags.php?idProd=${idProd}`);
-        const data = await response.json();
+        fetch(`./php/receberTags.php?idProd=${idProd}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                // Exibir as tags
+                const tags = data.tags;
+                console.log(tags);
 
-        if (!data.success) {
-            console.error(data.message);
-            return;
-        }
+                // Garante que a lista está limpa antes de adicionar novos elementos
+                listaTags.innerHTML = "";
 
-        // Processa as tags recebidas e as adiciona à lista
-        data.tags.forEach(tag => {
-            const item = document.createElement('a');
-            item.classList.add('item');
-            item.setAttribute("href", `visualizacaoTag.php?query=${tag.id}`);
-            item.innerHTML = tag.nome;
-            listaTags.appendChild(item);
+                // Processa e exibe as tags recebidas
+                tags.forEach(tag => {
+                    const item = document.createElement('a');
+                    item.classList.add('item');
+                    item.setAttribute("href", `visualizacaoTag.php?query=${tag.id}`);
+                    item.textContent = tag.nome; // Adiciona o nome da tag ao elemento
+                    listaTags.appendChild(item);
         });
+            } else {
+                console.error('Erro ao buscar as tags:', data.message);
+            }
+        })
+
+        
+
     } catch (error) {
         console.error("Erro ao carregar tags:", error);
     }
 }
 
-// Chame a função com o ID da produção desejado
-carregaTags(1); // Substitua '1' pelo ID da produção que deseja carregar
+carregaTags();
+
 
 
 function carregaEquipe(json){

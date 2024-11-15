@@ -10,7 +10,7 @@ function getTagsPorProducao($idProd) {
             INNER JOIN PRODUCAO_TAG PT ON T.id = PT.idTag 
             WHERE PT.idProd = :idProd";
     $stmt = Database::prepare($sql);
-    $stmt->bindParam(':idProd', $idProd, PDO::PARAM_INT);
+    $stmt->bindParam(':idProd', $idProd);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
@@ -21,7 +21,7 @@ try {
         exit;
     }
 
-    // Verifica se o usuário está logado
+
     $idProd = $_GET['idProd'];
 
     // Busca as tags associadas à produção
