@@ -130,11 +130,11 @@ ul, li{
 }
 
 .menu li a:hover{
-    color: #c0be2c;
+    color: #e6c222;
 }
 
 .menu li:hover{
-    color: #c0be2c;
+    color: #e6c222;
     cursor: pointer;
 }
 
