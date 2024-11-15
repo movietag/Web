@@ -89,6 +89,29 @@ function criaFilmes(movies, itens){
         <img src=${url}>
         <span>${element.title || element.name}</a>`
 
+        item.addEventListener('click', (ev) => {
+            
+            fetch('./php/acessarProducao.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: element.id })
+            })
+            .then(response => response.json()) // Converte a resposta do PHP para JSON
+            .then(data => {
+                if (data.success) {  // Verifica se o sucesso é true
+                    console.log('Sucesso:', data.message);
+                } else {
+                    ev.preventDefault(); // Previne a ação padrão temporariamente
+                    console.log('Erro:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+            });
+        });
+
         itens.appendChild(item)
 
         

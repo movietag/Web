@@ -28,18 +28,19 @@ function criarProducao($idAPI) {
 }
 
 // Função para registrar o acesso à produção
-function registrarAcesso($idUsu, $idBanco) {
-    $sql = "INSERT INTO acessa_producao (idUsu, idProd) VALUES (:idUsu, :idProd)";
+function registrarAcesso($idUsu, $idProd) {
+    $sql = "INSERT INTO ACESSA_PRODUCAO (idUsu, idProd) VALUES (:idUsu, :idProd)
+            ON DUPLICATE KEY UPDATE dataHora = CURRENT_TIMESTAMP";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':idUsu', $idUsu);
-    $stmt->bindParam(':idProd', $idBanco);
+    $stmt->bindParam(':idProd', $idProd);
     return $stmt->execute();
 }
 
 function getIdProducao($idAPI){
     $sql = "SELECT * FROM PRODUCAO WHERE idAPI = :idAPI";
     $stmt = Database::prepare($sql);
-    $stmt->bindParam(':idProd', $idAPI);
+    $stmt->bindParam(':idAPI', $idAPI);
     $stmt->execute();
     $rows = $stmt->fetch(PDO::FETCH_ASSOC);
     return $rows['id'];
@@ -53,7 +54,6 @@ try {
     }
 
     $idAPI = $data['id'];
-    $idBanco = getIdProducao($idAPI);
     $idUsu = isset($_SESSION['dados']['id']) ? $_SESSION['dados']['id'] : null;
 
     // Verificar se a produção já existe
@@ -63,6 +63,8 @@ try {
             jsonResponse(false, 'Erro ao inserir a produção no banco!');
         }
     }
+
+    $idBanco = getIdProducao($idAPI);
 
     // Registrar acesso se o usuário estiver logado
     if ($idUsu) {

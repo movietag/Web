@@ -504,6 +504,15 @@ label input[type="checkbox"]{
     display: inline-block;
 }
 
+.remove-tag {
+    background: none;
+    border: none;
+    color: #ff5c5c;
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
 .tag-input-wrapper {
     display: flex;
     align-items: center;

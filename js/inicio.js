@@ -163,7 +163,6 @@ const carregarFilmes = (lista, dados) => {
             </a>
         `;
         elemento.addEventListener('click', (ev) => {
-            ev.preventDefault(); // Previne a ação padrão temporariamente
             
             fetch('./php/acessarProducao.php', {
                 method: 'POST',
@@ -176,8 +175,8 @@ const carregarFilmes = (lista, dados) => {
             .then(data => {
                 if (data.success) {  // Verifica se o sucesso é true
                     console.log('Sucesso:', data.message);
-                    ev.target.click(); // Dispara o evento novamente para continuar o clique
                 } else {
+                    ev.preventDefault(); // Previne a ação padrão temporariamente
                     console.log('Erro:', data.message);
                 }
             })

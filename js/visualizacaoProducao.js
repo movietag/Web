@@ -91,20 +91,68 @@ const confirmTag = document.getElementById('confirmTag');
 const tagsContainer = document.getElementById('tagsContainer');
 const cancelButtonAdicionarTag = document.getElementById('cancelDialogAdicionarTag');
 
+function atualizarHiddenTags() {
+    if ([...document.querySelectorAll('#tagsContainer .tag')].some(tag => tag.textContent.replace('x', '').trim() === tagText)) {
+        alert('Tag já adicionada!');
+        return;
+    }    
+    const tags = Array.from(document.querySelectorAll('#tagsContainer .tag')).map(tag => tag.textContent.replace('x', '').trim());
+    document.getElementById('hiddenTags').value = tags.join(',');
+}
+
 // Função para adicionar uma nova tag
 function adicionarTag() {
+    
     const tagText = inputTag.value.trim();
     if (tagText) {
         const newTag = document.createElement('span');
         newTag.className = 'tag';
         newTag.textContent = tagText;
+
+        // Adiciona um botão para remover a tag
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-tag';
+        removeBtn.textContent = 'x';
+        removeBtn.onclick = () => newTag.remove(); // Remove a tag ao clicar no botão
+
+        newTag.appendChild(removeBtn);
         tagsContainer.appendChild(newTag);
+
         inputTag.value = ''; // Limpa o input para nova tag
     }
 }
 
+
 // Eventos
 confirmTag.addEventListener('click', adicionarTag);
+
+document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (event) => {
+    event.preventDefault(); // Evita o envio padrão do formulário
+
+    // Coleta todas as tags adicionadas no contêiner
+    const tags = Array.from(document.querySelectorAll('#tagsContainer .tag')).map(tag =>
+        tag.textContent.replace('x', '').trim()
+    );
+    
+    // Envia as tags para o backend
+    fetch('./php/adicionarTag.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ tags, myParam: JSON.stringify(myParam) })
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                console.log(data.message, data.tags);
+            } else {
+                console.log('Erro ao processar tags: ' + data.message);
+            }
+        })
+        .catch(error => console.error('Erro na requisição:', error));
+});
+
 
 // Permite adicionar tag ao pressionar "Enter"
 inputTag.addEventListener('keypress', (e) => {

@@ -219,25 +219,15 @@
     <dialog id="myDialogAdicionarTag">
         <div class="dialog-header">Adicionar Tag</div>
         <hr>
+
         <div class="dialog-content">
             <!-- Contêiner das tags adicionadas -->
-            <div id="tagsContainer"></div>
+            <div id="tagsContainer" class="tags-container"></div>
 
             <!-- Input para adicionar novas tags -->
             <div class="tag-input-wrapper">
                 <input type="text" id="inputTag" placeholder="Adicionar Tag">
-                <button id="confirmTag" class="check-btn">&#10004;</button> <!-- Verificação -->
-            </div>
-
-            <!-- Espaço para recomendações -->
-            <div id="recomendacoesContainer">
-                <span class="tag">Dark</span>
-                <span class="tag">Desventuras</span>
-                <span class="tag">Dinossauro</span>
-                <span class="tag">Doce</span>
-                <span class="tag">Drama</span>
-                <span class="tag">Droga</span>
-                <span class="tag">Dragão</span>
+                <button id="confirmTag" class="check-btn">&#10004;</button> <!-- Adicionar tag -->
             </div>
         </div>
 
@@ -246,6 +236,9 @@
             <button class="confirm-btn" id="confirmDialogAdicionarTag">Adicionar</button>
         </div>
     </dialog>
+
+
+    
 
 
         <!-- Dialog de Login -->
