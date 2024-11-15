@@ -404,10 +404,10 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}?append_to_response=20
     .then(response => response.json())
     .then(json => carregaDados(json));
 
-// Faz a requisição à API para obter as tags do filme
-fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) // Palavra chave
-    .then(response => response.json())
-    .then(response => carregaTags(response));
+// // Faz a requisição à API para obter as tags do filme
+// fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) // Palavra chave
+//     .then(response => response.json())
+//     .then(response => carregaTags(response));
 
 // Faz a requisição à API para obter o Elenco do filme
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=pt-BR`, options)
@@ -517,16 +517,20 @@ function carregaDados(json) {
 // Função para carregar as tags do filme
 function carregaTags(json) {
     const listaTags = document.querySelector(".tags"); // Seleciona a lista de tags
-    json.keywords.forEach(element => { // Para cada tag
-        let item = document.createElement('a'); // Cria o a
-        item.classList.add('item'); // Adiciona a classe item, o estilizando
+    // json.keywords.forEach(element => { // Para cada tag
+    //     let item = document.createElement('a'); // Cria o a
+    //     item.classList.add('item'); // Adiciona a classe item, o estilizando
 
-        item.setAttribute("href", `visualizacaoTag.php?query=${element.id}`);// Define o link
-        item.innerHTML = element.name; // Define o texto
+    //     item.setAttribute("href", `visualizacaoTag.php?query=${element.id}`);// Define o link
+    //     item.innerHTML = element.name; // Define o texto
 
-        listaTags.appendChild(item);// Adiciona o item à lista de tags
-    });
+    //     listaTags.appendChild(item);// Adiciona o item à lista de tags
+    // });
+
+
 }
+
+
 
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
@@ -551,6 +555,56 @@ function carregaElenco(json) {
         elenco.lastElementChild.appendChild(item); // Adiciona o item ao elenco
     });
 }
+
+async function obterIdProducao() {
+    try {
+        const response = await fetch(`php/receberIdProducao.php?idAPI=${myParam.query}`);
+        
+        // Aguarde a resposta ser convertida para JSON
+        const data = await response.json();
+
+        if (data.success) {
+            console.log("ID da Produção:", data.idProd);
+            return data.idProd;
+        } else {
+            console.error(data.message);
+        }
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+    }
+}
+
+async function carregaTags() {
+
+    const idProd = obterIdProducao();    
+    const listaTags = document.querySelector(".tags");
+
+    try {
+        // Faz uma requisição para buscar as tags associadas à produção
+        const response = await fetch(`php/receberTags.php?idProd=${idProd}`);
+        const data = await response.json();
+
+        if (!data.success) {
+            console.error(data.message);
+            return;
+        }
+
+        // Processa as tags recebidas e as adiciona à lista
+        data.tags.forEach(tag => {
+            const item = document.createElement('a');
+            item.classList.add('item');
+            item.setAttribute("href", `visualizacaoTag.php?query=${tag.id}`);
+            item.innerHTML = tag.nome;
+            listaTags.appendChild(item);
+        });
+    } catch (error) {
+        console.error("Erro ao carregar tags:", error);
+    }
+}
+
+// Chame a função com o ID da produção desejado
+carregaTags(1); // Substitua '1' pelo ID da produção que deseja carregar
+
 
 function carregaEquipe(json){
     console.log(json);
