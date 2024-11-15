@@ -190,7 +190,7 @@
         </div>
         <hr>
         <div class="dialog-content">
-            <p >Como você avalia {Produção}?</p>
+            <p id="tituloAvaliacao">Como você avalia {Produção}?</p>
             <div class="star-rating">
                 <input type="radio" name="rating" id="star1" value="1">
                 <label for="star1" class="star">&#9733;</label> <!-- Código HTML da estrela -->

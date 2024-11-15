@@ -474,6 +474,9 @@ function carregaTemporadas(json){
 
 // Atualizando Dados a partir da API
 function carregaDados(json) {
+
+    const titAvalia = document.querySelector('#tituloAvaliacao');
+    titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}`;
     const banner = document.querySelector("#banner"); // Seleciona o banner
     banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Define a imagem de fundo do banner
 
