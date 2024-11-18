@@ -51,13 +51,13 @@
 
         <div class="dashboard"> 
             <div class="chart-containerP">
-                <canvas id="chartPizzas" class="chartPizzas"></canvas>
+                <canvas id="chartBarrasV" class="chartBarras"></canvas>
             </div>
             <div class="chart-container">
                 <canvas id="chartLinhas"></canvas>
             </div>
             <div class="chart-container">
-                <canvas id="chartBarras"></canvas>
+                <canvas id="chartBarrasH" class="chartBarras"></canvas>
             </div> 
         </div>
 

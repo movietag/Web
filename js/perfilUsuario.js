@@ -36,8 +36,8 @@ const barColors = [
 const linexValues = ["Jan", "Fev", "Mar", "Abril", "Maio"];
 
 
-new Chart("chartPizzas", {
-    type: "pie",
+new Chart("chartBarrasV", {
+    type: "bar",
     data: {
         labels: xValues,
         datasets: [{
@@ -47,12 +47,42 @@ new Chart("chartPizzas", {
     },
     options: {
         plugins:{
+            responsive: true,
             title: {
                 display: true,
-                text: "FSAGDFSGDSGAS",
-                color: '#fff'
+                text: "Tags Mais Utilizadas",
+                color: '#fff',
+            } 
+        },
+        scales: {
+            x: {
+                grid: {
+                    display: true, // remove o grid do eixo x
+                    color: '#424242'
+                },
+                ticks: {
+                    color: '#fff' // Cor das labels no eixo x (opcional)
+                },
+                border:{
+                    display: true,
+                    color: '#7f807d'
+                },
+            },
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false,
+                },
+                ticks: {
+                    color: '#fff' // Cor das labels no eixo y (opcional)
+                },
+                border:{
+                    display: true,
+                    color: '#7f807d',
                 }
-        }
+            }
+        },
+
     }
 });
 
@@ -118,14 +148,14 @@ new Chart("chartLinhas", {
             },
             title: {
                 display: true,
-                text: "Engajamento em Tags Criadas Por Você",
+                text: "Produções Mais Acessadas por Período",
                 color: '#fff',
             }
         }
     }
 });
 
-new Chart("chartBarras", {
+new Chart("chartBarrasH", {
     type: "bar",
     data: {
         labels: xValues,
@@ -139,7 +169,7 @@ new Chart("chartBarras", {
         plugins:{
             title: {
                 display: true,
-                text: "Engajamento em Tags Criadas Por Você",
+                text: "Usuários com Maior Atividade",
                 color: '#fff',
             } 
         },

@@ -176,13 +176,8 @@ canvas {
     padding: 0.8rem;
 }
 
-#chartLinhas, #chartBarras{
+#chartLinhas, .chartBarras{
     max-width: 100%;
     margin: 1em auto;
-}
-
-.chartPizzas{
-    margin: 2rem auto;
-    max-width: 15vw;
 }
 
