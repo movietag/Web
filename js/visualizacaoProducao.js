@@ -200,9 +200,13 @@ cancelButtonAvaliar.addEventListener('click', () => {
     dialogAvaliar.close(); // Fecha o diálogo
 });
 
+let selectedValue = null;
+
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
     dialogAvaliar.close(); // Fecha o diálogo
+    if(selectedValue) enviarAvaliacao(selectedValue);
+    console.log(selectedValue);
 });
 
 
@@ -291,6 +295,48 @@ function applySelectedStarColors() {
     }
 }
 
+document.addEventListener("DOMContentLoaded", function () {
+    const stars = document.querySelectorAll('input[name="rating"]');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            selectedValue = this.value; // Captura o valor selecionado
+            console.log(`Valor selecionado: ${selectedValue}`);
+
+            // Chamada para enviar o valor ao servidor
+            // enviarAvaliacao(selectedValue);
+        });
+    });
+});
+
+function enviarAvaliacao(valor) {
+    console.log(`Enviando avaliação: ${valor}`);
+
+    // Configuração para enviar ao servidor
+    fetch('./php/enviarAvaliacao.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ avaliacao: valor }),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        return response.json(); // Transformar a resposta em JSON
+    })
+    .then(data => {
+        if (data.success) {
+            console.log('Avaliação enviada com sucesso!');
+        } else {
+            console.error(`Erro na API: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error('Erro de conexão ou na API:', error.message);
+    });
+}
 
 
 

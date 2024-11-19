@@ -91,7 +91,7 @@ CREATE TABLE `ACESSA_TAG` (
 CREATE TABLE `AVALIA_PRODUCAO` (
   `idUsu` INT(11),
   `idProd` INT(11),
-  `porcentagemAvaliacao` DECIMAL(5,2) NOT NULL CHECK (porcentagemAvaliacao BETWEEN 0 AND 100),
+  `avaliacao` INT(11) NOT NULL CHECK (avaliacao BETWEEN 0 AND 5),
   PRIMARY KEY (`idUsu`, `idProd`),
   FOREIGN KEY (`idUsu`) REFERENCES `USUARIO`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`idProd`) REFERENCES `PRODUCAO`(`id`) ON DELETE CASCADE

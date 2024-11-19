@@ -214,7 +214,6 @@
         </div>
     </dialog>
 
-
         <!-- Dialog Adicionar Tag -->
     <dialog id="myDialogAdicionarTag">
         <div class="dialog-header">Adicionar Tag</div>

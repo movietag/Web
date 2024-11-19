@@ -65,6 +65,7 @@ try {
     }
 
     $idBanco = getIdProducao($idAPI);
+    $_SESSION['dados']['idProd'] = $idBanco;
 
     // Registrar acesso se o usuário estiver logado
     if ($idUsu) {
