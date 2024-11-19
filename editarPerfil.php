@@ -39,8 +39,8 @@
                     <input type="email" id="uEmail" name="uEmail" value=<?php echo $_SESSION['dados']['email']?> required>
                     <label for="uSenha">Senha:</label>
                     <input type="password" name="uSenha" id="uSenha" placeholder="Sua senha" required> 
-                    <label for="uSenha">Confirmar Nova Senha:</label>
-                    <input type="password" name="confirmSenha" id="confirmSenha" placeholder="Confirme a senha" required> 
+                    <label for="uSenha">Nova Senha:</label>
+                    <input type="password" name="confirmSenha" id="confirmSenha" placeholder="Digite sua nova senha" required> 
                     <button name="btn-Atualizar" class="butao">Salvar Mudanças</button>
                     <p><?php echo $_SESSION['mensagem']?></p>
                 </div>
