@@ -22,7 +22,6 @@ document.querySelector("#avaliacoes").addEventListener("click", function () {
 
 
 
-
 const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
 const yValues = [55, 49, 44, 24, 15];
 const barColors = [
@@ -89,7 +88,7 @@ new Chart("chartBarrasV", {
 new Chart("chartLinhas", {
     type: "line",
     data: {
-        labels: ["Jan", "Fev", "Mar", "Abril", "Maio"], // etiquetas do eixo x
+        labels: phpLabels, // etiquetas do eixo x
         datasets: [{
             label: "Batata",
             borderColor: '#E66F22',
