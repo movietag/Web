@@ -153,6 +153,7 @@ document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (
         .catch(error => console.error('Erro na requisição:', error));
     
     tagsContainer.replaceChildren;
+    carregaTags();
     });
 
 
@@ -173,12 +174,6 @@ cancelButtonAdicionarTag.addEventListener('click', () => {
 document.getElementById('confirmDialogAdicionarTag').addEventListener('click', () => {
     dialogAdicionarTag.close(); // Fecha o diálogo
 });
-
-
-
-
-
-
 
 // Seleciona o botão e o diálogo
 const openButtonAvaliar = document.getElementById('openDialogAvaliar');
@@ -208,10 +203,6 @@ document.getElementById('confirmDialogAvaliar').addEventListener('click', () => 
     if(selectedValue) enviarAvaliacao(selectedValue);
     console.log(selectedValue);
 });
-
-
-
-
 
 // Seleciona as estrelas e adiciona a funcionalidade de seleção
 const stars = document.querySelectorAll('.star');
@@ -562,24 +553,6 @@ function carregaDados(json) {
     
     
 };
-
-// Função para carregar as tags do filme
-function carregaTags(json) {
-    const listaTags = document.querySelector(".tags"); // Seleciona a lista de tags
-    // json.keywords.forEach(element => { // Para cada tag
-    //     let item = document.createElement('a'); // Cria o a
-    //     item.classList.add('item'); // Adiciona a classe item, o estilizando
-
-    //     item.setAttribute("href", `visualizacaoTag.php?query=${element.id}`);// Define o link
-    //     item.innerHTML = element.name; // Define o texto
-
-    //     listaTags.appendChild(item);// Adiciona o item à lista de tags
-    // });
-
-
-}
-
-
 
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
