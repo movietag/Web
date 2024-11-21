@@ -115,11 +115,11 @@ receberDados().then(({ phpLabels, phpData }) => {
     new Chart("chartLinhas", {
         type: "line",
         data: {
-            labels: phpData, // etiquetas do eixo x (mês)
+            labels: phpLabels, // etiquetas do eixo x (mês)
             datasets: [{
                 label: "Total de Acessos",
                 borderColor: '#E66F22',
-                data: phpLabels, // dados do gráfico
+                data: phpData, // dados do gráfico
                 tension: 0.4
             }]
         },
