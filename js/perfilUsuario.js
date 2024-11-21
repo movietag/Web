@@ -88,25 +88,13 @@ new Chart("chartBarrasV", {
 new Chart("chartLinhas", {
     type: "line",
     data: {
-        labels: phpLabels, // etiquetas do eixo x
-        datasets: [{
-            label: "Batata",
+            labels: phpLabels, // etiquetas do eixo x (mês)
+            datasets: [{
+            label: "Total de Acessos",
             borderColor: '#E66F22',
-            data: [55, 72, 44, 24, 49], // dados do gráfico
+            data: phpData, // dados do gráfico
             tension: 0.4
         },
-        {
-            label: "Arroz",
-            borderColor: '#8C22E6',
-            data: [65, 35, 49, 32, 14], // dados do gráfico
-            tension: 0.4
-        },
-        {
-            label: "Arroz",
-            borderColor: '#e6c222',
-            data: [29, 64, 39, 52, 22], // dados do gráfico
-            tension: 0.4
-        }
 
         ]
     },
@@ -203,3 +191,5 @@ new Chart("chartBarrasH", {
 
     }
 });
+console.log(phpData);
+console.log(phpLabels);

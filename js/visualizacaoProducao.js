@@ -1,4 +1,8 @@
 let logado = false;
+// API
+
+var myParam = queryObj();
+console.log(myParam);
 
 // Verifica o status de login ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => console.error('Erro ao verificar o login:', error));
+    
+    atualizaAvaliacao();
 });
 
 function progressBar(value){
@@ -178,6 +184,7 @@ cancelButtonAvaliar.addEventListener('click', () => {
 });
 
 let selectedValue = null;
+let selectedStar = null;
 
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
@@ -186,9 +193,55 @@ document.getElementById('confirmDialogAvaliar').addEventListener('click', () => 
     console.log(selectedValue);
 });
 
+function getLabelByValue(value) {
+    // Encontra o input com o valor correspondente
+    const input = document.querySelector(`input[name="rating"][value="${value}"]`);
+    if (!input) return null; // Caso não encontre o input, retorna null
+
+    if (input) {
+        input.checked = true; // Marca o input no DOM
+}
+    
+    // Busca a label associada pelo atributo for
+    const label = document.querySelector(`label[for="${input.id}"]`);
+    return label;
+}
+
 // Seleciona as estrelas e adiciona a funcionalidade de seleção
 const stars = document.querySelectorAll('.star');
-let selectedStar = null; // Variável para armazenar a estrela selecionada
+
+async function atualizaAvaliacao(){
+    const idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
+    fetch(`./php/getAvaliacao.php?idProd=${idProd}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            const valorEstrela = data.data.avaliacao;
+            const label = getLabelByValue(valorEstrela); // Obtém a label
+            if (label) {
+                selectedStar = label;
+                applySelectedStarColors(); // Aplica as cores
+            }
+        } else {
+            selectedStar = null;
+            console.error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro de conexão ou na API:', error.message);
+    });
+}
+
 
 stars.forEach(star => {
     star.addEventListener('mouseover', () => {
@@ -400,10 +453,7 @@ function abrirPlataformas() {
 }
 
 
-// API
 
-var myParam = queryObj();
-console.log(myParam);
 
 if (myParam.type !== "tv"){
     divTemp.style.display = "none";

@@ -19,6 +19,10 @@
     <?php 
     require_once 'navbar.php'; ?>
     </header>
+    <script>
+        const phpLabels = <?php echo json_encode($labels); ?>;
+        const phpData = <?php echo json_encode($data); ?>;
+    </script>
 
     <section>
         <div id="grandeUsuario">
