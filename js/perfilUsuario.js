@@ -32,8 +32,7 @@ const barColors = [
     "#E69A22"
 ];
 
-const linexValues = ["Jan", "Fev", "Mar", "Abril", "Maio"];
-
+const mesesValues = ["Jan", "Fev", "Mar", "Abril", "Maio", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"];
 
 new Chart("chartBarrasV", {
     type: "bar",
@@ -115,12 +114,12 @@ receberDados().then(({ phpLabels, phpData }) => {
     new Chart("chartLinhas", {
         type: "line",
         data: {
-            labels: phpLabels, // etiquetas do eixo x (mês)
+            labels: mesesValues, // etiquetas do eixo x (mês)
             datasets: [{
                 label: "Total de Acessos",
                 borderColor: '#E66F22',
                 data: phpData, // dados do gráfico
-                tension: 0.4
+                tension: 0
             }]
         },
         options: {
