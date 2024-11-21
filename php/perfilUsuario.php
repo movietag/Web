@@ -7,7 +7,7 @@ try {
     require_once 'database.php'; // Inclui o arquivo com a classe Database
 
     // Consulta ao banco de dados
-    $sql = "SELECT DATE_FORMAT(dataHora, '%Y-%m') AS mes, COUNT(*) AS total_acessos
+    $sql = "SELECT DATE_FORMAT(dataHora, '%m') AS mes, COUNT(*) AS total_acessos
             FROM ACESSA_PRODUCAO
             GROUP BY mes
             ORDER BY mes";
@@ -32,10 +32,6 @@ try {
     header('Location: /Web/erro.php');
     exit;
 }
-?>
 
-<script>
-    // Enviando dados do PHP para o JavaScript
-    global phpLabels = <?php echo json_encode($labels); ?>;
-    global phpData = <?php echo json_encode($data); ?>;
-</script>
+
+?>
