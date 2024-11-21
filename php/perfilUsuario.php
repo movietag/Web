@@ -2,6 +2,14 @@
 // Iniciar Sessão
 session_start();
 
+header('Content-Type: application/json');
+
+// Função para enviar respostas JSON
+function jsonResponse($success, $message, $data) {
+    echo json_encode(['success' => $success, 'message' => $message, 'data' => $data]);
+    exit;
+}
+
 try {
     // Conexão com o banco usando PDO
     require_once 'database.php'; // Inclui o arquivo com a classe Database
@@ -26,6 +34,8 @@ try {
             $data[] = $row['total_acessos']; // Total de acessos
         }
     }
+    jsonResponse(true, 'Dados enviados com sucesso!', [$labels, $data]);
+
 } catch (PDOException $e) {
     // Tratamento de erro
     $_SESSION['mensagem'] = "Erro ao conectar ao banco de dados: " . $e->getMessage();

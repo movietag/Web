@@ -85,62 +85,89 @@ new Chart("chartBarrasV", {
     }
 });
 
-new Chart("chartLinhas", {
-    type: "line",
-    data: {
-            labels: phpLabels, // etiquetas do eixo x (mês)
-            datasets: [{
-            label: "Total de Acessos",
-            borderColor: '#E66F22',
-            data: phpData, // dados do gráfico
-            tension: 0.4
-        },
+async function receberDados() {
+    try {
+        const response = await fetch(`./php/perfilUsuario.php`);
+        const data = await response.json();
 
-        ]
-    },
-    options: {
-        responsive: true,
-        scales: {
-            x: {
-                grid: {
-                    display: false // remove o grid do eixo x
-                },
-                ticks: {
-                    color: '#fff' // Cor das labels no eixo x (opcional)
-                },
-                border:{
-                    display: true,
-                    color: '#7f807d'
-                },
-            },
-            y: {
-                grid: {
-                    display: true, // remove o grid do eixo y
-                    color: '#424242',
-                },
-                ticks: {
-                    color: '#fff' // Cor das labels no eixo y (opcional)
-                },
-                border:{
-                    display: true,
-                    color: '#7f807d',
-                }
-            }
+        if (data.success) {
+            const phpLabels = data.data[0]; // labels
+            const phpData = data.data[1];   // dados
+            return { phpLabels, phpData };  // Retorna os dados como um objeto
+        } else {
+            console.error(data.message);
+            return { phpLabels: [], phpData: [] }; // Retorna arrays vazios em caso de erro
+        }
+    } catch (error) {
+        console.error("Erro ao buscar dados:", error);
+        return { phpLabels: [], phpData: [] }; // Retorna arrays vazios em caso de erro
+    }
+}
+
+// Utilizando os dados retornados pela função
+receberDados().then(({ phpLabels, phpData }) => {
+    if (phpLabels.length === 0 || phpData.length === 0) {
+        console.warn("Nenhum dado recebido para o gráfico.");
+        return;
+    }
+
+    // Criando o gráfico com os dados recebidos
+    new Chart("chartLinhas", {
+        type: "line",
+        data: {
+            labels: phpData, // etiquetas do eixo x (mês)
+            datasets: [{
+                label: "Total de Acessos",
+                borderColor: '#E66F22',
+                data: phpLabels, // dados do gráfico
+                tension: 0.4
+            }]
         },
-        plugins: {
-            legend: {
-                labels: {
-                    color: '#fff' // Cor das labels da legenda (opcional)
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    grid: {
+                        display: false // remove o grid do eixo x
+                    },
+                    ticks: {
+                        color: '#fff' // Cor das labels no eixo x (opcional)
+                    },
+                    border: {
+                        display: true,
+                        color: '#7f807d'
+                    },
+                },
+                y: {
+                    grid: {
+                        display: true,
+                        color: '#424242',
+                    },
+                    ticks: {
+                        color: '#fff' // Cor das labels no eixo y (opcional)
+                    },
+                    border: {
+                        display: true,
+                        color: '#7f807d',
+                    }
                 }
             },
-            title: {
-                display: true,
-                text: "Produções Mais Acessadas por Período",
-                color: '#fff',
+            plugins: {
+                legend: {
+                    labels: {
+                        color: '#fff' // Cor das labels da legenda (opcional)
+                    }
+                },
+                title: {
+                    display: true,
+                    text: "Produções Mais Acessadas por Período",
+                    color: '#fff',
+                }
             }
         }
-    }
+    });
 });
+
 
 new Chart("chartBarrasH", {
     type: "bar",
