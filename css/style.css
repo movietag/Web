@@ -15,11 +15,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .img-user img{
-    margin-right: 0;
+    margin-right: 0.4em;
     /* font-size: 3em; */
 }
 
