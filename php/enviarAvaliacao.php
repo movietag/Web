@@ -3,12 +3,7 @@ header('Content-Type: application/json');
 session_start();
 
 require_once 'database.php';
-
-// Função para enviar respostas JSON
-function jsonResponse($success, $message) {
-    echo json_encode(['success' => $success, 'message' => $message]);
-    exit;
-}
+require_once 'jsonResponse.php';
 
 function inserirAvaliacao($idUsu, $idBanco, $valor){
     $sql = "INSERT INTO AVALIA_PRODUCAO (idUsu, idProd, avaliacao) VALUES (:idUsu, :idProd, :avaliacao)

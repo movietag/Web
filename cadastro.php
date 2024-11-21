@@ -23,7 +23,7 @@
             <!-- Título da seção -->
             <h1>Cadastro</h1>
             <!-- Formulário de cadastro -->
-            <form method="POST" action="php/cadastrarUsuario.php" enctype="multipart/form-data" id="form-total">
+            <form method="POST" enctype="multipart/form-data" id="form-total">
                 <div class="conteudo">
                     <!-- Icone -->
                     <div class="icone">
@@ -58,6 +58,7 @@
                     <button class="butao" name="btn-cadastrar" type="submit">Criar Conta</button> 
                     <small id="alertaErro" class="alertas">Corrija as informações erradas!</small>
                     <p id="psenha">Já possui conta? <a href="login.php" id="psenhaA">Login</a></p>
+
                 
                 </div>
             </form>

@@ -26,13 +26,36 @@ uSenha.addEventListener("input", validarSenha);
 uConfSenha.addEventListener("input", confSenha);
 butao.addEventListener("click", validarDados);
 
-// Impede o envio padrão do formulário
-form.addEventListener("submit", function(event) {
-    if(!validarDados()){
-        event.preventDefault();
-    }
+form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Evita o envio padrão do formulário
+    
+    // Cria um objeto FormData a partir do formulário
+    const formData = new FormData(form);
 
+    // Envia os dados usando fetch
+    fetch('./php/cadastrarUsuario.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        return response.json(); // Transformar a resposta em JSON
+    })
+    .then(data => {
+        if (data.success) {
+            console.log('Cadastro realizado com sucesso!');
+            window.location.href = './index.php';
+        } else {
+            console.error(`Erro: ${data.message}`);
+        }
+    })
+    .catch(error => {
+        console.error('Erro de conexão ou na API:', error.message);
+    });
 });
+
 
 // Função para validar o campo de email
 function validarEmail(){
@@ -94,15 +117,7 @@ function confSenha(){
 function validarUso(){
     let usuarioEmUso = false;
     let emailEmUso = false;
-
-    // usuarios.forEach(usuario => {
-    //     if (usuario.usuario === uUsuario.value) {
-    //         usuarioEmUso = true;
-    //     }
-    //     if (usuario.email === uEmail.value) {
-    //         emailEmUso = true;
-    //     }
-    // });
+    emailEmUso = true;
 
     if (usuarioEmUso) {
         uUsuario.style.border = "1px solid red"; // Define borda vermelha se o usuário já estiver em uso
@@ -143,16 +158,4 @@ function validarDados() {
     }
 
     return camposValidos;
-
-    // const dados = {
-    //     nome: uNome.value,
-    //     usuario: uUsuario.value,
-    //     email: uEmail.value,
-    //     senha: uSenha.value
-    // };
-
-    // usuarios.push(dados); // Adiciona os novos dados ao array de usuários
-    // localStorage.setItem('usuarioDados', JSON.stringify(usuarios)); // Salva os usuários no localStorage
-    // window.location.href = "index.php"; // Redireciona para a página inicial
-    // localStorage.setItem('status', "true"); // Define o status como true no localStorage
 }
