@@ -116,7 +116,7 @@ receberDados().then(({ phpLabels, phpData }) => {
         data: {
             labels: mesesValues, // etiquetas do eixo x (mês)
             datasets: [{
-                label: "Total de Acessos",
+                label: phpLabels[0],
                 borderColor: '#E66F22',
                 data: phpData, // dados do gráfico
                 tension: 0

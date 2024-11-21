@@ -15,10 +15,27 @@ try {
     require_once 'database.php'; // Inclui o arquivo com a classe Database
 
     // Consulta ao banco de dados
-    $sql = "SELECT DATE_FORMAT(dataHora, '%m') AS mes, COUNT(*) AS total_acessos
-            FROM ACESSA_PRODUCAO
-            GROUP BY mes
-            ORDER BY mes";
+    // $sql = "SELECT DATE_FORMAT(dataHora, '%m') AS mes, COUNT(*) AS total_acessos
+    //         FROM ACESSA_PRODUCAO
+    //         GROUP BY mes
+    //         ORDER BY mes";
+    
+    
+    
+    // pega as 3 produções com mais acessos
+    $sql = "SELECT 
+                AP.idProd, 
+                COUNT(*) AS total_acessos
+            FROM 
+                ACESSA_PRODUCAO AP
+            WHERE 
+                YEAR(AP.dataHora) = YEAR(CURDATE()) -- Considera apenas o ano atual
+            GROUP BY 
+                AP.idProd
+            ORDER BY 
+                total_acessos DESC
+            LIMIT 3;
+            ";
 
     $stmt = Database::prepare($sql);
     $stmt->execute();
@@ -30,7 +47,7 @@ try {
     // Processa os resultados
     if ($stmt->rowCount() > 0) {
         while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $labels[] = $row['mes'];        // Mês formatado
+            $labels[] = $row['idProd'];        // Mês formatado
             $data[] = $row['total_acessos']; // Total de acessos
         }
     }
