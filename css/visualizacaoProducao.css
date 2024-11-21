@@ -293,6 +293,21 @@ section .lista .item-logo img{
     width: 9em;
     height: 13.5em;
 }
+
+.vertical .temp-info{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-bottom: 1em;
+}
+
+.temp-info div{
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    margin-top: 0.5em;
+}
+
 .vertical .item{
     background-color: rgb(31, 31, 31);
     text-align: left;
@@ -301,10 +316,16 @@ section .lista .item-logo img{
     transform: none;
     cursor: default;
     border-radius: 8px;
+    padding-right: 1.5em;
+}
+
+.vertical h4{
+    color: rgb(161, 161, 161);
 }
 
 .vertical p{
     width: 100%;
+    text-align: justify;
 } 
 
 #elenco .item img{
@@ -459,6 +480,7 @@ label input[type="checkbox"]{
 
 .sub-p{
     color: gray;
+    margin: 0 0.6em 0.7em 0.6em;
 }
 
 #elenco .item{

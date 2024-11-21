@@ -25,6 +25,9 @@
                     <div id="caixaDois"></div>
                     <div id="caixaTres"></div>
                 </div>
+                <div id="info-listas">
+                    <h2>Criar Nova Lista</h2>
+                </div>
             </a>
             <a href="visualizacaoWatchlist.php" class="caixinha-listas">
                 <div id="criarListas">

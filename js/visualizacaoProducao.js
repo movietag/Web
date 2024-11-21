@@ -37,24 +37,6 @@ function progressBar(value){
     console.log(value);
 }
 
-//fecha popup se clicar fora
-document.querySelectorAll('dialog').forEach(dialog => {
-    dialog.addEventListener('click', function(event) {
-        // Verifica se o clique foi no diálogo e não dentro do seu conteúdo
-        const rect = dialog.getBoundingClientRect();
-        const isInDialog = (
-            event.clientX >= rect.left &&
-            event.clientX <= rect.right &&
-            event.clientY >= rect.top &&
-            event.clientY <= rect.bottom
-        );
-
-        if (!isInDialog) {
-            dialog.close(); // Fecha o diálogo
-        }
-    });
-});
-
 //Esconder senha do popup de login
 const dialogLogin = document.getElementById('myDialogLogin');
 const toggleSenha = document.getElementById('toggleSenha');
@@ -501,9 +483,9 @@ function carregaTemporadas(json){
         
 
         item.innerHTML = `<img src=${url}>
-        <div> <h3>${element.name}</h3> <h3>${date.getFullYear()} • ${element.episode_count} episódios</h3>
-        <p>Esta temporada começou a ser exibida em ${date.toLocaleDateString()}</p> 
-        <p>${element.overview}</p> </div>`;
+        <div class="temp-info"> <div> <h3>${element.name}</h3> <h4>${date.getFullYear()} • ${element.episode_count} episódios</h4> </div>
+        <div> <p>Esta temporada começou a ser exibida em ${date.toLocaleDateString()}.</p> 
+        <p>${element.overview}</p> </div> </div>`;
 
         divTemp.lastElementChild.appendChild(item); 
     });
@@ -513,7 +495,7 @@ function carregaTemporadas(json){
 function carregaDados(json) {
 
     const titAvalia = document.querySelector('#tituloAvaliacao');
-    titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}`;
+    titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}?`;
     const banner = document.querySelector("#banner"); // Seleciona o banner
     banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Define a imagem de fundo do banner
 
