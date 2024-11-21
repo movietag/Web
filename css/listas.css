@@ -41,7 +41,7 @@ a{
 
 #caixa-listas{
     display: flex;
-    max-width: 65vw;
+    max-width: 55vw;
     justify-content: center;
     flex-wrap: wrap;
     margin: auto;

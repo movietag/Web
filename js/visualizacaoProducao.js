@@ -1,4 +1,8 @@
 let logado = false;
+// API
+
+var myParam = queryObj();
+console.log(myParam);
 
 // Verifica o status de login ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
@@ -13,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => console.error('Erro ao verificar o login:', error));
+    
+    atualizaAvaliacao();
 });
 
 function progressBar(value){
@@ -36,24 +42,6 @@ function progressBar(value){
     }, speed);
     console.log(value);
 }
-
-//fecha popup se clicar fora
-document.querySelectorAll('dialog').forEach(dialog => {
-    dialog.addEventListener('click', function(event) {
-        // Verifica se o clique foi no diálogo e não dentro do seu conteúdo
-        const rect = dialog.getBoundingClientRect();
-        const isInDialog = (
-            event.clientX >= rect.left &&
-            event.clientX <= rect.right &&
-            event.clientY >= rect.top &&
-            event.clientY <= rect.bottom
-        );
-
-        if (!isInDialog) {
-            dialog.close(); // Fecha o diálogo
-        }
-    });
-});
 
 //Esconder senha do popup de login
 const dialogLogin = document.getElementById('myDialogLogin');
@@ -196,6 +184,7 @@ cancelButtonAvaliar.addEventListener('click', () => {
 });
 
 let selectedValue = null;
+let selectedStar = null;
 
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
@@ -204,9 +193,55 @@ document.getElementById('confirmDialogAvaliar').addEventListener('click', () => 
     console.log(selectedValue);
 });
 
+function getLabelByValue(value) {
+    // Encontra o input com o valor correspondente
+    const input = document.querySelector(`input[name="rating"][value="${value}"]`);
+    if (!input) return null; // Caso não encontre o input, retorna null
+
+    if (input) {
+        input.checked = true; // Marca o input no DOM
+}
+    
+    // Busca a label associada pelo atributo for
+    const label = document.querySelector(`label[for="${input.id}"]`);
+    return label;
+}
+
 // Seleciona as estrelas e adiciona a funcionalidade de seleção
 const stars = document.querySelectorAll('.star');
-let selectedStar = null; // Variável para armazenar a estrela selecionada
+
+async function atualizaAvaliacao(){
+    const idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
+    fetch(`./php/getAvaliacao.php?idProd=${idProd}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            const valorEstrela = data.data.avaliacao;
+            const label = getLabelByValue(valorEstrela); // Obtém a label
+            if (label) {
+                selectedStar = label;
+                applySelectedStarColors(); // Aplica as cores
+            }
+        } else {
+            selectedStar = null;
+            console.error(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro de conexão ou na API:', error.message);
+    });
+}
+
 
 stars.forEach(star => {
     star.addEventListener('mouseover', () => {
@@ -418,10 +453,7 @@ function abrirPlataformas() {
 }
 
 
-// API
 
-var myParam = queryObj();
-console.log(myParam);
 
 if (myParam.type !== "tv"){
     divTemp.style.display = "none";
@@ -501,9 +533,9 @@ function carregaTemporadas(json){
         
 
         item.innerHTML = `<img src=${url}>
-        <div> <h3>${element.name}</h3> <h3>${date.getFullYear()} • ${element.episode_count} episódios</h3>
-        <p>Esta temporada começou a ser exibida em ${date.toLocaleDateString()}</p> 
-        <p>${element.overview}</p> </div>`;
+        <div class="temp-info"> <div> <h3>${element.name}</h3> <h4>${date.getFullYear()} • ${element.episode_count} episódios</h4> </div>
+        <div> <p>Esta temporada começou a ser exibida em ${date.toLocaleDateString()}.</p> 
+        <p>${element.overview}</p> </div> </div>`;
 
         divTemp.lastElementChild.appendChild(item); 
     });
@@ -513,7 +545,7 @@ function carregaTemporadas(json){
 function carregaDados(json) {
 
     const titAvalia = document.querySelector('#tituloAvaliacao');
-    titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}`;
+    titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}?`;
     const banner = document.querySelector("#banner"); // Seleciona o banner
     banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Define a imagem de fundo do banner
 
