@@ -9,52 +9,56 @@ const uConfSenha = document.querySelector("#uConfSenha"); // Seleciona o campo d
 
 const campos = document.querySelectorAll('.camposInput'); // Seleciona todos os campos de entrada
 const avisos = document.querySelectorAll('.alertas'); // Seleciona todos os elementos de alerta
-
-const dadosArmazenados = localStorage.getItem('usuarioDados'); // Obtém os dados armazenados no localStorage
-// const usuarios = JSON.parse(dadosArmazenados) || []; // Converte os dados em objeto JavaScript ou inicializa um array vazio se não houver dados
-// console.log(usuarios); // Exibe os usuários armazenados no console
-
 const emailRegexp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i; // Expressão regular para validação de email
 
 // Event listeners para validação dinâmica
-uUsuario.addEventListener("input", validarUso);
-uEmail.addEventListener("input", function(){
-    validarEmail();
-    validarUso();
-});
+uUsuario.addEventListener("input", validarUsuario);
+uEmail.addEventListener("input", validarEmail);
 uSenha.addEventListener("input", validarSenha);
 uConfSenha.addEventListener("input", confSenha);
 butao.addEventListener("click", validarDados);
+loading = document.querySelector('.wrapper');
 
 form.addEventListener("submit", (event) => {
     event.preventDefault(); // Evita o envio padrão do formulário
-    
-    // Cria um objeto FormData a partir do formulário
-    const formData = new FormData(form);
 
-    // Envia os dados usando fetch
-    fetch('./php/cadastrarUsuario.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error(`Erro HTTP: ${response.status}`);
-        }
-        return response.json(); // Transformar a resposta em JSON
-    })
-    .then(data => {
-        if (data.success) {
-            console.log('Cadastro realizado com sucesso!');
-            window.location.href = './index.php';
-        } else {
-            console.error(`Erro: ${data.message}`);
-        }
-    })
-    .catch(error => {
-        console.error('Erro de conexão ou na API:', error.message);
-    });
+    if (validarDados()) {
+        // Exibe o loading
+        loading.style.display = 'block';
+
+        // Cria um objeto FormData a partir do formulário
+        const formData = new FormData(form);
+
+        // Envia os dados usando fetch
+        fetch('./php/cadastrarUsuario.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+            return response.json(); // Transformar a resposta em JSON
+        })
+        .then(data => {
+            if (data.success) {
+                console.log('Cadastro realizado com sucesso!');
+                window.location.href = './index.php';
+            } else {
+                validarDados(data.message);
+                console.error(`Erro: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            console.error('Erro de conexão ou na API:', error.message);
+        })
+        .finally(() => {
+            // Sempre oculta o loading, independentemente do sucesso ou erro
+            loading.style.display = 'none';
+        });
+    }
 });
+
 
 
 // Função para validar o campo de email
@@ -80,10 +84,10 @@ function validarUsuario(){
     }
     if(uUsuario.value.length < 6){
         uUsuario.style.border = "1px solid red"; // Define borda vermelha se o usuário tiver menos de 6 caracteres
-        avisos[1].style.display = "inline-block"; // Exibe o aviso de usuário inválido
+        avisos[0].style.display = "inline-block"; // Exibe o aviso de usuário inválido
     } else {
         uUsuario.style.border = "1px solid green"; // Define borda verde se o usuário for válido
-        avisos[1].style.display = "none"; // Esconde o aviso de usuário inválido
+        avisos[0].style.display = "none"; // Esconde o aviso de usuário inválido
     }
 }
 
@@ -91,10 +95,10 @@ function validarUsuario(){
 function validarSenha(){
     if(uSenha.value.length < 8){
         uSenha.style.border = "1px solid red"; // Define borda vermelha se a senha tiver menos de 8 caracteres
-        avisos[3].style.display = "inline-block"; // Exibe o aviso de senha inválida
+        avisos[4].style.display = "inline-block"; // Exibe o aviso de senha inválida
     } else {
         uSenha.style.border = "1px solid green"; // Define borda verde se a senha for válida
-        avisos[3].style.display = "none"; // Esconde o aviso de senha inválida
+        avisos[4].style.display = "none"; // Esconde o aviso de senha inválida
     }
     confSenha(); // Chama a função para validar a confirmação de senha
 }
@@ -106,55 +110,33 @@ function confSenha(){
     }
     if (uSenha.value !== uConfSenha.value) {
         uConfSenha.style.border = "1px solid red"; // Define borda vermelha se as senhas não coincidirem
-        avisos[4].style.display = "inline-block"; // Exibe o aviso de senhas diferentes
+        avisos[5].style.display = "inline-block"; // Exibe o aviso de senhas diferentes
     } else {
         uConfSenha.style.border = "1px solid green"; // Define borda verde se as senhas coincidirem
-        avisos[4].style.display = "none"; // Esconde o aviso de senhas diferentes
-    }
-}
-
-// Função para validar se o usuário e o email já estão em uso
-function validarUso(){
-    let usuarioEmUso = false;
-    let emailEmUso = false;
-    emailEmUso = true;
-
-    if (usuarioEmUso) {
-        uUsuario.style.border = "1px solid red"; // Define borda vermelha se o usuário já estiver em uso
-        avisos[1].style.display = "inline-block"; // Exibe o aviso de usuário em uso
-    } else {
-        uUsuario.style.border = "1px solid green"; // Define borda verde se o usuário não estiver em uso
-        avisos[1].style.display = "none"; // Esconde o aviso de usuário em uso
-    }
-
-    if (emailEmUso) {
-        uEmail.style.border = "1px solid red"; // Define borda vermelha se o email já estiver em uso
-        avisos[2].style.display = "inline-block"; // Exibe o aviso de email em uso
-    } else {
-        uEmail.style.border = "1px solid green"; // Define borda verde se o email não estiver em uso
-        avisos[2].style.display = "none"; // Esconde o aviso de email em uso
-        validarEmail(); // Chama a função para validar o email
+        avisos[5].style.display = "none"; // Esconde o aviso de senhas diferentes
     }
 }
 
 // Função para validar todos os dados antes de enviar o formulário
-function validarDados() {
+function validarDados(msg) {
     validarUsuario(); // Valida o campo de usuário
     validarEmail(); // Valida o campo de email
     validarSenha(); // Valida o campo de senha
     confSenha(); // Valida o campo de confirmação de senha
-    // validarUso(); // Valida se o usuário e o email já estão em uso
+    // // validarUso(); // Valida se o usuário e o email já estão em uso
 
     let camposValidos = true;
     campos.forEach(campo => {
         if (campo.style.border === "1px solid red") {
-            camposValidos = false; // Define camposValidos como false se algum campo estiver inválido
-        }
-    });
+            camposValidos = false;
+    }})
 
-    if (!camposValidos) {
-        avisos[5].style.display = "inline-block"; // Exibe o aviso de correção dos campos inválidos
-        return;
+    // });
+    if (msg){
+        avisos[6].style.display = "inline-block"; // Exibe o aviso de correção dos campos inválidos
+        avisos[6].textContent = msg;
+    } else{
+        avisos[6].style.display = 'none';
     }
 
     return camposValidos;
