@@ -2,15 +2,50 @@
 const secaoCaixa = document.querySelector(".secao-caixa");
 // Seleciona o formulário dentro do elemento dialog
 const fDialog = document.querySelector("dialog form");
+const alerts = document.querySelector('.alert');
+
+loading = document.querySelector('.wrapper');
+
+
 // Seleciona o formulário com o ID "form-total"
 const form = document.querySelector("#form-total");
-
-
 // Define a função que será executada quando o formulário for enviado
 form.onsubmit = (ev) => {
-    
-    if (!verificaVazio) {
-        ev.preventDefault();
+    ev.preventDefault();
+    if (verificaVazio) {
+        // Exibe o loading
+        loading.style.display = 'block';
+
+        // Cria um objeto FormData a partir do formulário
+        const formData = new FormData(form);
+
+        // Envia os dados usando fetch
+        fetch('./php/loginUsuario.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+            return response.json(); // Transformar a resposta em JSON
+        })
+        .then(data => {
+            if (data.success) {
+                window.location.href = './index.php';
+                alerts.style.display = 'none';
+            } else {
+                alerts.style.display = 'inline-block';
+                console.error(`Erro: ${data.message}`);
+            }
+        })
+        .catch(error => {
+            console.error('Erro de conexão ou na API:', error.message);
+        })
+        .finally(() => {
+            // Sempre oculta o loading, independentemente do sucesso ou erro
+            loading.style.display = 'none';
+        });
     }
 };
 

@@ -1,55 +1,35 @@
 <?php
 // Iniciar Sessão
 session_start();
+require_once 'database.php';
+require_once 'jsonResponse.php';
+require_once 'funcoesCompartilhadas.php';
 
-if (isset($_POST['btn-Login'])):
+try {
+
     // Tratamento dos inputs
     $uUsuarioEmail = filter_var($_POST['uUsuario-Email'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);
     $uSenha = filter_var($_POST['uSenha'] ?? null, FILTER_SANITIZE_SPECIAL_CHARS);    
+ 
+    // Verifica se algum resultado foi encontrado
+    if (verificarUsuarioExiste($uUsuarioEmail, $uUsuarioEmail)) {
+        $rows = buscaUsuario($uUsuarioEmail, $uUsuarioEmail);
+        $senhaBanco = $rows['senha'];
 
-    // Conexão com PDO
-    require_once 'database.php';
-
-    try {
-        // Consulta para verificar se o usuário ou e-mail existe
-        $sql = "SELECT * FROM USUARIO WHERE usuario = :usuarioEmail OR email = :usuarioEmail";
-        $stmt = Database::prepare($sql);
-        $stmt->bindParam(':usuarioEmail', $uUsuarioEmail, PDO::PARAM_STR);
-        $stmt->execute();
-
-        // Verifica se algum resultado foi encontrado
-        if ($stmt->rowCount() > 0) {
-            $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-            $senhaBanco = $rows['senha'];
-
-            // Verifica se a senha corresponde ao hash armazenado no banco de dados
-            if (password_verify($uSenha, $senhaBanco)) {
-                $_SESSION['status'] = true;
-                $_SESSION['dados'] = [
-                    "id" => $rows['id'],
-                    "usuario" => $rows["usuario"],
-                    "email" => $rows["email"],
-                    "foto" => $rows['pathImg']
-                ];
-                header('Location: /Web/index.php'); // Ajuste o caminho conforme necessário
-                exit;
-            } else {
-                $_SESSION['mensagem'] = "Usuário ou Senha incorreto.";
-                header('Location: /Web/login.php');
-                exit;
-            }
+        // Verifica se a senha corresponde ao hash armazenado no banco de dados
+        if (password_verify($uSenha, $senhaBanco)) {
+            $_SESSION['status'] = true;
+            jsonResponse(true, 'Login realizado com sucesso!');
+            salvarDadosSession($rows);
+            exit;
         } else {
-            $_SESSION['mensagem'] = "Não há nenhum usuário/email com esses dados.";
-            header('Location: /Web/login.php');
+            jsonResponse(false, 'Usuário/Email ou Senha incorreto! ');
             exit;
         }
-    } catch (PDOException $e) {
-        // Tratamento de erro na conexão ou execução da consulta
-        $_SESSION['mensagem'] = "Erro ao conectar ao banco de dados: " . $e->getMessage();
-        header('Location: /Web/login.php');
+    } else {
+        jsonResponse(false, 'Essa conta não existe!');
         exit;
     }
-
-endif;
-
-?>
+} catch (PDOException $e) {
+    jsonResponse(false, 'Erro no servidor: ' . $e->getMessage());
+}

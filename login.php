@@ -23,10 +23,9 @@
     <section>
         <div class="secao-caixa">
             <h1>Login</h1>
-            <?php echo $_SESSION['mensagem']?>
             <div class="conteudo">
                 <!-- Formulário de login -->
-                <form method="POST" action="php/loginUsuario.php" id="form-total">
+                <form method="POST" id="form-total">
                     <label for="uUsuario">Usuário/Email:</label>
                     <input type="text" name="uUsuario-Email" id="uUsuario" placeholder="Digite seu Usuário">
                     <label for="uSenha" name="uSenha">Senha:</label>
@@ -34,6 +33,16 @@
                     <a href="#">Esqueceu a senha?</a>
                     <button type="submit" name="btn-Login" class="butao">Enviar</button>
                     <p>Não possui conta? <a href="cadastro.php">Cadastrar</a></p>
+                    <small class="alertas"></small>
+
+                    <div class="wrapper">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                    </div>
                 </form>
             </div>
         </div>
