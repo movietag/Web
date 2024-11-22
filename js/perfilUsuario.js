@@ -90,72 +90,61 @@ async function receberDados() {
         const data = await response.json();
 
         if (data.success) {
-            const phpLabels = data.data[0]; // labels
-            const phpData = data.data[1];   // dados
-            return { phpLabels, phpData };  // Retorna os dados como um objeto
+            return data.data; // Retorna os dados diretamente
         } else {
             console.error(data.message);
-            return { phpLabels: [], phpData: [] }; // Retorna arrays vazios em caso de erro
+            return {}; // Retorna objeto vazio em caso de erro
         }
     } catch (error) {
         console.error("Erro ao buscar dados:", error);
-        return { phpLabels: [], phpData: [] }; // Retorna arrays vazios em caso de erro
+        return {};
     }
 }
 
-// Utilizando os dados retornados pela função
-receberDados().then(({ phpLabels, phpData }) => {
-    if (phpLabels.length === 0 || phpData.length === 0) {
+receberDados().then((dadosProducoes) => {
+    if (Object.keys(dadosProducoes).length === 0) {
         console.warn("Nenhum dado recebido para o gráfico.");
         return;
     }
 
-    // Criando o gráfico com os dados recebidos
+    const mesesLabels = [
+        "Jan", "Fev", "Mar", "Abr", "Mai", "Jun", 
+        "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+    ];
+
+    const datasets = Object.keys(dadosProducoes).map((idProd, index) => {
+        return {
+            label: `Produção ${idProd}`,
+            borderColor: ['#E66F22', '#22E6E6', '#E6226F'][index], // Cores diferentes para as 3 linhas
+            data: Object.values(dadosProducoes[idProd]), // Dados da produção ao longo dos meses
+            tension: 0.4,
+            fill: false
+        };
+    });
+
     new Chart("chartLinhas", {
         type: "line",
         data: {
-            labels: mesesValues, // etiquetas do eixo x (mês)
-            datasets: [{
-                label: phpLabels[0],
-                borderColor: '#E66F22',
-                data: phpData, // dados do gráfico
-                tension: 0
-            }]
+            labels: mesesLabels, // Etiquetas do eixo x (meses)
+            datasets: datasets   // Dados das linhas
         },
         options: {
             responsive: true,
             scales: {
                 x: {
-                    grid: {
-                        display: false // remove o grid do eixo x
-                    },
-                    ticks: {
-                        color: '#fff' // Cor das labels no eixo x (opcional)
-                    },
-                    border: {
-                        display: true,
-                        color: '#7f807d'
-                    },
+                    grid: { display: false },
+                    ticks: { color: '#fff' },
+                    border: { display: true, color: '#7f807d' },
                 },
                 y: {
-                    grid: {
-                        display: true,
-                        color: '#424242',
-                    },
-                    ticks: {
-                        color: '#fff' // Cor das labels no eixo y (opcional)
-                    },
-                    border: {
-                        display: true,
-                        color: '#7f807d',
-                    }
+                    grid: { display: true, color: '#424242' },
+                    ticks: { color: '#fff' },
+                    border: { display: true, color: '#7f807d' },
                 }
             },
             plugins: {
                 legend: {
-                    labels: {
-                        color: '#fff' // Cor das labels da legenda (opcional)
-                    }
+                    labels: { color: '#fff' }
                 },
                 title: {
                     display: true,
