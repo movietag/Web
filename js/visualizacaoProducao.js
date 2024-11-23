@@ -1,24 +1,23 @@
 let logado = false;
+let idProd = null;
 // API
 
 var myParam = queryObj();
-console.log(myParam);
 
-// Verifica o status de login ao carregar a página
+// Ao carregar a página...
 document.addEventListener('DOMContentLoaded', function() {
+
+    // Verificar Login
     fetch('./php/fetchLogin.php')
         .then(response => response.json())
         .then(data => {
-            if (data.loggedIn) {
-                console.log("Usuário está logado.");
+            if (data.loggedIn){
                 logado = true;
-            } else {
-                console.log("Usuário não está logado.");
+                atualizaAvaliacao(); // Atualiza a atualização, se existir
             }
         })
         .catch(error => console.error('Erro ao verificar o login:', error));
     
-    atualizaAvaliacao();
 });
 
 function progressBar(value){
@@ -43,6 +42,7 @@ function progressBar(value){
     console.log(value);
 }
 
+// Dialog de Login
 //Esconder senha do popup de login
 const dialogLogin = document.getElementById('myDialogLogin');
 const toggleSenha = document.getElementById('toggleSenha');
@@ -110,6 +110,13 @@ function adicionarTag() {
     }
 }
 
+// Permite adicionar tag ao pressionar "Enter"
+inputTag.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Evita quebra de linha
+        adicionarTag();
+    }
+});
 
 // Eventos
 confirmTag.addEventListener('click', adicionarTag);
@@ -121,21 +128,20 @@ document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (
     const tags = Array.from(document.querySelectorAll('#tagsContainer .tag')).map(tag =>
         tag.textContent.replace('x', '').trim()
     );
-    
+    console.log(idProd);
     // Envia as tags para o backend
     fetch('./php/adicionarTag.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ tags, myParam: JSON.stringify(myParam) })
+        // body: JSON.stringify({ tags, id: idProd ?? JSON.stringify(myParam) })
+        body: JSON.stringify({ tags, id: idProd})
     })
         .then(response => response.json())
         .then(data => {
-            if (data.success) {
-                console.log(data.message, data.tags);
-            } else {
-                console.log('Erro ao processar tags: ' + data.message);
+            if (!data.success) {
+                console.error('Erro ao processar tags: ' + data.message);
             }
         })
         .catch(error => console.error('Erro na requisição:', error));
@@ -143,15 +149,6 @@ document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (
     tagsContainer.replaceChildren;
     carregaTags();
     });
-
-
-// Permite adicionar tag ao pressionar "Enter"
-inputTag.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        e.preventDefault(); // Evita quebra de linha
-        adicionarTag();
-    }
-});
 
 // Fecha o diálogo ao clicar no botão "Cancelar"
 cancelButtonAdicionarTag.addEventListener('click', () => {
@@ -211,7 +208,7 @@ function getLabelByValue(value) {
 const stars = document.querySelectorAll('.star');
 
 async function atualizaAvaliacao(){
-    const idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
+    idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
     fetch(`./php/getAvaliacao.php?idProd=${idProd}`, {
         method: 'GET',
         headers: {
@@ -472,11 +469,6 @@ if (myParam.type === "movie"){
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}?append_to_response=20&language=pt-BR`, options)
     .then(response => response.json())
     .then(json => carregaDados(json));
-
-// // Faz a requisição à API para obter as tags do filme
-// fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/keywords`, options) // Palavra chave
-//     .then(response => response.json())
-//     .then(response => carregaTags(response));
 
 // Faz a requisição à API para obter o Elenco do filme
 fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/credits?language=pt-BR`, options)

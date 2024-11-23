@@ -61,7 +61,7 @@
                     <small id="alertaErro" class="alertas">Corrija as informações erradas!</small>
                     <p id="psenha">Já possui conta? <a href="login.php" id="psenhaA">Login</a></p>
 
-                    <div class="wrapper">
+                    <div class="wrapperLoading">
                         <div class="circle"></div>
                         <div class="circle"></div>
                         <div class="circle"></div>

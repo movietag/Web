@@ -3,16 +3,12 @@ header('Content-Type: application/json');
 session_start();
 
 require_once 'database.php';
+require_once 'jsonResponse.php';
 
-// Função para enviar respostas JSON
-function jsonResponse($success, $message) {
-    echo json_encode(['success' => $success, 'message' => $message]);
-    exit;
-}
 
 // Função para verificar se a produção já existe no banco
 function producaoExiste($idAPI) {
-    $sql = "SELECT * FROM PRODUCAO WHERE idAPI = :idAPI";
+    $sql = "SELECT id FROM PRODUCAO WHERE idAPI = :idAPI";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':idAPI', $idAPI);
     $stmt->execute();
@@ -20,10 +16,11 @@ function producaoExiste($idAPI) {
 }
 
 // Função para inserir uma nova produção no banco
-function criarProducao($idAPI) {
-    $sql = "INSERT INTO PRODUCAO (idAPI) VALUES (:idAPI)";
+function criarProducao($idAPI, $nomeProd) {
+    $sql = "INSERT INTO PRODUCAO (idAPI, nomeProd) VALUES (:idAPI, :nomeProd)";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':idAPI', $idAPI);
+    $stmt->bindParam(':nomeProd', $nomeProd);
     return $stmt->execute();
 }
 
@@ -38,7 +35,7 @@ function registrarAcesso($idUsu, $idProd) {
 }
 
 function getIdProducao($idAPI){
-    $sql = "SELECT * FROM PRODUCAO WHERE idAPI = :idAPI";
+    $sql = "SELECT id FROM PRODUCAO WHERE idAPI = :idAPI";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':idAPI', $idAPI);
     $stmt->execute();
@@ -49,18 +46,26 @@ function getIdProducao($idAPI){
 // Código principal
 try {
     $data = json_decode(file_get_contents("php://input"), true);
-    if (!isset($data['id'])) {
-        jsonResponse(false, 'ID não fornecido.');
+    if (empty($data['id'])) {
+        jsonResponse(false, 'ID não fornecido ou está vazio.');
+        exit;
     }
-
+    
+    if (empty($data['nome'])) {
+        jsonResponse(false, 'Nome não fornecido ou está vazio.');
+        exit;
+    }
+    
     $idAPI = $data['id'];
+    $nomeProd = $data['nome'];
     $idUsu = isset($_SESSION['dados']['id']) ? $_SESSION['dados']['id'] : null;
 
     // Verificar se a produção já existe
     if (!producaoExiste($idAPI)) {
         // Criar nova produção se não existir
-        if (!criarProducao($idAPI)) {
+        if (!criarProducao($idAPI, $nomeProd)) {
             jsonResponse(false, 'Erro ao inserir a produção no banco!');
+            exit;
         }
     }
 

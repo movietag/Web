@@ -4,7 +4,7 @@ const secaoCaixa = document.querySelector(".secao-caixa");
 const fDialog = document.querySelector("dialog form");
 const alerts = document.querySelector('.alertas');
 
-loading = document.querySelector('.wrapper');
+loading = document.querySelector('.wrapperLoading');
 
 
 // Seleciona o formulário com o ID "form-total"
@@ -35,6 +35,7 @@ form.onsubmit = (ev) => {
                 window.location.href = './index.php';
                 alerts.style.display = 'none';
             } else {
+                alerts.textContent = data.message;
                 alerts.style.display = 'inline-block';
                 console.error(`Erro: ${data.message}`);
             }

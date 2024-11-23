@@ -2,25 +2,28 @@
 session_start();
 header('Content-Type: application/json');
 require_once 'database.php';
+require_once 'jsonResponse.php';
 
-function getIdProducao($idAPI) {
-    $sql = "SELECT id FROM PRODUCAO WHERE idAPI = :idAPI";
-    $stmt = Database::prepare($sql);
-    $stmt->bindParam(':idAPI', $idAPI);
-    $stmt->execute();
-    $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if (!$rows) {
-        jsonResponse(false, 'Produção não encontrada.');
-    }
-
-    return $rows['id'];
+// Função para verificar se é um JSON válido
+function isJson($string) {
+    json_decode($string);
+    return (json_last_error() === JSON_ERROR_NONE);
 }
 
-function jsonResponse($success, $message) {
-    echo json_encode(['success' => $success, 'message' => $message]);
-    exit;
-}
+// function getIdProducao($idAPI) {
+//     $sql = "SELECT id FROM PRODUCAO WHERE idAPI = :idAPI";
+//     $stmt = Database::prepare($sql);
+//     $stmt->bindParam(':idAPI', $idAPI);
+//     $stmt->execute();
+//     $rows = $stmt->fetch(PDO::FETCH_ASSOC);
+
+//     if (!$rows) {
+//         jsonResponse(false, 'Produção não encontrada.');
+//         exit;
+//     }
+
+//     return $rows['id'];
+// }
 
 function verificarUsuarioLogado() {
     if (!isset($_SESSION['dados']['id'])) {
@@ -44,7 +47,6 @@ function inserirTag($tag, $idUsu) {
     $stmt->bindParam(':nome', $tag);
     $stmt->bindParam(':idUsu', $idUsu);
     if ($stmt->execute()) {
-        // Retorna o último ID inserido
         return verificarTagExistente($tag);
     }
 }
@@ -108,18 +110,21 @@ try {
         jsonResponse(false, 'Nenhuma tag foi enviada ou JSON inválido.');
     }
 
-    if (!isset($data['myParam'])) {
+    if (!isset($data['id'])) {
         jsonResponse(false, 'ID da produção não fornecido.');
     }
 
-    $myParam = json_decode($data['myParam'], true);
-    if (is_null($myParam) || !isset($myParam['query']) || empty($myParam['query'])) {
-        jsonResponse(false, 'Parâmetro myParam inválido ou chave "query" ausente.');
-    }
-
-    $idAPI = $myParam['query'];
-    $idProd = getIdProducao($idAPI);
-
+    // if (!isJson($data['id'])){
+    //     $myParam = json_decode($data['id'], true);
+    //     if (is_null($myParam) || !isset($myParam['query']) || empty($myParam['query'])) {
+    //         jsonResponse(false, 'Parâmetro myParam inválido ou chave "query" ausente.');
+    //         $idAPI = $myParam['query'];
+    //         $idProd = getIdProducao($idAPI);
+    //     }
+    // } elseif(is_numeric($data['id'])){
+    //     $idProd = $data['id'];
+    // }
+    $idProd = $data['id'];
     $idUsu = verificarUsuarioLogado();
     $resultado = [
         'tagsProcessadas' => processarTags($data['tags'], $idProd, $idUsu),
@@ -128,11 +133,11 @@ try {
         'dataRecebida' => $data
     ];
     
-
     jsonResponse(true, [
         'message' => 'Processamento concluído.',
         'tags' => $resultado
     ]);
+
 } catch (Exception $e) {
     jsonResponse(false, 'Erro: ' . $e->getMessage());
 }

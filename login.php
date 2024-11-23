@@ -34,7 +34,7 @@
                     <p>Não possui conta? <a href="cadastro.php">Cadastrar</a></p>
                     <small class="alertas"></small>
 
-                    <div class="wrapper">
+                    <div class="wrapperLoading">
                         <div class="circle"></div>
                         <div class="circle"></div>
                         <div class="circle"></div>
