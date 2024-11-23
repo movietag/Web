@@ -15,7 +15,6 @@
 <body>
     <header>
     <?php 
-    session_start();
     require 'navbar.php'; ?>
     </header>
 
@@ -28,7 +27,7 @@
                 <form method="POST" id="form-total">
                     <label for="uUsuario">Usuário/Email:</label>
                     <input type="text" name="uUsuario-Email" id="uUsuario" placeholder="Digite seu Usuário">
-                    <label for="uSenha" name="uSenha">Senha:</label>
+                    <label for="uSenha">Senha:</label>
                     <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha">
                     <a href="#">Esqueceu a senha?</a>
                     <button type="submit" name="btn-Login" class="butao">Enviar</button>

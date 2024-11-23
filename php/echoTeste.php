@@ -1,4 +1,4 @@
 <?php
 session_start();
 
-echo json_encode($_SESSION['dados']);
+dump($_SESSION['dados']);

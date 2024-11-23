@@ -2,7 +2,7 @@
 const secaoCaixa = document.querySelector(".secao-caixa");
 // Seleciona o formulário dentro do elemento dialog
 const fDialog = document.querySelector("dialog form");
-const alerts = document.querySelector('.alert');
+const alerts = document.querySelector('.alertas');
 
 loading = document.querySelector('.wrapper');
 

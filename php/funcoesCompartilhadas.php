@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 function verificarUsuarioExiste($uUsuario, $uEmail){
     // Verificar se o usuário ou e-mail já existe
     $sql = "SELECT * FROM USUARIO WHERE usuario = :usuario OR email = :email";
