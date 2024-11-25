@@ -22,13 +22,13 @@
         <div class="formulario secao-caixa">
             <h1>Editar Perfil</h1>
             <!-- Formulario -->
-            <form method="POST" action="php/alterarDadosUsuario.php" class="form-total">
+            <form method="POST" enctype="multipart/form-data" action="php/alterarDadosUsuario.php" class="form-total">
                 <div class="conteudo">
                     <!-- Icone -->
                     <div class="icone">
                         <img id="fotoUser" src=<?php echo htmlspecialchars($imageSrc); ?> alt="Imagem de Perfil do Usuário">
                         <!-- Input para arquivos -->
-                        <input type="file" name="uFile" id="uFile"> 
+                        <input type="file" accept="image/*" name="uFile" id="uFile"> 
                     </div>
                 </div>
                 <div class="conteudo">

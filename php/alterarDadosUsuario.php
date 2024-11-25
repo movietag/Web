@@ -7,10 +7,10 @@ if (isset($_POST['btn-Atualizar'])):
     $uEmail = filter_input(INPUT_POST, 'uEmail', FILTER_SANITIZE_EMAIL);
     $uSenha = filter_input(INPUT_POST, 'uSenha', FILTER_SANITIZE_SPECIAL_CHARS);
     $confirmSenha = filter_input(INPUT_POST, 'confirmSenha', FILTER_SANITIZE_SPECIAL_CHARS);
-    $userId = $_SESSION['dados']['id']; // Assume-se que o ID do usuário está armazenado na sessão
+    $userId = $_SESSION['dados']['id'];
 
     // Processamento da imagem
-    $imageBase64 = null; // Variável para a imagem em base64
+    $imageBase64 = null; 
     if (isset($_FILES['uFile']) && $_FILES['uFile']['error'] == 0) {
         $imageData = file_get_contents($_FILES['uFile']['tmp_name']);
         $imageBase64 = base64_encode($imageData); // Codifica a imagem em base64
@@ -51,7 +51,6 @@ if (isset($_POST['btn-Atualizar'])):
 
         // Executar a atualização
         if ($stmt->execute()) {
-            $_SESSION['mensagem'] = "Atualização realizada com sucesso!";
 
             // Atualizar dados na sessão
             $_SESSION['dados']['usuario'] = $uUsuario;
