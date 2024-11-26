@@ -220,6 +220,7 @@ function getLabelByValue(value) {
     return label;
 }
 
+// Função para pegar a avaliação do banco
 async function atualizaAvaliacao(){
     idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
     fetch(`./php/getAvaliacao.php?idProd=${idProd}`, {
@@ -252,6 +253,7 @@ async function atualizaAvaliacao(){
     });
 }
 
+// Para cada estrela...
 stars.forEach(star => {
     star.addEventListener('mouseover', () => {
         // Muda a cor das estrelas ao passar o mouse
@@ -293,6 +295,7 @@ stars.forEach(star => {
     });
 });
 
+// Função para resetar as cores
 function resetStarColors() {
     if(selectedStar == null){
     stars.forEach(star => {
@@ -305,6 +308,7 @@ function resetStarColors() {
     }
 }
 
+// Função para aplicar as cores
 function applySelectedStarColors() {
     // Preenche as estrelas até a estrela selecionada
     if (selectedStar) {
@@ -330,6 +334,7 @@ function applySelectedStarColors() {
     }
 }
 
+// Função para enviar avaliação ao banco
 function enviarAvaliacao(valor) {
     console.log(`Enviando avaliação: ${valor}`);
 
@@ -412,6 +417,11 @@ document.getElementById('confirmDialogCriarNovaLista').addEventListener('click',
 const icon = document.querySelector("#mark");
 const divTemp = document.querySelector("#temporadas");
 
+// Div da Lista de Temporadas
+if (myParam.type !== "tv"){
+    divTemp.style.display = "none";
+}
+
 // Define a variável 'aberto' como verdadeira
 let aberto = true;
 
@@ -438,10 +448,6 @@ function abrirPlataformas() {
         backdrop.style.backgroundColor = 'rgba(0, 0, 0, 0.7)'; // Altera a cor de fundo
         botao.textContent = "Disponível Neste Momento"; // Altera o texto do botão
     }
-}
-
-if (myParam.type !== "tv"){
-    divTemp.style.display = "none";
 }
 
 // API do TMDB
