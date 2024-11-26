@@ -6,7 +6,7 @@ CREATE TABLE `USUARIO` (
   `usuario` VARCHAR(50) NOT NULL,
   `senha` VARCHAR(255) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
-  `pathImg` longtext
+  `pathImg` longtext,
   UNIQUE (`usuario`),
   UNIQUE (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

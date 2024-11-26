@@ -112,11 +112,11 @@ receberDados().then((dadosProducoes) => {
         "Jul", "Ago", "Set", "Out", "Nov", "Dez"
     ];
 
-    const datasets = Object.keys(dadosProducoes).map((idProd, index) => {
+    const datasets = Object.keys(dadosProducoes).map((nomeProd, index) => {
         return {
-            label: `Produção ${idProd}`,
+            label: nomeProd, // Nome da produção no gráfico
             borderColor: ['#E66F22', '#22E6E6', '#E6226F'][index], // Cores diferentes para as 3 linhas
-            data: Object.values(dadosProducoes[idProd]), // Dados da produção ao longo dos meses
+            data: Object.values(dadosProducoes[nomeProd]), // Dados da produção ao longo dos meses
             tension: 0.4,
             fill: false
         };
@@ -148,7 +148,7 @@ receberDados().then((dadosProducoes) => {
                 },
                 title: {
                     display: true,
-                    text: "Produções Mais Acessadas por Período",
+                    text: "Produções Mais Acessadas no Ano",
                     color: '#fff',
                 }
             }
@@ -206,5 +206,3 @@ new Chart("chartBarrasH", {
 
     }
 });
-console.log(phpData);
-console.log(phpLabels);

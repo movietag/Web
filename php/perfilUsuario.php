@@ -14,23 +14,26 @@ try {
     // Conexão com o banco usando PDO
     require_once 'database.php'; // Inclui o arquivo com a classe Database
 
-    // Consulta para obter as três produções mais acessadas
+    // Consulta para obter as três produções mais acessadas com seus nomes
     $sqlTopProducao = "
-        SELECT AP.idProd, COUNT(*) AS total_acessos
+        SELECT P.nomeProd, AP.idProd, COUNT(*) AS total_acessos
         FROM ACESSA_PRODUCAO AP
+        JOIN PRODUCAO P ON P.id = AP.idProd
         WHERE YEAR(AP.dataHora) = YEAR(CURDATE()) -- Considera apenas o ano atual
-        GROUP BY AP.idProd
+        GROUP BY AP.idProd, P.nomeProd
         ORDER BY total_acessos DESC
-        LIMIT 3;
+        LIMIT 5;
     ";
 
     $stmt = Database::prepare($sqlTopProducao);
     $stmt->execute();
 
-    // Armazena os IDs das produções mais acessadas
+    // Armazena os nomes e IDs das produções mais acessadas
     $topProducoes = [];
+    $nomesProducoes = [];
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $topProducoes[] = $row['idProd'];
+        $nomesProducoes[$row['idProd']] = $row['nomeProd'];
     }
 
     if (empty($topProducoes)) {
@@ -52,42 +55,19 @@ try {
     // Processar os resultados
     $dados = [];
     foreach ($topProducoes as $idProd) {
-        $dados[$idProd] = array_fill(1, 12, 0); // Inicializa com 0 acessos para os 12 meses
+        $dados[$nomesProducoes[$idProd]] = array_fill(1, 12, 0); // Inicializa com 0 acessos para os 12 meses
     }
 
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
         $idProd = $row['idProd'];
         $mes = (int)$row['mes'];
-        $dados[$idProd][$mes] = (int)$row['total_acessos'];
+        $nomeProd = $nomesProducoes[$idProd];
+        $dados[$nomeProd][$mes] = (int)$row['total_acessos'];
     }
 
     jsonResponse(true, 'Dados enviados com sucesso!', $dados);
 
-    //sendo feito NAO MEXE
-    // Consulta para obter as tags masi utilizadas
-    // $sqlTagsUtil = "
-    //     SELECT AP.idProd, COUNT(*) AS total_acessos
-    //     FROM ACESSA_PRODUCAO AP
-    //     WHERE YEAR(AP.dataHora) = YEAR(CURDATE()) -- Considera apenas o ano atual
-    //     GROUP BY AP.idProd
-    //     ORDER BY total_acessos DESC
-    //     LIMIT 3;
-    // ";
-    // $sqlTagsUtil = "
-    //     SELECT TAG.nome, COUNT(*) AS qtd_util
-    //     FROM TAG
-    //     WHERE 
-    //     ORDER BY qtd_util
-    //     LIMIT 5;
-    // ";
-
-    // $stmt = Database::prepare($sqlTagsUtil);
-    // $stmt->execute();
-
-    // if (empty(tags???)) {
-    //     jsonResponse(false, 'Nenhuma produção encontrada.', []);
-    // }
-    //sendo feito NAO MEXE
+    
 
 } catch (PDOException $e) {
     // Tratamento de erro
