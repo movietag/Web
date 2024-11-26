@@ -1,7 +1,9 @@
+
+// Declaração de Variáveis
 let logado = false;
 let idProd = null;
-// API
 
+// Valores da URL
 var myParam = queryObj();
 
 // Ao carregar a página...
@@ -18,6 +20,15 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .catch(error => console.error('Erro ao verificar o login:', error));
     
+    const stars = document.querySelectorAll('input[name="rating"]');
+
+    stars.forEach(star => {
+        star.addEventListener('click', function () {
+            selectedValue = this.value; // Captura o valor selecionado
+        });
+    });
+
+    carregaTags();
 });
 
 function progressBar(value){
@@ -48,13 +59,14 @@ const dialogLogin = document.getElementById('myDialogLogin');
 const toggleSenha = document.getElementById('toggleSenha');
 const loginSenha = document.getElementById('loginSenha');
 
+// Aparecer e desaparecer a senha conforme ícone do olho
 toggleSenha.addEventListener('click', () => {
     if (loginSenha.type === 'password') {
         loginSenha.type = 'text';
-        toggleSenha.innerHTML = '&#128065;'; // Ícone de olho aberto
+        toggleSenha.innerHTML = '&#128065;';
     } else {
         loginSenha.type = 'password';
-        toggleSenha.innerHTML = '&#128065;'; // Ícone de olho
+        toggleSenha.innerHTML = '&#128065;'; 
     }
 });
 
@@ -63,6 +75,12 @@ toggleSenha.addEventListener('click', () => {
 const openButtonAdicionarTag = document.getElementById('openDialogAdicionarTag');
 const dialogAdicionarTag = document.getElementById('myDialogAdicionarTag');
 
+const inputTag = document.getElementById('inputTag');
+const confirmTag = document.getElementById('confirmTag');
+const tagsContainer = document.getElementById('tagsContainer');
+const cancelButtonAdicionarTag = document.getElementById('cancelDialogAdicionarTag');
+
+// Ao clicar no botão, abre dialog...
 openButtonAdicionarTag.addEventListener('click', () => {
     if(logado){
         dialogAdicionarTag.showModal(); // Exibe o diálogo como modal
@@ -72,13 +90,52 @@ openButtonAdicionarTag.addEventListener('click', () => {
     
 });
 
+// Fecha o diálogo ao clicar no botão "Cancelar"
+cancelButtonAdicionarTag.addEventListener('click', () => {
+    dialogAdicionarTag.close(); // Fecha o diálogo
+});
 
-// Elementos HTML
-const inputTag = document.getElementById('inputTag');
-const confirmTag = document.getElementById('confirmTag');
-const tagsContainer = document.getElementById('tagsContainer');
-const cancelButtonAdicionarTag = document.getElementById('cancelDialogAdicionarTag');
+// Permite adicionar tag ao pressionar "Enter"
+inputTag.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); // Evita quebra de linha
+        adicionarTag();
+    }
+});
 
+// Enviar possível tag para a lista de tags
+confirmTag.addEventListener('click', adicionarTag);
+
+// Ao clicar no botão de confirmar envio das Tags...
+document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (event) => {
+    event.preventDefault(); // Evita o envio padrão do formulário
+
+    // Coleta todas as tags adicionadas no contêiner
+    const tags = Array.from(document.querySelectorAll('#tagsContainer .tag')).map(tag =>
+        tag.textContent.replace('x', '').trim()
+    );
+    // Envia as tags para o backend
+    fetch('./php/adicionarTag.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ tags, id: idProd})
+    })
+        .then(response => response.json())
+        .then(data => {
+            if (!data.success) {
+                console.error('Erro ao processar tags: ' + data.message);
+            }
+        })
+        .catch(error => console.error('Erro na requisição:', error));
+    
+    tagsContainer.replaceChildren;
+    carregaTags();
+    });
+
+
+// Função para guardar as tags que o usuário quer adicionar no sistema
 function atualizarHiddenTags() {
     if ([...document.querySelectorAll('#tagsContainer .tag')].some(tag => tag.textContent.replace('x', '').trim() === tagText)) {
         alert('Tag já adicionada!');
@@ -110,60 +167,21 @@ function adicionarTag() {
     }
 }
 
-// Permite adicionar tag ao pressionar "Enter"
-inputTag.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        e.preventDefault(); // Evita quebra de linha
-        adicionarTag();
-    }
-});
+// Avaliação
+// Seleciona o botão e o diálogo
+let selectedValue = null;
+let selectedStar = null;
+const openButtonAvaliar = document.getElementById('openDialogAvaliar');
+const dialogAvaliar = document.getElementById('myDialogAvaliar');
+const cancelButtonAvaliar = document.getElementById('cancelDialogAvaliar');
+const stars = document.querySelectorAll('.star');
+
 
 // Eventos
-confirmTag.addEventListener('click', adicionarTag);
-
-document.getElementById('confirmDialogAdicionarTag').addEventListener('click', (event) => {
-    event.preventDefault(); // Evita o envio padrão do formulário
-
-    // Coleta todas as tags adicionadas no contêiner
-    const tags = Array.from(document.querySelectorAll('#tagsContainer .tag')).map(tag =>
-        tag.textContent.replace('x', '').trim()
-    );
-    console.log(idProd);
-    // Envia as tags para o backend
-    fetch('./php/adicionarTag.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        // body: JSON.stringify({ tags, id: idProd ?? JSON.stringify(myParam) })
-        body: JSON.stringify({ tags, id: idProd})
-    })
-        .then(response => response.json())
-        .then(data => {
-            if (!data.success) {
-                console.error('Erro ao processar tags: ' + data.message);
-            }
-        })
-        .catch(error => console.error('Erro na requisição:', error));
-    
-    tagsContainer.replaceChildren;
-    carregaTags();
-    });
-
-// Fecha o diálogo ao clicar no botão "Cancelar"
-cancelButtonAdicionarTag.addEventListener('click', () => {
-    dialogAdicionarTag.close(); // Fecha o diálogo
-});
-
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAdicionarTag').addEventListener('click', () => {
     dialogAdicionarTag.close(); // Fecha o diálogo
 });
-
-// Seleciona o botão e o diálogo
-const openButtonAvaliar = document.getElementById('openDialogAvaliar');
-const dialogAvaliar = document.getElementById('myDialogAvaliar');
-const cancelButtonAvaliar = document.getElementById('cancelDialogAvaliar');
 
 // Abre o diálogo quando o botão é clicado
 openButtonAvaliar.addEventListener('click', () => {
@@ -180,9 +198,6 @@ cancelButtonAvaliar.addEventListener('click', () => {
     dialogAvaliar.close(); // Fecha o diálogo
 });
 
-let selectedValue = null;
-let selectedStar = null;
-
 // Fecha o diálogo ao clicar no botão "Avaliar"
 document.getElementById('confirmDialogAvaliar').addEventListener('click', () => {
     dialogAvaliar.close(); // Fecha o diálogo
@@ -190,6 +205,7 @@ document.getElementById('confirmDialogAvaliar').addEventListener('click', () => 
     console.log(selectedValue);
 });
 
+// Pega o elemento de estrela a partir do value do banco
 function getLabelByValue(value) {
     // Encontra o input com o valor correspondente
     const input = document.querySelector(`input[name="rating"][value="${value}"]`);
@@ -203,9 +219,6 @@ function getLabelByValue(value) {
     const label = document.querySelector(`label[for="${input.id}"]`);
     return label;
 }
-
-// Seleciona as estrelas e adiciona a funcionalidade de seleção
-const stars = document.querySelectorAll('.star');
 
 async function atualizaAvaliacao(){
     idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
@@ -238,7 +251,6 @@ async function atualizaAvaliacao(){
         console.error('Erro de conexão ou na API:', error.message);
     });
 }
-
 
 stars.forEach(star => {
     star.addEventListener('mouseover', () => {
@@ -318,20 +330,6 @@ function applySelectedStarColors() {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const stars = document.querySelectorAll('input[name="rating"]');
-
-    stars.forEach(star => {
-        star.addEventListener('click', function () {
-            selectedValue = this.value; // Captura o valor selecionado
-            console.log(`Valor selecionado: ${selectedValue}`);
-
-            // Chamada para enviar o valor ao servidor
-            // enviarAvaliacao(selectedValue);
-        });
-    });
-});
-
 function enviarAvaliacao(valor) {
     console.log(`Enviando avaliação: ${valor}`);
 
@@ -361,10 +359,6 @@ function enviarAvaliacao(valor) {
     });
 }
 
-
-
-
-
 // Dialog Salvar Prod
 
 // Seleciona o botão e o diálogo
@@ -391,9 +385,6 @@ cancelButtonSalvarProd.addEventListener('click', () => {
 document.getElementById('confirmDialogSalvarProd').addEventListener('click', () => {
     dialogSalvarProd.close(); // Fecha o diálogo
 });
-
-
-
 
 // Dialog Nova Lista
 const openNovaLista = document.getElementById('novaLista');
@@ -449,13 +440,11 @@ function abrirPlataformas() {
     }
 }
 
-
-
-
 if (myParam.type !== "tv"){
     divTemp.style.display = "none";
 }
 
+// API do TMDB
 const options = {
     method: 'GET',
     headers: {
@@ -498,8 +487,6 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
         .then(response => response.json())
         .then(response => carregaEquipe(response))
 }
-
-
 
 // Função para obter os parâmetros da URL
 function queryObj() { // Pega os valores do link HTML
@@ -619,6 +606,7 @@ async function obterIdProducao() {
     }
 }
 
+// Carrega Tags
 async function carregaTags() {
     const idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
     const listaTags = document.querySelector(".tags");
@@ -655,10 +643,7 @@ async function carregaTags() {
     }
 }
 
-carregaTags();
-
-
-
+// Função para carregar os dados de Elenco
 function carregaEquipe(json){
     console.log(json);
     const produtores = document.querySelector("#produtores");
