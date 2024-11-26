@@ -17,7 +17,7 @@ uEmail.addEventListener("input", validarEmail);
 uSenha.addEventListener("input", validarSenha);
 uConfSenha.addEventListener("input", confSenha);
 butao.addEventListener("click", validarDados);
-loading = document.querySelector('.wrapper');
+loading = document.querySelector('.wrapperLoading');
 
 form.addEventListener("submit", (event) => {
     event.preventDefault(); // Evita o envio padrão do formulário

@@ -62,11 +62,11 @@ if (isset($_POST['btn-Atualizar'])):
             header('Location: /Web/perfilUsuario.php');
         } else {
             $_SESSION['mensagem'] = "Erro ao atualizar!";
-            header('Location: /editarPerfil.php');
+            header('Location: /Web/editarPerfil.php');
         }
     } catch (PDOException $e) {
         $_SESSION['mensagem'] = "Erro ao conectar ao banco de dados: " . $e->getMessage();
-        header('Location: /editarPerfil.php');
+        header('Location: /Web/editarPerfil.php');
     }
 endif;
 ?>

@@ -42,7 +42,6 @@
                     <label for="uSenha">Nova Senha:</label>
                     <input type="password" name="confirmSenha" id="confirmSenha" placeholder="Digite sua nova senha" required> 
                     <button name="btn-Atualizar" class="butao">Salvar Mudanças</button>
-                    <p><?php echo $_SESSION['mensagem']?></p>
                 </div>
             </form>
         </div>
