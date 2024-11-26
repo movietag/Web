@@ -10,6 +10,7 @@ function jsonResponse($success, $message, $data) {
     exit;
 }
 
+
 try {
     // Conexão com o banco usando PDO
     require_once 'database.php'; // Inclui o arquivo com a classe Database
@@ -65,9 +66,26 @@ try {
         $dados[$nomeProd][$mes] = (int)$row['total_acessos'];
     }
 
-    jsonResponse(true, 'Dados enviados com sucesso!', $dados);
+    
+    
+    $sql = "
+        SELECT T.nome AS tag, COUNT(PT.idProd) AS total
+        FROM TAG T
+        JOIN PRODUCAO_TAG PT ON T.id = PT.idTag
+        GROUP BY T.id
+        ORDER BY total DESC
+        LIMIT 10;
+    ";
+
+    $stmt = Database::prepare($sql);
+    $stmt->execute();
+
+    $tagsMaisUtilizadas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     
+
+    $enviar = [$dados, $tagsMaisUtilizadas];
+    jsonResponse(true, 'Dados enviados com sucesso!', $enviar);
 
 } catch (PDOException $e) {
     // Tratamento de erro
