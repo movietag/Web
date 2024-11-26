@@ -170,53 +170,50 @@ receberDados().then((dadosProducoes) => {
     });
 });
 
+receberDados().then((dadosProducoes) => {
+    $dados = dadosProducoes[2];
 
-new Chart("chartBarrasH", {
-    type: "bar",
-    data: {
-        labels: xValues,
-        datasets: [{
-        backgroundColor: barColors,
-        data: yValues
-        }]
-    },
-    options: {
-        indexAxis: 'y',
-        plugins:{
-            title: {
-                display: true,
-                text: "Usuários com Maior Atividade",
-                color: '#fff',
-            } 
+    if (Object.keys($dados).length === 0) {
+        console.warn("Nenhum dado recebido para o gráfico.");
+        return;
+    }
+    const usuarios = $dados.map(user => user.usuario);
+    const atividades = $dados.map(user => user.atividade_total);
+    const dataset = [{
+        data: atividades, // Valores associados
+        backgroundColor: ['#E66F22', '#22E6E6', '#E6226F', '#2223E6', '#E69A22'], // Cores das barras
+    }];
+
+    new Chart("chartBarrasH", {
+        type: "bar",
+        data: {
+            labels: usuarios,
+            datasets: dataset
         },
-        scales: {
-            x: {
-                grid: {
-                    display: true, // remove o grid do eixo x
-                    color: '#424242'
-                },
-                ticks: {
-                    color: '#fff' // Cor das labels no eixo x (opcional)
-                },
-                border:{
+        options: {
+            indexAxis: 'y',
+            plugins: {
+                title: {
                     display: true,
-                    color: '#7f807d'
+                    text: "Usuários com Maior Atividade",
+                    color: '#fff',
                 },
+                legend: {
+                    display: false
+                }
             },
-            y: {
-                beginAtZero: true,
-                grid: {
-                    display: false,
+            scales: {
+                x: {
+                    grid: { display: true, color: '#424242' },
+                    ticks: { color: '#fff' },
+                    border: { display: true, color: '#7f807d' },
                 },
-                ticks: {
-                    color: '#fff' // Cor das labels no eixo y (opcional)
-                },
-                border:{
-                    display: true,
-                    color: '#7f807d',
+                y: {
+                    grid: { display: false },
+                    ticks: { color: '#fff' },
+                    border: { display: true, color: '#7f807d' },
                 }
             }
-        },
-
-    }
+        }
+    });
 });
