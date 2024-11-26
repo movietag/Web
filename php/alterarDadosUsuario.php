@@ -10,10 +10,12 @@ if (isset($_POST['btn-Atualizar'])):
     $userId = $_SESSION['dados']['id'];
 
     // Processamento da imagem
-    $imageBase64 = null; 
+
     if (isset($_FILES['uFile']) && $_FILES['uFile']['error'] == 0) {
         $imageData = file_get_contents($_FILES['uFile']['tmp_name']);
         $imageBase64 = base64_encode($imageData); // Codifica a imagem em base64
+    } else {
+        $imageBase64 = null; 
     }
 
     // Criptografar senha se ela for atualizada
@@ -58,7 +60,6 @@ if (isset($_POST['btn-Atualizar'])):
             if ($imageBase64) {
                 $_SESSION['dados']['foto'] = $imageBase64; // Atualiza a imagem na sessão
             }
-
             header('Location: /Web/perfilUsuario.php');
         } else {
             $_SESSION['mensagem'] = "Erro ao atualizar!";
