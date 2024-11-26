@@ -63,6 +63,32 @@ try {
 
     jsonResponse(true, 'Dados enviados com sucesso!', $dados);
 
+    //sendo feito NAO MEXE
+    // Consulta para obter as tags masi utilizadas
+    // $sqlTagsUtil = "
+    //     SELECT AP.idProd, COUNT(*) AS total_acessos
+    //     FROM ACESSA_PRODUCAO AP
+    //     WHERE YEAR(AP.dataHora) = YEAR(CURDATE()) -- Considera apenas o ano atual
+    //     GROUP BY AP.idProd
+    //     ORDER BY total_acessos DESC
+    //     LIMIT 3;
+    // ";
+    // $sqlTagsUtil = "
+    //     SELECT TAG.nome, COUNT(*) AS qtd_util
+    //     FROM TAG
+    //     WHERE 
+    //     ORDER BY qtd_util
+    //     LIMIT 5;
+    // ";
+
+    // $stmt = Database::prepare($sqlTagsUtil);
+    // $stmt->execute();
+
+    // if (empty(tags???)) {
+    //     jsonResponse(false, 'Nenhuma produção encontrada.', []);
+    // }
+    //sendo feito NAO MEXE
+
 } catch (PDOException $e) {
     // Tratamento de erro
     $_SESSION['mensagem'] = "Erro ao conectar ao banco de dados: " . $e->getMessage();
