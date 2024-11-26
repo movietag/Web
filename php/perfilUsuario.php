@@ -65,8 +65,6 @@ try {
         $nomeProd = $nomesProducoes[$idProd];
         $dados[$nomeProd][$mes] = (int)$row['total_acessos'];
     }
-
-    
     
     $sql = "
         SELECT T.nome AS tag, COUNT(PT.idProd) AS total
@@ -74,7 +72,7 @@ try {
         JOIN PRODUCAO_TAG PT ON T.id = PT.idTag
         GROUP BY T.id
         ORDER BY total DESC
-        LIMIT 10;
+        LIMIT 5;
     ";
 
     $stmt = Database::prepare($sql);
@@ -84,7 +82,7 @@ try {
 
     
 
-    $enviar = [$dados, $tagsMaisUtilizadas];
+    $enviar = [$tagsMaisUtilizadas, $dados];
     jsonResponse(true, 'Dados enviados com sucesso!', $enviar);
 
 } catch (PDOException $e) {

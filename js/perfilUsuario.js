@@ -32,81 +32,6 @@ const barColors = [
     "#E69A22"
 ];
 
-async function criarGraficoTags() {
-    try {
-        const response = await fetch('./php/perfilUsuario.php');
-        const data = await response.json();
-
-        if (!data.success) {
-            console.error(data.message);
-            return;
-        }
-
-        console.log(data.data);
-        console.log(typeof data.data);
-        console.log(data);
-
-        const tags = data.data.map(item => item.tag); // Nomes das tags
-        const valores = data.data.map(item => item.total); // Totais de usos
-
-        // Cria o gráfico de barras
-        new Chart("chartBarrasV", {
-            type: "bar",
-            data: {
-                labels: tags,
-                datasets: [{
-                    label: "Número de Utilizações",
-                    data: valores,
-                    backgroundColor: [
-                        "#8C22E6", "#E66F22", "#e6c222", "#2223E6", "#E69A22", 
-                        "#22E6E6", "#E6226F", "#26e622", "#e62244", "#2266e6"
-                    ]
-                }]
-            },
-            options: {
-                responsive: true,
-                plugins: {
-                    title: {
-                        display: true,
-                        text: "Tags Mais Utilizadas",
-                        color: '#fff'
-                    }
-                },
-                scales: {
-                    x: {
-                        grid: {
-                            display: true,
-                            color: '#424242'
-                        },
-                        ticks: {
-                            color: '#fff'
-                        },
-                        border: {
-                            color: '#7f807d'
-                        }
-                    },
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            display: false
-                        },
-                        ticks: {
-                            color: '#fff'
-                        },
-                        border: {
-                            color: '#7f807d'
-                        }
-                    }
-                }
-            }
-        });
-    } catch (error) {
-        console.error("Erro ao criar o gráfico:", error);
-    }
-}
-
-criarGraficoTags();
-
 async function receberDados() {
     try {
         const response = await fetch(`./php/perfilUsuario.php`);
@@ -125,7 +50,73 @@ async function receberDados() {
 }
 
 receberDados().then((dadosProducoes) => {
-    if (Object.keys(dadosProducoes).length === 0) {
+    $dados = dadosProducoes[0];
+
+    if (Object.keys($dados).length === 0) {
+        console.warn("Nenhum dado recebido para o gráfico.");
+        return;
+    }
+
+    const tags = $dados.map(item => item.tag); // Nomes das tags
+    const valores = $dados.map(item => item.total); // Totais de usos
+
+    const dataset = [{
+        data: valores, // Valores associados às tags
+        backgroundColor: ['#E66F22', '#22E6E6', '#E6226F', '#2223E6', '#E69A22'], // Cores das barras
+    }];
+    
+
+    // Cria o gráfico de barras
+    new Chart("chartBarrasV", {
+        type: "bar",
+        data: {
+            labels: tags,
+            datasets: dataset
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {display: false},
+                title: {
+                    display: true,
+                    text: "Tags Mais Utilizadas",
+                    color: '#fff'
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: true,
+                        color: '#424242'
+                    },
+                    ticks: {
+                        color: '#fff'
+                    },
+                    border: {
+                        color: '#7f807d'
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        color: '#fff'
+                    },
+                    border: {
+                        color: '#7f807d'
+                    }
+                }
+            }
+        }
+    });
+});
+
+receberDados().then((dadosProducoes) => {
+    $dados = dadosProducoes[1];
+
+    if (Object.keys($dados).length === 0) {
         console.warn("Nenhum dado recebido para o gráfico.");
         return;
     }
@@ -135,11 +126,11 @@ receberDados().then((dadosProducoes) => {
         "Jul", "Ago", "Set", "Out", "Nov", "Dez"
     ];
 
-    const datasets = Object.keys(dadosProducoes).map((nomeProd, index) => {
+    const datasets = Object.keys($dados).map((nomeProd, index) => {
         return {
             label: nomeProd, // Nome da produção no gráfico
-            borderColor: ['#E66F22', '#22E6E6', '#E6226F'][index], // Cores diferentes para as 3 linhas
-            data: Object.values(dadosProducoes[nomeProd]), // Dados da produção ao longo dos meses
+            borderColor: ['#E66F22', '#22E6E6', '#E6226F', '#2223E6', '#E69A22'][index], // Cores diferentes para as 3 linhas
+            data: Object.values($dados[nomeProd]), // Dados da produção ao longo dos meses
             tension: 0.4,
             fill: false
         };
