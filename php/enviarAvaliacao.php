@@ -5,6 +5,7 @@ session_start();
 require_once 'database.php';
 require_once 'jsonResponse.php';
 
+// Insere a Avaliação no Banco de Dados
 function inserirAvaliacao($idUsu, $idBanco, $valor){
     $sql = "INSERT INTO AVALIA_PRODUCAO (idUsu, idProd, avaliacao) VALUES (:idUsu, :idProd, :avaliacao)
             ON DUPLICATE KEY UPDATE avaliacao = :avaliacao";
