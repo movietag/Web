@@ -10,21 +10,7 @@ function isJson($string) {
     return (json_last_error() === JSON_ERROR_NONE);
 }
 
-// function getIdProducao($idAPI) {
-//     $sql = "SELECT id FROM PRODUCAO WHERE idAPI = :idAPI";
-//     $stmt = Database::prepare($sql);
-//     $stmt->bindParam(':idAPI', $idAPI);
-//     $stmt->execute();
-//     $rows = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//     if (!$rows) {
-//         jsonResponse(false, 'Produção não encontrada.');
-//         exit;
-//     }
-
-//     return $rows['id'];
-// }
-
+// Função para verificar se o usuário está logado
 function verificarUsuarioLogado() {
     if (!isset($_SESSION['dados']['id'])) {
         jsonResponse(false, 'Usuário não está logado.');
@@ -32,6 +18,7 @@ function verificarUsuarioLogado() {
     return $_SESSION['dados']['id'];
 }
 
+// Função para verificar se a Tag existe no banco
 function verificarTagExistente($tag) {
     $sql = "SELECT id FROM TAG WHERE nome = :nome";
     $stmt = Database::prepare($sql);
@@ -41,6 +28,7 @@ function verificarTagExistente($tag) {
     return $row['id'] ?? null;
 }
 
+// Função para inserir a tag
 function inserirTag($tag, $idUsu) {
     $sql = "INSERT INTO TAG (nome, idUsu) VALUES (:nome, :idUsu)";
     $stmt = Database::prepare($sql);
@@ -51,7 +39,7 @@ function inserirTag($tag, $idUsu) {
     }
 }
 
-
+// Função para verificar se a relação Produção x Tag existe
 function relacaoProducaoTagExiste($idProd, $idTag) {
     $sql = "SELECT * FROM PRODUCAO_TAG WHERE idProd = :idProd AND idTag = :idTag";
     $stmt = Database::prepare($sql);
@@ -61,6 +49,7 @@ function relacaoProducaoTagExiste($idProd, $idTag) {
     return $stmt->rowCount() > 0;
 }
 
+// Função para criar o relacionamernto Produção x Tag
 function criarRelacaoProducaoTag($idProd, $idTag) {
     $sql = "INSERT INTO PRODUCAO_TAG (idProd, idTag) VALUES (:idProd, :idTag)";
     $stmt = Database::prepare($sql);
@@ -114,16 +103,6 @@ try {
         jsonResponse(false, 'ID da produção não fornecido.');
     }
 
-    // if (!isJson($data['id'])){
-    //     $myParam = json_decode($data['id'], true);
-    //     if (is_null($myParam) || !isset($myParam['query']) || empty($myParam['query'])) {
-    //         jsonResponse(false, 'Parâmetro myParam inválido ou chave "query" ausente.');
-    //         $idAPI = $myParam['query'];
-    //         $idProd = getIdProducao($idAPI);
-    //     }
-    // } elseif(is_numeric($data['id'])){
-    //     $idProd = $data['id'];
-    // }
     $idProd = $data['id'];
     $idUsu = verificarUsuarioLogado();
     $resultado = [
