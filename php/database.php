@@ -1,4 +1,17 @@
 <?php
+// $servername = "sql202.infinityfree.com";
+// $username = "if0_37517870";
+// $password = "f1lminho";
+// $dbname = "if0_37517870_movietagdb";
+
+// // Criando a conexão
+// $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+// // Verificando a conexão
+// if (!$conn) {
+//   die("Connection failed: " . mysqli_connect_error());
+// }
+// echo "Connected successfully";
 require_once 'configdb.php';
 
 class Database{
@@ -25,7 +38,14 @@ class Database{
     }
     return self::$instance;
   }
-
+  
+  /***************
+  Objetivo: Executar consulta SQL
+  Parâmetro de entrada: $sql - query SQL
+  Parâmetro de saída: Se o banco foi aberto com sucesso, PDO::prepare() retorna um objeto PDOStatement object. 
+            Se o banco NÃO foi aberto com sucesso, retorna false ou emite PDOException (depende da versão).
+            O objeto PDOStatement representa uma consulta pronta para ser executada, depois de executada, retornará uma tabela.
+  ***************/
   public static function prepare($sql){
     //obtêm uma instância do banco de dados aberta e já prepara para executar uma consulta a qualquer tabela.
     return self::getInstance()->prepare($sql);

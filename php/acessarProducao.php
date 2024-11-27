@@ -34,7 +34,6 @@ function registrarAcesso($idUsu, $idProd) {
     return $stmt->execute();
 }
 
-// Função para obter Id de Produção
 function getIdProducao($idAPI){
     $sql = "SELECT id FROM PRODUCAO WHERE idAPI = :idAPI";
     $stmt = Database::prepare($sql);
