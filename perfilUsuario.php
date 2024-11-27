@@ -111,7 +111,7 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 <!--chart.js-->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6"></script>
 </body>

@@ -15,7 +15,7 @@
 <body>
     <header>
     <?php 
-    require 'navbar.php'; ?>
+    require_once 'navbar.php'; ?>
     </header>
 
     <!-- Seção principal de login -->
@@ -64,6 +64,6 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 </body>
 </html>

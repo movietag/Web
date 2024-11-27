@@ -21,9 +21,9 @@ try {
 
     // Tratamento e validação dos inputs
     $uUsuario = filter_input(INPUT_POST, 'uUsuario', FILTER_SANITIZE_SPECIAL_CHARS);
-    $uEmail = filter_input(INPUT_POST, 'uEmail', FILTER_VALIDATE_EMAIL); // Validação direta para e-mail
-    $uSenha = filter_input(INPUT_POST, 'uSenha', FILTER_SANITIZE_SPECIAL_CHARS);
-    $confirmSenha = filter_input(INPUT_POST, 'confirmSenha', FILTER_SANITIZE_SPECIAL_CHARS);
+    $uEmail = filter_input(INPUT_POST, 'uEmail', FILTER_SANITIZE_EMAIL);
+    $uSenha = $_POST['uSenha'] ?? null;
+    $confirmSenha = $_POST['confirmSenha'] ?? null;
 
     // Verifica se algum campo obrigatório está vazio
     if (empty($uUsuario)) {
@@ -31,7 +31,7 @@ try {
         exit;
     }
 
-    if (!$uEmail) { // Se a validação do e-mail falhar, $uEmail será false
+    if (!$uEmail || !filter_var($uEmail, FILTER_VALIDATE_EMAIL)) {
         jsonResponse(false, 'O campo E-mail é obrigatório e deve ser válido.');
         exit;
     }

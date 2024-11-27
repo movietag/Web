@@ -9,8 +9,11 @@ header('Content-Type: application/json');
 
 try {
     // Tratamento dos inputs
-    $uUsuarioEmail = filter_var($_POST['uUsuario-Email'] ?? null, FILTER_SANITIZE_EMAIL);
-    $uSenha = filter_var($_POST['uSenha'] ?? null, FILTER_SANITIZE_STRING);
+    $uUsuarioEmail = $_POST['uUsuario-Email'] ?? null;
+    $uUsuarioEmail = htmlspecialchars($uUsuarioEmail, ENT_QUOTES, 'UTF-8');
+    $uUsuarioEmail = filter_var($uUsuarioEmail, FILTER_SANITIZE_STRING);
+
+    $uSenha = $_POST['uSenha'] ?? null;
 
     // Verifica se os campos não são nulos
     if (!empty($uUsuarioEmail) && !empty($uSenha)) {

@@ -16,7 +16,7 @@
 <body>
     <!-- Menu -->
     <header>
-    <?php require 'navbar.php'; ?>
+    <?php require_once 'navbar.php'; ?>
     </header>
     <section>
         <div id="caixinha">
@@ -93,6 +93,6 @@
         </div>
     </section>
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 </body>
 </html>

@@ -13,7 +13,7 @@ function verificarUsuarioExiste($uUsuario, $uEmail){
 }
 
 function buscaUsuario($uUsuario, $uEmail){
-    // Buscar dados do usuário recém cadastrado
+    // Buscar dados do usuário
     $sql = "SELECT * FROM USUARIO WHERE usuario = :usuario OR email = :email";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':usuario', $uUsuario);

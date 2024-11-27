@@ -14,7 +14,7 @@
 <body>
     <!-- Menu -->
     <header>
-    <?php require 'navbar.php'; ?>
+    <?php require_once 'navbar.php'; ?>
     </header>
     <h1>Minhas Listas</h1>
     <section>  
@@ -88,6 +88,6 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 </body>
 </html>

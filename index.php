@@ -17,7 +17,7 @@
 
     <!-- Menu -->
     <header>
-        <?php require 'navbar.php'; ?>
+        <?php require_once 'navbar.php'; ?>
 
 
         <!-- Pesquisa -->
@@ -93,7 +93,7 @@
     </section>
     
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 
 
 </body>

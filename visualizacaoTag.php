@@ -15,7 +15,7 @@
 <body>
     <!-- Menu -->
     <header>
-    <?php require 'navbar.php'; ?>
+    <?php require_once 'navbar.php'; ?>
     </header>
     <section>
         <h1>Alien</h1>
@@ -57,6 +57,6 @@
     </section>
 
     <!-- Footer -->
-    <?php include 'footer.php'; ?>
+    <?php include_once 'footer.php'; ?>
 </body>
 </html>
