@@ -1,7 +1,9 @@
+//função onclick do botão que leva à pagina de editar perfil
 document.querySelector("#botao").onclick = function () {
     window.location = "editarPerfil.php";
 };
 
+//fazendo com que os elementos apareçam e desapareçam de acordo com o segmented button
 document.querySelector("#estatisticas").addEventListener("click", function () {
     document.querySelector(".dashboard").classList.remove("show");
     document.querySelector(".pagTags").classList.add("show");
@@ -20,18 +22,7 @@ document.querySelector("#avaliacoes").addEventListener("click", function () {
     document.querySelector(".pagAvals").classList.remove("show");
 });
 
-
-
-const xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-const yValues = [55, 49, 44, 24, 15];
-const barColors = [
-    "#8C22E6",
-    "#E66F22",
-    "#e6c222",
-    "#2223E6",
-    "#E69A22"
-];
-
+//recebendo os dados do php
 async function receberDados() {
     try {
         const response = await fetch(`./php/perfilUsuario.php`);
@@ -49,6 +40,7 @@ async function receberDados() {
     }
 }
 
+//grafico de barras para tags mais utilizadas
 receberDados().then((dadosProducoes) => {
     $dados = dadosProducoes[0];
 
@@ -113,6 +105,7 @@ receberDados().then((dadosProducoes) => {
     });
 });
 
+//grafico de linhas para produções mais acessadas
 receberDados().then((dadosProducoes) => {
     $dados = dadosProducoes[1];
 
@@ -170,6 +163,7 @@ receberDados().then((dadosProducoes) => {
     });
 });
 
+//grafico de barras horizontais para usuários mais ativos
 receberDados().then((dadosProducoes) => {
     $dados = dadosProducoes[2];
 

@@ -66,6 +66,7 @@ try {
         $dados[$nomeProd][$mes] = (int)$row['total_acessos'];
     }
     
+    //consulta pra obter as tags mais utilizadas
     $sql = "
         SELECT T.nome AS tag, COUNT(PT.idProd) AS total
         FROM TAG T
@@ -79,6 +80,7 @@ try {
     $stmt->execute();
     $tagsMaisUtilizadas = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+    //consulta pra obter os usuarios com maior atividade (acesso a produção + tags criadas + avaliações feitas)
     $sqlUsuariosAtivos = "
     SELECT U.usuario, 
            COALESCE(SUM(AP.total_acessos), 0) + COALESCE(SUM(AT.total_tags), 0) + COALESCE(SUM(AV.total_avaliacoes), 0) AS atividade_total
@@ -103,7 +105,7 @@ try {
 
 
     
-
+    //enviando os resultados das consultas para o js
     $enviar = [$tagsMaisUtilizadas, $dados, $usuariosAtivos];
     jsonResponse(true, 'Dados enviados com sucesso!', $enviar);
 

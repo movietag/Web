@@ -21,6 +21,7 @@
     </header>
 
     <section>
+        <!-- dados do usuario -->
         <div id="grandeUsuario">
             <div class="dados1">
             <img id="fotoUser" src="<?php echo htmlspecialchars($imageSrc); ?>" alt="Imagem de Perfil do Usuário">
@@ -40,6 +41,7 @@
             <button id="botao">Editar Perfil</button>
         </div>
         <hr>
+        <!--segmented button -->
         <div class="tabs">
             <input type="radio" id="estatisticas" name="menuPartes" value="estatisticas" checked>
             <label for="estatisticas">Estatísticas</label>
@@ -49,6 +51,7 @@
             <label for="avaliacoes">Avaliações</label>
         </div>
 
+        <!-- dashboard -->
         <div class="dashboard"> 
             <div class="chart-containerP">
                 <canvas id="chartBarrasV" class="chartBarras"></canvas>
@@ -61,6 +64,7 @@
             </div> 
         </div>
 
+        <!-- tags pertencentes ao usuario -->
         <div class="show pagTags">
             <ul class="tags">
                 <li>Alien</li>
@@ -82,6 +86,7 @@
             </ul>    
         </div>
 
+        <!-- avaliacoes do usuario -->
         <div id="aa" class="show itens pagAvals">
             <a href="visualizacaoProducao.php?type=movie&query=142" class="item filme">
                 <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
