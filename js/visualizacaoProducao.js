@@ -489,6 +489,10 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
         .then(response => response.json())
         .then(response => carregaElenco(response))
     
+        fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=en-US`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
+    
     fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/credits?language=pt-BR`, options)
         .then(response => response.json())
         .then(response => carregaEquipe(response))
@@ -573,7 +577,6 @@ function carregaDados(json) {
 
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
-    console.log(json);
     const elenco = document.querySelector("#elenco"); // Seleciona o elenco
 
     json.cast.forEach(element => {
@@ -651,7 +654,6 @@ async function carregaTags() {
 
 // Função para carregar os dados de Elenco
 function carregaEquipe(json){
-    console.log(json);
     const produtores = document.querySelector("#produtores");
 
     json.crew.forEach(element => {
@@ -708,5 +710,17 @@ function criaItens(type, lista){ // Função que cria os itens dos provedores
         lista.appendChild(item); // Insere o item criado na div pai
     })
 
+}
+
+function carregaTrailer(json){
+    const btnTrailer = document.querySelector('#btnTrailer');
+    json.results.forEach(element => {
+        console.log(element);
+        if (element.type === "Trailer" && element.site === "YouTube"){
+            url = `https://www.youtube.com/watch?v=${element.key}`;
+        }
+    }    
+    );
+    btnTrailer.setAttribute('href', url);
 }
 
