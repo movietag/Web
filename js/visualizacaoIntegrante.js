@@ -23,7 +23,14 @@ function carregaDados(json, n){
 
     if (n !== 1){
         const foto = document.querySelector('#foto');
-        foto.setAttribute('src', `https://image.tmdb.org/t/p/w300${json.profile_path})`);
+        if (json.profile_path != null){
+            foto.setAttribute('src', `https://image.tmdb.org/t/p/w300${json.profile_path})`);
+        }
+        else{
+            foto.setAttribute('src', `./img/placeholder/MovieTag-NotFoundImage.png`);
+        }
+        
+        
     
         const atividade = document.querySelector('#idAtividade');
         atividade.innerHTML = json.known_for_department;
