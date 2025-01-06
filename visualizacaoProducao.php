@@ -59,7 +59,7 @@
                             <div class="score">
                             <div class="container">
                                 <div class="circular-progress">
-                                    <div class="value-container">Não Avaliado</div>
+                                    <div class="value-container">N/A</div>
                                 </div>
                                 </div>
 

@@ -31,27 +31,36 @@ document.addEventListener('DOMContentLoaded', function() {
     carregaTags();
 });
 
-function progressBar(value){
-    value = Math.trunc(value*10);
-    let progressBar = document.querySelector(".circular-progress");
-    let valueContainer = document.querySelector(".value-container");
+function progressBar(value) {
+    if (value > 0) {
+        value = Math.trunc(value * 10);
+        let progressBar = document.querySelector(".circular-progress");
+        let valueContainer = document.querySelector(".value-container");
 
-    let progressValue = 0;
-    let progressEndValue = value;
-    let speed = 1;
-    let progress = setInterval(() => {
-    progressValue++;
-    valueContainer.textContent = `${progressValue}%`;
-    progressBar.style.background = `conic-gradient(
-        #e6c222 ${progressValue * 3.6}deg,
-        #e3dbb5 ${progressValue * 3.6}deg
-    )`;
-    if (progressValue == progressEndValue) {
-        clearInterval(progress);
+        let progressValue = 0;
+        let progressEndValue = value;
+        let speed = 1;
+
+        let progress = setInterval(() => {
+            progressValue++;
+            valueContainer.textContent = `${progressValue}%`;
+            progressBar.style.background = `conic-gradient(
+                #e6c222 ${progressValue * 3.6}deg,
+                #e3dbb5 ${progressValue * 3.6}deg
+            )`;
+            if (progressValue == progressEndValue) {
+                clearInterval(progress);
+            }
+        }, speed);
+    } else {
+        // Fundo cinza sólido
+        let progressBar = document.querySelector(".circular-progress");
+        let valueContainer = document.querySelector(".value-container");
+
+        progressBar.style.background = "rgb(131, 131, 131)"; // Cor cinza sólido
     }
-    }, speed);
-    console.log(value);
 }
+
 
 // Dialog de Login
 //Esconder senha do popup de login
