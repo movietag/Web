@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/listas.css">
     <script src="js/script.js" defer></script>
+    <script src="js/listas.js" defer></script>
     <title>Movie Tag ∙ Minhas Listas</title>
 </head>
 <body>
