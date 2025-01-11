@@ -50,7 +50,7 @@
                     </a>
                 </div>
             </dialog>
-            <a href="visualizacaoWatchlist.php"><i class='bx bx-check'></i></a>
+            <a href="visualizacaoLista.php"><i class='bx bx-check'></i></a>
         </div>
         <!--caixa com todos os filmes-->
         <div class="itens resultados">
