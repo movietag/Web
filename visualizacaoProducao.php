@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/visualizacaoProducao.css">
     <script src="js/script.js" defer></script>
     <script src="js/visualizacaoProducao.js" defer></script>
+    <script src="js/login.js" defer></script>
     <link rel="stylesheet" href="css/style_progressbar.css"/>
     <!-- <script src="js/script_progressbar.js" defer></script> -->
     <title>MovieTag ∙ Produção</title>

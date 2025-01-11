@@ -1,24 +1,28 @@
-// Seleciona o elemento com a classe "secao-caixa"
-const secaoCaixa = document.querySelector(".secao-caixa");
 // Seleciona o formulário dentro do elemento dialog
-const fDialog = document.querySelector("dialog form");
 const alerts = document.querySelector('.alertas');
 
 loading = document.querySelector('.wrapperLoading');
+
 
 
 // Seleciona o formulário com o ID "form-total"
 const form = document.querySelector("#form-total");
 // Define a função que será executada quando o formulário for enviado
 form.onsubmit = (ev) => {
+    // Obtém o caminho da URL
+    const path = window.location.pathname;
+    // Extrai o nome do arquivo (última parte do caminho)
+    const pageName = path.substring(path.lastIndexOf('/') + 1);
+
+
     ev.preventDefault();
-    if (verificaVazio) {
+    if (verificaVazio()) {
         // Exibe o loading
         loading.style.display = 'block';
 
         // Cria um objeto FormData a partir do formulário
         const formData = new FormData(form);
-
+        
         // Envia os dados usando fetch
         fetch('./php/loginUsuario.php', {
             method: 'POST',
@@ -32,7 +36,14 @@ form.onsubmit = (ev) => {
         })
         .then(data => {
             if (data.success) {
-                window.location.href = './index.php';
+                if (pageName == "visualizacaoProducao.php"){
+                    dialogLogin.close();
+                    // Recarrega a página atual
+                    location.reload();
+
+                }else{
+                    window.location.href = './index.php';
+                }
                 alerts.style.display = 'none';
             } else {
                 alerts.textContent = data.message;
@@ -48,22 +59,6 @@ form.onsubmit = (ev) => {
             loading.style.display = 'none';
         });
     }
-};
-
-// Seleciona o link "Esqueceu a senha?"
-const esqueceu = document.querySelector("form a");
-// Adiciona um evento de clique ao link
-esqueceu.addEventListener("click", (ev)=>{
-    ev.preventDefault(); // Previne o comportamento padrão do link
-    secaoCaixa.classList.toggle("blur"); // Adiciona ou remove a classe "blur" para aplicar o efeito de desfoque
-    fDialog.parentElement.showModal(); // Mostra o diálogo modal
-})
-
-// Define a função que será executada quando o formulário de redefinição de senha for enviado
-fDialog.onsubmit = (ev) => {
-    ev.preventDefault(); // Previne o comportamento padrão de envio do formulário
-    secaoCaixa.classList.toggle("blur"); // Remove o efeito de desfoque
-    fDialog.parentElement.close(); // Fecha o diálogo modal
 };
 
 function verificaVazio(){

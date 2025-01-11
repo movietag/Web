@@ -101,28 +101,43 @@
     
 
 
-        <!-- Dialog de Login -->
+    <!-- Dialog de Login -->
     <dialog id="myDialogLogin">
-        <div class="dialog-header">Faça login para executar essa ação</div>
-        <hr>
-        <div class="dialog-content">
-            <label for="loginUsuario">Usuário / Email</label>
-            <input type="text" id="loginUsuario" placeholder="Digite seu usuário">
+        <form method="POST" id="form-total">
+            <div class="dialog-header">Faça login para executar essa ação</div>
+            <hr>
+            <div class="dialog-content">
+                
+                    <label for="uUsuario">Usuário / Email</label>
+                    <input type="text" id="uUsuario" name="uUsuario-Email" placeholder="Digite seu usuário">
 
-            <label for="loginSenha">Senha</label>
-            <div class="password-wrapper">
-                <input type="password" id="loginSenha" placeholder="Digite sua senha">
-                <button type="button" id="toggleSenha" class="eye-btn">&#128065;</button> <!-- Ícone de olho -->
+                    <label for="uSenha">Senha</label>
+                    <input type="password" id="uSenha" name="uSenha" placeholder="Digite sua senha">
+                    <small class="alertas"></small>
+                    <!--<button type="button" id="toggleSenha" class="eye-btn">&#128065;</button>  Ícone de olho -->
+                
+
+
+                    <a href="#" class="forgot-link">Esqueceu a senha?</a>
+
+                    <button id="login-btn">Entrar</button>
+
+                    <div class="wrapperLoading">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                    </div>
+
+                    
+
+                <div class="separator">OU</div>
+
+                <div class="register-link">
+                    Não possui conta? <a href="cadastro.php">Cadastrar</a>
+                </div>
             </div>
-
-            <a href="#" class="forgot-link">Esqueceu a senha?</a>
-
-            <button id="login-btn">Entrar</button>
-
-            <div class="separator">OU</div>
-
-            <div class="register-link">
-                Não possui conta? <a href="cadastro.php">Cadastrar</a>
-            </div>
-        </div>
+        </form>
     </dialog>

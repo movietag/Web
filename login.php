@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/login.css">
     <script src="js/script.js" defer></script>
     <script src="js/login.js" defer></script>
+    <script src="js/esqueceusenha.js" defer></script>
     <title>Movie Tag ∙ Login</title>
 </head>
 <body>

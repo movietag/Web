@@ -66,11 +66,11 @@ function progressBar(value) {
 //Esconder senha do popup de login
 const dialogLogin = document.getElementById('myDialogLogin');
 const toggleSenha = document.getElementById('toggleSenha');
-const loginSenha = document.getElementById('loginSenha');
+/*const loginSenha = document.getElementById('loginSenha');
 
 // Aparecer e desaparecer a senha conforme ícone do olho
 toggleSenha.addEventListener('click', () => {
-    if (loginSenha.type === 'password') {
+    if (loginSenha.type == 'password') {
         loginSenha.type = 'text';
         toggleSenha.innerHTML = '&#128065;';
     } else {
@@ -78,7 +78,7 @@ toggleSenha.addEventListener('click', () => {
         toggleSenha.innerHTML = '&#128065;'; 
     }
 });
-
+*/
 
 //Adicionar Tag
 const openButtonAdicionarTag = document.getElementById('openDialogAdicionarTag');
