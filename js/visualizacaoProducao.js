@@ -743,5 +743,6 @@ function carregaTrailer(json){
         btnTrailer.style.display = "none"
     }
     btnTrailer.setAttribute('href', url);
+    btnTrailer.setAttribute('target', "_blank");
 }
 
