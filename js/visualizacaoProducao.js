@@ -730,14 +730,13 @@ function criaItens(type, lista){ // Função que cria os itens dos provedores
 }
 
 function carregaTrailer(json){
-    const url = null;
+    let url = null
     const btnTrailer = document.querySelector('#btnTrailer');
     json.results.forEach(element => {
         console.log(element);
         if (element.type === "Trailer" && element.site === "YouTube"){
             url = `https://www.youtube.com/watch?v=${element.key}`;
         }
-        
     }    
     );
     if(url == null){
