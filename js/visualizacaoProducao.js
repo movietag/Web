@@ -489,6 +489,7 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
     .then(response => carregaProvedores(response))
 
 
+
 } else if (myParam.type === "tv"){
     fetch(`https://api.themoviedb.org/3/tv/${myParam.query}?language=pt-BR`, options)
         .then(response => response.json())
@@ -498,13 +499,12 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
         .then(response => response.json())
         .then(response => carregaElenco(response))
     
-        fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=en-US`, options)
-        .then(response => response.json())
-        .then(response => carregaTrailer(response))
     
     fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/credits?language=pt-BR`, options)
         .then(response => response.json())
         .then(response => carregaEquipe(response))
+
+    
 }
 
 // Função para obter os parâmetros da URL
@@ -518,7 +518,7 @@ function queryObj() { // Pega os valores do link HTML
 };
 
 function carregaTemporadas(json){
-
+    const dadosProd = json;
     json.seasons.forEach(element => {
         let url = `https://image.tmdb.org/t/p/w300${element.poster_path}`;
         if (element.poster_path === null){
@@ -571,15 +571,23 @@ function carregaDados(json) {
 
         const duracao = document.querySelector(".duracao"); // Seleciona a duração
         duracao.innerHTML = `${json.runtime}min`; // Define a duração do filme
+
+        fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${json.original_language}-${json.origin_country}`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
+    
     } else if(myParam.type === "tv"){
         titulo.innerHTML = `${json.name}`;
         carregaTemporadas(json);
+
+        fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/videos?language=en-US`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
 
     }
 
     console.log(json);
     if (json.poster_path === null) bannerPrincipal.setAttribute("src", "./img/placeholder/MovieTag-NotFoundImage.png");
-    
     
     
 };
@@ -722,14 +730,19 @@ function criaItens(type, lista){ // Função que cria os itens dos provedores
 }
 
 function carregaTrailer(json){
+    const url = null;
     const btnTrailer = document.querySelector('#btnTrailer');
     json.results.forEach(element => {
         console.log(element);
         if (element.type === "Trailer" && element.site === "YouTube"){
             url = `https://www.youtube.com/watch?v=${element.key}`;
         }
+        
     }    
     );
+    if(url == null){
+        btnTrailer.style.display = "none"
+    }
     btnTrailer.setAttribute('href', url);
 }
 

@@ -10,6 +10,10 @@ a {
     color: #bfbfbf;
 }
 
+small{
+    color: #fff
+}
+
 /* Estilo para links ao passar o mouse */
 .secao-caixa a:hover {
     color: rgb(177, 159, 199); 
