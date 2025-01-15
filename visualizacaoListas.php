@@ -32,7 +32,7 @@
                 </div>
             </a>
             <!-- navegar para uma lista ja existente -->
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -44,7 +44,7 @@
                 </div>
             </a>
             <!-- navegar para uma lista ja existente -->
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -56,7 +56,7 @@
                 </div>
             </a>
             <!-- navegar para uma lista ja existente -->
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -68,7 +68,7 @@
                 </div>
             </a>
             <!-- navegar para uma lista ja existente -->
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>
@@ -80,7 +80,7 @@
                 </div>
             </a>
             <!-- navegar para uma lista ja existente -->
-            <a href="visualizacaoWatchlist.php" class="caixinha-listas">
+            <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
                     <div id="caixaDois"></div>

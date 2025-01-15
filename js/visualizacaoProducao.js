@@ -2,6 +2,7 @@
 // Declaração de Variáveis
 let logado = false;
 let idProd = null;
+let prodAtual = JSON;
 
 // Valores da URL
 var myParam = queryObj();
@@ -488,7 +489,7 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
     .then(response => response.json())
     .then(response => carregaProvedores(response))
 
-fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${json.original_language}-${json.origin_country}`, options)
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=pt-BR`, options)
         .then(response => response.json())
         .then(response => carregaTrailer(response))
 
@@ -545,6 +546,7 @@ function carregaTemporadas(json){
 
 // Atualizando Dados a partir da API
 function carregaDados(json) {
+    prodAtual = json;
     const titAvalia = document.querySelector('#tituloAvaliacao');
     titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}?`;
 
@@ -578,9 +580,6 @@ function carregaDados(json) {
                 spanClassificacao.textContent = classificacao;
             }
         });
-        fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${json.original_language}-${json.origin_country}`, options)
-        .then(response => response.json())
-        .then(response => carregaTrailer(response))
 
     } else if (myParam.type === "tv") {
         titulo.innerHTML = `${json.name}`;
@@ -663,6 +662,7 @@ async function carregaTags() {
     console.log("ID da produção obtido:", idProd);
 
     const listaTags = document.querySelector(".tags");
+    listaTags.replaceChildren(); // Resetar a Lista
 
     if (!idProd) {
         console.error("ID da produção não foi fornecido ou é inválido.");
@@ -684,7 +684,6 @@ async function carregaTags() {
 
         if (data.success) {
             const tags = data.tags;
-            listaTags.innerHTML = ""; // Limpa as tags antigas
 
             tags.forEach(tag => {
                 const item = document.createElement('a');
@@ -796,15 +795,22 @@ function carregaTrailer(json){
     const btnTrailer = document.querySelector('#btnTrailer');
     json.results.forEach(element => {
         console.log(element);
-        if (element.type === "Trailer" && element.site === "YouTube"){
+        if (element.type.toLowerCase().includes("trailer") && element.site === "YouTube"){
             url = `https://www.youtube.com/watch?v=${element.key}`;
         }
-    }    
-    );
+    });
+    
     if(url == null){
-        btnTrailer.style.display = "none"
+        console.log("ABC");
+        carregaTrailerOriginal();
     }
     btnTrailer.setAttribute('href', url);
     btnTrailer.setAttribute('target', "_blank");
+}
+
+function carregaTrailerOriginal(){
+    fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${prodAtual.original_language}-${prodAtual.origin_country}`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
 }
 
