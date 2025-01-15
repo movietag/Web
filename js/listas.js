@@ -10,12 +10,8 @@ const listasUsuario = {};
 listasUsuario.forEach(element => {
     // Criação do elemento <a>
     const link = document.createElement("a");
-    link.href = "visualizacaoWatchlist.php";
+    link.href = `visualizacaoLista.php?id=${element.id}`;
     link.className = "caixinha-listas";
-
-    // Criação do elemento <div id="criarListas">
-    const criarListas = document.createElement("div");
-    criarListas.id = "criarListas";
 
     // Adicionando a imagem do pôster
     const img = document.createElement("img");
