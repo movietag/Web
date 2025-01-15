@@ -103,13 +103,11 @@ function criaFilmes(movies, itens){
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: element.id })
+                body: JSON.stringify({ id: element.id, nome:element.name??element.title})
             })
             .then(response => response.json()) // Converte a resposta do PHP para JSON
             .then(data => {
-                if (data.success) {  // Verifica se o sucesso é true
-                    console.log('Sucesso:', data.message);
-                } else {
+                if (!data.success) {  // Verifica se o sucesso é true
                     ev.preventDefault(); // Previne a ação padrão temporariamente
                     console.log('Erro:', data.message);
                 }

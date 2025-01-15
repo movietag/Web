@@ -629,11 +629,7 @@ function carregaElenco(json) {
 async function obterIdProducao() {
 
     try {
-        const urlParams = new URLSearchParams(window.location.search);
-        const myQuery = urlParams.get("query"); // Obtém 'query' da URL diretamente
-        console.log("Query obtida da URL:", myQuery);
-
-        const url = `php/receberIdProducao.php?idAPI=${myQuery}`;
+        const url = `php/receberIdProducao.php?idAPI=${myParam.query}`;
         console.log("URL gerada para obter ID da produção:", url);
 
         const response = await fetch(url);
