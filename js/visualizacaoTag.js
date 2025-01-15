@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     // Update access count if available
                     const subtitle = document.getElementById('subtitulo');
                     if (subtitle && data.tag.num_producoes) {
-                        subtitle.textContent = `${data.tag.num_producoes} ${data.tag.num_producoes === 1 ? 'produção' : 'produções'}`;
+                        subtitle.textContent = `${data.tag.num_producoes} ${data.tag.num_producoes === 1 ? 'Produção' : 'Produções'}`;
                     }
                     
                     // Load associated productions
