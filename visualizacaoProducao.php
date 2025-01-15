@@ -72,7 +72,7 @@
                             <div class="banner_buttons">
                                 <button class="banner_button tooltip_avaliar icon_button" id="openDialogAvaliar" ><i class='bx bx-star'></i></i></button>
                                 <button class="banner_button tooltip_add_a_lista icon_button" id = "openDialog_salvar_prod"><i id="mark" class='bx bx-bookmark'></i></button>
-                                <a href="" class="banner_button" id="btnTrailer" target=""><i class='bx bx-play'></i>Assistir Trailer</a>                                
+                                <a href="#" class="banner_button" id="btnTrailer" target=""><i class='bx bx-play'></i>Assistir Trailer</a>                                
 
                             </div>
 
@@ -137,10 +137,6 @@
         </div>
 
     </div>
-
-
-
-
 
     <?php require_once 'dialogsVisualizacaoProducao.php'; ?>
     <!-- Footer -->

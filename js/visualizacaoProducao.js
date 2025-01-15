@@ -616,58 +616,84 @@ function carregaElenco(json) {
 }
 
 async function obterIdProducao() {
+
     try {
-        const response = await fetch(`php/receberIdProducao.php?idAPI=${myParam.query}`);
+        const urlParams = new URLSearchParams(window.location.search);
+        const myQuery = urlParams.get("query"); // Obtém 'query' da URL diretamente
+        console.log("Query obtida da URL:", myQuery);
+
+        const url = `php/receberIdProducao.php?idAPI=${myQuery}`;
+        console.log("URL gerada para obter ID da produção:", url);
+
+        const response = await fetch(url);
         
-        // Aguarde a resposta ser convertida para JSON
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
+
         const data = await response.json();
+        console.log("Resposta da API para obter ID da produção:", data);
 
         if (data.success) {
             return data.idProd;
         } else {
-            console.error(data.message);
+            console.error(data.message || "Erro desconhecido ao obter ID da produção.");
+            return null;
         }
     } catch (error) {
-        console.error("Erro na requisição:", error);
+        console.error("Erro na requisição para obter ID da produção:", error);
+        return null;
     }
 }
 
-// Carrega Tags
 async function carregaTags() {
-    const idProd = await obterIdProducao(); // Certifique-se de que essa função retorna um número válido
+    const idProd = await obterIdProducao();
+    console.log("ID da produção obtido:", idProd);
+
     const listaTags = document.querySelector(".tags");
 
+    if (!idProd) {
+        console.error("ID da produção não foi fornecido ou é inválido.");
+        listaTags.innerHTML = `<p class="erro">Erro: ID da produção não encontrado.</p>`;
+        return;
+    }
+
     try {
-        fetch(`./php/receberTags.php?idProd=${idProd}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                // Exibir as tags
-                const tags = data.tags;
-                console.log(tags);
+        const url = `./php/receberTags.php?idProd=${idProd}`;
+        console.log("URL gerada para carregar tags:", url);
 
-                // Garante que a lista está limpa antes de adicionar novos elementos
-                listaTags.innerHTML = "";
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`Erro HTTP: ${response.status}`);
+        }
 
-                // Processa e exibe as tags recebidas
-                tags.forEach(tag => {
-                    const item = document.createElement('a');
-                    item.classList.add('item');
-                    item.setAttribute("href", `visualizacaoTag.php?query=${tag.id}`);
-                    item.textContent = tag.nome; // Adiciona o nome da tag ao elemento
-                    listaTags.appendChild(item);
-        });
-            } else {
-                console.error('Erro ao buscar as tags:', data.message);
-            }
-        })
+        const data = await response.json();
+        console.log("Resposta da API para carregar tags:", data);
 
-        
+        if (data.success) {
+            const tags = data.tags;
+            listaTags.innerHTML = ""; // Limpa as tags antigas
 
+            tags.forEach(tag => {
+                const item = document.createElement('a');
+                item.classList.add('item');
+                item.setAttribute("href", `visualizacaoTag.php?query=${tag.id}`);
+                item.textContent = tag.nome;
+                listaTags.appendChild(item);
+            });
+            
+            
+        } else {
+            console.error("Erro ao buscar as tags:", data.message || "Erro desconhecido.");
+            listaTags.innerHTML = `<p class="erro">Erro ao carregar tags.</p>`;
+        }
     } catch (error) {
         console.error("Erro ao carregar tags:", error);
+        listaTags.innerHTML = `<p class="erro">Erro ao carregar tags: ${error.message}</p>`;
     }
 }
+
+
 
 // Função para carregar os dados de Elenco
 function carregaEquipe(json){

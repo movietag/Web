@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/filmes.css">
     <link rel="stylesheet" href="css/tag.css">
     <script src="js/script.js" defer></script>
+    <script src="js/visualizacaoTag.js" defer></script>
     <title>Movie Tag ∙ Tag</title>
 </head>
 <body>
