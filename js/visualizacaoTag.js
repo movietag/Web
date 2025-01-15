@@ -67,7 +67,8 @@ function loadTagProductions(tagId) {
 
 async function fetchTMDBDetails(production) {
     try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${production.idAPI}?language=pt-BR`, options);
+        console.log(production)
+        const response = await fetch(`https://api.themoviedb.org/3/${production.tipoProd}/${production.idAPI}?language=pt-BR`, options);
         if (!response.ok) {
             throw new Error('Erro na resposta da API TMDB');
         }
