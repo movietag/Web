@@ -541,56 +541,57 @@ function carregaTemporadas(json){
 
 // Atualizando Dados a partir da API
 function carregaDados(json) {
-
     const titAvalia = document.querySelector('#tituloAvaliacao');
     titAvalia.innerHTML = `Como você avalia a produção ${json.title || json.name}?`;
-    const banner = document.querySelector("#banner"); // Seleciona o banner
-    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`); // Define a imagem de fundo do banner
 
-    const bannerPrincipal = document.querySelector(".main-banner"); // Seleciona o banner principal
-    bannerPrincipal.setAttribute("src", `https://image.tmdb.org/t/p/w300${json.poster_path}`); // Define a imagem do poster
+    const banner = document.querySelector("#banner"); 
+    banner.style.backgroundImage = (`url(https://image.tmdb.org/t/p/w1280${json.backdrop_path})`);
 
-    const titulo = document.querySelector(".titulo"); // Seleciona o título
-    const anoLancamento = document.querySelector(".ano"); // Seleciona o ano de lançamento
-
-    const dataEstreia = document.querySelector(".data_estreia"); // Seleciona a data de estreia
-
-    const sinopse = document.querySelector(".sinopse"); // Seleciona a sinopse
-    sinopse.innerHTML = json.overview; // Define a sinopse
+    const bannerPrincipal = document.querySelector(".main-banner");
+    bannerPrincipal.setAttribute("src", `https://image.tmdb.org/t/p/w300${json.poster_path}`);
+    
+    const titulo = document.querySelector(".titulo");
+    const anoLancamento = document.querySelector(".ano");
+    const dataEstreia = document.querySelector(".data_estreia");
+    const sinopse = document.querySelector(".sinopse");
+    sinopse.innerHTML = json.overview;
 
     const nota = document.querySelector(".porcentagem");
     progressBar(json.vote_average);
 
-    if (myParam.type === "movie"){
-        dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`; // Define a data de estreia e país de origem
-        titulo.innerHTML = `${json.title}`; // Título
-        const date = new Date(json.release_date); // Ano de Estréia
-        anoLancamento.innerHTML = `(${date.getFullYear()})`;// Define o ano de lançamento
+    if (myParam.type === "movie") {
+        dataEstreia.innerHTML = `${json.release_date} (${json.origin_country})`;
+        titulo.innerHTML = `${json.title}`;
+        const date = new Date(json.release_date);
+        anoLancamento.innerHTML = `(${date.getFullYear()})`;
 
+        const duracao = document.querySelector(".duracao");
+        duracao.innerHTML = `${json.runtime}min`;
 
+        carregaClassificacao(myParam.query, "movie").then(classificacao => {
+            const spanClassificacao = document.querySelector("#classification");
+            if (spanClassificacao) {
+                spanClassificacao.textContent = classificacao;
+            }
+        });
 
-        const duracao = document.querySelector(".duracao"); // Seleciona a duração
-        duracao.innerHTML = `${json.runtime}min`; // Define a duração do filme
-
-        fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${json.original_language}-${json.origin_country}`, options)
-        .then(response => response.json())
-        .then(response => carregaTrailer(response))
-    
-    } else if(myParam.type === "tv"){
+    } else if (myParam.type === "tv") {
         titulo.innerHTML = `${json.name}`;
         carregaTemporadas(json);
 
-        fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/videos?language=en-US`, options)
-        .then(response => response.json())
-        .then(response => carregaTrailer(response))
-
+        carregaClassificacao(myParam.query, "tv").then(classificacao => {
+            const spanClassificacao = document.querySelector("#classification");
+            if (spanClassificacao) {
+                spanClassificacao.textContent = classificacao;
+            }
+        });
     }
 
-    console.log(json);
-    if (json.poster_path === null) bannerPrincipal.setAttribute("src", "./img/placeholder/MovieTag-NotFoundImage.png");
-    
-    
+    if (json.poster_path === null) {
+        bannerPrincipal.setAttribute("src", "./img/placeholder/MovieTag-NotFoundImage.png");
+    }
 };
+
 
 // Função para carregar o elenco do filme
 function carregaElenco(json) {
@@ -693,6 +694,30 @@ async function carregaTags() {
     }
 }
 
+function carregaClassificacao(id, type) {
+    const endpoint = type === "movie" 
+        ? `https://api.themoviedb.org/3/movie/${id}/release_dates` 
+        : `https://api.themoviedb.org/3/tv/${id}/content_ratings`;
+
+    return fetch(endpoint, options)
+        .then(response => response.json())
+        .then(data => {
+            if (type === "movie") {
+                const brRelease = data.results.find(r => r.iso_3166_1 === 'BR');
+                if (brRelease) {
+                    return brRelease.release_dates[0]?.certification || "Não classificado";
+                }
+            } else if (type === "tv") {
+                const brRating = data.results.find(r => r.iso_3166_1 === 'BR');
+                return brRating?.rating || "Não classificado";
+            }
+            return "Não classificado";
+        })
+        .catch(error => {
+            console.error("Erro ao carregar classificação:", error);
+            return "Não classificado";
+        });
+}
 
 
 // Função para carregar os dados de Elenco

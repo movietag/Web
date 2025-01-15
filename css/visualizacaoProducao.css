@@ -146,7 +146,7 @@ h1{
 }
 
 /* Estilização da classificação etária */
-.classificacao_idade {
+#classification {
     color: #c9c9c9de;
     border: solid 0.1em;
     border-radius: 8px;

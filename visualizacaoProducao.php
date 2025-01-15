@@ -50,7 +50,7 @@
                                 </div>
                                 <!--Dados Adicionais-->
                                 <div class="dados_adicionais">
-                                    <!-- <span class="classificacao_idade">14</span> -->
+                                    <span id="classification"></span>
                                     <span class="data_estreia"></span>
                                     <span class="duracao"></span>
                                 </div>
