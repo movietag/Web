@@ -19,14 +19,14 @@
     <?php require_once 'navbar.php'; ?>
     </header>
     <section>
-        <h1>Alien</h1>
-        <h2 id="subtitulo">20.000 acessos</h2>
+        <h1></h1>
+        <h2 id="subtitulo"></h2>
         <!--caixa com todos os filmes-->
         <div class="itens resultados">
-            <!-- dados do filme -->
+            <!-- dados do filme
             <a href="visualizacaoProducao.php?query=335983" class="item filme">
                 <img src="img/posteres/venom.jpg" alt="Poster do Filme">
-                <!-- texto -->
+                
                 <div>
                     <h2>Venom<span>(2018)</span></h2>
                     <ul class="tags">
@@ -39,10 +39,10 @@
                     <p>O jornalista Eddie Brock desenvolve força e poder sobre-humanos quando seu corpo se funde com o alienígena Venom. Dominado pela raiva, Venom tenta controlar as novas e perigosas habilidades de Eddie.</p>    
                 </div>
             </a>
-            <!-- dados do filme -->
+            
             <a href="visualizacaoProducao.php?query=601" class="item filme">
                 <img src="img/posteres/et.jpg" alt="Poster do Filme">
-                <!-- texto -->
+                
                 <div>
                     <h2>E.T. - O Extra-Terrestre<span>(1982)</span></h2>
                     <ul class="tags">
@@ -53,7 +53,7 @@
                     </ul>
                     <p>A história da amizade entre um extraterrestre perdido na Terra e um menino de 10 anos que o esconde em casa, procurando evitar a todo o custo que ele seja capturado e transformado numa cobaia pelos serviços secretos e ajudando-o, finalmente, a regressar a casa.</p>    
                 </div>
-            </a>
+            </a>*/ -->
         </div>
     </section>
 
