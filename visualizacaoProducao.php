@@ -66,7 +66,7 @@
 
                                 <!-- <h2 class="porcentagem"></h2> -->
 
-                                <h3 class="porcentagem_titulo">Classificação dos Usuários</h3>
+                                <h3 class="porcentagem_titulo">Avaliacação dos Usuários</h3>
                             </div>
 
                             <div class="banner_buttons">
