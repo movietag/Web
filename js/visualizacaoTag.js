@@ -81,7 +81,7 @@ async function fetchTMDBDetails(production) {
 
 function createProductionCard(production, tmdbData = null) {
     const card = document.createElement('a');
-    card.href = `visualizacaoProducao.php?query=${production.idAPI}&type=movie`;
+    card.href = `visualizacaoProducao.php?query=${production.idAPI}&type=${production.tipoProd}`;
     card.className = 'item filme';
     
     // Use TMDB data if available, fallback to local data or defaults
