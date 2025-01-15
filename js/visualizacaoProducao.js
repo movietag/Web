@@ -488,6 +488,10 @@ fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/watch/providers`, opt
     .then(response => response.json())
     .then(response => carregaProvedores(response))
 
+fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${json.original_language}-${json.origin_country}`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
+
 
 
 } else if (myParam.type === "tv"){
@@ -574,6 +578,9 @@ function carregaDados(json) {
                 spanClassificacao.textContent = classificacao;
             }
         });
+        fetch(`https://api.themoviedb.org/3/movie/${myParam.query}/videos?language=${json.original_language}-${json.origin_country}`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
 
     } else if (myParam.type === "tv") {
         titulo.innerHTML = `${json.name}`;
@@ -585,6 +592,10 @@ function carregaDados(json) {
                 spanClassificacao.textContent = classificacao;
             }
         });
+
+        fetch(`https://api.themoviedb.org/3/tv/${myParam.query}/videos?language=en-US`, options)
+        .then(response => response.json())
+        .then(response => carregaTrailer(response))
     }
 
     if (json.poster_path === null) {
