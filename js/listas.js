@@ -14,13 +14,12 @@ listasUsuario.forEach(element => {
     link.className = "caixinha-listas";
 
     // Adicionando a imagem do pôster
-    const img = document.createElement("img");
-    img.src = element.poster;
-    img.alt = `Pôster de ${element.titulo}`;
-    img.className = "poster";
-    link.appendChild(img);
+    // const img = document.createElement("img");
+    // img.src = element.poster;
+    // img.alt = `Pôster de ${element.titulo}`;
+    // img.className = "poster";
+    // link.appendChild(img);
 
-    // Adicionando <div id="caixaDois"> e <div id="caixaTres">
     const caixaDois = document.createElement("div");
     caixaDois.id = "caixaDois";
     criarListas.appendChild(caixaDois);
@@ -29,7 +28,6 @@ listasUsuario.forEach(element => {
     caixaTres.id = "caixaTres";
     criarListas.appendChild(caixaTres);
 
-    // Adicionando <div id="info-listas">
     const infoListas = document.createElement("div");
     infoListas.id = "info-listas";
 
