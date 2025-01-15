@@ -18,7 +18,7 @@ listasUsuario.forEach(element => {
     img.src = element.poster;
     img.alt = `Pôster de ${element.titulo}`;
     img.className = "poster";
-    criarListas.appendChild(img);
+    link.appendChild(img);
 
     // Adicionando <div id="caixaDois"> e <div id="caixaTres">
     const caixaDois = document.createElement("div");

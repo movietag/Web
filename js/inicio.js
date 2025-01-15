@@ -169,11 +169,12 @@ const carregarFilmes = (lista, dados) => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: item.id, nome:item.name??item.title})
+                body: JSON.stringify({ id: item.id, nome:item.name??item.title, tipoProd:item.media_type})
             })
             .then(response => response.json()) // Converte a resposta do PHP para JSON
             .then(data => {
                 if (!data.success) {  // Verifica se o sucesso é true
+                    alert("PA");
                     ev.preventDefault(); // Previne a ação padrão temporariamente
                     console.log('Erro:', data.message);
                 }
@@ -230,6 +231,7 @@ const carregarListasIniciais = () => {
 
     urlsListas.forEach((url, index) => {
         fetchComCache(url)
+            .then(json => itensComMediaType(json, "movie"))
             .then(json => carregarFilmes(listasFilmes[index], json))
             .catch(error => {
                 console.error(`Erro ao carregar lista inicial para URL: ${url}`, error);
@@ -239,4 +241,3 @@ const carregarListasIniciais = () => {
 
 // Inicializa o carregamento das listas iniciais ao carregar a página
 carregarListasIniciais();
-

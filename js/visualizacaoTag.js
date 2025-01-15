@@ -115,7 +115,7 @@ function createProductionCard(production, tmdbData = null) {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id: tmdbData.id, nome:tmdbData.name??tmdbData.title})
+            body: JSON.stringify({ id: item.id, nome:item.name??item.title, tipoProd:item.media_type})
         })
         .then(response => response.json()) // Converte a resposta do PHP para JSON
         .then(data => {

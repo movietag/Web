@@ -16,11 +16,12 @@ function producaoExiste($idAPI) {
 }
 
 // Função para inserir uma nova produção no banco
-function criarProducao($idAPI, $nomeProd) {
-    $sql = "INSERT INTO PRODUCAO (idAPI, nomeProd) VALUES (:idAPI, :nomeProd)";
+function criarProducao($idAPI, $nomeProd, $tipoProd) {
+    $sql = "INSERT INTO PRODUCAO (idAPI, nomeProd, tipoProd) VALUES (:idAPI, :nomeProd, :tipoProd)";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':idAPI', $idAPI);
     $stmt->bindParam(':nomeProd', $nomeProd);
+    $stmt->bindParam(':tipoProd', $tipoProd);
     return $stmt->execute();
 }
 
@@ -57,15 +58,21 @@ try {
         jsonResponse(false, 'Nome não fornecido ou está vazio.');
         exit;
     }
+
+    if (empty($data['tipoProd'])) {
+        jsonResponse(false, 'Tipo de Produção não fornecido.');
+        exit;
+    }
     
     $idAPI = $data['id'];
     $nomeProd = $data['nome'];
+    $tipoProd = $data['tipoProd'];
     $idUsu = isset($_SESSION['dados']['id']) ? $_SESSION['dados']['id'] : null;
 
     // Verificar se a produção já existe
     if (!producaoExiste($idAPI)) {
         // Criar nova produção se não existir
-        if (!criarProducao($idAPI, $nomeProd)) {
+        if (!criarProducao($idAPI, $nomeProd, $tipoProd)) {
             jsonResponse(false, 'Erro ao inserir a produção no banco!');
             exit;
         }

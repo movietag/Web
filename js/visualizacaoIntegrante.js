@@ -103,7 +103,7 @@ function criaFilmes(movies, itens){
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ id: element.id, nome:element.name??element.title})
+                body: JSON.stringify({ id: item.id, nome:item.name??item.title, tipoProd:item.media_type})
             })
             .then(response => response.json()) // Converte a resposta do PHP para JSON
             .then(data => {

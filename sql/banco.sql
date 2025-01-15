@@ -27,7 +27,8 @@ CREATE TABLE `TAG` (
 CREATE TABLE `PRODUCAO` (
   `id` INT(11) AUTO_INCREMENT PRIMARY KEY,
   `idAPI` INT(11) NOT NULL,
-  `nomeProd` VARCHAR(255) NOT NULL -- Nome da produção (filme/série/documentário)
+  `nomeProd` VARCHAR(255) NOT NULL,
+  `tipoProd` VARCHAR(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
