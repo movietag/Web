@@ -6,13 +6,13 @@ a{
     text-decoration: none;
 }
 
-#criarListas{
+.criarListas{
     display: flex;
     align-items: center;
     width: fit-content;
 }
 
-#caixaUm{
+.caixaUm{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,20 +21,20 @@ a{
     height: 15em;
 }
 
-#caixaUm p{
+.caixaUm p{
     font-size: 6em;
 }
 
-#caixaDois, #caixaTres{
+.caixaDois, #caixaTres{
     width: 0.6em;
 }
 
-#caixaDois{
+.caixaDois{
     height: 13.5em;
     background-color: rgb(81, 81, 81);
 }
 
-#caixaTres{
+.caixaTres{
     height: 12em;
     background-color: rgb(100, 100, 100);
 }
@@ -49,11 +49,11 @@ a{
     gap: 2em;
 }
 
-#caixinha-listas{
+.caixinha-listas{
     color: aliceblue;
 }
 
-#caixinha-listas:hover{
+.caixinha-listas:hover{
     color: #c0be2c;
 }
 
@@ -62,18 +62,18 @@ a{
     border-radius: 0;
 }
 
-#info-listas{
+.info-listas{
     display: flex;
     justify-content: space-between;
     font-size: 0.8em;
     margin-top: 0.5em;
 }
 
-#info-listas h2{
+.info-listas h2{
     max-width: 6em;
 }
 
-#info-listas p{
+.info-listas p{
     color: grey;
     margin-top: 0.5em;
 }

@@ -21,33 +21,32 @@
     <section>  
         <div id="caixa-listas">
             <!-- "botão" para criar uma nova lista -->
-            <a href="editarLista.php">
-                <div id="criarListas">
-                    <div id="caixaUm"><p>+</p></div>
-                    <div id="caixaDois"></div>
-                    <div id="caixaTres"></div>
+            <a>
+                <div class="criarListas">
+                    <div class="caixaUm"><p>+</p></div>
+                    <div class="caixaDois"></div>
+                    <div class="caixaTres"></div>
                 </div>
-                <div id="info-listas">
+                <div class="info-listas">
                     <h2>Criar Nova Lista</h2>
                 </div>
             </a>
-            <!-- navegar para uma lista ja existente -->
+            <!-- navegar para uma lista ja existente
             <a href="visualizacaoLista.php" class="caixinha-listas">
-                <div id="criarListas">
+                <div class="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
-                    <div id="caixaDois"></div>
-                    <div id="caixaTres"></div>
+                    <div class="caixaDois"></div>
+                    <div class="caixaTres"></div>
                 </div>
-                <div id="info-listas">
+                <div class="info-listas">
                     <h2>Lista 1</h2>
                     <p>5 produções</p>
                 </div>
             </a>
-            <!-- navegar para uma lista ja existente -->
             <a href="visualizacaoLista.php" class="caixinha-listas">
-                <div id="criarListas">
+                <div class="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
-                    <div id="caixaDois"></div>
+                    <div class="caixaDois"></div>
                     <div id="caixaTres"></div>
                 </div>
                 <div id="info-listas">
@@ -55,7 +54,6 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <!-- navegar para uma lista ja existente -->
             <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
@@ -67,7 +65,6 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <!-- navegar para uma lista ja existente -->
             <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
@@ -79,7 +76,6 @@
                     <p>5 produções</p>
                 </div>
             </a>
-            <!-- navegar para uma lista ja existente -->
             <a href="visualizacaoLista.php" class="caixinha-listas">
                 <div id="criarListas">
                     <img src="img/posteres/brokebackmountain.jpg" alt="Pôster de Brokeback Mountain" class="poster">
@@ -90,7 +86,7 @@
                     <h2>Lista 2</h2>
                     <p>5 produções</p>
                 </div>
-            </a>
+            </a> -->
         </div>
     </section>
 

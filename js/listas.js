@@ -40,38 +40,51 @@ fetch('./php/receberListas.php')
 
 function carregaListas(listaArray) {
     listaArray.forEach(element => {
+        console.log(element);
+
         // Criação do elemento <a>
         const link = document.createElement("a");
-        link.href = `visualizacaoLista.php?id=${element.id}`;
+        link.href = `visualizacaoLista.php?id=${element.idLista}`;
         link.className = "caixinha-listas";
 
+        // Criação do container 'criarListas'
         const criarListas = document.createElement("div");
-        criarListas.className = "criar-listas";
+        criarListas.className = "criarListas";
 
+        // Adicionando a imagem
+        const img = document.createElement("img");
+        img.src = element.poster || "img/placeholder/MovieTag-NotFoundImage.png"; // Usa o 'poster' ou um placeholder
+        img.alt = `Pôster de ${element.titulo}`;
+        img.className = "poster";
+        criarListas.appendChild(img);
+
+        // Adicionando as divs internas
         const caixaDois = document.createElement("div");
-        caixaDois.id = "caixaDois";
+        caixaDois.className = "caixaDois";
         criarListas.appendChild(caixaDois);
 
         const caixaTres = document.createElement("div");
-        caixaTres.id = "caixaTres";
+        caixaTres.className = "caixaTres";
         criarListas.appendChild(caixaTres);
 
+        // Criação do container 'info-listas'
         const infoListas = document.createElement("div");
-        infoListas.id = "info-listas";
+        infoListas.className = "info-listas";
 
+        // Adicionando o título
         const titulo = document.createElement("h2");
-        titulo.textContent = element.titulo;
+        titulo.textContent = element.nome;
         infoListas.appendChild(titulo);
 
-        // const numProducoes = document.createElement("p");
-        // numProducoes.textContent = `${element.numProducoes} produções`;
-        // infoListas.appendChild(numProducoes);
+        // Adicionando o número de produções
+        const numProducoes = document.createElement("p");
+        numProducoes.textContent = `${element.numProducoes} produções`;
+        infoListas.appendChild(numProducoes);
 
         // Montando a estrutura final
         link.appendChild(criarListas);
         link.appendChild(infoListas);
 
-        // Adiciona o link ao contêiner HTML 'listas'
         listas.appendChild(link);
     });
 }

@@ -20,7 +20,7 @@ function criarNovaLista($idUsu) {
 function getUltimaIdListaPorUsuario($idUsu) {
     try {
         // SQL para buscar a maior ID da lista para o usuário específico
-        $sql = "SELECT MAX(idLista) AS idLista FROM LISTA WHERE idUsu = :idUsu";
+        $sql = "SELECT idLista FROM LISTA WHERE idUsu = :idUsu ORDER BY idLista DESC";
         $stmt = Database::prepare($sql);
         $stmt->bindParam(':idUsu', $idUsu, PDO::PARAM_INT);
         $stmt->execute();
