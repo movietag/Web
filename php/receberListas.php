@@ -12,12 +12,17 @@ function getListas($idUsu) {
     return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna todas as listas como um array associativo
 }
 
-function getProducoesLista($idLista) {
-    $sql = "SELECT idProd FROM PRODUCAO_LISTA WHERE idLista = :idLista";
+function getProducoesListaComTipo($idLista) {
+    $sql = "
+        SELECT pl.idProd, p.tipoProd 
+        FROM PRODUCAO_LISTA pl
+        JOIN PRODUCAO p ON pl.idProd = p.id
+        WHERE pl.idLista = :idLista
+    ";
     $stmt = Database::prepare($sql);
     $stmt->bindParam(':idLista', $idLista, PDO::PARAM_INT);
     $stmt->execute();
-    return $stmt->fetchAll(PDO::FETCH_COLUMN); // Retorna apenas os IDs das produções
+    return $stmt->fetchAll(PDO::FETCH_ASSOC); // Retorna IDs e tipos das produções
 }
 
 try {
@@ -29,7 +34,7 @@ try {
         foreach ($listas as $lista) {
             $idLista = $lista['id'];
             $nomeLista = $lista['nome'];
-            $producoes = getProducoesLista($idLista); // Busca as produções da lista
+            $producoes = getProducoesListaComTipo($idLista); // Busca as produções da lista
 
             // Monta o resultado final
             $resultado[] = [
