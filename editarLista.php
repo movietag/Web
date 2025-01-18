@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/watchlist.css">
     <link rel="stylesheet" href="css/editarLista.css">
     <script src="js/script.js" defer></script>
-    <script src="js/watchlist.js" defer></script>
+    <script src="js/visualizacaoLista.js" defer></script>
     <title>Movie Tag ∙ Editar Lista</title>
 </head>
 <body>

@@ -9,6 +9,11 @@
     font-size: 1.8em;
 }
 
+.mesmaLinha h1, .mesmaLinha a{
+    display: inline;
+
+}
+
 #novaProducao{
     font-size: 0.59em;
     color: grey;

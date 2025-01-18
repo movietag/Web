@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="css/filmes.css">
     <link rel="stylesheet" href="css/watchlist.css">
     <script src="js/script.js" defer></script>
-    <script src="js/watchlist.js" defer></script>
+    <script src="js/visualizacaoLista.js" defer></script>
     <title>Movie Tag ∙ Minha Lista</title>
 </head>
 <body>
@@ -20,7 +20,11 @@
     </header>
     <section>
         <div id="caixinha">
-            <h1>Nome da Lista<a id="novaProducao">+ Nova Produção</a></h1>
+            <div class="mesmaLinha">
+            <h1 id="tituloLista">Nome da Lista </h1>
+            <a id="novaProducao">+ Nova Produção</a>
+            </div>
+            </h1>
             <!-- dialog adicionar produção -->
             <dialog id="buscarFilme">
                 <div class="dialog-header">

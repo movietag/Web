@@ -43,8 +43,8 @@ try {
                 'producoes' => $producoes
             ];
         }
-
         echo json_encode(['success' => true, 'listas' => $resultado]);
+
     } else {
         echo json_encode(['success' => false, 'message' => 'Usuário não autenticado']);
     }

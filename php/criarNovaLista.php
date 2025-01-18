@@ -17,29 +17,11 @@ function criarNovaLista($idUsu) {
     }
 }
 
-function getUltimaIdListaPorUsuario($idUsu) {
-    try {
-        // SQL para buscar a maior ID da lista para o usuário específico
-        $sql = "SELECT idLista FROM LISTA WHERE idUsu = :idUsu ORDER BY idLista DESC";
-        $stmt = Database::prepare($sql);
-        $stmt->bindParam(':idUsu', $idUsu, PDO::PARAM_INT);
-        $stmt->execute();
-        
-        // Retorna o maior idLista encontrado
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $result ? $result['idLista'] : null;
-    } catch (Exception $e) {
-        error_log("Erro ao buscar última ID de lista para o usuário: " . $e->getMessage());
-        return null;
-    }
-}
-
-
 try {
     if (isset($_SESSION['dados']['id'])) {
         $idUsu = $_SESSION['dados']['id'];
         if (criarNovaLista($idUsu)) {
-            echo json_encode(['success' => true, 'message' => "Lista criada com sucesso!", 'idLista' => getUltimaIdListaPorUsuario($idUsu)]);
+            echo json_encode(['success' => true, 'message' => "Lista criada com sucesso!"]);
             exit;
         } else {
             echo json_encode(['success' => false, 'message' => "Lista não foi criada!"]);
