@@ -9,7 +9,7 @@ novaLista.addEventListener('click', (ev)=>{
             ev.preventDefault(); // Previne a ação padrão temporariamente
             console.log('Erro:', data.message);
         }else{
-            novaLista.setAttribute('href', `editarLista.php?idLista=${data.idLista}`);
+            window.location.reload();
         }
     })
     .catch(error => {
@@ -40,8 +40,6 @@ fetch('./php/receberListas.php')
 
 function carregaListas(listaArray) {
     listaArray.forEach(element => {
-        console.log(element);
-
         // Criação do elemento <a>
         const link = document.createElement("a");
         link.href = `visualizacaoLista.php?id=${element.idLista}`;
@@ -73,12 +71,12 @@ function carregaListas(listaArray) {
 
         // Adicionando o título
         const titulo = document.createElement("h2");
-        titulo.textContent = element.nome;
+        titulo.textContent = element.nomeLista;
         infoListas.appendChild(titulo);
 
         // Adicionando o número de produções
         const numProducoes = document.createElement("p");
-        numProducoes.textContent = `${element.numProducoes} produções`;
+        numProducoes.textContent = `${element.producoes.length} produções`;
         infoListas.appendChild(numProducoes);
 
         // Montando a estrutura final
