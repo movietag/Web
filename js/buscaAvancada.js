@@ -98,16 +98,16 @@ function esconderTodos(mos, esc){ // Evento para ocultar todos os filtros
     esc.style.display = "none";
 }
 
-// API Configuration
+// Configuracao da API 
 const API_KEY = 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZWExZjFhNGRjYzY2M2EzMTRlNmUwMDhhOGI5YWEyYyIsInN1YiI6IjY1ZDkxNjJiMGYwZGE1MDE2MjMyMjViMCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qCV25ZQQfVb7YOVnVVFI_xn7MAnNYMbZRrj0SApcL7k';
 
-// DOM Elements
+// Elementos DOM
 const searchForm = document.getElementById('buscaAvancada');
 const resultsContainer = document.querySelector('.resultados');
 const beforeSearchDiv = document.getElementById('antesPesquisa');
 const sortSelect = document.querySelector('select[name="ordem"]');
 
-// API Configuration Object
+// Configuracao opcoes API
 const apiOptions = {
     method: 'GET',
     headers: {
@@ -120,7 +120,7 @@ const apiOptions = {
 searchForm.addEventListener('submit', handleSearch);
 sortSelect.addEventListener('change', handleSort);
 
-// Main search handler
+// Pesquisa Manual principal
 async function handleSearch(e) {
     e.preventDefault();
     
@@ -138,26 +138,26 @@ async function handleSearch(e) {
     }
 }
 
-// Collect all filter values
+// Coleta todos os filtros
 function collectFilters() {
     const filters = {
-        query: document.getElementById('tituloProducao').value,
+        title: document.getElementById('tituloProducao').value,
         year: document.getElementById('anoLancamento').value,
         vote_average_gte: document.getElementById('avaliacaoMenor').value / 10,
         vote_average_lte: document.getElementById('avaliacaoMaior').value / 10,
-        with_genres: document.getElementById('genero').value,
-        with_keywords: document.getElementById('tag').value,
+        //with_genres: document.getElementById('genero').value,
+        //with_keywords: document.getElementById('tag').value,
         with_original_language: document.getElementById('idioma').value,
         'with_runtime.lte': document.getElementById('duracao').value,
         certification: getSelectedClassification(),
-        types: Array.from(document.querySelectorAll('input[name="tipo[]"]:checked')).map(cb => cb.value),
+        media_type: Array.from(document.querySelectorAll('input[name="tipo[]"]:checked')).map(cb => cb.value),
         platforms: Array.from(document.querySelectorAll('input[name="plataformas[]"]:checked')).map(cb => cb.value)
     };
     
     return filters;
 }
 
-// Get selected age classification
+// Coletar classificao inidicativa
 function getSelectedClassification() {
     const selectedButton = document.querySelector('.classifInd[class*="C"]');
     if (!selectedButton) return null;
@@ -180,7 +180,7 @@ function getSelectedClassification() {
 // Search TMDB API with filters
 async function searchTMDB(filters) {
     let results = [];
-    const types = filters.types.length > 0 ? filters.types : ['movie', 'tv'];
+    const types = filters.media_type.length > 0 ? filters.media_type : ['movie', 'tv'];
     
     for (const type of types) {
         const baseUrl = `https://api.themoviedb.org/3/discover/${type}`;
@@ -191,12 +191,12 @@ async function searchTMDB(filters) {
         });
         
         // Add filters to query params
-        if (filters.query) queryParams.append('query', filters.query);
+        if (filters.title) queryParams.append('query', filters.title);
         if (filters.year) queryParams.append('primary_release_year', filters.year);
         if (filters.vote_average_gte) queryParams.append('vote_average.gte', filters.vote_average_gte);
         if (filters.vote_average_lte) queryParams.append('vote_average.lte', filters.vote_average_lte);
-        if (filters.with_genres) queryParams.append('with_genres', filters.with_genres);
-        if (filters.with_keywords) queryParams.append('with_keywords', filters.with_keywords);
+        //if (filters.with_genres) queryParams.append('with_genres', filters.with_genres);
+        //if (filters.with_keywords) queryParams.append('with_keywords', filters.with_keywords);
         if (filters.with_original_language) queryParams.append('with_original_language', filters.with_original_language);
         if (filters['with_runtime.lte']) queryParams.append('with_runtime.lte', filters['with_runtime.lte']);
         
