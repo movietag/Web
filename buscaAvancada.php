@@ -176,46 +176,19 @@
                 <p>Seus resultados aparecerão aqui!</p>
             </div>
 
-            <!--resultados da pesquisa-->
-            <div class="itens resultados">
-                <!-- filtro pra organizar a pagina-->
-                <label for="ordem">Ordenar por</label>
-                <select name="ordem">
-                    <option value="melAval">Melhor avaliado</option>
-                    <option value="mRecente">Mais recente</option>
-                    <option value="mAntigo">Mais antigo</option>
-                </select>
-                
-                <!-- dados do filme -->
-                <a href="visualizacaoProducao.php?query=335983" class="item filme">
-                    <img src="img/posteres/venom.jpg" alt="Poster do Filme">
-                    <!-- texto -->
-                    <div>
-                        <h2>Venom<span>(2018)</span></h2>
-                        <ul class="tags">
-                            <li>Alien</li>
-                            <li>Baseado em HQs</li>
-                            <li>Anti-Herói</li>
-                            <li>Marvel</li>
-                        </ul>
-                        <p>O jornalista Eddie Brock desenvolve força e poder sobre-humanos quando seu corpo se funde com o alienígena Venom. Dominado pela raiva, Venom tenta controlar as novas e perigosas habilidades de Eddie.</p>    
+            <div class="resultados" style="display: none;">
+                <div class="sort-container">
+                    <label for="ordem">Ordenar por</label>
+                    <select name="ordem" id="ordem">
+                        <option value="melAval">Melhor avaliado</option>
+                        <option value="mRecente">Mais recente</option>
+                        <option value="mAntigo">Mais antigo</option>
+                    </select>
+                </div>
+                    <div class="itens">
+                        <!-- Results will be dynamically inserted here -->
                     </div>
-                </a>
-                <a href="visualizacaoProducao.php?query=335983" class="item filme">
-                    <img src="img/posteres/venom.jpg" alt="Poster do Filme">
-                    <!-- texto -->
-                    <div>
-                        <h2>Venom<span>(2018)</span></h2>
-                        <ul class="tags">
-                            <li>Alien</li>
-                            <li>Baseado em HQs</li>
-                            <li>Anti-Herói</li>
-                            <li>Marvel</li>
-                        </ul>
-                        <p>O jornalista Eddie Brock desenvolve força e poder sobre-humanos quando seu corpo se funde com o alienígena Venom. Dominado pela raiva, Venom tenta controlar as novas e perigosas habilidades de Eddie.</p>    
-                    </div>
-                </a>
-            </div>
+                </div>
         </div>
     </section>
 

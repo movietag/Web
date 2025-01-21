@@ -272,3 +272,61 @@ option{
 .filtro-show {
     display: none;
 }
+
+
+
+
+
+
+
+.resultados {
+    display: none;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.sort-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.item {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    border-bottom: 1px solid #eee;
+    text-decoration: none;
+    color: inherit;
+}
+
+.item img {
+    width: 150px;
+    height: 225px;
+    object-fit: cover;
+}
+
+.item h2 {
+    margin: 0 0 10px 0;
+}
+
+.item h2 span {
+    color: #666;
+    margin-left: 10px;
+}
+
+.tags {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+
+.tags li {
+    background: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
