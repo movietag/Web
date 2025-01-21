@@ -59,9 +59,8 @@ hr{
     border: 1px solid grey;
 }
 
+/* tags */
 
-
-/* tags do filme */
 .pagTags{
     margin: 0 2em 3em 2em;
 }
@@ -87,8 +86,8 @@ hr{
 }
 
 /* filmes avaliados */
+
 .itens{
-    overflow-x: hidden;
     flex-wrap: wrap;
 }
 
@@ -135,19 +134,36 @@ hr{
     border-radius: 8px;
 }
 
+/* avaliacao */
 
+.bxs-star{
+    color: #e6c222;
+}
 
+.avali{
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+    background-color: #e6c22262;
+    padding: 0 0.5em;
+    border-radius: 60px;
+    width: fit-content;
+    position: absolute;
+    top: 16.1em;
+    left: 6.2em;
+}
 
-
+#caixinha{
+    position: relative;
+}
 
 /* dashboard */
-
 .dashboard {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Distribui os gráficos uniformemente */
+    justify-content: space-around; 
     margin: 2em auto;
-    max-width: 65%; /* Ajusta a largura máxima do dashboard */
+    max-width: 65%; 
 }
 
 /* classe pra sumir e mostrar */
@@ -158,20 +174,20 @@ hr{
 .chart-container {
     background:  rgba(36, 36, 36, 0.671);
     border-radius: 1rem;
-    margin: 1em; /* Espaçamento entre os gráficos */
-    flex: 1 1 45%; /* Permite que os gráficos se ajustem responsivamente */
-    max-width: 40vw; /* Limita a largura máxima dos gráficos */
+    margin: 1em; 
+    flex: 1 1 45%; 
+    max-width: 40vw; 
 }
 .chart-containerP {
     background:  rgba(36, 36, 36, 0.671);
     border-radius: 1rem;
-    margin: 1em; /* Espaçamento entre os gráficos */
-    flex: 1 1 45%; /* Permite que os gráficos se ajustem responsivamente */
-    max-width: 40vw; /* Limita a largura máxima dos gráficos */
+    margin: 1em; 
+    flex: 1 1 45%; 
+    max-width: 40vw; 
 }
 
 canvas {
-    width: 100% !important; /* Garante que o canvas ocupe 100% do espaço do container */
+    width: 100% !important; 
     height: auto !important;
     padding: 0.8rem;
 }

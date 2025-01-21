@@ -68,49 +68,20 @@
         <div class="show pagTags">
             <ul class="tags">
                 <li>Alien</li>
-                <li>Baseado em HQs</li>
-                <li>Anti-Herói</li>
-                <li>Marvel</li>
-                <li>Alien</li>
-                <li>Baseado em HQs</li>
-                <li>Anti-Herói</li>
-                <li>Marvel</li>
-                <li>Alien</li>
-                <li>Baseado em HQs</li>
-                <li>Anti-Herói</li>
-                <li>Marvel</li>
-                <li>Alien</li>
-                <li>Baseado em HQs</li>
-                <li>Anti-Herói</li>
-                <li>Marvel</li>
             </ul>    
         </div>
 
         <!-- avaliacoes do usuario -->
-        <div id="aa" class="show itens pagAvals">
+        <div class="show itens pagAvals">
             <a href="visualizacaoProducao.php?type=movie&query=142" class="item filme">
-                <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
+                <div id="caixinha">
+                    <div class="avali">
+                        <p>4,5</p>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <img src="img/posteres/brokebackmountain.jpg" alt="Poster do Filme">
+                </div>
                 <h2>O Segredo de Brokeback Mountain<span>(2005)</span></h2>
-            </a>
-            <a href="visualizacaoProducao.php?type=movie&query=873" class="item filme">
-                <img src="https://www.themoviedb.org/t/p/w1280/xMiXnyVOIM8ZXr1DlnsKKcwHuil.jpg" alt="Poster do Filme">
-                <h2>A Cor Púrpura<span>(1985)</span></h2>
-            </a>
-            <a href="visualizacaoProducao.php?type=tv&query=76331" class="item filme">
-                <img src="https://www.themoviedb.org/t/p/w1280/7HW47XbkNQ5fiwQFYGWdw9gs144.jpg" alt="Poster do Filme">
-                <h2>Succession<span>(2018)</span></h2>
-            </a>
-            <a href="visualizacaoProducao.php?type=movie&query=12155" class="item filme">
-                <img src="https://www.themoviedb.org/t/p/w1280/fjaiHtykx4LcHJLzhKhn7tNPpAj.jpg" alt="Poster do Filme">
-                <h2>Alice no País das Maravilhas<span>(2010)</span></h2>
-            </a>
-            <a href="visualizacaoProducao.php?type=tv&query=61889" class="item filme">
-                <img src="https://www.themoviedb.org/t/p/w1280/x7zUHG5cko4ZXQO2209Qc2aoyrc.jpg" alt="Poster do Filme">
-                <h2>Demolidor<span>(2015)</span></h2>
-            </a>
-            <a href="visualizacaoProducao.php?type=movie&query=858017" class="item filme">
-                <img src="https://www.themoviedb.org/t/p/w1280/xDpqCK2MSaz5vCUHymed12sPFyR.jpg" alt="Poster do Filme">
-                <h2>Eu Vi o Brilho da TV<span>(2024)</span></h2>
             </a>
         </div>
     </section>
