@@ -99,69 +99,96 @@ function itensComMediaType(json, type){
 }
 
 
-// Evento de submissão da pesquisa
-formularioPesquisa.onsubmit = (evento) => {
-    evento.preventDefault(); // Evita o recarregamento da página
-    const areaResultados = document.querySelector("#s02 .lista"); // Área onde os resultados serão exibidos
-    const termoPesquisa = evento.target.pesquisa.value; // Termo da pesquisa
-    const formData = new FormData(evento.target);
-    const data = Object.fromEntries(formData); // Converte FormData em um objeto
+// Mantenha todo o código existente e adicione/modifique as seguintes partes:
 
-    fetch('./php/validacaoInicio.php', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-    .then(response => response.json())  // Converte a resposta do PHP para JSON
-    .then(data => {
-        if (data.status === 'ok') {
-            if (termoPesquisa) { // Se o termo de pesquisa não for vazio
-                buscarFilmes(termoPesquisa, areaResultados);
-                exibirAreaPesquisa(); // Exibe a área de pesquisa
+document.addEventListener("DOMContentLoaded", () => {
+    const input = document.getElementById("pesquisa");
+    const highlight = document.getElementById("highlight");
+    const tagsList = []; // Lista para armazenar as tags
+    const formularioPesquisa = document.querySelector("form");
+
+    input.addEventListener("input", () => {
+        const text = input.value;
+        // Captura apenas palavras começando com #, ignora o resto
+        const newTags = text.match(/#([^\s#]+)/g)?.map(tag => tag.slice(1)) || [];
+        
+        // Atualiza a lista de tags, garantindo que só tenha valores únicos
+        tagsList.length = 0; // Limpa a lista antes de atualizar
+        tagsList.push(...new Set(newTags));
+        
+        // Atualiza o div de destaque com as tags
+        const formattedTags = tagsList.map(tag => `<span class="tag">${tag}</span>`);
+        highlight.innerHTML = formattedTags.join('');
+    });
+
+    // Modificar o evento de submit do formulário
+    // Modificar o evento de submit do formulário
+    formularioPesquisa.onsubmit = async (evento) => {
+        evento.preventDefault();
+        const areaResultados = document.querySelector("#s02 .lista");
+        const termoPesquisa = input.value;
+    
+        try {
+            // Validação inicial
+            const validationResponse = await fetch('./php/validacaoInicio.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ 
+                    termoPesquisa,
+                    tags: tagsList.length > 0 ? tagsList : undefined
+                })
+            });
+            
+            const validationData = await validationResponse.json();
+            
+            if (validationData.status === 'ok') {
+                if (tagsList.length > 0) {
+                    // Pesquisa por tags
+                    const response = await fetch('./php/pesquisarPorTags.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ tags: tagsList })
+                    });
+                    
+                    const data = await response.json();
+                    if (data.success) {
+                        carregarFilmes(areaResultados, { results: data.productions });
+                        exibirAreaPesquisa();
+                    }
+                } else if (termoPesquisa) {
+                    // Pesquisa normal
+                    buscarFilmes(termoPesquisa, areaResultados);
+                    exibirAreaPesquisa();
+                }
             }
-        } else {
-            console.log('Erro de validação:', data.message);
+        } catch (error) {
+            console.error('Erro na pesquisa:', error);
         }
-    })
+    };
+});
 
-
-
-};
-
-// Função para buscar filmes na API
-const buscarFilmes = (termo, lista) => {
-    const url = `https://api.themoviedb.org/3/search/multi?query=${termo}&include_adult=false&language=pt-BR&page=1`;
-
-    fetch(url, opcoesApi)
-        .then(response => response.json())
-        .then(dados => carregarFilmes(lista, dados));
-};
-
-// Função para exibir a área de pesquisa
-const exibirAreaPesquisa = () => {
-    const areas = document.querySelectorAll(".area");
-    areas[0].style.display = "none"; // Esconde a tela inicial
-    areas[1].style.display = "block"; // Mostra a tela de resultados
-};
-
-// Função para carregar filmes e outros resultados na lista
-const carregarFilmes = (lista, dados) => {
+// Modificar a função carregarFilmes para incluir tags quando disponíveis
+async function carregarFilmes(lista, dados) {
     const containerItens = lista.lastElementChild;
-    containerItens.replaceChildren(); // Limpa os itens anteriores
+    containerItens.replaceChildren();
 
     dados.results.forEach(item => {
         const elemento = document.createElement('div');
         elemento.classList.add('item');
 
-        const { urlImagem, nome, urlDetalhes } = gerarDetalhesItem(item);
-        elemento.innerHTML = `
-            <a href="${urlDetalhes}">
-                <img src="${urlImagem}">
-                <span>${nome}</span>
-            </a>
-        `;
+        // Adaptar para aceitar tanto dados da API quanto do banco local
+        const { urlImagem, nome, urlDetalhes } = gerarDetalhesItem({
+            ...item,
+            media_type: item.tipoProd || item.media_type,
+            poster_path: item.poster_path || item.imagem,
+            title: item.title || item.nomeProd,
+            name: item.name || item.nomeProd
+        });
+        
         elemento.addEventListener('click', (ev) => {
             
             fetch('./php/acessarProducao.php', {
@@ -184,16 +211,57 @@ const carregarFilmes = (lista, dados) => {
             });
         });
         
+        
+        const tagsHtml = item.tags ? `
+            <ul class="tags">
+                ${item.tags.map(tag => `<li>${tag}</li>`).join('')}
+            </ul>
+        ` : '';
+
+        elemento.innerHTML = `
+            <a href="${urlDetalhes}">
+                <img src="${urlImagem}">
+                <div class="item-content">
+                    <span>${nome}</span>
+                    ${tagsHtml}
+                </div>
+            </a>
+        `;
+
+
 
         containerItens.appendChild(elemento);
     });
 };
+
+// Função para buscar filmes na API
+const buscarFilmes = (termo, lista) => {
+    const url = `https://api.themoviedb.org/3/search/multi?query=${termo}&include_adult=false&language=pt-BR&page=1`;
+
+    fetch(url, opcoesApi)
+        .then(response => response.json())
+        .then(dados => carregarFilmes(lista, dados));
+};
+
+// Função para exibir a área de pesquisa
+const exibirAreaPesquisa = () => {
+    const areas = document.querySelectorAll(".area");
+    areas[0].style.display = "none"; // Esconde a tela inicial
+    areas[1].style.display = "block"; // Mostra a tela de resultados
+};
+
 
 // Função para gerar os detalhes de cada item (filme, série ou pessoa)
 const gerarDetalhesItem = (item) => {
     let urlImagem;
     let nome;
     let urlDetalhes;
+    if("idAPI" in item){
+        item.id = item.idAPI;
+    }
+    console.log(item);
+
+    
 
     if (item.media_type === "movie") {
         urlImagem = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');

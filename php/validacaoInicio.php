@@ -6,13 +6,22 @@ $data = json_decode(file_get_contents('php://input'), true);
 
 // Verifica se os dados foram recebidos
 if ($data) {
-    // Aqui você pode processar os dados como quiser
-    $pesquisa = htmlspecialchars($data['pesquisa'], ENT_QUOTES, 'UTF-8');
+    if (isset($data['termoPesquisa'])) {
+        // Para pesquisa normal
+        $pesquisa = htmlspecialchars($data['termoPesquisa'], ENT_QUOTES, 'UTF-8');
+        $status = 'ok';
+        $message = 'Dados recebidos com sucesso!';
+    } else if (isset($data['pesquisa'])) {
+        // Mantém compatibilidade com o formato antigo
+        $pesquisa = htmlspecialchars($data['pesquisa'], ENT_QUOTES, 'UTF-8');
+        $status = 'ok';
+        $message = 'Dados recebidos com sucesso!';
+        
+    } else {
+        $status = 'error';
+        $message = 'Campo de pesquisa não encontrado';
+    }
 
-    $status = 'ok'; // Supondo que a validação seja bem-sucedida
-    $message = 'Dados recebidos com sucesso!';
-
-    // Retorna a resposta em formato JSON
     echo json_encode(['status' => $status, 'message' => $message]);
 } else {
     // Se não receber dados, retornar um erro
