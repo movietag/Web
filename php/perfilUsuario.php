@@ -82,21 +82,21 @@ try {
 
     //consulta pra obter os usuarios com maior atividade (acesso a produção + tags criadas + avaliações feitas)
     $sqlUsuariosAtivos = "
-    SELECT U.usuario, 
-           COALESCE(SUM(AP.total_acessos), 0) + COALESCE(SUM(AT.total_tags), 0) + COALESCE(SUM(AV.total_avaliacoes), 0) AS atividade_total
-    FROM USUARIO U
-    LEFT JOIN (
-        SELECT idUsu, COUNT(*) AS total_acessos FROM ACESSA_PRODUCAO GROUP BY idUsu
-    ) AP ON U.id = AP.idUsu
-    LEFT JOIN (
-        SELECT idUsu, COUNT(*) AS total_tags FROM TAG GROUP BY idUsu
-    ) AT ON U.id = AT.idUsu
-    LEFT JOIN (
-        SELECT idUsu, COUNT(*) AS total_avaliacoes FROM AVALIA_PRODUCAO GROUP BY idUsu
-    ) AV ON U.id = AV.idUsu
-    GROUP BY U.id
-    ORDER BY atividade_total DESC
-    LIMIT 5;
+        SELECT U.usuario, 
+        COALESCE(SUM(AP.total_acessos), 0) + COALESCE(SUM(AT.total_tags), 0) + COALESCE(SUM(AV.total_avaliacoes), 0) AS atividade_total
+        FROM USUARIO U
+        LEFT JOIN (
+            SELECT idUsu, COUNT(*) AS total_acessos FROM ACESSA_PRODUCAO GROUP BY idUsu
+        ) AP ON U.id = AP.idUsu
+        LEFT JOIN (
+            SELECT idUsu, COUNT(*) AS total_tags FROM TAG GROUP BY idUsu
+        ) AT ON U.id = AT.idUsu
+        LEFT JOIN (
+            SELECT idUsu, COUNT(*) AS total_avaliacoes FROM AVALIA_PRODUCAO GROUP BY idUsu
+        ) AV ON U.id = AV.idUsu
+        GROUP BY U.id
+        ORDER BY atividade_total DESC
+        LIMIT 5;
     ";
 
     $stmt = Database::prepare($sqlUsuariosAtivos);
