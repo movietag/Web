@@ -43,13 +43,14 @@
                             <p class="rotulo">Tipo de produção<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput divMaiorCheckbox">
                                 <div class="divMenorCheckbox">
-                                    <input type="checkbox" name="tipo[]" id="filme" value="filme">
-                                    <label for="filme">Filme</label>
+                                    <input type="checkbox" name="tipo[]" id="movie" value="movie">
+                                    <label for="movie">Filme</label>
                                 </div>
                                 <div class="divMenorCheckbox">
-                                    <input type="checkbox" name="tipo[]" id="serie" value="serie">
-                                    <label for="serie">Série</label>
+                                    <input type="checkbox" name="tipo[]" id="tv" value="tv">
+                                    <label for="tv">Série</label>
                                 </div>
+                                <!--
                                 <div class="divMenorCheckbox">
                                     <input type="checkbox" name="tipo[]" id="minisserie" value="minisserie">
                                     <label for="minisserie">Minissérie</label>
@@ -61,7 +62,7 @@
                                 <div class="divMenorCheckbox">
                                     <input type="checkbox" name="tipo[]" id="curta" value="curta">
                                     <label for="curta">Curta-Metragem</label>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
 
@@ -87,21 +88,21 @@
                             </div>
                         </div>
 
-                        <!-- caixa com um filtro -->
+                        <!-- caixa com um filtro 
                         <div class="filtro">
                             <p class="rotulo">Gênero<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput">
                                 <input type="text" name="genero" id="genero" class="inputGrande" placeholder="ex.: Romance">
                             </div>
-                        </div>
+                        </div>-->
 
-                        <!-- caixa com um filtro -->
+                        <!-- caixa com um filtro 
                         <div class="filtro">
                             <p class="rotulo">Tags<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput">
                                 <input type="text" name="tag" id="tag" class="inputGrande" placeholder="ex.: Segunda Guerra Mundial">
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- caixa com um filtro -->
                         <div class="filtro">
