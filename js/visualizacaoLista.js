@@ -187,6 +187,10 @@ function carregarFilmes(lista, dados) {
             const separator = document.createElement('hr');
 
             // Adiciona o <a> e <hr> à lista
+
+            link.addEventListener('click', (ev)=>{
+                adicionarFilmeLista(item.id, item.title??item.name, item.media_type);
+            });
             lista.appendChild(link);
             lista.appendChild(separator);
         }
@@ -199,6 +203,18 @@ function criarUrlImagem(caminho, imagemPadrao){
     return caminho ? `https://image.tmdb.org/t/p/w300${caminho}` : `./img/placeholder/${imagemPadrao}`;
 };
 
+function adicionarFilmeLista(id, nome, tipoProd){
+    fetch('adicionarProducaoLista.php',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: id, nome, tipoProd})
+    }
+    .then(response => response.json())
+
+    )
+}
 
 
 
