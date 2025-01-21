@@ -2,6 +2,8 @@
 
 session_start();
 header('Content-Type: application/json');
+ob_start();
+
 require_once 'database.php';
 require_once 'receberListas.php';
 
@@ -15,7 +17,7 @@ function getLista($idLista) {
 
     if ($lista) {
         // Adiciona as produções da lista
-        $lista['producoes'] = getProducoesListaComTipo($idLista) ?: [];
+        $lista['producoes'] = getProducoesListaComTipo($idLista) ?? [];
         // Adiciona uma nova coluna com idProd e idAPI
         foreach ($lista['producoes'] as $key => $producao) {
             $idProd = $producao['idProd'];
@@ -42,6 +44,7 @@ function getIdApi($idProd) {
 try {
     // Verifica se o ID da lista foi fornecido
     if (!isset($_GET['idLista'])) {
+        ob_clean();
         echo json_encode(['success' => false, 'message' => 'IdLista não fornecido!']);
         exit;
     }
@@ -50,11 +53,14 @@ try {
     $lista = getLista($idLista);
 
     if ($lista) {
+        ob_clean();
         echo json_encode(['success' => true, 'lista' => $lista]);
     } else {
+        ob_clean();
         echo json_encode(['success' => false, 'message' => 'Lista não encontrada']);
     }
 } catch (Exception $e) {
     error_log("Erro: " . $e->getMessage());
+    ob_clean();
     echo json_encode(['success' => false, 'message' => 'Erro: ' . $e->getMessage()]);
 }
