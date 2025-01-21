@@ -22,10 +22,10 @@ try {
         exit;
     }
     
-    $idAPI = $data['id'];
+    $idLista = $data['idLista'];
+    $idAPI = $data['idProd'];
     $nomeProd = $data['nome'];
     $tipoProd = $data['tipoProd'];
-    $idUsu = isset($_SESSION['dados']['id']) ? $_SESSION['dados']['id'] : null;
 
     // Verificar se a produção já existe
     if (!producaoExiste($idAPI)) {
@@ -37,10 +37,9 @@ try {
     }
 
     $idBanco = getIdProducao($idAPI);
-    $_SESSION['dados']['idProd'] = $idBanco;
 
-    // Registrar acesso se o usuário estiver logado
     if ($idUsu) {
+
         
     } else {
         

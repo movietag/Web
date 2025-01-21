@@ -203,13 +203,13 @@ function criarUrlImagem(caminho, imagemPadrao){
     return caminho ? `https://image.tmdb.org/t/p/w300${caminho}` : `./img/placeholder/${imagemPadrao}`;
 };
 
-function adicionarFilmeLista(id, nome, tipoProd){
+function adicionarFilmeLista(idLista, idProd, nome, tipoProd){
     fetch('adicionarProducaoLista.php',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ id: id, nome, tipoProd})
+        body: JSON.stringify({idLista: idLista, idProd:idProd, nome:nome, tipoProd: tipoProd})
     }
     .then(response => response.json())
 
