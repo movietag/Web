@@ -22,18 +22,14 @@
 
         <!-- Pesquisa -->
         <form id="fPesquisa">
-            <div class="input-container">
-                
-                <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome da produção, #tag, diretor...">
-            </div>
+            <input type="text" name="pesquisa" id="pesquisa" placeholder="Digite o nome da produção, tag, diretor...">
             <button id="pesq1" type="submit">Pesquisar</button>
-            
         </form>
-        <div id="highlight"></div>
-
     </header>
-    
+
     <section>
+
+
         
         <div class="area">
             <!-- Listas de Filmes -->
