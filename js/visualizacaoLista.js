@@ -1,4 +1,4 @@
-const options = {
+const opcoesApi = {
     method: 'GET',
     headers: {
         accept: 'application/json',
@@ -119,3 +119,102 @@ openNovaProd.addEventListener('click', () => {
 fechar.addEventListener('click', () => {
     dialogNovaProd.close(); // Fecha o diálogo
 });
+
+const inputTitulo = document.querySelector('#tituloFilme');
+const lista = document.querySelector('.dialog-content');
+
+inputTitulo.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        let texto = inputTitulo.value;
+        console.log(texto);
+        buscarFilmes(texto, lista);
+    }
+  });
+
+// Função para buscar filmes na API
+function buscarFilmes(termo, lista){
+    const url = `https://api.themoviedb.org/3/search/multi?query=${termo}&include_adult=false&language=pt-BR&page=1`;
+
+    fetch(url, opcoesApi)
+        .then(response => response.json())
+        .then(dados => carregarFilmes(lista, dados));
+};
+
+function carregarFilmes(lista, dados) {
+    // Limpa a lista existente
+    lista.replaceChildren();
+
+    // Itera sobre os resultados
+    dados.results.forEach(item => {
+        console.log(item);
+
+        if(item.media_type === "movie" || item.media_type === "tv"){
+            // Cria o elemento <a> com a classe "filmeBusca"
+            const link = document.createElement('a');
+            // link.href = item.url || '#'; // Substitua por um link válido se disponível
+            link.classList.add('filmeBusca');
+
+            // Cria o elemento <img> para o poster
+            const img = document.createElement('img');
+            img.src = criarUrlImagem(item.poster_path, 'MovieTag-NotFoundImage.png');
+            img.alt = `Poster de ${item.title??item.name}`;
+
+            // Cria o elemento <div> para o texto
+            const textDiv = document.createElement('div');
+
+            // Adiciona o título e o ano
+            const title = document.createElement('h2');
+            title.innerHTML = `${item.title??item.name}<span>(${item.year || 'N/A'})</span>`;
+
+            // // Adiciona o nome do diretor/criador
+            // const director = document.createElement('p');
+            // director.textContent = item.director ? `Dirigido por ${item.director}` : `Criado por ${item.creator}`;
+
+            // Adiciona o tipo (Filme ou Série)
+            const type = document.createElement('p');
+            type.textContent = item.media_type || 'Desconhecido';
+
+            // Anexa os elementos ao <div>
+            textDiv.appendChild(title);
+            // textDiv.appendChild(director);
+            textDiv.appendChild(type);
+
+            // Anexa o <img> e o <div> ao <a>
+            link.appendChild(img);
+            link.appendChild(textDiv);
+
+            // Adiciona um separador <hr>
+            const separator = document.createElement('hr');
+
+            // Adiciona o <a> e <hr> à lista
+
+            link.addEventListener('click', (ev)=>{
+                adicionarFilmeLista(item.id, item.title??item.name, item.media_type);
+            });
+            lista.appendChild(link);
+            lista.appendChild(separator);
+        }
+
+    });
+}
+
+// Função para criar a URL da imagem ou usar uma imagem substituta se não houver
+function criarUrlImagem(caminho, imagemPadrao){
+    return caminho ? `https://image.tmdb.org/t/p/w300${caminho}` : `./img/placeholder/${imagemPadrao}`;
+};
+
+function adicionarFilmeLista(id, nome, tipoProd){
+    fetch('adicionarProducaoLista.php',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ id: id, nome, tipoProd})
+    }
+    .then(response => response.json())
+
+    )
+}
+
+
+
