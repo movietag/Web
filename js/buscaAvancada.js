@@ -278,21 +278,21 @@ function displayResults(results) {
         const yearFormatted = year ? `(${year.split('-')[0]})` : '';
 
         
+        let html = createResultHtml(item, posterUrl, title, yearFormatted);
+        // const resultHtml = `
+        //     <a href="visualizacaoProducao.php?type=${item.media_type}&query=${item.id}" class="item filme">
+        //         <img src="${posterUrl}" alt="Poster de ${title}">
+        //         <div>
+        //             <h2>${title}<span>${yearFormatted}</span></h2>
+        //             <ul class="tags">
+        //                 ${generateTags(item)}
+        //             </ul>
+        //             <p>${item.overview || 'Descrição não disponível.'}</p>
+        //         </div>
+        //     </a>
+        // `;
 
-        const resultHtml = `
-            <a href="visualizacaoProducao.php?type=${item.media_type}&query=${item.id}" class="item filme">
-                <img src="${posterUrl}" alt="Poster de ${title}">
-                <div>
-                    <h2>${title}<span>${yearFormatted}</span></h2>
-                    <ul class="tags">
-                        ${generateTags(item)}
-                    </ul>
-                    <p>${item.overview || 'Descrição não disponível.'}</p>
-                </div>
-            </a>
-        `;
-        
-        resultHtml.addEventListener('click', ()=>{
+        html.addEventListener('click', ()=>{
             fetch('./php/acessarProducao.php', {
                 method: 'POST',
                 headers: {
@@ -312,9 +312,47 @@ function displayResults(results) {
             .catch(error => {
                 console.error('Erro na requisição:', error);
             });
-        })
-        container.insertAdjacentHTML('beforeend', resultHtml);
+        });
+        container.appendChild(html);
     });
+}
+
+function createResultHtml(item, posterUrl, title, yearFormatted) {
+    // Cria o elemento principal <a>
+    const link = document.createElement('a');
+    link.href = `visualizacaoProducao.php?type=${item.media_type}&query=${item.id}`;
+    link.className = 'item filme';
+
+    // Cria o elemento <img>
+    const img = document.createElement('img');
+    img.src = posterUrl;
+    img.alt = `Poster de ${title}`;
+    link.appendChild(img);
+
+    // Cria o contêiner <div>
+    const div = document.createElement('div');
+
+    // Adiciona o título com o ano
+    const h2 = document.createElement('h2');
+    h2.innerHTML = `${title}<span>${yearFormatted}</span>`;
+    div.appendChild(h2);
+
+    // Adiciona as tags (geradas dinamicamente)
+    const ul = document.createElement('ul');
+    ul.className = 'tags';
+    ul.innerHTML = generateTags(item); // Supondo que `generateTags` retorna HTML válido
+    div.appendChild(ul);
+
+    // Adiciona a descrição
+    const p = document.createElement('p');
+    p.textContent = item.overview || 'Descrição não disponível.';
+    div.appendChild(p);
+
+    // Anexa o contêiner <div> ao link principal
+    link.appendChild(div);
+
+    // Retorna o elemento criado
+    return link;
 }
 
 
