@@ -8,20 +8,23 @@ const opcoesApi = {
 
 const urlParams = new URLSearchParams(window.location.search);
 const idLista = urlParams.get('id');
+atualizaListaBanco(idLista);
 
-if (idLista) {
-    // Fetch tag information
-    fetch(`./php/receberLista.php?idLista=${idLista}`)
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                atualizaDados(data.lista).then(listaAtualizada => {
-                    carregaDados(listaAtualizada);
-                });
-            } else {
-                console.error('Erro ao carregar lista:', data.message);
-            }
-        })
+async function atualizaListaBanco(idLista){
+    if (idLista) {
+        // Fetch tag information
+        fetch(`./php/receberLista.php?idLista=${idLista}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    atualizaDados(data.lista).then(listaAtualizada => {
+                        carregaDados(listaAtualizada);
+                    });
+                } else {
+                    console.error('Erro ao carregar lista:', data.message);
+                }
+            })
+    }
 }
 
 async function atualizaDados(dadosLista) {
@@ -30,7 +33,7 @@ async function atualizaDados(dadosLista) {
         const { idProd, idAPI, tipoProd } = element;
 
         if (tipoProd === "movie") {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${idAPI}?append_to_response=20&language=pt-BR`, options);
+            const response = await fetch(`https://api.themoviedb.org/3/movie/${idAPI}?append_to_response=20&language=pt-BR`, opcoesApi);
             const dadosTmdb = await response.json();
 
                 // Mescla os dados do TMDb com as informações originais
@@ -41,7 +44,7 @@ async function atualizaDados(dadosLista) {
                 tmdbData: dadosTmdb // Dados da API do TMDb
             };
         } else if(tipoProd === "tv"){
-            const response = await fetch(`https://api.themoviedb.org/3/tv/${idAPI}?append_to_response=20&language=pt-BR`, options);
+            const response = await fetch(`https://api.themoviedb.org/3/tv/${idAPI}?append_to_response=20&language=pt-BR`, opcoesApi);
             const dadosTmdb = await response.json();
 
                 // Mescla os dados do TMDb com as informações originais
@@ -67,6 +70,7 @@ function carregaDados(lista) {
     producoesContainer.innerHTML = ''; // Limpa o contêiner
 
     lista.producoes.forEach(producao => {
+        console.log(producao);
         // Criação do link que contém a produção
         const link = document.createElement('a');
         link.href = `visualizacaoProducao.php?type=${producao.tipoProd}&query=${producao.idAPI}`;
@@ -86,10 +90,28 @@ function carregaDados(lista) {
         // Adiciona título e ano
         const tituloH2 = document.createElement('h2');
         tituloH2.innerHTML = `
-            ${producao.tmdbData?.title || 'Título não disponível'}
-            <span>(${producao.tmdbData?.release_date?.split('-')[0] || 'Ano desconhecido'})</span>
+            ${producao.tmdbData?.title || producao.tmdbData?.name}
+            <span>(${producao.tmdbData?.release_date?.split('-')[0] || producao.tmdbData?.first_air_date?.split('-')[0]})</span>
         `;
+
+        const lixeira = document.createElement('i');
+        lixeira.classList.add('bx', 'bxs-trash');  // Classe de ícone de lixeira do Boxicons
+
+        lixeira.addEventListener('click', (ev)=>{
+            const usuarioConfirma = confirm("Você tem certeza?");
+            if (usuarioConfirma) {
+                link.href = '';
+                alert('Salve')
+                excluirProdLista(idLista, producao.idApi);
+            } else {
+                alert("Você cancelou!");
+            }
+            
+        });
+
+
         textoDiv.appendChild(tituloH2);
+        textoDiv.appendChild(lixeira);
 
         // Adiciona descrição
         const descricaoP = document.createElement('p');
@@ -130,6 +152,22 @@ inputTitulo.addEventListener('keydown', (event) => {
         buscarFilmes(texto, lista);
     }
   });
+
+  function excluirProdLista(idLista, idApi){
+    let url = `./php/excluirProdLista.php?idLista=${idLista}&idApi=${idApi}`;
+    console.log(url);
+    fetch(url)
+    .then(response => response.json())
+    .then(response => {
+        if(response.sucess){
+            console.log(response.message);
+            // window.location.reload();
+        } else{
+            console.error(response.message);
+        }
+    })
+}
+
 
 // Função para buscar filmes na API
 function buscarFilmes(termo, lista){
@@ -176,6 +214,7 @@ function carregarFilmes(lista, dados) {
 
             // Anexa os elementos ao <div>
             textDiv.appendChild(title);
+
             // textDiv.appendChild(director);
             textDiv.appendChild(type);
 
@@ -189,7 +228,7 @@ function carregarFilmes(lista, dados) {
             // Adiciona o <a> e <hr> à lista
 
             link.addEventListener('click', (ev)=>{
-                adicionarFilmeLista(item.id, item.title??item.name, item.media_type);
+                adicionarFilmeLista(idLista, item.id, item.title??item.name, item.media_type);
             });
             lista.appendChild(link);
             lista.appendChild(separator);
@@ -203,18 +242,34 @@ function criarUrlImagem(caminho, imagemPadrao){
     return caminho ? `https://image.tmdb.org/t/p/w300${caminho}` : `./img/placeholder/${imagemPadrao}`;
 };
 
-function adicionarFilmeLista(idLista, idProd, nome, tipoProd){
-    fetch('adicionarProducaoLista.php',{
+function adicionarFilmeLista(idLista, idProd, nome, tipoProd) {
+    fetch('./php/adicionarProducaoLista.php', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         },
-        body: JSON.stringify({idLista: idLista, idProd:idProd, nome:nome, tipoProd: tipoProd})
-    }
+        body: JSON.stringify({ 
+            idLista: idLista, 
+            idProd: idProd, 
+            nome: nome, 
+            tipoProd: tipoProd 
+        }),
+    })
     .then(response => response.json())
-
-    )
+    .then(response => {
+        if (response.success) {
+            window.location.reload();
+            dialogNovaProd.close();
+            console.log(response.message);
+        } else {
+            console.error(response.message);
+        }
+    })
+    .catch(error => {
+        console.error('Erro na requisição:', error);
+    });
 }
+
 
 
 
