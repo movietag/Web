@@ -169,6 +169,15 @@
 
                     <!-- botao de pesquisa -->
                     <button id="botaoPesquisar">Pesquisar</button>
+
+                    <div class="wrapperLoading">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                    </div>
                 </form>
             </div>
 
@@ -192,6 +201,8 @@
                     </div>
                 </div>
         </div>
+
+        
     </section>
 
     <!-- Footer -->

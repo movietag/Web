@@ -10,6 +10,7 @@ const mostrar = document.querySelector("#botaoMostrar"); //Botão que mostra os 
 const esconder = document.querySelector("#botaoEsconder"); // Botão que esconde os filtros
 const classifs = document.querySelector(".divClassifInd"); //pegando a div que contem os botoes de classificacao
 
+loading = document.querySelector('.wrapperLoading');
 
 // Adicionando Eventos aos Objetos
 
@@ -156,6 +157,7 @@ async function handleSearch(e) {
 
     const results = await searchTMDB(filters);
     
+
     if (results.length > 0) {
         displayResults(results);
         beforeSearchDiv.style.display = 'none';
@@ -202,6 +204,7 @@ function getSelectedClassification() {
 
 // Search TMDB API with filters
 async function searchTMDB(filters) {
+    loading.style.display = 'block';
     let results = [];
     const types = filters.media_type.length > 0 ? filters.media_type : ['movie', 'tv'];
     const maxPages = 10; // Número de páginas a serem requisitadas
@@ -249,6 +252,7 @@ async function searchTMDB(filters) {
         }
     }
 
+    loading.style.display = 'none';
     return results;
 }
 
