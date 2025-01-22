@@ -95,14 +95,3 @@ CREATE TABLE `AVALIA_PRODUCAO` (
   FOREIGN KEY (`idUsu`) REFERENCES `USUARIO`(`id`) ON DELETE CASCADE,
   FOREIGN KEY (`idProd`) REFERENCES `PRODUCAO`(`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
--- Tabela: FAVORITA_TAG
--- --------------------------------------------------------
-CREATE TABLE `FAVORITA_TAG` (
-  `idUsu` INT(11),
-  `idTag` INT(11),
-  PRIMARY KEY (`idUsu`, `idTag`),
-  FOREIGN KEY (`idUsu`) REFERENCES `USUARIO`(`id`) ON DELETE CASCADE,
-  FOREIGN KEY (`idTag`) REFERENCES `TAG`(`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
