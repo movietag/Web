@@ -255,7 +255,7 @@ async function atualizaAvaliacao(){
             }
         } else {
             selectedStar = null;
-            console.error(data.message);
+            console.log(data.message);
         }
     })
     .catch(error => {
