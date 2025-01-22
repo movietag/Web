@@ -1,6 +1,3 @@
-----------------------------------------------------------
--- Tabela: USUARIO
--- --------------------------------------------------------
 CREATE TABLE `USUARIO` (
   `id` INT(11) AUTO_INCREMENT PRIMARY KEY,
   `usuario` VARCHAR(50) NOT NULL,
