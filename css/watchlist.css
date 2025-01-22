@@ -1,4 +1,9 @@
+section{
+    width: 50vw;
+}
+
 #caixinha{
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

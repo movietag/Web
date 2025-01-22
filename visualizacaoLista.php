@@ -24,7 +24,7 @@
             <h1 id="tituloLista">Nome da Lista </h1>
             <h1><input type="text" name="alterarNomeLista" id="alterarNomeLista" autofocus value="Nome da Lista"></h1>
             <a id="novaProducao">+ Nova Produção</a>
-            </div>
+        </div>
             </h1>
             <!-- dialog adicionar produção -->
             <dialog id="buscarFilme">

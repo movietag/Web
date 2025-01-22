@@ -8,6 +8,11 @@ const opcoesApi = {
 
 const urlParams = new URLSearchParams(window.location.search);
 const idLista = urlParams.get('id');
+
+const alterarNomeLista = document.getElementById("alterarNomeLista");
+alterarNomeLista.style.display = 'none';
+const titulo = document.getElementById("tituloLista");
+
 atualizaListaBanco(idLista);
 
 async function atualizaListaBanco(idLista){
@@ -63,8 +68,8 @@ async function atualizaDados(dadosLista) {
 }
 
 function carregaDados(lista) {
-    const titulo = document.querySelector('#tituloLista');
     titulo.textContent = lista.nome;
+    alterarNomeLista.value = lista.nome;
 
     const producoesContainer = document.querySelector('.itens.resultados'); // Seleciona o contêiner para produções
     producoesContainer.innerHTML = ''; // Limpa o contêiner
@@ -101,7 +106,6 @@ function carregaDados(lista) {
             const usuarioConfirma = confirm("Você tem certeza?");
             if (usuarioConfirma) {
                 link.href = '';
-                alert('Salve')
                 excluirProdLista(idLista, producao.tmdbData.id);
             } else {
                 alert("Você cancelou!");
@@ -153,7 +157,7 @@ inputTitulo.addEventListener('keydown', (event) => {
     }
   });
 
-  function excluirProdLista(idLista, idApi){
+function excluirProdLista(idLista, idApi){
     let url = `./php/excluirProdLista.php?idLista=${idLista}&idApi=${idApi}`;
     console.log(url);
     fetch(url)
@@ -161,13 +165,12 @@ inputTitulo.addEventListener('keydown', (event) => {
     .then(response => {
         if(response.sucess){
             console.log(response.message);
-            // window.location.reload();
+            window.location.reload();
         } else{
             console.error(response.message);
         }
     })
 }
-
 
 // Função para buscar filmes na API
 function buscarFilmes(termo, lista){
@@ -269,6 +272,36 @@ function adicionarFilmeLista(idLista, idProd, nome, tipoProd) {
         console.error('Erro na requisição:', error);
     });
 }
+
+function editarNomeLista(idLista, novoNome){
+    fetch(`./php/editarNomeLista.php?idLista=${idLista}&nome=${novoNome}`)
+    .then(response => response.json())
+    .then(response => {
+        if(response.success){
+            console.log("Nome alterado com sucesso no banco!");
+        } else{
+            console.error(response.message);
+        }
+    })
+
+}
+
+// Editar Lista
+document.getElementById("editarLista").addEventListener("click", function () {
+    if (titulo.style.display !== "none") {
+        // Mudar para o modo de edição (mostrar input e esconder h1)
+        titulo.style.display = "none";
+        alterarNomeLista.style.display = "inline";
+        alterarNomeLista.focus();
+    } else {
+        // Salvar as alterações e voltar ao modo de visualização
+        let texto = alterarNomeLista.value;
+        titulo.textContent = texto;
+        editarNomeLista(idLista, texto);
+        titulo.style.display = "inline";
+        alterarNomeLista.style.display = "none";
+    }
+});
 
 
 
