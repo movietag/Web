@@ -67,7 +67,6 @@ function loadTagProductions(tagId) {
 
 async function fetchTMDBDetails(production) {
     try {
-        console.log(production)
         const response = await fetch(`https://api.themoviedb.org/3/${production.tipoProd}/${production.idAPI}?language=pt-BR`, options);
         if (!response.ok) {
             throw new Error('Erro na resposta da API TMDB');
@@ -79,10 +78,12 @@ async function fetchTMDBDetails(production) {
     }
 }
 
-function createProductionCard(production, tmdbData = null) {
+function createProductionCard(production, tmdbData) {
     const card = document.createElement('a');
     card.href = `visualizacaoProducao.php?query=${production.idAPI}&type=${production.tipoProd}`;
     card.className = 'item filme';
+
+    console.log(tmdbData);
     
     // Use TMDB data if available, fallback to local data or defaults
     const posterPath = tmdbData?.poster_path 
@@ -110,13 +111,16 @@ function createProductionCard(production, tmdbData = null) {
             ${overview ? `<p>${overview}</p>` : ''}
         </div>
     `;
+
     card.addEventListener('click', (ev) => {
         fetch('./php/acessarProducao.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ id: item.id, nome:item.name??item.title, tipoProd:item.media_type})
+            body: JSON.stringify({ id: tmdbData.id, 
+                nome:tmdbData.name??tmdbData.title, 
+                tipoProd:production.tipoProd})
         })
         .then(response => response.json()) // Converte a resposta do PHP para JSON
         .then(data => {

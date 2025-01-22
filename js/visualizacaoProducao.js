@@ -385,6 +385,7 @@ const cancelButtonSalvarProd = document.getElementById('cancelDialogSalvarProd')
 openSalvarProd.addEventListener('click', () => {
     if(logado){
         dialogSalvarProd.showModal(); // Exibe o diálogo como modal
+        
     }else{
         dialogLogin.showModal();
         console.log("sem vacu");
@@ -420,6 +421,7 @@ cancelButtonNovaLista.addEventListener('click', () => {
 
 // Fecha o diálogo ao clicar no botão "OK"
 document.getElementById('confirmDialogCriarNovaLista').addEventListener('click', () => {
+
     dialogNovaLista.close(); // Fecha o diálogo
 });
 
