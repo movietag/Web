@@ -8,8 +8,9 @@ const resultados = document.querySelector(".itens");
 const antes = document.getElementById("antesPesquisa"); // Div que aparece antes da pesquisa
 const mostrar = document.querySelector("#botaoMostrar"); //Botão que mostra os filtros
 const esconder = document.querySelector("#botaoEsconder"); // Botão que esconde os filtros
-const classifs = document.querySelector(".divClassifInd"); //pegando a div que contem os botoes de classificacao
+//const classifs = document.querySelector(".divClassifInd"); //pegando a div que contem os botoes de classificacao
 
+loading = document.querySelector('.wrapperLoading');
 
 // Adicionando Eventos aos Objetos
 
@@ -26,7 +27,7 @@ for (i = 0; i<divs.length; i++){ //repeticao pegando todas as setas e adicionand
 
 mostrar.addEventListener("click", function(){mostrarTodos(mostrar, esconder)}); // Evento para mostrar os filtros
 esconder.addEventListener("click", function(){esconderTodos(mostrar, esconder)}); // Evento para ocultar todos os filtros
-
+/*
 for(i = 0; i <classifs.childElementCount; i++){
     //mudando o fundo das classificacoes caso clicadas
     let cont = i;
@@ -57,7 +58,7 @@ for(i = 0; i <classifs.childElementCount; i++){
                 break;
         }
     })
-}
+}*/
 
 
 // Oculta os filtros
@@ -156,6 +157,7 @@ async function handleSearch(e) {
 
     const results = await searchTMDB(filters);
     
+
     if (results.length > 0) {
         displayResults(results);
         beforeSearchDiv.style.display = 'none';
@@ -175,13 +177,13 @@ function collectFilters() {
         year: document.getElementById('anoLancamento').value.trim(),
         vote_average_gte: document.getElementById('avaliacaoMenor').value ? document.getElementById('avaliacaoMenor').value / 10 : '',
         vote_average_lte: document.getElementById('avaliacaoMaior').value ? document.getElementById('avaliacaoMaior').value / 10 : '',
-        certification: getSelectedClassification(),
+        //certification: getSelectedClassification(),
         media_type: Array.from(document.querySelectorAll('input[name="tipo[]"]:checked')).map(cb => cb.value)
     };
 }
 
 // Obter classificação indicativa selecionada
-function getSelectedClassification() {
+/*function getSelectedClassification() {
     const selectedButton = document.querySelector('.classifInd[class*="C"]');
     if (!selectedButton) return null;
     
@@ -198,10 +200,11 @@ function getSelectedClassification() {
         if (selectedButton.classList.contains(className)) return value;
     }
     return null;
-}
+}*/
 
 // Search TMDB API with filters
 async function searchTMDB(filters) {
+    loading.style.display = 'block';
     let results = [];
     const types = filters.media_type.length > 0 ? filters.media_type : ['movie', 'tv'];
     const maxPages = 10; // Número de páginas a serem requisitadas
@@ -216,7 +219,7 @@ async function searchTMDB(filters) {
 
             if (filters.vote_average_gte) queryParams.append('vote_average.gte', filters.vote_average_gte);
             if (filters.vote_average_lte) queryParams.append('vote_average.lte', filters.vote_average_lte);
-            if (filters.certification) queryParams.append('certification', filters.certification);
+            //if (filters.certification) queryParams.append('certification', filters.certification);
 
             let urlBase = `https://api.themoviedb.org/3/discover/${type}?${queryParams}`;
             
@@ -249,26 +252,33 @@ async function searchTMDB(filters) {
         }
     }
 
+    loading.style.display = 'none';
     return results;
 }
 
 
 
 
-// Display results in the UI
+
+// Display results in the UI with default sorting
 function displayResults(results) {
+    // Ordena os resultados por melhor avaliação antes de exibi-los na primeira vez
+    results.sort((a, b) => (b.vote_average || 0) - (a.vote_average || 0));
+
     const container = resultsContainer.querySelector('.itens');
     container.innerHTML = ''; // Clear previous results
-    
+
     results.forEach(item => {
         const posterUrl = item.poster_path 
             ? `https://image.tmdb.org/t/p/w300${item.poster_path}`
             : 'img/placeholder/MovieTag-NotFoundImage.png';
-            
+
         const title = item.title || item.name;
         const year = item.release_date || item.first_air_date;
         const yearFormatted = year ? `(${year.split('-')[0]})` : '';
+
         
+
         const resultHtml = `
             <a href="visualizacaoProducao.php?type=${item.media_type}&query=${item.id}" class="item filme">
                 <img src="${posterUrl}" alt="Poster de ${title}">
@@ -282,9 +292,11 @@ function displayResults(results) {
             </a>
         `;
         
+
         container.insertAdjacentHTML('beforeend', resultHtml);
     });
 }
+
 
 // Generate tags for a result item
 function generateTags(item) {

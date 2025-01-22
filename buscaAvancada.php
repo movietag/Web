@@ -152,7 +152,7 @@
                             </div>
                         </div>-->
 
-                        <!-- caixa com um filtro-->
+                        <!-- caixa com um filtro
                         <div class="filtro">
                             <p class="rotulo">Classificação indicativa<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput divClassifInd">
@@ -163,12 +163,21 @@
                                 <button class="classifInd dezesseis">16</button>
                                 <button class="classifInd dezoito">18</button>
                             </div>
-                        </div> 
+                        </div> -->
                         
                     </div>
 
                     <!-- botao de pesquisa -->
                     <button id="botaoPesquisar">Pesquisar</button>
+
+                    <div class="wrapperLoading">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                        <div class="shadow"></div>
+                    </div>
                 </form>
             </div>
 
@@ -192,6 +201,8 @@
                     </div>
                 </div>
         </div>
+
+        
     </section>
 
     <!-- Footer -->
