@@ -14,9 +14,6 @@ $mail = new PHPMailer(true);
         $mail->isSMTP();        //Devine o uso de SMTP no envio
         $mail->SMTPAuth = true; //Habilita a autenticação SMTP
         $destino = $_POST["email"];
-        $destino = $_POST["nome"];
-        $assunto =  $_POST["assunto"];
-        $mensagem =  $_POST["mensagem"];
 
         $mail->Username   = 'movietag.pi@gmail.com';
         $mail->Password   = 'F1lminho';
