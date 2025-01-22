@@ -152,7 +152,7 @@
                             </div>
                         </div>-->
 
-                        <!-- caixa com um filtro -->
+                        <!-- caixa com um filtro-->
                         <div class="filtro">
                             <p class="rotulo">Classificação indicativa<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput divClassifInd">
@@ -163,7 +163,7 @@
                                 <button class="classifInd dezesseis">16</button>
                                 <button class="classifInd dezoito">18</button>
                             </div>
-                        </div>
+                        </div> 
                         
                     </div>
 
