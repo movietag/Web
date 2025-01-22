@@ -118,7 +118,7 @@
                 
 
 
-                    <a href="#" class="forgot-link">Esqueceu a senha?</a>
+                    <!--<a href="#" class="forgot-link">Esqueceu a senha?</a>-->
 
                     <button id="login-btn">Entrar</button>
 

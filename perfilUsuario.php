@@ -32,11 +32,11 @@
             </div>
             <div class="dados2">
                 <p class="rotulo">Avaliações</p>
-                <p>27</p>
+                <p><?php echo $_SESSION['dados']['total_avaliacoes']?></p>
             </div>
             <div class="dados2">
                 <p class="rotulo">Tags Criadas</p>
-                <p>15</p>
+                <p><?php echo $_SESSION['dados']['total_tags']?></p>
             </div>
             <button id="botao">Editar Perfil</button>
         </div>
@@ -67,8 +67,14 @@
         <!-- tags pertencentes ao usuario -->
         <div class="show pagTags">
             <ul class="tags">
-                <li>Alien</li>
-            </ul>    
+                <?php if (!empty($tagsCriadas)): ?>
+                    <?php foreach ($tagsCriadas as $tag): ?>
+                        <li><?php echo htmlspecialchars($tag['nome']); ?></li>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <li>Nenhuma tag criada ainda.</li>
+                <?php endif; ?>
+            </ul> 
         </div>
 
         <!-- avaliacoes do usuario -->

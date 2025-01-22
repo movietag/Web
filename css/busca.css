@@ -10,6 +10,10 @@ h1{
     margin-bottom: 0;
 }
 
+.sort-container{
+    color: #f0f0f0;
+}
+
 /* botao de mostrar/esconder todos os filtros */
 .botaoTodosFiltros{
     font-size: 0.9em;

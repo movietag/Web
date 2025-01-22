@@ -15,6 +15,36 @@ try {
     // Conexão com o banco usando PDO
     require_once 'database.php'; // Inclui o arquivo com a classe Database
 
+    $idUsuario = $_SESSION['dados']['id']; // Supondo que o ID do usuário está armazenado na sessão
+
+    // Consulta para obter o número de avaliações feitas pelo usuário
+    $sqlAvaliacoes = "
+    SELECT COUNT(*) AS total_avaliacoes
+    FROM AVALIA_PRODUCAO
+    WHERE idUsu = :idUsu
+    ";
+
+    $stmt = Database::prepare($sqlAvaliacoes);
+    $stmt->execute(['idUsu' => $idUsuario]);
+    $totalAvaliacoes = $stmt->fetch(PDO::FETCH_ASSOC)['total_avaliacoes'];
+
+    // Consulta para obter o número de tags criadas pelo usuário
+    $sqlTags = "
+    SELECT COUNT(*) AS total_tags
+    FROM TAG
+    WHERE idUsu = :idUsu
+    ";
+    
+    $stmt = Database::prepare($sqlTags);
+    $stmt->execute(['idUsu' => $idUsuario]);
+    $totalTags = $stmt->fetch(PDO::FETCH_ASSOC)['total_tags'];
+
+    // Adicionar os valores à sessão para reutilização no HTML
+    $_SESSION['dados']['total_avaliacoes'] = $totalAvaliacoes;
+    $_SESSION['dados']['total_tags'] = $totalTags; 
+    //end
+    //emd
+
     // Consulta para obter as três produções mais acessadas com seus nomes
     $sqlTopProducao = "
         SELECT P.nomeProd, AP.idProd, COUNT(*) AS total_acessos
@@ -108,6 +138,18 @@ try {
     //enviando os resultados das consultas para o js
     $enviar = [$tagsMaisUtilizadas, $dados, $usuariosAtivos];
     jsonResponse(true, 'Dados enviados com sucesso!', $enviar);
+
+
+    //pegando tags feitas pelo usuario
+    $sqlTagsUsu = "
+    SELECT nome
+    FROM TAG
+    WHERE idUsu = :idUsu";
+    $stmt = Database::prepare($sqlTagsUsu);
+    $stmt->bindParam(':idUsu', $idUsuario, PDO::PARAM_INT);
+    $stmt->execute();
+    $tagsCriadas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo "<script>console.log($tagsCriadas)</script>";
 
 } catch (PDOException $e) {
     // Tratamento de erro
