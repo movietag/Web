@@ -120,11 +120,40 @@ const apiOptions = {
 searchForm.addEventListener('submit', handleSearch);
 sortSelect.addEventListener('change', handleSort);
 
-// Pesquisa Manual principal
+// Evento para busca manual no botão
+botao.addEventListener("click", function() { 
+    handleSearch();
+});
+
+// Debounce para evitar múltiplas requisições seguidas
+function debounce(func, delay) {
+    let timer;
+    return function(...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => func.apply(this, args), delay);
+    };
+}
+
+// Função principal de busca
 async function handleSearch(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     
     const filters = collectFilters();
+
+    // Verifica se pelo menos um filtro foi preenchido antes de buscar
+    const hasFilters = Object.values(filters).some(value => value && value.length > 0);
+    
+    if (!hasFilters) {
+        console.log("Nenhum filtro aplicado. Pesquisa não realizada.");
+        return;
+    }
+
+    // Se o nome da produção estiver vazio, busca geral com filtros aplicados
+    if (!filters.title) {
+        console.log("Realizando pesquisa geral com filtros selecionados...");
+        delete filters.title; // Remove o campo vazio para evitar conflitos
+    }
+
     const results = await searchTMDB(filters);
     
     if (results.length > 0) {
@@ -138,26 +167,20 @@ async function handleSearch(e) {
     }
 }
 
-// Coleta todos os filtros
+
+// Atualização na coleta de filtros para evitar conflitos
 function collectFilters() {
-    const filters = {
-        title: document.getElementById('tituloProducao').value,
-        year: document.getElementById('anoLancamento').value,
-        vote_average_gte: document.getElementById('avaliacaoMenor').value / 10,
-        vote_average_lte: document.getElementById('avaliacaoMaior').value / 10,
-        //with_genres: document.getElementById('genero').value,
-        //with_keywords: document.getElementById('tag').value,
-        with_original_language: document.getElementById('idioma').value,
-        'with_runtime.lte': document.getElementById('duracao').value,
+    return {
+        title: document.getElementById('tituloProducao').value.trim(),
+        year: document.getElementById('anoLancamento').value.trim(),
+        vote_average_gte: document.getElementById('avaliacaoMenor').value ? document.getElementById('avaliacaoMenor').value / 10 : '',
+        vote_average_lte: document.getElementById('avaliacaoMaior').value ? document.getElementById('avaliacaoMaior').value / 10 : '',
         certification: getSelectedClassification(),
-        media_type: Array.from(document.querySelectorAll('input[name="tipo[]"]:checked')).map(cb => cb.value),
-        platforms: Array.from(document.querySelectorAll('input[name="plataformas[]"]:checked')).map(cb => cb.value)
+        media_type: Array.from(document.querySelectorAll('input[name="tipo[]"]:checked')).map(cb => cb.value)
     };
-    
-    return filters;
 }
 
-// Coletar classificao inidicativa
+// Obter classificação indicativa selecionada
 function getSelectedClassification() {
     const selectedButton = document.querySelector('.classifInd[class*="C"]');
     if (!selectedButton) return null;
@@ -181,60 +204,56 @@ function getSelectedClassification() {
 async function searchTMDB(filters) {
     let results = [];
     const types = filters.media_type.length > 0 ? filters.media_type : ['movie', 'tv'];
-    
+    const maxPages = 10; // Número de páginas a serem requisitadas
+
     for (const type of types) {
         try {
-            // Build initial query parameters
+            // Construir os parâmetros da consulta com os filtros fornecidos
             const queryParams = new URLSearchParams({
                 language: 'pt-BR',
-                include_adult: false,
-                page: 1
+                include_adult: false
             });
 
+            if (filters.vote_average_gte) queryParams.append('vote_average.gte', filters.vote_average_gte);
+            if (filters.vote_average_lte) queryParams.append('vote_average.lte', filters.vote_average_lte);
+            if (filters.certification) queryParams.append('certification', filters.certification);
+
+            let urlBase = `https://api.themoviedb.org/3/discover/${type}?${queryParams}`;
+            
             if (filters.title) {
-                // Use search endpoint if title is provided
                 queryParams.append('query', filters.title);
-                const response = await fetch(`https://api.themoviedb.org/3/search/${type}?${queryParams}`, apiOptions);
+                urlBase = `https://api.themoviedb.org/3/search/${type}?${queryParams}`;
+            }
+
+            for (let page = 1; page <= maxPages; page++) {
+                const url = `${urlBase}&page=${page}`;
+                const response = await fetch(url, apiOptions);
                 const data = await response.json();
-                results = [...results, ...data.results.map(item => ({ ...item, media_type: type }))];
-            } else {
-                // Use discover endpoint for broader search
-                const response = await fetch(`https://api.themoviedb.org/3/discover/${type}?${queryParams}`, apiOptions);
-                const data = await response.json();
-                results = [...results, ...data.results.map(item => ({ ...item, media_type: type }))];
+                
+                // Filtrar exatamente pelo ano fornecido pelo usuário (se houver)
+                results = [
+                    ...results,
+                    ...data.results
+                        .map(item => ({ ...item, media_type: type }))
+                        .filter(item => {
+                            if (filters.year) {
+                                const yearField = item.media_type === 'movie' ? 'release_date' : 'first_air_date';
+                                return item[yearField] && item[yearField].startsWith(filters.year);
+                            }
+                            return true;
+                        })
+                ];
             }
         } catch (error) {
-            console.error(`Error fetching ${type} results:`, error);
+            console.error(`Erro ao buscar ${type}:`, error);
         }
     }
 
-    // Apply additional filters locally
-    results = results.filter(item => {
-        // Filter by year
-        if (filters.year) {
-            const yearField = item.media_type === 'movie' ? 'release_date' : 'first_air_date';
-            if (!item[yearField] || !item[yearField].startsWith(filters.year)) return false;
-        }
-
-        // Filter by vote average
-        if (filters.vote_average_gte && item.vote_average < filters.vote_average_gte) return false;
-        if (filters.vote_average_lte && item.vote_average > filters.vote_average_lte) return false;
-
-        // Filter by original language
-        //if (filters.with_original_language && item.original_language !== filters.with_original_language) return false;
-
-        // Filter by runtime
-        //if (filters['with_runtime.lte'] && item.runtime > filters['with_runtime.lte']) return false;
-
-        // Filter by classification
-        //if (filters.certification && !item.certification?.includes(filters.certification)) return false;
-
-        // Additional filters can be added here
-        return true;
-    });
-
     return results;
 }
+
+
+
 
 // Display results in the UI
 function displayResults(results) {
@@ -311,14 +330,20 @@ function handleSort() {
 
 // Get sort values from an item
 function getItemSortValue(item) {
+    let rating = 0;
+
     const yearSpan = item.querySelector('h2 span');
     const year = yearSpan ? parseInt(yearSpan.textContent.replace(/[()]/g, '')) : 0;
     
-    const ratingTag = item.querySelector('.tags li');
-    const rating = ratingTag ? parseFloat(ratingTag.textContent.match(/\d+\.\d+/)[0]) : 0;
-    
+    // Corrigindo a extração da avaliação
+    const ratingTag = Array.from(item.querySelectorAll('.tags li')).find(tag => tag.textContent.includes('Avaliação'));
+    if (ratingTag) {
+        rating = parseFloat(ratingTag.textContent.match(/\d+\.\d+/)) || 0;
+    }
+
     return { year, rating };
 }
+
 
 // Initialize sort select
 sortSelect.value = 'melAval';
