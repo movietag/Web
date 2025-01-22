@@ -76,3 +76,8 @@ span{
     color: grey;
     margin-left: 0.3em;
 }
+
+.bxs-trash{
+    color: #fd2525;
+    font-size: 1.4em;
+}

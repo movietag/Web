@@ -93,7 +93,25 @@ function carregaDados(lista) {
             ${producao.tmdbData?.title || producao.tmdbData?.name}
             <span>(${producao.tmdbData?.release_date?.split('-')[0] || producao.tmdbData?.first_air_date?.split('-')[0]})</span>
         `;
+
+        const lixeira = document.createElement('i');
+        lixeira.classList.add('bx', 'bxs-trash');  // Classe de ícone de lixeira do Boxicons
+
+        lixeira.addEventListener('click', (ev)=>{
+            const usuarioConfirma = confirm("Você tem certeza?");
+            if (usuarioConfirma) {
+                link.href = '';
+                alert('Salve')
+                excluirProdLista(idLista, producao.idApi);
+            } else {
+                alert("Você cancelou!");
+            }
+            
+        });
+
+
         textoDiv.appendChild(tituloH2);
+        textoDiv.appendChild(lixeira);
 
         // Adiciona descrição
         const descricaoP = document.createElement('p');
@@ -134,6 +152,22 @@ inputTitulo.addEventListener('keydown', (event) => {
         buscarFilmes(texto, lista);
     }
   });
+
+  function excluirProdLista(idLista, idApi){
+    let url = `./php/excluirProdLista.php?idLista=${idLista}&idApi=${idApi}`;
+    console.log(url);
+    fetch(url)
+    .then(response => response.json())
+    .then(response => {
+        if(response.sucess){
+            console.log(response.message);
+            // window.location.reload();
+        } else{
+            console.error(response.message);
+        }
+    })
+}
+
 
 // Função para buscar filmes na API
 function buscarFilmes(termo, lista){
@@ -180,6 +214,7 @@ function carregarFilmes(lista, dados) {
 
             // Anexa os elementos ao <div>
             textDiv.appendChild(title);
+
             // textDiv.appendChild(director);
             textDiv.appendChild(type);
 
@@ -223,7 +258,8 @@ function adicionarFilmeLista(idLista, idProd, nome, tipoProd) {
     .then(response => response.json())
     .then(response => {
         if (response.success) {
-            atualizaListaBanco();
+            window.location.reload();
+            dialogNovaProd.close();
             console.log(response.message);
         } else {
             console.error(response.message);
