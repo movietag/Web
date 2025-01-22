@@ -88,6 +88,7 @@ hr{
 /* filmes avaliados */
 
 .itens{
+    overflow-x: hidden;
     flex-wrap: wrap;
 }
 
