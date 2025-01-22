@@ -255,20 +255,24 @@ async function searchTMDB(filters) {
 
 
 
-// Display results in the UI
+
+// Display results in the UI with default sorting
 function displayResults(results) {
+    // Ordena os resultados por melhor avaliação antes de exibi-los na primeira vez
+    results.sort((a, b) => (b.vote_average || 0) - (a.vote_average || 0));
+
     const container = resultsContainer.querySelector('.itens');
     container.innerHTML = ''; // Clear previous results
-    
+
     results.forEach(item => {
         const posterUrl = item.poster_path 
             ? `https://image.tmdb.org/t/p/w300${item.poster_path}`
             : 'img/placeholder/MovieTag-NotFoundImage.png';
-            
+
         const title = item.title || item.name;
         const year = item.release_date || item.first_air_date;
         const yearFormatted = year ? `(${year.split('-')[0]})` : '';
-        
+
         const resultHtml = `
             <a href="visualizacaoProducao.php?type=${item.media_type}&query=${item.id}" class="item filme">
                 <img src="${posterUrl}" alt="Poster de ${title}">
@@ -281,10 +285,11 @@ function displayResults(results) {
                 </div>
             </a>
         `;
-        
+
         container.insertAdjacentHTML('beforeend', resultHtml);
     });
 }
+
 
 // Generate tags for a result item
 function generateTags(item) {
