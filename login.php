@@ -30,7 +30,7 @@
                     <input type="text" name="uUsuario-Email" id="uUsuario" placeholder="Digite seu Usuário">
                     <label for="uSenha">Senha:</label>
                     <input type="password" name="uSenha" id="uSenha" placeholder="Digite sua senha">
-                    <a href="#">Esqueceu a senha?</a>
+                    <!--<a href="#">Esqueceu a senha?</a>-->
                     <button type="submit" name="btn-Login" class="butao">Enviar</button>
                     <p>Não possui conta? <a href="cadastro.php">Cadastrar</a></p>
                     <small class="alertas"></small>
