@@ -73,7 +73,7 @@ function carregaDados(lista) {
         console.log(producao);
         // Criação do link que contém a produção
         const link = document.createElement('a');
-        link.href = `visualizacaoProducao.php?type=${producao.tipoProd}&query=${producao.idAPI}`;
+        link.href = `visualizacaoProducao.php?type=${producao.tipoProd}&query=${producao.tmdbData.id}`;
         link.className = 'item filme';
 
         // Adiciona o poster (imagem)
@@ -102,7 +102,7 @@ function carregaDados(lista) {
             if (usuarioConfirma) {
                 link.href = '';
                 alert('Salve')
-                excluirProdLista(idLista, producao.idApi);
+                excluirProdLista(idLista, producao.tmdbData.id);
             } else {
                 alert("Você cancelou!");
             }
