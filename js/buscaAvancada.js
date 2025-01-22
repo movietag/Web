@@ -183,39 +183,56 @@ async function searchTMDB(filters) {
     const types = filters.media_type.length > 0 ? filters.media_type : ['movie', 'tv'];
     
     for (const type of types) {
-        const baseUrl = `https://api.themoviedb.org/3/discover/${type}`;
-        let queryParams = new URLSearchParams({
-            language: 'pt-BR',
-            include_adult: false,
-            page: 1
-        });
-        
-        // Add filters to query params
-        if (filters.title) queryParams.append('query', filters.title);
-        if (filters.year) queryParams.append('primary_release_year', filters.year);
-        if (filters.vote_average_gte) queryParams.append('vote_average.gte', filters.vote_average_gte);
-        if (filters.vote_average_lte) queryParams.append('vote_average.lte', filters.vote_average_lte);
-        //if (filters.with_genres) queryParams.append('with_genres', filters.with_genres);
-        //if (filters.with_keywords) queryParams.append('with_keywords', filters.with_keywords);
-        if (filters.with_original_language) queryParams.append('with_original_language', filters.with_original_language);
-        if (filters['with_runtime.lte']) queryParams.append('with_runtime.lte', filters['with_runtime.lte']);
-        
         try {
-            const response = await fetch(`${baseUrl}?${queryParams}`, apiOptions);
-            const data = await response.json();
-            
-            // Add media_type to each result
-            const typeResults = data.results.map(item => ({
-                ...item,
-                media_type: type
-            }));
-            
-            results = [...results, ...typeResults];
+            // Build initial query parameters
+            const queryParams = new URLSearchParams({
+                language: 'pt-BR',
+                include_adult: false,
+                page: 1
+            });
+
+            if (filters.title) {
+                // Use search endpoint if title is provided
+                queryParams.append('query', filters.title);
+                const response = await fetch(`https://api.themoviedb.org/3/search/${type}?${queryParams}`, apiOptions);
+                const data = await response.json();
+                results = [...results, ...data.results.map(item => ({ ...item, media_type: type }))];
+            } else {
+                // Use discover endpoint for broader search
+                const response = await fetch(`https://api.themoviedb.org/3/discover/${type}?${queryParams}`, apiOptions);
+                const data = await response.json();
+                results = [...results, ...data.results.map(item => ({ ...item, media_type: type }))];
+            }
         } catch (error) {
-            console.error('Error fetching from TMDB:', error);
+            console.error(`Error fetching ${type} results:`, error);
         }
     }
-    
+
+    // Apply additional filters locally
+    results = results.filter(item => {
+        // Filter by year
+        if (filters.year) {
+            const yearField = item.media_type === 'movie' ? 'release_date' : 'first_air_date';
+            if (!item[yearField] || !item[yearField].startsWith(filters.year)) return false;
+        }
+
+        // Filter by vote average
+        if (filters.vote_average_gte && item.vote_average < filters.vote_average_gte) return false;
+        if (filters.vote_average_lte && item.vote_average > filters.vote_average_lte) return false;
+
+        // Filter by original language
+        //if (filters.with_original_language && item.original_language !== filters.with_original_language) return false;
+
+        // Filter by runtime
+        //if (filters['with_runtime.lte'] && item.runtime > filters['with_runtime.lte']) return false;
+
+        // Filter by classification
+        //if (filters.certification && !item.certification?.includes(filters.certification)) return false;
+
+        // Additional filters can be added here
+        return true;
+    });
+
     return results;
 }
 

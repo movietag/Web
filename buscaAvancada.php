@@ -104,7 +104,7 @@
                             </div>
                         </div>-->
 
-                        <!-- caixa com um filtro -->
+                        <!-- caixa com um filtro
                         <div class="filtro">
                             <p class="rotulo">Plataformas<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput divMaiorCheckbox">
@@ -133,9 +133,9 @@
                                     <label for="disney">Disney+</label>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
 
-                        <!-- caixa com um filtro -->
+                        <!-- caixa com um filtro 
                         <div class="filtro">
                             <p class="rotulo">Idioma<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput">
@@ -143,14 +143,14 @@
                             </div>
                         </div>
 
-                        <!-- caixa com um filtro -->
+                        
                         <div class="filtro">
                             <p class="rotulo">Tempo de duração<i class='bx bx-chevron-down'></i></p>
                             <div class="divInput">
                                 <p class="subrotulo">Em minutos</p>
                                 <input type="number" name="duracao" id="duracao" class="inputGrande" placeholder="ex.: 180">
                             </div>
-                        </div>
+                        </div>-->
 
                         <!-- caixa com um filtro -->
                         <div class="filtro">
@@ -164,6 +164,7 @@
                                 <button class="classifInd dezoito">18</button>
                             </div>
                         </div>
+                        
                     </div>
 
                     <!-- botao de pesquisa -->
