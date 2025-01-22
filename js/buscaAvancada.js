@@ -292,7 +292,27 @@ function displayResults(results) {
             </a>
         `;
         
-
+        resultHtml.addEventListener('click', ()=>{
+            fetch('./php/acessarProducao.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: item.id, 
+                    nome:item.name??item.title, 
+                    tipoProd:item.media_type})
+            })
+            .then(response => response.json()) // Converte a resposta do PHP para JSON
+            .then(data => {
+                if (!data.success) {  // Verifica se o sucesso é true
+                    ev.preventDefault(); // Previne a ação padrão temporariamente
+                    console.log('Erro:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+            });
+        })
         container.insertAdjacentHTML('beforeend', resultHtml);
     });
 }
