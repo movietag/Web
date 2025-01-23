@@ -126,10 +126,10 @@ function carregaDados(lista) {
 
         link.appendChild(textoDiv);
         let nomeProd = '';
-        if(tmdbData.name){
-            nomeProd = tmdbData.name;
+        if(producao.tmdbData.name){
+            nomeProd = producao.tmdbData.name;
         } else{
-            nomeProd = tmdbData.title;
+            nomeProd = producao.tmdbData.title;
         }
 
         link.addEventListener('click', ()=>{
