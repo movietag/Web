@@ -75,7 +75,6 @@ function carregaDados(lista) {
     producoesContainer.innerHTML = ''; // Limpa o contêiner
 
     lista.producoes.forEach(producao => {
-        console.log(producao);
         // Criação do link que contém a produção
         const link = document.createElement('a');
         link.href = `visualizacaoProducao.php?type=${producao.tipoProd}&query=${producao.tmdbData.id}`;
@@ -96,7 +95,7 @@ function carregaDados(lista) {
         const tituloH2 = document.createElement('h2');
         tituloH2.innerHTML = `
             ${producao.tmdbData?.title || producao.tmdbData?.name}
-            <span>(${producao.tmdbData?.release_date?.split('-')[0] || producao.tmdbData?.first_air_date?.split('-')[0]})</span>
+            <span>(${producao.tmdbData.release_date?.split('-')[0] || producao.tmdbData.first_air_date?.split('-')[0]})</span>
         `;
 
         const lixeira = document.createElement('i');
@@ -123,7 +122,38 @@ function carregaDados(lista) {
         textoDiv.appendChild(descricaoP);
 
         // Adiciona a div de texto ao link
+
+
         link.appendChild(textoDiv);
+        let nomeProd = '';
+        if(tmdbData.name){
+            nomeProd = tmdbData.name;
+        } else{
+            nomeProd = tmdbData.title;
+        }
+
+        link.addEventListener('click', ()=>{
+            fetch('./php/acessarProducao.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ id: producao.tmdbData.id, 
+                    nome:nomeProd, 
+                    tipoProd:producao.tipoProd})
+            })
+            .then(response => response.json()) // Converte a resposta do PHP para JSON
+            .then(data => {
+                if (!data.success) {  // Verifica se o sucesso é true
+                    link.href = '';
+                    console.log('Erro:', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição:', error);
+            });
+        });
+
 
         // Adiciona o link ao contêiner de produções
         producoesContainer.appendChild(link);
@@ -187,7 +217,6 @@ function carregarFilmes(lista, dados) {
 
     // Itera sobre os resultados
     dados.results.forEach(item => {
-        console.log(item);
 
         if(item.media_type === "movie" || item.media_type === "tv"){
             // Cria o elemento <a> com a classe "filmeBusca"
@@ -205,7 +234,7 @@ function carregarFilmes(lista, dados) {
 
             // Adiciona o título e o ano
             const title = document.createElement('h2');
-            title.innerHTML = `${item.title??item.name}<span>(${item.year || 'N/A'})</span>`;
+            title.innerHTML = `${item.title??item.name}<span>(${item.release_date || item.first_air_date || 'N/A'})</span>`;
 
             // // Adiciona o nome do diretor/criador
             // const director = document.createElement('p');
@@ -213,7 +242,12 @@ function carregarFilmes(lista, dados) {
 
             // Adiciona o tipo (Filme ou Série)
             const type = document.createElement('p');
-            type.textContent = item.media_type || 'Desconhecido';
+            if(item.media_type === "movie"){
+                type.textContent = "Filme";
+            }else{
+                type.textContent = "Série";
+            }
+            
 
             // Anexa os elementos ao <div>
             textDiv.appendChild(title);
