@@ -6,11 +6,11 @@ const secaoCaixa = document.querySelector(".secao-caixa");
 // Seleciona o link "Esqueceu a senha?"
 const esqueceu = document.querySelector("form a");
 // Adiciona um evento de clique ao link
-esqueceu.addEventListener("click", (ev)=>{
-    ev.preventDefault(); 
-    secaoCaixa.classList.toggle("blur"); 
-    fDialog.parentElement.showModal(); 
-})
+// esqueceu.addEventListener("click", (ev)=>{
+//     ev.preventDefault(); 
+//     secaoCaixa.classList.toggle("blur"); 
+//     fDialog.parentElement.showModal(); 
+// })
 
 // Define a função que será executada quando o formulário de redefinição de senha for enviado
 fDialog.onsubmit = (ev) => {

@@ -35,11 +35,6 @@ try {
         jsonResponse(false, 'Usuário ou Produção não identificados!');
     }
     
-
-
-
-
-
     if (inserirAvaliacao($idUsu, $idBanco, $valor)){
         jsonResponse(true, 'Avaliação inserida com sucesso/Atualiza.');
     } else{
